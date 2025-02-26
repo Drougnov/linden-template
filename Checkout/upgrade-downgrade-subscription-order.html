@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="max-image-preview:large">
+        <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="dns-prefetch" href="//staging.fansocial.app">
+        <link rel="dns-prefetch" href="//fonts.googleapis.com">
+        <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+        <title>Checkout</title>
+        <link rel="stylesheet" id="google-fonts-css" href="https://fonts.googleapis.com/css2?family=Poppins%3Awght%40300%3B400%3B500%3B600%3B700%3B800%3B900&amp;display=swap&amp;ver=1.0.0" media="">
+        <link rel="stylesheet" id="theme-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/theme.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="final-main-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/main.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="components-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/css/components.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="tachyonsStylesheet-css" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.11.1/tachyons.min.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="popup-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/css/dev/popup.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="pageElements-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/FINAL/css/pageElements.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="finalCustomTachyonsStylesheet-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/customTachyons.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="tachyonsV2-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/tachyons-v2.css?ver=1.0.0" media="">
+    
+    
+        <!-- custom-stylesheet for the checkout templates -->
+         <link rel="stylesheet" href="style.css">
+    </head>
+<body style="background-color: #333333;">
+    <div class="wrapper flex justify-center items-center" style="min-height: 100vh; padding: 1rem;">
+
+        <!-- template starts from here -->
+         <!-- container -->
+        <div data-checkout-container class="flex br--10 of--hidden" style="height: 850px;">
+            <!-- column-left -->
+             <div class="flex flex-column gap--24 w-50 pad--x--16 pad--y--24 bg-white-10">
+                <!-- payment-method-container -->
+                <div class="flex flex-column gap--16">
+                    <!-- section-title-container -->
+                    <div class="flex justify-between items-center gap--8 h--24">
+                        <!-- section-title -->
+                        <div class="flex items-center gap--8">
+                            <div class="w--20 h--20 flex justify-center items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path d="M18.3337 8.33317H1.66699M1.66699 6.83317L1.66699 13.1665C1.66699 14.0999 1.66699 14.5666 1.84865 14.9232C2.00844 15.2368 2.2634 15.4917 2.57701 15.6515C2.93353 15.8332 3.40024 15.8332 4.33366 15.8332L15.667 15.8332C16.6004 15.8332 17.0671 15.8332 17.4236 15.6515C17.7372 15.4917 17.9922 15.2368 18.152 14.9232C18.3337 14.5666 18.3337 14.0999 18.3337 13.1665V6.83317C18.3337 5.89975 18.3337 5.43304 18.152 5.07652C17.9922 4.76292 17.7372 4.50795 17.4236 4.34816C17.0671 4.16651 16.6004 4.16651 15.667 4.1665L4.33366 4.1665C3.40024 4.1665 2.93353 4.1665 2.57701 4.34816C2.2634 4.50795 2.00844 4.76292 1.84865 5.07652C1.66699 5.43304 1.66699 5.89975 1.66699 6.83317Z" stroke="#F9FAFB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <span class="fs--16 lh--24 fw6 ttu poppins gray-50">PAYMENT METHOD</span>
+                        </div>
+                        <!-- section-dropdown-right -->
+                         <div class="flex items-center gap--10 pointer">
+                            <span class="fs--14 lh--20 fw5 poppins gray-200">Change Card</span>
+                            <div class="w--24 h--24 flex justify-center items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M6 9L12 15L18 9" stroke="#98A2B3" stroke-width="1.77778" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                         </div>
+                    </div>
+
+                    <!-- payment-card-wrapper -->
+                     <div class="flex gap--16">
+                        <!-- payment-card-container-->
+                        <div data-checkout-payment-card class="w-100 br--12">
+                            <div class="w-100 h-100 flex flex-column justify-between pad--24 br--12">
+                                <div class="flex justify-between">
+                                    <div class="flex items-center gap--2 h--18">
+                                        <div class="flex justify-center items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                <path d="M14 12.0001L13.3332 12.7294C12.9796 13.1162 12.5001 13.3334 12.0001 13.3334C11.5001 13.3334 11.0205 13.1162 10.6669 12.7294C10.3128 12.3435 9.83332 12.1268 9.33345 12.1268C8.83359 12.1268 8.35409 12.3435 7.99998 12.7294M2 13.3334H3.11636C3.44248 13.3334 3.60554 13.3334 3.75899 13.2966C3.89504 13.2639 4.0251 13.21 4.1444 13.1369C4.27895 13.0545 4.39425 12.9392 4.62486 12.7086L13 4.3334C13.5523 3.78112 13.5523 2.88569 13 2.3334C12.4477 1.78112 11.5523 1.78112 11 2.3334L2.62484 10.7086C2.39424 10.9392 2.27894 11.0545 2.19648 11.189C2.12338 11.3083 2.0695 11.4384 2.03684 11.5744C2 11.7279 2 11.8909 2 12.2171V13.3334Z" stroke="#EAECF0" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </div>
+                                        <span class="fs--12 lh--18 fw5 poppins gray-200">Edit Card</span>
+                                    </div>
+                                    <div class="flex justify-center items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="57" height="17" viewBox="0 0 57 17" fill="none">
+                                            <path d="M20.7805 15.8589L23.6181 0.311993H28.1552L25.3168 15.8589H20.7805ZM41.6882 0.653057C40.3862 0.212565 39.0108 -0.00846885 37.626 0.000248118C33.1483 0.000248118 29.994 2.10624 29.9668 5.12519C29.9421 7.35649 32.2192 8.60101 33.9382 9.34345C35.7022 10.1049 36.2951 10.5904 36.2866 11.2702C36.2755 12.3108 34.8776 12.786 33.5756 12.786C31.7614 12.786 30.7982 12.548 29.3094 11.9714L28.7259 11.7247L28.0898 15.2005C29.148 15.6336 31.1057 16.0096 33.1373 16.0286C37.9011 16.0286 40.9935 13.9472 41.0292 10.7236C41.0461 8.95715 39.8401 7.61267 37.2242 6.50456C35.6402 5.79067 34.6703 5.30681 34.6805 4.57944C34.6805 3.93456 35.5018 3.2445 37.276 3.2445C38.4385 3.2202 39.5936 3.42282 40.6674 3.83941L41.0733 4.01865L41.6882 0.653057ZM53.3443 0.311993H49.8536C48.7724 0.311993 47.963 0.588043 47.4882 1.59542L40.7786 15.7796H45.5543C45.5543 15.7796 46.3187 13.8933 46.4945 13.4792L52.2164 13.4856C52.3498 14.0218 52.76 15.7796 52.76 15.7796H56.9998L53.3443 0.311993ZM47.794 10.3064C48.1685 9.41168 49.5997 5.96596 49.5997 5.96596C49.5725 6.00721 49.9716 5.06647 50.2001 4.48346L50.5067 5.82243C50.5067 5.82243 51.3747 9.52907 51.5556 10.3064H47.794ZM16.9306 0.311993L12.5039 10.8767L12.0325 8.72953C11.2087 6.25472 8.64121 3.57368 5.77051 2.23157L9.81838 15.7796L14.6017 15.7748L21.7199 0.311993H16.9085" fill="url(#paint0_linear_15598_8706)"/>
+                                            <path d="M8.17358 0.31177H0.897465L0.838867 0.634591C6.52421 1.92038 10.2858 5.0266 11.8477 8.75785L10.2586 1.61898C9.98431 0.63619 9.18937 0.342702 8.20501 0.308594" fill="url(#paint1_linear_15598_8706)"/>
+                                            <defs>
+                                            <linearGradient id="paint0_linear_15598_8706" x1="31.3851" y1="0" x2="31.3851" y2="16.0286" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="white"/>
+                                            <stop offset="1" stop-color="white" stop-opacity="0.75"/>
+                                            </linearGradient>
+                                            <linearGradient id="paint1_linear_15598_8706" x1="6.34329" y1="0.308594" x2="6.34329" y2="8.75785" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="white"/>
+                                            <stop offset="1" stop-color="white" stop-opacity="0.75"/>
+                                            </linearGradient>
+                                            </defs>
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-column gap--8">
+                                    <div class="flex flex-column gap--40">
+                                        <span data-card-number class="fs--40 lh--44 fw6">**** **** **** 3507</span>
+                                        <div class="flex">
+                                            <div class="flex flex-column w-100">
+                                                <span class="fs--12 lh--18 fw5 poppins gray-800">Card Holder Name</span>
+                                                <span class="fs--16 lh--28 fw7 poppins soft-white">John Carter</span>
+                                            </div>
+                                            <div class="flex flex-column w-100">
+                                                <span class="fs--12 lh--18 fw5 poppins gray-800">Expiry Date</span>
+                                                <span class="fs--16 lh--28 fw7 poppins soft-white">02/30</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+                </div>
+                <!-- billing-address-container -->
+                 <div class="flex flex-column gap--16">
+                    <!-- section-title-container -->
+                    <div class="flex justify-between items-center gap--8 h--24">
+                        <!-- section-title -->
+                        <div class="flex items-center gap--8">
+                            <div class="w--20 h--20 flex justify-center items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path d="M10.0002 10.8334C11.3809 10.8334 12.5002 9.71413 12.5002 8.33342C12.5002 6.9527 11.3809 5.83341 10.0002 5.83341C8.61945 5.83341 7.50016 6.9527 7.50016 8.33342C7.50016 9.71413 8.61945 10.8334 10.0002 10.8334Z" stroke="#F9FAFB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M10.0002 18.3334C13.3335 15.0001 16.6668 12.0153 16.6668 8.33342C16.6668 4.65152 13.6821 1.66675 10.0002 1.66675C6.31826 1.66675 3.3335 4.65152 3.3335 8.33342C3.3335 12.0153 6.66683 15.0001 10.0002 18.3334Z" stroke="#F9FAFB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <span class="fs--16 lh--24 fw6 ttu poppins gray-50">BILLING ADDRESS</span>
+                        </div>
+                        <!-- section-dropdown-right -->
+                         <div class="flex items-center gap--10 pointer">
+                            <span class="fs--14 lh--20 fw5 poppins gray-200">Change Address</span>
+                            <div class="w--24 h--24 flex justify-center items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M6 9L12 15L18 9" stroke="#98A2B3" stroke-width="1.77778" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                         </div>
+                    </div>
+
+                    <!-- inputs-fields-->
+                    <div class="flex flex-column gap--16">
+                        <div class="w-100 flex flex-column gap--8">
+                            <!-- field-group -->
+                             <div class="flex flex-column flex-row-ns w-100 gap--16">
+                                <!-- input-field -->
+                                <div class="w-100 flex flex-column gap--6 flex--max" data-form-input-type="text" data-form-input-label-position="" data-input-label-type="">
+                                    <div data-billing-address-text-area-wrapper class="pad--x--16 pad--y--8">
+                                        <textarea name="" id="" cols="" rows="">
+
+                                        </textarea>
+                                    </div>
+                                </div>
+                             </div>
+                        </div>
+                    </div>
+                 </div>
+             </div>
+             <!-- column-right -->
+             <div class="flex flex-column gap--12 w-50 bg-black-50 pad--y--24">
+                <!-- subscription-section -->
+                 <div class="pad--x--16">
+                    <div class="flex flex-column gap--16">
+                        <!-- section-title-container -->
+                        <div class="flex justify-between items-center gap--8 h--24">
+                            <!-- section-title -->
+                            <div class="flex items-center gap--8">
+                                <div class="w--20 h--20 flex justify-center items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                        <path d="M7.55414 11.6569L7.55423 11.6567C7.58123 11.5953 7.59103 11.5076 7.5449 11.3807C7.49664 11.248 7.3957 11.1037 7.25789 10.9888L7.73819 10.4129L7.25906 10.9898C6.50164 10.3606 5.97657 9.44482 5.86009 8.38795L5.86007 8.38775C5.62136 6.2163 7.18512 4.2646 9.3553 4.02576C11.5241 3.78708 13.4787 5.35007 13.7178 7.52027L7.55414 11.6569ZM7.55414 11.6569L6.78509 13.4095C6.78508 13.4095 6.78506 13.4095 6.78505 13.4096C6.23461 14.6613 7.24514 16.0447 8.60874 15.8938C8.60884 15.8938 8.60893 15.8938 8.60903 15.8938L12.5831 15.4552C12.5835 15.4551 12.5839 15.4551 12.5843 15.455C13.9487 15.3071 14.6349 13.7361 13.8246 12.6328C13.8246 12.6328 13.8246 12.6328 13.8246 12.6328L12.7297 11.1416L12.729 11.1407M7.55414 11.6569L12.729 11.1407M12.729 11.1407C12.6897 11.0873 12.6603 11.0028 12.6795 10.8645C12.6996 10.7205 12.7702 10.5544 12.8828 10.4116M12.729 11.1407L12.8828 10.4116M12.8828 10.4116C13.5075 9.62647 13.8371 8.60064 13.7178 7.5206L12.8828 10.4116ZM5.98023 1.58325H14.0177C16.4472 1.58325 18.4168 3.55279 18.4168 5.98169V14.0182C18.4168 16.447 16.4472 18.4166 14.0177 18.4166H5.98023C3.55124 18.4166 1.5835 16.4475 1.5835 14.0182V5.98169C1.5835 3.55234 3.55124 1.58325 5.98023 1.58325Z" fill="#F9FAFB" stroke="#F9FAFB" stroke-width="1.5"/>
+                                    </svg>
+                                </div>
+                                <span class="fs--16 lh--24 fw6 ttu poppins gray-50">SUBSCRIPTION</span>
+                            </div>
+                            <!-- section-dropdown-right -->
+                            <!-- <div class="flex items-center gap--10 pointer">
+                                <span class="fs--14 lh--20 fw5 poppins gray-200">Change Card</span>
+                                <div class="w--24 h--24 flex justify-center items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M6 9L12 15L18 9" stroke="#98A2B3" stroke-width="1.77778" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="flex flex-column gap--16">
+                            <p class="fs--16 lh--24 fw5 poppins gray-50">You are about to change your membership tier as follows:</p>
+                            <div class="flex flex-column gap--16">
+                                <!-- current-subscription-container -->
+                                <div class="flex flex-column gap--8">
+                                    <span class="fs--12 lh--18 fw5 poppins gray-400">Current Subscription</span>
+                                    <div data-subscription-content data-subscription-content-black class="flex items-center self-stretch">
+                                        <div data-subscription-icon-container class="flex justify-center items-center self-stretch relative">
+                                            <div data-subscription-icon>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M31.8253 37.8442L20.981 39.0411C18.8314 39.2792 17.2353 37.0978 18.1041 35.1222L20.2022 30.341C20.8522 28.861 20.0735 27.1621 18.8314 26.1261C17.1581 24.7361 15.9996 22.7155 15.7422 20.3796C15.2145 15.5791 18.6705 11.2677 23.4652 10.74C28.2599 10.2123 32.5783 13.6679 33.1061 18.462C33.3699 20.8494 32.6427 23.1145 31.259 24.852C30.2421 26.139 29.8238 28.0051 30.7956 29.3243L33.7818 33.3912C35.0626 35.1351 33.9749 37.6126 31.8253 37.8442Z" fill="#667085"/>
+                                                </svg>
+                                            </div>
+                                            <div class="h-100 absolute right-0">
+                                                <div class="rectangle-icon">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="81" viewBox="0 0 20 79" fill="none" class="w--20 self-stretch">
+                                                        <path d="M20 0V79H0L20 0Z" fill="black" fill-opacity="0.75"></path>
+                                                        <path d="M20 0V79H0L20 0Z" fill="url(#paint0_linear_12108_25718)" fill-opacity="0.4"></path>
+                                                        <defs>
+                                                        <linearGradient id="paint0_linear_12108_25718" x1="10" y1="0" x2="10" y2="79" gradientUnits="userSpaceOnUse">
+                                                            <stop stop-opacity="0"></stop>
+                                                            <stop offset="1"></stop>
+                                                        </linearGradient>
+                                                        </defs>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex justify-end items-center flex--max bg--blur--5">
+                                            <div class="flex flex-column items-start gap--8 flex--max" data-subscription-info-container>
+                                                <div class="flex flex-column justify-center items-start self-stretch pad--8">
+                                                    <p class="fs--14 fw6 lh--20 poppins white text--sh--black--40 truncate-text truncate-text-line-2">Library of LOREM LPSUM ATIER dolor sit amet, consectetur adipiscing elit.</p>
+                                                    <span class="h--24 fs--18 fw5 lh--28 fw6 poppins white text--sh--black--40 truncate-text">USD$99.99<span class="fs--14 fw5 lh--20 white">/mo</span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- new-subscription-container -->
+                                <div class="flex flex-column gap--8">
+                                    <span class="fs--12 lh--18 fw5 poppins gray-400">New Subscription</span>
+                                    <div data-subscription-content data-subscription-content-red class="flex items-center self-stretch">
+                                        <div data-subscription-icon-container class="flex justify-center items-center self-stretch relative">
+                                            <div data-subscription-icon>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M31.8253 37.8442L20.981 39.0411C18.8314 39.2792 17.2353 37.0978 18.1041 35.1222L20.2022 30.341C20.8522 28.861 20.0735 27.1621 18.8314 26.1261C17.1581 24.7361 15.9996 22.7155 15.7422 20.3796C15.2145 15.5791 18.6705 11.2677 23.4652 10.74C28.2599 10.2123 32.5783 13.6679 33.1061 18.462C33.3699 20.8494 32.6427 23.1145 31.259 24.852C30.2421 26.139 29.8238 28.0051 30.7956 29.3243L33.7818 33.3912C35.0626 35.1351 33.9749 37.6126 31.8253 37.8442Z" fill="#FF0066"/>
+                                                </svg>
+                                            </div>
+                                            <div class="h-100 absolute right-0">
+                                                <div class="rectangle-icon">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="81" viewBox="0 0 20 79" fill="none" class="w--20 self-stretch">
+                                                        <path d="M20 0V79H0L20 0Z" fill="black" fill-opacity="0.75"></path>
+                                                        <path d="M20 0V79H0L20 0Z" fill="url(#paint0_linear_12108_25718)" fill-opacity="0.4"></path>
+                                                        <defs>
+                                                        <linearGradient id="paint0_linear_12108_25718" x1="10" y1="0" x2="10" y2="79" gradientUnits="userSpaceOnUse">
+                                                            <stop stop-opacity="0"></stop>
+                                                            <stop offset="1"></stop>
+                                                        </linearGradient>
+                                                        </defs>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex justify-end items-center flex--max bg--blur--5">
+                                            <div class="flex flex-column items-start gap--8 flex--max" data-subscription-info-container>
+                                                <div class="flex flex-column justify-center items-start self-stretch pad--8">
+                                                    <p class="fs--14 fw6 lh--20 poppins white text--sh--black--40 truncate-text truncate-text-line-2">FEATURED library of LOREM LPSUM ATIER dolor sit amet, consectetur adipiscing elit.</p>
+                                                    <span class="h--24 fs--18 fw5 lh--28 fw6 poppins white text--sh--black--40 truncate-text">USD$499.99<span class="fs--14 fw5 lh--20 white">/mo</span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="fs--12 lh--18 fw4 poppins gray-400">Your membership will update in your next billing cycle (xx-xx-xxxx)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+
+                 <!-- notes-section -->
+                  <div class="flex flex-column gap--24 pad--x--16">
+                    <!-- section-title-container -->
+                    <div class="flex justify-between items-center gap--8 h--24">
+                        <!-- section-title -->
+                        <div class="flex items-center gap--8">
+                            <div class="w--20 h--20 flex justify-center items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path d="M9.99984 14.1667C9.99984 16.4679 11.8653 18.3333 14.1665 18.3333C16.4677 18.3333 18.3332 16.4679 18.3332 14.1667C18.3332 11.8655 16.4677 10 14.1665 10C11.8653 10 9.99984 11.8655 9.99984 14.1667ZM9.99984 14.1667C9.99984 13.2285 10.3099 12.3627 10.8332 11.6663V4.16667M9.99984 14.1667C9.99984 14.8545 10.1665 15.5033 10.4616 16.0751C9.75956 16.6681 8.13804 17.0833 6.24984 17.0833C3.71853 17.0833 1.6665 16.3371 1.6665 15.4167V4.16667M10.8332 4.16667C10.8332 5.08714 8.78114 5.83333 6.24984 5.83333C3.71853 5.83333 1.6665 5.08714 1.6665 4.16667M10.8332 4.16667C10.8332 3.24619 8.78114 2.5 6.24984 2.5C3.71853 2.5 1.6665 3.24619 1.6665 4.16667M1.6665 11.6667C1.6665 12.5871 3.71853 13.3333 6.24984 13.3333C8.07401 13.3333 9.64927 12.9458 10.387 12.3848M10.8332 7.91667C10.8332 8.83714 8.78114 9.58333 6.24984 9.58333C3.71853 9.58333 1.6665 8.83714 1.6665 7.91667" stroke="#F9FAFB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <span class="fs--16 lh--24 fw6 ttu poppins gray-50">NOTES</span>
+                            <span class="fs--12 lh--18 fw4 poppins gray-400 i self-end">Optional</span>
+                        </div>
+                        <!-- section-dropdown-right -->
+                        <!-- <div class="flex items-center gap--10 pointer">
+                            <span class="fs--14 lh--20 fw5 poppins gray-200">Change Card</span>
+                            <div class="w--24 h--24 flex justify-center items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M6 9L12 15L18 9" stroke="#98A2B3" stroke-width="1.77778" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div> -->
+                    </div>
+
+                    <!-- input-container -->
+                     <div class="flex flex-column gap--8">
+                        <div class="flex items-center gap--8">
+                            <div class="flex items-center gap--4 pad--x--4 h2 bb br--col--brand-green w--max-content">
+                                <div class="flex justify-center items-center w2 h2">
+                                    <div class="w--24 h--24 pad--x--2-8 pad--x--10-responsive-mobile relative">
+                                        <img src="./Vector1.svg" alt="">
+                                        <div data-online-avatar="true"></div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center gap--8">
+                                    <div class="h--18">
+                                        <span class="fs--12 fw4 lh--18 col--brand-green truncate flex items-center gap--4">Princess Carrot Pop</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex justify-center items-center w2 h2">
+                                <div class="w--24 h--24 pad--x--2-8 pad--x--10-responsive-mobile relative">
+                                    <img src="./Vector1.svg" alt="">
+                                    <div data-online-avatar="true"></div>
+                                </div>
+                            </div>
+                            <div class="flex justify-center items-center w2 h2">
+                                <div class="w--24 h--24 pad--x--2-8 pad--x--10-responsive-mobile relative">
+                                    <img src="./Vector1.svg" alt="">
+                                    <div data-online-avatar="true"></div>
+                                </div>
+                            </div>
+                            <div class="flex justify-center items-center w2 h2">
+                                <div class="w--24 h--24 pad--x--2-8 pad--x--10-responsive-mobile relative">
+                                    <img src="./Vector1.svg" alt="">
+                                    <div data-online-avatar="true"></div>
+                                </div>
+                            </div>
+                            <div class="flex justify-center items-center w2 h2">
+                                <div class="w--24 h--24 pad--x--2-8 pad--x--10-responsive-mobile relative">
+                                    <img src="./Vector1.svg" alt="">
+                                    <div data-online-avatar="true"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- field-group -->
+                        <div class="flex flex-column flex-row-ns w-100 gap--16">
+                            <!-- input-field -->
+                             <div class="w-100 flex flex-column gap--6 flex--max" data-form-input-type="text" data-form-input-label-position="" data-input-label-type="">
+                                <div class="h--100 br--2 br--bottom br--left bb br--col--mischka bg-white-10 sh--7">
+                                    <textarea name="" id="" cols="" rows="">
+
+                                    </textarea>
+                                </div>
+                             </div>
+                         </div>
+                     </div>
+                  </div>
+
+                  <!-- checkout-summary-section -->
+                   <div class="flex flex-column justify-end gap--24 h-100">
+                        <div class="flex flex-column gap--16 pad--x--16">
+                            <p class="fs--14 lh--20 fw4 poppins gray-400 tracked--0-2">You will be charged <span class="fs--14 lh--20 fw4 poppins col--brand-green tracked--0-2">$499.99</span> starting XX-XX-XXXX and monthly on the same date. Auto-renews, cancel anytime in your account.</p>
+                            <!-- total-container -->
+                            <div class="flex pt2 bt br--col--mystic">
+                                <div class="w-100 flex gap--16">
+                                    <div class="w-100 flex justify-between items-end gap--5">
+                                        <span class="fs--16 lh--24 fw6 poppins gray-50">Total</span>
+                                        <span class="fs--24 lh--32 fw6 ttu poppins col--brand-green">USD$6.99</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- checkbox-container -->
+                            <div class="flex items-center gap--10">
+                                <label class="flex items-center gap--8" data-form-input-type="checkbox" data-form-accent-color="green">
+                                    <input type="checkbox" name="save" data-required="0" value="save" class="w--16 h--16 pointer">
+                                    <p class="ma0 fs--14 fw4 lh--20 poppins gray-400 tracked--0-2">I agree to Fansocial’s <a href="#" class="fs--14 fw5 lh--20 poppins col--brand-green tracked--0-2">Terms and Condition</a> and <a href="#" class="fs--14 fw5 lh--20 poppins col--brand-green tracked--0-2">Privacy Policy</a>. </p>
+                                 </label>
+                            </div>
+                            <!-- button -->
+                            <button data-button-proceed-payment data-button-proceed-payment-enabled type="button" class="bg-white-20 h--48 pad--x--8 pad--right--10 flex items-center gap--10 justify-center relative size-large" data-button-size="large" data-button-icon-position="left" data-skip-svg-color="" data-skip-svg-width="" data-button-loader="" data-button-loader-success="" data-button-loader-success-text="Your settings have been updated." data-for-new-dashboard="1" data-button-adjust-padding="1">
+                                <div data-button-text-wrap="" class="flex items-center gap--10 justify-center relative">
+                                    <span class=" poppins wb flex pad--y--4 fs--20 fw6 lh--30 black ttu">Proceed Payment</span>
+                                    <div class="flex justify-center items-center w--24 h--24">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16" fill="black">
+                                            <path d="M1 8H15M15 8L8 1M15 8L8 15" stroke="black" fill="black"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                   </div>
+             </div>
+        </div>
+        <!-- template ends here -->
+
+
+    </div>
+</body>
+</html>
