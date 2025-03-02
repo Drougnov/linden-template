@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="max-image-preview:large">
+        <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="dns-prefetch" href="//staging.fansocial.app">
+        <link rel="dns-prefetch" href="//fonts.googleapis.com">
+        <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+        <title>Checkout</title>
+        <link rel="stylesheet" id="google-fonts-css" href="https://fonts.googleapis.com/css2?family=Poppins%3Awght%40300%3B400%3B500%3B600%3B700%3B800%3B900&amp;display=swap&amp;ver=1.0.0" media="">
+        <link rel="stylesheet" id="theme-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/theme.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="final-main-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/main.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="components-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/css/components.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="tachyonsStylesheet-css" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.11.1/tachyons.min.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="popup-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/css/dev/popup.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="pageElements-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/FINAL/css/pageElements.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="finalCustomTachyonsStylesheet-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/customTachyons.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="tachyonsV2-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/tachyons-v2.css?ver=1.0.0" media="">
+    
+    
+        <!-- custom-stylesheet for the checkout templates -->
+         <link rel="stylesheet" href="style.css">
+    </head>
+<body style="background-color: #333333;">
+    <div class="wrapper flex justify-center items-center" style="min-height: 100vh; padding: 1rem;">
+
+        <!-- template starts from here -->
+         <!-- container -->
+        <div data-checkout-container class="flex br--10 of--hidden bg-white-10" style="height: 850px;">
+            <!-- column-left -->
+             <div class="flex flex-column gap--24 w-50 pad--x--16 pad--y--24">
+                <!-- shipping-address-container -->
+                <div class="flex flex-column gap--16">
+                    <!-- section-title-container -->
+                    <div class="flex justify-between items-center gap--8 h--24">
+                        <!-- section-title -->
+                        <div class="flex items-center gap--8">
+                            <div class="w--20 h--20 flex justify-center items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path d="M10.0002 10.8334C11.3809 10.8334 12.5002 9.71413 12.5002 8.33342C12.5002 6.9527 11.3809 5.83341 10.0002 5.83341C8.61945 5.83341 7.50016 6.9527 7.50016 8.33342C7.50016 9.71413 8.61945 10.8334 10.0002 10.8334Z" stroke="#F9FAFB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M10.0002 18.3334C13.3335 15.0001 16.6668 12.0153 16.6668 8.33342C16.6668 4.65152 13.6821 1.66675 10.0002 1.66675C6.31826 1.66675 3.3335 4.65152 3.3335 8.33342C3.3335 12.0153 6.66683 15.0001 10.0002 18.3334Z" stroke="#F9FAFB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <span class="fs--16 lh--24 fw6 ttu poppins gray-50">SHIPPING ADDRESS</span>
+                        </div>
+                        <!-- section-dropdown-right -->
+                         <div class="flex items-center gap--10 pointer">
+                            <!-- <span class="fs--14 lh--20 fw5 poppins gray-200">Change Address</span> -->
+                            <div class="w--24 h--24 flex justify-center items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M6 9L12 15L18 9" stroke="#98A2B3" stroke-width="1.77778" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                         </div>
+                    </div>
+
+                    <!-- inputs-fields-->
+                    <div class="flex flex-column gap--16">
+                        <div class="w-100 flex flex-column gap--8">
+                            <!-- field-group -->
+                             <div class="w-100 flex flex-column flex-row-ns w-100 gap--16">
+                                <!-- input-field -->
+                                <div class="w-100 flex flex-column justify-center items-center gap--6 flex--max relative" data-form-input-type="text" data-form-input-label-position="" data-input-label-type="">
+                                    <div data-billing-address-text-area-wrapper class="pad--x--16 pad--y--8 w-100">
+                                        <textarea name="" id="" cols="" rows="" class="fs--16 lh--24 fw5 poppins gray-200">Chan Tai Man,10/F Block5,Fook Yip Bldg,12345,Kwai Chung,Hong Kong</textarea>
+                                    </div>
+                                    <div data-input-icon-center-right class="absolute justify-center items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                            <path d="M15.75 13.4999L14.9999 14.3205C14.6021 14.7555 14.0626 14.9999 13.5001 14.9999C12.9376 14.9999 12.3981 14.7555 12.0003 14.3205C11.6019 13.8863 11.0625 13.6425 10.5001 13.6425C9.93778 13.6425 9.39835 13.8863 8.99998 14.3205M2.25 14.9999H3.50591C3.87279 14.9999 4.05624 14.9999 4.22887 14.9585C4.38192 14.9217 4.52824 14.8611 4.66245 14.7789C4.81382 14.6861 4.94354 14.5564 5.20296 14.297L14.625 4.87493C15.2463 4.25361 15.2463 3.24625 14.625 2.62493C14.0037 2.00361 12.9963 2.00361 12.375 2.62493L2.95295 12.047C2.69352 12.3064 2.5638 12.4361 2.47104 12.5875C2.3888 12.7217 2.32819 12.868 2.29145 13.0211C2.25 13.1937 2.25 13.3772 2.25 13.744V14.9999Z" stroke="#EAECF0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                             </div>
+                        </div>
+                    </div>
+                 </div>
+
+                <!-- payment-method-container -->
+                <div class="flex flex-column gap--16">
+                    <!-- section-title-container -->
+                    <div class="flex justify-between items-center gap--8 h--24">
+                        <!-- section-title -->
+                        <div class="flex items-center gap--8">
+                            <div class="w--20 h--20 flex justify-center items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path d="M18.3337 8.33317H1.66699M1.66699 6.83317L1.66699 13.1665C1.66699 14.0999 1.66699 14.5666 1.84865 14.9232C2.00844 15.2368 2.2634 15.4917 2.57701 15.6515C2.93353 15.8332 3.40024 15.8332 4.33366 15.8332L15.667 15.8332C16.6004 15.8332 17.0671 15.8332 17.4236 15.6515C17.7372 15.4917 17.9922 15.2368 18.152 14.9232C18.3337 14.5666 18.3337 14.0999 18.3337 13.1665V6.83317C18.3337 5.89975 18.3337 5.43304 18.152 5.07652C17.9922 4.76292 17.7372 4.50795 17.4236 4.34816C17.0671 4.16651 16.6004 4.16651 15.667 4.1665L4.33366 4.1665C3.40024 4.1665 2.93353 4.1665 2.57701 4.34816C2.2634 4.50795 2.00844 4.76292 1.84865 5.07652C1.66699 5.43304 1.66699 5.89975 1.66699 6.83317Z" stroke="#F9FAFB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <span class="fs--16 lh--24 fw6 ttu poppins gray-50">PAYMENT METHOD</span>
+                        </div>
+                        <!-- section-dropdown-right -->
+                        <div class="flex items-center gap--10 pointer">
+                            <div class="w--24 h--24 flex justify-center items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M6 9L12 15L18 9" stroke="#98A2B3" stroke-width="1.77778" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- inputs-fields-->
+                    <div class="flex flex-column gap--16">
+                        <div class="w-100 flex flex-column gap--8">
+                            <!-- field-group -->
+                             <div class="w-100 flex flex-column flex-row-ns w-100 gap--16">
+                                <!-- input-field -->
+                                <div class="w-100 flex flex-column justify-center items-center gap--6 flex--max relative" data-form-input-type="text" data-form-input-label-position="" data-input-label-type="">
+                                    <div data-payment-method-edit-container class="pad--x--16 pad--y--8 w-100">
+                                        <input type="text" class="fs--16 lh--24 fw5 poppins gray-200" value="Jane Carter">
+                                    </div>
+                                    <div data-payment-method-edit-container-text class="absolute flex items-center gap--8">
+                                        <span class="fs--16 lh--24 fw5 poppins white">****3746</span>
+                                        <div class="flex items-center h--18 gap--8">
+                                            <span class="fs--12 lh--18 fw4 poppins white ttu">EXP 02/30</span>
+                                            <div class="flex justify-center items-center h--12">
+                                                <div class="flex justify-center items-center">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="41" height="12" viewBox="0 0 41 12" fill="none">
+                                                        <path d="M14.896 11.8729L16.9411 0.233577H20.211L18.1653 11.8729H14.896ZM29.9644 0.488918C29.026 0.159139 28.0348 -0.00634029 27.0367 0.000185756C23.8096 0.000185756 21.5362 1.57686 21.5167 3.83703C21.4989 5.50751 23.14 6.43923 24.3789 6.99507C25.6502 7.56516 26.0775 7.9286 26.0714 8.43752C26.0634 9.21664 25.0559 9.57235 24.1175 9.57235C22.8101 9.57235 22.1159 9.39422 21.0429 8.9625L20.6224 8.77779L20.1639 11.38C20.9266 11.7043 22.3375 11.9857 23.8017 12C27.235 12 29.4637 10.4417 29.4894 8.02835C29.5017 6.70586 28.6325 5.6993 26.7472 4.8697C25.6056 4.33524 24.9065 3.973 24.9139 3.42844C24.9139 2.94565 25.5058 2.42903 26.7845 2.42903C27.6223 2.41083 28.4548 2.56253 29.2287 2.87441L29.5213 3.00861L29.9644 0.488918ZM38.3651 0.233577H35.8493C35.0701 0.233577 34.4867 0.440245 34.1446 1.19443L29.3089 11.8135H32.7508C32.7508 11.8135 33.3017 10.4014 33.4284 10.0914L37.5522 10.0961C37.6483 10.4976 37.944 11.8135 37.944 11.8135H40.9996L38.3651 0.233577ZM34.3649 7.716C34.6349 7.04615 35.6663 4.46648 35.6663 4.46648C35.6467 4.49736 35.9344 3.79307 36.0991 3.35659L36.32 4.35902C36.32 4.35902 36.9456 7.13404 37.076 7.716H34.3649ZM12.1213 0.233577L8.93098 8.14297L8.59124 6.53545C7.99749 4.68266 6.14707 2.67547 4.07812 1.67069L6.99547 11.8135L10.4429 11.81L15.573 0.233577H12.1054" fill="url(#paint0_linear_15457_79841)"/>
+                                                        <path d="M5.80965 0.233579H0.56567L0.523438 0.475263C4.62093 1.43788 7.33196 3.76338 8.45764 6.55682L7.31238 1.21223C7.11466 0.47646 6.54174 0.256736 5.8323 0.231201" fill="url(#paint1_linear_15457_79841)"/>
+                                                        <defs>
+                                                            <linearGradient id="paint0_linear_15457_79841" x1="22.5389" y1="0" x2="22.5389" y2="12" gradientUnits="userSpaceOnUse">
+                                                                <stop stop-color="white"/>
+                                                                <stop offset="1" stop-color="white" stop-opacity="0.75"/>
+                                                            </linearGradient>
+                                                            <linearGradient id="paint1_linear_15457_79841" x1="4.49054" y1="0.231201" x2="4.49054" y2="6.55682" gradientUnits="userSpaceOnUse">
+                                                                <stop stop-color="white"/>
+                                                                <stop offset="1" stop-color="white" stop-opacity="0.75"/>
+                                                            </linearGradient>
+                                                        </defs>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-input-icon-center-right class="absolute justify-center items-center h--18">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                            <path d="M15.75 13.4999L14.9999 14.3205C14.6021 14.7555 14.0626 14.9999 13.5001 14.9999C12.9376 14.9999 12.3981 14.7555 12.0003 14.3205C11.6019 13.8863 11.0625 13.6425 10.5001 13.6425C9.93778 13.6425 9.39835 13.8863 8.99998 14.3205M2.25 14.9999H3.50591C3.87279 14.9999 4.05624 14.9999 4.22887 14.9585C4.38192 14.9217 4.52824 14.8611 4.66245 14.7789C4.81382 14.6861 4.94354 14.5564 5.20296 14.297L14.625 4.87493C15.2463 4.25361 15.2463 3.24625 14.625 2.62493C14.0037 2.00361 12.9963 2.00361 12.375 2.62493L2.95295 12.047C2.69352 12.3064 2.5638 12.4361 2.47104 12.5875C2.3888 12.7217 2.32819 12.868 2.29145 13.0211C2.25 13.1937 2.25 13.3772 2.25 13.744V14.9999Z" stroke="#EAECF0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- billing-address-container -->
+                 <div class="flex flex-column gap--16">
+                    <!-- section-title-container -->
+                    <div class="flex justify-between items-center gap--8 h--24">
+                        <!-- section-title -->
+                        <div class="flex items-center gap--8">
+                            <div class="w--20 h--20 flex justify-center items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path d="M10.0002 10.8334C11.3809 10.8334 12.5002 9.71413 12.5002 8.33342C12.5002 6.9527 11.3809 5.83341 10.0002 5.83341C8.61945 5.83341 7.50016 6.9527 7.50016 8.33342C7.50016 9.71413 8.61945 10.8334 10.0002 10.8334Z" stroke="#F9FAFB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M10.0002 18.3334C13.3335 15.0001 16.6668 12.0153 16.6668 8.33342C16.6668 4.65152 13.6821 1.66675 10.0002 1.66675C6.31826 1.66675 3.3335 4.65152 3.3335 8.33342C3.3335 12.0153 6.66683 15.0001 10.0002 18.3334Z" stroke="#F9FAFB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <span class="fs--16 lh--24 fw6 ttu poppins gray-50">BILLING ADDRESS</span>
+                        </div>
+                        <!-- section-dropdown-right -->
+                         <div class="flex items-center gap--10 pointer">
+                            <!-- <span class="fs--14 lh--20 fw5 poppins gray-200">Change Address</span> -->
+                            <div class="w--24 h--24 flex justify-center items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M6 9L12 15L18 9" stroke="#98A2B3" stroke-width="1.77778" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                         </div>
+                    </div>
+
+                    <!-- inputs-fields-->
+                    <div class="flex flex-column gap--16">
+                        <div class="w-100 flex flex-column gap--8">
+                            <!-- field-group -->
+                             <div class="w-100 flex flex-column flex-row-ns w-100 gap--16">
+                                <!-- input-field -->
+                                <div class="w-100 flex flex-column justify-center items-center gap--6 flex--max relative" data-form-input-type="text" data-form-input-label-position="" data-input-label-type="">
+                                    <div data-billing-address-text-area-wrapper class="pad--x--16 pad--y--8 w-100">
+                                        <textarea name="" id="" cols="" rows="" class="fs--16 lh--24 fw5 poppins gray-200">Chan Tai Man,10/F Block5,Fook Yip Bldg,12345,Kwai Chung,Hong Kong</textarea>
+                                    </div>
+                                    <div data-input-icon-center-right class="absolute justify-center items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                            <path d="M15.75 13.4999L14.9999 14.3205C14.6021 14.7555 14.0626 14.9999 13.5001 14.9999C12.9376 14.9999 12.3981 14.7555 12.0003 14.3205C11.6019 13.8863 11.0625 13.6425 10.5001 13.6425C9.93778 13.6425 9.39835 13.8863 8.99998 14.3205M2.25 14.9999H3.50591C3.87279 14.9999 4.05624 14.9999 4.22887 14.9585C4.38192 14.9217 4.52824 14.8611 4.66245 14.7789C4.81382 14.6861 4.94354 14.5564 5.20296 14.297L14.625 4.87493C15.2463 4.25361 15.2463 3.24625 14.625 2.62493C14.0037 2.00361 12.9963 2.00361 12.375 2.62493L2.95295 12.047C2.69352 12.3064 2.5638 12.4361 2.47104 12.5875C2.3888 12.7217 2.32819 12.868 2.29145 13.0211C2.25 13.1937 2.25 13.3772 2.25 13.744V14.9999Z" stroke="#EAECF0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                             </div>
+                        </div>
+                    </div>
+                 </div>
+             </div>
+             <!-- column-right -->
+             <div class="w-50">
+                <div data-checkout-column-right class="flex flex-column gap--24 bg-black-50 pad--y--24">
+                     <!-- notes-section -->
+                      <div class="flex flex-column gap--24 pad--x--16">
+                        <!-- section-title-container -->
+                        <div class="flex justify-between items-center gap--8 h--24">
+                            <!-- section-title -->
+                            <div class="flex items-center gap--8">
+                                <div class="w--20 h--20 flex justify-center items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                        <path d="M9.99984 14.1667C9.99984 16.4679 11.8653 18.3333 14.1665 18.3333C16.4677 18.3333 18.3332 16.4679 18.3332 14.1667C18.3332 11.8655 16.4677 10 14.1665 10C11.8653 10 9.99984 11.8655 9.99984 14.1667ZM9.99984 14.1667C9.99984 13.2285 10.3099 12.3627 10.8332 11.6663V4.16667M9.99984 14.1667C9.99984 14.8545 10.1665 15.5033 10.4616 16.0751C9.75956 16.6681 8.13804 17.0833 6.24984 17.0833C3.71853 17.0833 1.6665 16.3371 1.6665 15.4167V4.16667M10.8332 4.16667C10.8332 5.08714 8.78114 5.83333 6.24984 5.83333C3.71853 5.83333 1.6665 5.08714 1.6665 4.16667M10.8332 4.16667C10.8332 3.24619 8.78114 2.5 6.24984 2.5C3.71853 2.5 1.6665 3.24619 1.6665 4.16667M1.6665 11.6667C1.6665 12.5871 3.71853 13.3333 6.24984 13.3333C8.07401 13.3333 9.64927 12.9458 10.387 12.3848M10.8332 7.91667C10.8332 8.83714 8.78114 9.58333 6.24984 9.58333C3.71853 9.58333 1.6665 8.83714 1.6665 7.91667" stroke="#F9FAFB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <span class="fs--16 lh--24 fw6 poppins gray-50">Notes <span class="fs--12 lh--20 fw4 poppins gray-400 i self-end ml1"> Optional</span></span>
+                            </div>
+                            <!-- section-dropdown-right -->
+                            <!-- <div class="flex items-center gap--10 pointer">
+                                <span class="fs--14 lh--20 fw5 poppins gray-200">Change Card</span>
+                                <div class="w--24 h--24 flex justify-center items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M6 9L12 15L18 9" stroke="#98A2B3" stroke-width="1.77778" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                            </div> -->
+                        </div>
+    
+                        <!-- input-container -->
+                         <div class="flex flex-column gap--8">
+                            <div class="flex items-center gap--8">
+                                <div class="flex items-center gap--4 pad--x--4 h2 bb br--col--brand-green w--max-content">
+                                    <div class="flex justify-center items-center w2 h2">
+                                        <div class="w--24 h--24 pad--x--2-8 pad--x--10-responsive-mobile relative">
+                                            <img src="./Vector1.svg" alt="">
+                                            <div data-online-avatar="true"></div>
+                                        </div>
+                                    </div>
+    
+                                    <div class="flex items-center gap--8">
+                                        <div class="h--18">
+                                            <span class="fs--12 fw4 lh--18 col--brand-green truncate flex items-center gap--4">Princess Carrot Pop</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex justify-center items-center w2 h2">
+                                    <div class="w--24 h--24 pad--x--2-8 pad--x--10-responsive-mobile relative">
+                                        <img src="./Vector1.svg" alt="">
+                                        <div data-online-avatar="true"></div>
+                                    </div>
+                                </div>
+                                <div class="flex justify-center items-center w2 h2">
+                                    <div class="w--24 h--24 pad--x--2-8 pad--x--10-responsive-mobile relative">
+                                        <img src="./Vector1.svg" alt="">
+                                        <div data-online-avatar="true"></div>
+                                    </div>
+                                </div>
+                                <div class="flex justify-center items-center w2 h2">
+                                    <div class="w--24 h--24 pad--x--2-8 pad--x--10-responsive-mobile relative">
+                                        <img src="./Vector1.svg" alt="">
+                                        <div data-online-avatar="true"></div>
+                                    </div>
+                                </div>
+                                <div class="flex justify-center items-center w2 h2">
+                                    <div class="w--24 h--24 pad--x--2-8 pad--x--10-responsive-mobile relative">
+                                        <img src="./Vector1.svg" alt="">
+                                        <div data-online-avatar="true"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- tips-shortcut-container -->
+                            <div class="flex items-center gap--8">
+                                <div data-checkout-tips-tag class="flex justify-center items-center pad--x--8 pad--y--4">
+                                    <span class="fs--12 lh--18 fw4 poppins gray-400">$1.00</span>
+                                </div>
+                                <div data-checkout-tips-tag class="flex justify-center items-center pad--x--8 pad--y--4">
+                                    <span class="fs--12 lh--18 fw4 poppins gray-400">$3.00</span>
+                                </div>
+                                <div data-checkout-tips-tag class="flex justify-center items-center pad--x--8 pad--y--4">
+                                    <span class="fs--12 lh--18 fw4 poppins gray-400">$5.00</span>
+                                </div>
+                                <div data-checkout-tips-tag class="flex justify-center items-center pad--x--8 pad--y--4">
+                                    <span class="fs--12 lh--18 fw4 poppins gray-400">$10.00</span>
+                                </div>
+                                <div data-checkout-tips-tag class="flex justify-center items-center">
+                                    <input data-checkout-custom-tip-amount-input type="text" placeholder="Custom Tip Amount">
+                                </div>
+                            </div>
+
+                            <!-- field-group -->
+                            <div class="flex flex-column flex-row-ns w-100 gap--16">
+                                <!-- input-field -->
+                                <div class="w-100 flex flex-column gap--6 flex--max" data-form-input-type="text" data-form-input-label-position="" data-input-label-type="">
+                                    <div class="h--100 br--2 br--bottom br--left bb br--col--mischka bg-white-10 sh--7 relative">
+                                        <textarea data-checkout-textarea name="" id="" class="h-100 pa2" placeholder="Enter notes to @jenny1234...."></textarea>
+                                        <!-- placeholder image container -->
+                                         <div>
+    
+                                         </div>
+                                        <!-- words left container -->
+                                        <div data-input-icon-bottom-right class="absolute flex items-center gap--10">
+                                            <span class="fs--12 lh--24 tr fw4 tracked--0-12 gray-50 o-50">300 Characters Left</span>
+                                            <div class="flex justify-center items-center pointer">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                    <g clip-path="url(#clip0_15715_12147)">
+                                                        <path d="M6.66699 11.6667C6.66699 11.6667 7.91699 13.3334 10.0003 13.3334C12.0837 13.3334 13.3337 11.6667 13.3337 11.6667M12.5003 7.50008H12.5087M7.50033 7.50008H7.50866M18.3337 10.0001C18.3337 14.6025 14.6027 18.3334 10.0003 18.3334C5.39795 18.3334 1.66699 14.6025 1.66699 10.0001C1.66699 5.39771 5.39795 1.66675 10.0003 1.66675C14.6027 1.66675 18.3337 5.39771 18.3337 10.0001ZM12.917 7.50008C12.917 7.7302 12.7304 7.91675 12.5003 7.91675C12.2702 7.91675 12.0837 7.7302 12.0837 7.50008C12.0837 7.26996 12.2702 7.08341 12.5003 7.08341C12.7304 7.08341 12.917 7.26996 12.917 7.50008ZM7.91699 7.50008C7.91699 7.7302 7.73044 7.91675 7.50033 7.91675C7.27021 7.91675 7.08366 7.7302 7.08366 7.50008C7.08366 7.26996 7.27021 7.08341 7.50033 7.08341C7.73044 7.08341 7.91699 7.26996 7.91699 7.50008Z" stroke="#07F468" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_15715_12147">
+                                                            <rect width="20" height="20" fill="white"/>
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                 </div>
+                             </div>
+                         </div>
+                      </div>
+
+                      <!-- Order-summary-container -->
+                        <div class="flex flex-column gap--16 pad--x--16">
+                            <!-- section-title-container -->
+                            <div class="flex justify-between items-center gap--8 h--24">
+                                <!-- section-title -->
+                                <div class="flex items-center gap--8">
+                                    <div class="w--20 h--20 flex justify-center items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                            <path d="M2.5 10H12.5M2.5 5H17.5M2.5 15H17.5" stroke="#F9FAFB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <span class="fs--16 lh--24 fw6 ttu poppins gray-50">ORDER SUMMARY</span>
+                                </div>
+                                <!-- section-dropdown-right -->
+                                <div class="flex items-center gap--10 pointer">
+                                    <!-- <span class="fs--14 lh--20 fw5 poppins gray-200">Change Address</span> -->
+                                    <div class="w--24 h--24 flex justify-center items-center rotate-180">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path d="M6 9L12 15L18 9" stroke="#98A2B3" stroke-width="1.77778" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- table-container -->
+                            <div class="flex flex-column gap--12">
+                                <!-- table-title -->
+                                <div class="flex justify-between h--24">
+                                    <!-- product -->
+                                    <span class="fs--14 lh--24 fw4 tracked--50 gray-50 o-50">Product</span>
+                                    <!-- subtotal -->
+                                    <span class="fs--14 lh--24 fw4 tracked--50 gray-50 o-50 tr">Subtotal</span>
+                                </div>
+
+                                <!-- table-body -->
+                             <div class="flex flex-column gap--12">
+                                <!-- table-row -->
+                                 <div class="flex justify-between items-center h--48">
+                                    <!-- product -->
+                                     <div class="flex gap--6">
+                                        <!-- image-container -->
+                                         <div class="flex justify-center items-center w--48 h--48 br--8 of--hidden">
+                                            <img class="w-100 h-100 fit--cover" src="https://s3-alpha-sig.figma.com/img/3af6/354f/ecded41dee838d2d8550e4fc23558a48?Expires=1741564800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=JJyhG-MQXjzyYY0OgpzngwUJcRPHBq5bhwwsSrNhLDn8mEBGBvKfdvxVzEdM91u2OCQVcmFA7ov0Z9RT8DHxkI9GBN02k655zHV1bATpzsyd7ddwc~fhdD3IKIlp7bQBqqWGjLB890s-hfuEKS7tMpJiexHZa4Kr0ZaudaCe9NrXmQtLsbGVsQ76E3z1h9npSjFvGUrZrw1Oaa5elpmIILn98z9Y4vpaXNSk26tylZDakMpx~4p2XQFIpBfsMedHYN-rQ4N7LWdv4vjjrlcHrvsfiyULvHYEgrdry9k0041MJIHzM9X~yuXjoDKgbarK28XjkToHw~AdHmRCIPkYkQ__" alt="">
+                                         </div>
+
+                                         <div class="flex flex-column">
+                                            <h4 class="fs--16 lh--24 fw6 poppins gray-50">Orange (Philippines)</h3>
+                                            <div class="flex items-center h--24 pad--y--4">
+                                                <div class="flex items-center gap--4 pad--x--4 h2 w--max-content">
+                                                    <div class="w--24 h--24 relative">
+                                                        <img src="./Vector1.svg" alt="">
+                                                    </div>
+                    
+                                                    <div class="flex items-center gap--4 h--18">
+                                                        <span class="fs--12 fw4 lh--18 gray-400 truncate flex items-center gap--4">Princess Carrot Pop</span>
+                                                        <div class="flex justify-center items-center w--10 h--10">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none">
+                                                                <g clip-path="url(#clip0_15935_12679)">
+                                                                    <path d="M7.72212 1.77104C7.8171 2.00074 7.9994 2.18332 8.22895 2.27864L9.03389 2.61205C9.2636 2.7072 9.44611 2.88971 9.54126 3.11942C9.63641 3.34914 9.63641 3.60724 9.54126 3.83695L9.20808 4.64131C9.11289 4.87112 9.11276 5.12949 9.20838 5.35919L9.54098 6.16331C9.58815 6.27708 9.61244 6.39903 9.61246 6.5222C9.61248 6.64536 9.58823 6.76733 9.54109 6.88112C9.49396 6.9949 9.42487 7.09829 9.33776 7.18537C9.25066 7.27245 9.14725 7.3415 9.03345 7.3886L8.22909 7.72178C7.9994 7.81675 7.81682 7.99905 7.7215 8.22861L7.38808 9.03354C7.29293 9.26325 7.11043 9.44576 6.88071 9.54091C6.651 9.63606 6.3929 9.63606 6.16318 9.54091L5.35883 9.20774C5.12911 9.11282 4.8711 9.11301 4.64152 9.20827L3.83659 9.54121C3.60701 9.63614 3.34913 9.63606 3.1196 9.54099C2.89007 9.44591 2.70767 9.26362 2.61245 9.03415L2.27894 8.22898C2.18396 7.99929 2.00166 7.81671 1.77211 7.72139L0.967177 7.38798C0.737563 7.29287 0.555111 7.11048 0.459925 6.88089C0.364739 6.65131 0.36461 6.39333 0.459566 6.16365L0.79274 5.3593C0.887656 5.12958 0.887462 4.87157 0.792201 4.64199L0.459505 3.83648C0.412336 3.72271 0.388047 3.60075 0.388028 3.47759C0.388008 3.35442 0.412257 3.23246 0.45939 3.11867C0.506523 3.00488 0.575616 2.9015 0.662721 2.81442C0.749826 2.72734 0.853235 2.65828 0.967039 2.61119L1.77139 2.27801C2.00089 2.18312 2.18336 2.00105 2.27875 1.77176L2.61216 0.966829C2.70731 0.737115 2.88982 0.554608 3.11953 0.459458C3.34925 0.364307 3.60735 0.364307 3.83706 0.459458L4.64142 0.792632C4.87114 0.887548 5.12915 0.887354 5.35872 0.792092L6.16399 0.459975C6.39368 0.364877 6.65172 0.364897 6.88139 0.460029C7.11106 0.55516 7.29354 0.737615 7.38871 0.967269L7.72222 1.77244L7.72212 1.77104Z" fill="#0788F5"/>
+                                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M6.95829 3.68938C7.02509 3.58446 7.04747 3.45729 7.02051 3.33586C6.99356 3.21443 6.91946 3.10868 6.81454 3.04188C6.70961 2.97508 6.58245 2.9527 6.46102 2.97966C6.33959 3.00661 6.23384 3.08071 6.16704 3.18563L4.33141 6.07001L3.49141 5.02001C3.41375 4.92287 3.30069 4.86056 3.17709 4.84679C3.05349 4.83302 2.92949 4.86891 2.83235 4.94657C2.73522 5.02423 2.67291 5.13729 2.65914 5.26089C2.64536 5.38449 2.68125 5.5085 2.75891 5.60563L4.00891 7.16813C4.0555 7.22644 4.11533 7.27278 4.18344 7.30329C4.25154 7.33381 4.32595 7.34763 4.40047 7.3436C4.47499 7.33956 4.54747 7.31779 4.61188 7.2801C4.67629 7.2424 4.73077 7.18988 4.77079 7.12688L6.95829 3.68938Z" fill="white"/>
+                                                                </g>
+                                                                <defs>
+                                                                    <clipPath id="clip0_15935_12679">
+                                                                        <rect width="10" height="10" fill="white"/>
+                                                                    </clipPath>
+                                                                </defs>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                         </div>
+                                     </div>
+
+                                     <!-- subtotal -->
+                                    <div class="flex flex-column gap--8 h--48">
+                                        <span class="fs--16 lh--24 fw6 gray-50 tracked--100 tr">$5.99/mo</span>
+                                        <span class="fs--12 lh--18 fw5 gray-400 tracked--100 strike tr">$123.45</span>
+                                    </div>
+                                 </div>
+
+                                 <!-- table-row -->
+                                 <div class="flex justify-between items-center h--48">
+                                    <!-- product -->
+                                     <div class="flex gap--6">
+                                        <!-- image-container -->
+                                         <div class="flex justify-center items-center w--48 h--48 br--8 of--hidden">
+                                            <img class="w-100 h-100 fit--cover" src="https://s3-alpha-sig.figma.com/img/3af6/354f/ecded41dee838d2d8550e4fc23558a48?Expires=1741564800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=JJyhG-MQXjzyYY0OgpzngwUJcRPHBq5bhwwsSrNhLDn8mEBGBvKfdvxVzEdM91u2OCQVcmFA7ov0Z9RT8DHxkI9GBN02k655zHV1bATpzsyd7ddwc~fhdD3IKIlp7bQBqqWGjLB890s-hfuEKS7tMpJiexHZa4Kr0ZaudaCe9NrXmQtLsbGVsQ76E3z1h9npSjFvGUrZrw1Oaa5elpmIILn98z9Y4vpaXNSk26tylZDakMpx~4p2XQFIpBfsMedHYN-rQ4N7LWdv4vjjrlcHrvsfiyULvHYEgrdry9k0041MJIHzM9X~yuXjoDKgbarK28XjkToHw~AdHmRCIPkYkQ__" alt="">
+                                         </div>
+
+                                         <div class="flex flex-column">
+                                            <h4 class="fs--16 lh--24 fw6 poppins gray-50">Orange (Philippines)</h3>
+                                            <div class="flex items-center h--24 pad--y--4">
+                                                <div class="flex items-center gap--4 pad--x--4 h2 w--max-content">
+                                                    <div class="w--24 h--24 relative">
+                                                        <img src="./Vector1.svg" alt="">
+                                                    </div>
+                    
+                                                    <div class="flex items-center gap--4 h--18">
+                                                        <span class="fs--12 fw4 lh--18 gray-400 truncate flex items-center gap--4">Princess Carrot Pop</span>
+                                                        <div class="flex justify-center items-center w--10 h--10">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none">
+                                                                <g clip-path="url(#clip0_15935_12679)">
+                                                                    <path d="M7.72212 1.77104C7.8171 2.00074 7.9994 2.18332 8.22895 2.27864L9.03389 2.61205C9.2636 2.7072 9.44611 2.88971 9.54126 3.11942C9.63641 3.34914 9.63641 3.60724 9.54126 3.83695L9.20808 4.64131C9.11289 4.87112 9.11276 5.12949 9.20838 5.35919L9.54098 6.16331C9.58815 6.27708 9.61244 6.39903 9.61246 6.5222C9.61248 6.64536 9.58823 6.76733 9.54109 6.88112C9.49396 6.9949 9.42487 7.09829 9.33776 7.18537C9.25066 7.27245 9.14725 7.3415 9.03345 7.3886L8.22909 7.72178C7.9994 7.81675 7.81682 7.99905 7.7215 8.22861L7.38808 9.03354C7.29293 9.26325 7.11043 9.44576 6.88071 9.54091C6.651 9.63606 6.3929 9.63606 6.16318 9.54091L5.35883 9.20774C5.12911 9.11282 4.8711 9.11301 4.64152 9.20827L3.83659 9.54121C3.60701 9.63614 3.34913 9.63606 3.1196 9.54099C2.89007 9.44591 2.70767 9.26362 2.61245 9.03415L2.27894 8.22898C2.18396 7.99929 2.00166 7.81671 1.77211 7.72139L0.967177 7.38798C0.737563 7.29287 0.555111 7.11048 0.459925 6.88089C0.364739 6.65131 0.36461 6.39333 0.459566 6.16365L0.79274 5.3593C0.887656 5.12958 0.887462 4.87157 0.792201 4.64199L0.459505 3.83648C0.412336 3.72271 0.388047 3.60075 0.388028 3.47759C0.388008 3.35442 0.412257 3.23246 0.45939 3.11867C0.506523 3.00488 0.575616 2.9015 0.662721 2.81442C0.749826 2.72734 0.853235 2.65828 0.967039 2.61119L1.77139 2.27801C2.00089 2.18312 2.18336 2.00105 2.27875 1.77176L2.61216 0.966829C2.70731 0.737115 2.88982 0.554608 3.11953 0.459458C3.34925 0.364307 3.60735 0.364307 3.83706 0.459458L4.64142 0.792632C4.87114 0.887548 5.12915 0.887354 5.35872 0.792092L6.16399 0.459975C6.39368 0.364877 6.65172 0.364897 6.88139 0.460029C7.11106 0.55516 7.29354 0.737615 7.38871 0.967269L7.72222 1.77244L7.72212 1.77104Z" fill="#0788F5"/>
+                                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M6.95829 3.68938C7.02509 3.58446 7.04747 3.45729 7.02051 3.33586C6.99356 3.21443 6.91946 3.10868 6.81454 3.04188C6.70961 2.97508 6.58245 2.9527 6.46102 2.97966C6.33959 3.00661 6.23384 3.08071 6.16704 3.18563L4.33141 6.07001L3.49141 5.02001C3.41375 4.92287 3.30069 4.86056 3.17709 4.84679C3.05349 4.83302 2.92949 4.86891 2.83235 4.94657C2.73522 5.02423 2.67291 5.13729 2.65914 5.26089C2.64536 5.38449 2.68125 5.5085 2.75891 5.60563L4.00891 7.16813C4.0555 7.22644 4.11533 7.27278 4.18344 7.30329C4.25154 7.33381 4.32595 7.34763 4.40047 7.3436C4.47499 7.33956 4.54747 7.31779 4.61188 7.2801C4.67629 7.2424 4.73077 7.18988 4.77079 7.12688L6.95829 3.68938Z" fill="white"/>
+                                                                </g>
+                                                                <defs>
+                                                                    <clipPath id="clip0_15935_12679">
+                                                                        <rect width="10" height="10" fill="white"/>
+                                                                    </clipPath>
+                                                                </defs>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                         </div>
+                                     </div>
+
+                                     <!-- subtotal -->
+                                    <div class="flex flex-column gap--8 h--48">
+                                        <span class="fs--16 lh--24 fw6 gray-50 tracked--100 tr">$5.99/mo</span>
+                                        <span class="fs--12 lh--18 fw5 gray-400 tracked--100 strike tr">$123.45</span>
+                                    </div>
+                                 </div>
+
+                                 <!-- table-row -->
+                                 <div class="flex justify-between items-center h--48">
+                                    <!-- product -->
+                                     <div class="flex gap--6">
+                                        <!-- image-container -->
+                                         <div class="flex justify-center items-center w--48 h--48 br--8 of--hidden">
+                                            <img class="w-100 h-100 fit--cover" src="https://s3-alpha-sig.figma.com/img/3af6/354f/ecded41dee838d2d8550e4fc23558a48?Expires=1741564800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=JJyhG-MQXjzyYY0OgpzngwUJcRPHBq5bhwwsSrNhLDn8mEBGBvKfdvxVzEdM91u2OCQVcmFA7ov0Z9RT8DHxkI9GBN02k655zHV1bATpzsyd7ddwc~fhdD3IKIlp7bQBqqWGjLB890s-hfuEKS7tMpJiexHZa4Kr0ZaudaCe9NrXmQtLsbGVsQ76E3z1h9npSjFvGUrZrw1Oaa5elpmIILn98z9Y4vpaXNSk26tylZDakMpx~4p2XQFIpBfsMedHYN-rQ4N7LWdv4vjjrlcHrvsfiyULvHYEgrdry9k0041MJIHzM9X~yuXjoDKgbarK28XjkToHw~AdHmRCIPkYkQ__" alt="">
+                                         </div>
+
+                                         <div class="flex flex-column">
+                                            <h4 class="fs--16 lh--24 fw6 poppins gray-50">Orange (Philippines)</h3>
+                                            <div class="flex items-center h--24 pad--y--4">
+                                                <div class="flex items-center gap--4 pad--x--4 h2 w--max-content">
+                                                    <div class="w--24 h--24 relative">
+                                                        <img src="./Vector1.svg" alt="">
+                                                    </div>
+                    
+                                                    <div class="flex items-center gap--4 h--18">
+                                                        <span class="fs--12 fw4 lh--18 gray-400 truncate flex items-center gap--4">Princess Carrot Pop</span>
+                                                        <div class="flex justify-center items-center w--10 h--10">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none">
+                                                                <g clip-path="url(#clip0_15935_12679)">
+                                                                    <path d="M7.72212 1.77104C7.8171 2.00074 7.9994 2.18332 8.22895 2.27864L9.03389 2.61205C9.2636 2.7072 9.44611 2.88971 9.54126 3.11942C9.63641 3.34914 9.63641 3.60724 9.54126 3.83695L9.20808 4.64131C9.11289 4.87112 9.11276 5.12949 9.20838 5.35919L9.54098 6.16331C9.58815 6.27708 9.61244 6.39903 9.61246 6.5222C9.61248 6.64536 9.58823 6.76733 9.54109 6.88112C9.49396 6.9949 9.42487 7.09829 9.33776 7.18537C9.25066 7.27245 9.14725 7.3415 9.03345 7.3886L8.22909 7.72178C7.9994 7.81675 7.81682 7.99905 7.7215 8.22861L7.38808 9.03354C7.29293 9.26325 7.11043 9.44576 6.88071 9.54091C6.651 9.63606 6.3929 9.63606 6.16318 9.54091L5.35883 9.20774C5.12911 9.11282 4.8711 9.11301 4.64152 9.20827L3.83659 9.54121C3.60701 9.63614 3.34913 9.63606 3.1196 9.54099C2.89007 9.44591 2.70767 9.26362 2.61245 9.03415L2.27894 8.22898C2.18396 7.99929 2.00166 7.81671 1.77211 7.72139L0.967177 7.38798C0.737563 7.29287 0.555111 7.11048 0.459925 6.88089C0.364739 6.65131 0.36461 6.39333 0.459566 6.16365L0.79274 5.3593C0.887656 5.12958 0.887462 4.87157 0.792201 4.64199L0.459505 3.83648C0.412336 3.72271 0.388047 3.60075 0.388028 3.47759C0.388008 3.35442 0.412257 3.23246 0.45939 3.11867C0.506523 3.00488 0.575616 2.9015 0.662721 2.81442C0.749826 2.72734 0.853235 2.65828 0.967039 2.61119L1.77139 2.27801C2.00089 2.18312 2.18336 2.00105 2.27875 1.77176L2.61216 0.966829C2.70731 0.737115 2.88982 0.554608 3.11953 0.459458C3.34925 0.364307 3.60735 0.364307 3.83706 0.459458L4.64142 0.792632C4.87114 0.887548 5.12915 0.887354 5.35872 0.792092L6.16399 0.459975C6.39368 0.364877 6.65172 0.364897 6.88139 0.460029C7.11106 0.55516 7.29354 0.737615 7.38871 0.967269L7.72222 1.77244L7.72212 1.77104Z" fill="#0788F5"/>
+                                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M6.95829 3.68938C7.02509 3.58446 7.04747 3.45729 7.02051 3.33586C6.99356 3.21443 6.91946 3.10868 6.81454 3.04188C6.70961 2.97508 6.58245 2.9527 6.46102 2.97966C6.33959 3.00661 6.23384 3.08071 6.16704 3.18563L4.33141 6.07001L3.49141 5.02001C3.41375 4.92287 3.30069 4.86056 3.17709 4.84679C3.05349 4.83302 2.92949 4.86891 2.83235 4.94657C2.73522 5.02423 2.67291 5.13729 2.65914 5.26089C2.64536 5.38449 2.68125 5.5085 2.75891 5.60563L4.00891 7.16813C4.0555 7.22644 4.11533 7.27278 4.18344 7.30329C4.25154 7.33381 4.32595 7.34763 4.40047 7.3436C4.47499 7.33956 4.54747 7.31779 4.61188 7.2801C4.67629 7.2424 4.73077 7.18988 4.77079 7.12688L6.95829 3.68938Z" fill="white"/>
+                                                                </g>
+                                                                <defs>
+                                                                    <clipPath id="clip0_15935_12679">
+                                                                        <rect width="10" height="10" fill="white"/>
+                                                                    </clipPath>
+                                                                </defs>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                         </div>
+                                     </div>
+
+                                     <!-- subtotal -->
+                                    <div class="flex flex-column gap--8 h--48">
+                                        <span class="fs--16 lh--24 fw6 gray-50 tracked--100 tr">$5.99/mo</span>
+                                        <span class="fs--12 lh--18 fw5 gray-400 tracked--100 strike tr">$123.45</span>
+                                    </div>
+                                 </div>
+
+                                 <!-- table-row -->
+                                 <div class="flex justify-between items-center h--48">
+                                    <!-- product -->
+                                     <div class="flex gap--6">
+                                        <!-- image-container -->
+                                         <div class="flex justify-center items-center w--48 h--48 br--8 of--hidden">
+                                            <img class="w-100 h-100 fit--cover" src="https://s3-alpha-sig.figma.com/img/3af6/354f/ecded41dee838d2d8550e4fc23558a48?Expires=1741564800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=JJyhG-MQXjzyYY0OgpzngwUJcRPHBq5bhwwsSrNhLDn8mEBGBvKfdvxVzEdM91u2OCQVcmFA7ov0Z9RT8DHxkI9GBN02k655zHV1bATpzsyd7ddwc~fhdD3IKIlp7bQBqqWGjLB890s-hfuEKS7tMpJiexHZa4Kr0ZaudaCe9NrXmQtLsbGVsQ76E3z1h9npSjFvGUrZrw1Oaa5elpmIILn98z9Y4vpaXNSk26tylZDakMpx~4p2XQFIpBfsMedHYN-rQ4N7LWdv4vjjrlcHrvsfiyULvHYEgrdry9k0041MJIHzM9X~yuXjoDKgbarK28XjkToHw~AdHmRCIPkYkQ__" alt="">
+                                         </div>
+
+                                         <div class="flex flex-column">
+                                            <h4 class="fs--16 lh--24 fw6 poppins gray-50">Orange (Philippines)</h3>
+                                            <div class="flex items-center h--24 pad--y--4">
+                                                <div class="flex items-center gap--4 pad--x--4 h2 w--max-content">
+                                                    <div class="w--24 h--24 relative">
+                                                        <img src="./Vector1.svg" alt="">
+                                                    </div>
+                    
+                                                    <div class="flex items-center gap--4 h--18">
+                                                        <span class="fs--12 fw4 lh--18 gray-400 truncate flex items-center gap--4">Princess Carrot Pop</span>
+                                                        <div class="flex justify-center items-center w--10 h--10">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none">
+                                                                <g clip-path="url(#clip0_15935_12679)">
+                                                                    <path d="M7.72212 1.77104C7.8171 2.00074 7.9994 2.18332 8.22895 2.27864L9.03389 2.61205C9.2636 2.7072 9.44611 2.88971 9.54126 3.11942C9.63641 3.34914 9.63641 3.60724 9.54126 3.83695L9.20808 4.64131C9.11289 4.87112 9.11276 5.12949 9.20838 5.35919L9.54098 6.16331C9.58815 6.27708 9.61244 6.39903 9.61246 6.5222C9.61248 6.64536 9.58823 6.76733 9.54109 6.88112C9.49396 6.9949 9.42487 7.09829 9.33776 7.18537C9.25066 7.27245 9.14725 7.3415 9.03345 7.3886L8.22909 7.72178C7.9994 7.81675 7.81682 7.99905 7.7215 8.22861L7.38808 9.03354C7.29293 9.26325 7.11043 9.44576 6.88071 9.54091C6.651 9.63606 6.3929 9.63606 6.16318 9.54091L5.35883 9.20774C5.12911 9.11282 4.8711 9.11301 4.64152 9.20827L3.83659 9.54121C3.60701 9.63614 3.34913 9.63606 3.1196 9.54099C2.89007 9.44591 2.70767 9.26362 2.61245 9.03415L2.27894 8.22898C2.18396 7.99929 2.00166 7.81671 1.77211 7.72139L0.967177 7.38798C0.737563 7.29287 0.555111 7.11048 0.459925 6.88089C0.364739 6.65131 0.36461 6.39333 0.459566 6.16365L0.79274 5.3593C0.887656 5.12958 0.887462 4.87157 0.792201 4.64199L0.459505 3.83648C0.412336 3.72271 0.388047 3.60075 0.388028 3.47759C0.388008 3.35442 0.412257 3.23246 0.45939 3.11867C0.506523 3.00488 0.575616 2.9015 0.662721 2.81442C0.749826 2.72734 0.853235 2.65828 0.967039 2.61119L1.77139 2.27801C2.00089 2.18312 2.18336 2.00105 2.27875 1.77176L2.61216 0.966829C2.70731 0.737115 2.88982 0.554608 3.11953 0.459458C3.34925 0.364307 3.60735 0.364307 3.83706 0.459458L4.64142 0.792632C4.87114 0.887548 5.12915 0.887354 5.35872 0.792092L6.16399 0.459975C6.39368 0.364877 6.65172 0.364897 6.88139 0.460029C7.11106 0.55516 7.29354 0.737615 7.38871 0.967269L7.72222 1.77244L7.72212 1.77104Z" fill="#0788F5"/>
+                                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M6.95829 3.68938C7.02509 3.58446 7.04747 3.45729 7.02051 3.33586C6.99356 3.21443 6.91946 3.10868 6.81454 3.04188C6.70961 2.97508 6.58245 2.9527 6.46102 2.97966C6.33959 3.00661 6.23384 3.08071 6.16704 3.18563L4.33141 6.07001L3.49141 5.02001C3.41375 4.92287 3.30069 4.86056 3.17709 4.84679C3.05349 4.83302 2.92949 4.86891 2.83235 4.94657C2.73522 5.02423 2.67291 5.13729 2.65914 5.26089C2.64536 5.38449 2.68125 5.5085 2.75891 5.60563L4.00891 7.16813C4.0555 7.22644 4.11533 7.27278 4.18344 7.30329C4.25154 7.33381 4.32595 7.34763 4.40047 7.3436C4.47499 7.33956 4.54747 7.31779 4.61188 7.2801C4.67629 7.2424 4.73077 7.18988 4.77079 7.12688L6.95829 3.68938Z" fill="white"/>
+                                                                </g>
+                                                                <defs>
+                                                                    <clipPath id="clip0_15935_12679">
+                                                                        <rect width="10" height="10" fill="white"/>
+                                                                    </clipPath>
+                                                                </defs>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                         </div>
+                                     </div>
+
+                                     <!-- subtotal -->
+                                    <div class="flex flex-column gap--8 h--48">
+                                        <span class="fs--16 lh--24 fw6 gray-50 tracked--100 tr">$5.99/mo</span>
+                                        <span class="fs--12 lh--18 fw5 gray-400 tracked--100 strike tr">$123.45</span>
+                                    </div>
+                                 </div>
+
+                                 <!-- table-row -->
+                                 <div class="flex justify-between items-center h--48">
+                                    <!-- product -->
+                                     <div class="flex gap--6">
+                                        <!-- image-container -->
+                                         <div class="flex justify-center items-center w--48 h--48 br--8 of--hidden">
+                                            <img class="w-100 h-100 fit--cover" src="https://s3-alpha-sig.figma.com/img/3af6/354f/ecded41dee838d2d8550e4fc23558a48?Expires=1741564800&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=JJyhG-MQXjzyYY0OgpzngwUJcRPHBq5bhwwsSrNhLDn8mEBGBvKfdvxVzEdM91u2OCQVcmFA7ov0Z9RT8DHxkI9GBN02k655zHV1bATpzsyd7ddwc~fhdD3IKIlp7bQBqqWGjLB890s-hfuEKS7tMpJiexHZa4Kr0ZaudaCe9NrXmQtLsbGVsQ76E3z1h9npSjFvGUrZrw1Oaa5elpmIILn98z9Y4vpaXNSk26tylZDakMpx~4p2XQFIpBfsMedHYN-rQ4N7LWdv4vjjrlcHrvsfiyULvHYEgrdry9k0041MJIHzM9X~yuXjoDKgbarK28XjkToHw~AdHmRCIPkYkQ__" alt="">
+                                         </div>
+
+                                         <div class="flex flex-column">
+                                            <h4 class="fs--16 lh--24 fw6 poppins gray-50">Orange (Philippines)</h3>
+                                            <div class="flex items-center h--24 pad--y--4">
+                                                <div class="flex items-center gap--4 pad--x--4 h2 w--max-content">
+                                                    <div class="w--24 h--24 relative">
+                                                        <img src="./Vector1.svg" alt="">
+                                                    </div>
+                    
+                                                    <div class="flex items-center gap--4 h--18">
+                                                        <span class="fs--12 fw4 lh--18 gray-400 truncate flex items-center gap--4">Princess Carrot Pop</span>
+                                                        <div class="flex justify-center items-center w--10 h--10">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none">
+                                                                <g clip-path="url(#clip0_15935_12679)">
+                                                                    <path d="M7.72212 1.77104C7.8171 2.00074 7.9994 2.18332 8.22895 2.27864L9.03389 2.61205C9.2636 2.7072 9.44611 2.88971 9.54126 3.11942C9.63641 3.34914 9.63641 3.60724 9.54126 3.83695L9.20808 4.64131C9.11289 4.87112 9.11276 5.12949 9.20838 5.35919L9.54098 6.16331C9.58815 6.27708 9.61244 6.39903 9.61246 6.5222C9.61248 6.64536 9.58823 6.76733 9.54109 6.88112C9.49396 6.9949 9.42487 7.09829 9.33776 7.18537C9.25066 7.27245 9.14725 7.3415 9.03345 7.3886L8.22909 7.72178C7.9994 7.81675 7.81682 7.99905 7.7215 8.22861L7.38808 9.03354C7.29293 9.26325 7.11043 9.44576 6.88071 9.54091C6.651 9.63606 6.3929 9.63606 6.16318 9.54091L5.35883 9.20774C5.12911 9.11282 4.8711 9.11301 4.64152 9.20827L3.83659 9.54121C3.60701 9.63614 3.34913 9.63606 3.1196 9.54099C2.89007 9.44591 2.70767 9.26362 2.61245 9.03415L2.27894 8.22898C2.18396 7.99929 2.00166 7.81671 1.77211 7.72139L0.967177 7.38798C0.737563 7.29287 0.555111 7.11048 0.459925 6.88089C0.364739 6.65131 0.36461 6.39333 0.459566 6.16365L0.79274 5.3593C0.887656 5.12958 0.887462 4.87157 0.792201 4.64199L0.459505 3.83648C0.412336 3.72271 0.388047 3.60075 0.388028 3.47759C0.388008 3.35442 0.412257 3.23246 0.45939 3.11867C0.506523 3.00488 0.575616 2.9015 0.662721 2.81442C0.749826 2.72734 0.853235 2.65828 0.967039 2.61119L1.77139 2.27801C2.00089 2.18312 2.18336 2.00105 2.27875 1.77176L2.61216 0.966829C2.70731 0.737115 2.88982 0.554608 3.11953 0.459458C3.34925 0.364307 3.60735 0.364307 3.83706 0.459458L4.64142 0.792632C4.87114 0.887548 5.12915 0.887354 5.35872 0.792092L6.16399 0.459975C6.39368 0.364877 6.65172 0.364897 6.88139 0.460029C7.11106 0.55516 7.29354 0.737615 7.38871 0.967269L7.72222 1.77244L7.72212 1.77104Z" fill="#0788F5"/>
+                                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M6.95829 3.68938C7.02509 3.58446 7.04747 3.45729 7.02051 3.33586C6.99356 3.21443 6.91946 3.10868 6.81454 3.04188C6.70961 2.97508 6.58245 2.9527 6.46102 2.97966C6.33959 3.00661 6.23384 3.08071 6.16704 3.18563L4.33141 6.07001L3.49141 5.02001C3.41375 4.92287 3.30069 4.86056 3.17709 4.84679C3.05349 4.83302 2.92949 4.86891 2.83235 4.94657C2.73522 5.02423 2.67291 5.13729 2.65914 5.26089C2.64536 5.38449 2.68125 5.5085 2.75891 5.60563L4.00891 7.16813C4.0555 7.22644 4.11533 7.27278 4.18344 7.30329C4.25154 7.33381 4.32595 7.34763 4.40047 7.3436C4.47499 7.33956 4.54747 7.31779 4.61188 7.2801C4.67629 7.2424 4.73077 7.18988 4.77079 7.12688L6.95829 3.68938Z" fill="white"/>
+                                                                </g>
+                                                                <defs>
+                                                                    <clipPath id="clip0_15935_12679">
+                                                                        <rect width="10" height="10" fill="white"/>
+                                                                    </clipPath>
+                                                                </defs>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                         </div>
+                                     </div>
+
+                                     <!-- subtotal -->
+                                    <div class="flex flex-column gap--8 h--48">
+                                        <span class="fs--16 lh--24 fw6 gray-50 tracked--100 tr">$5.99/mo</span>
+                                        <span class="fs--12 lh--18 fw5 gray-400 tracked--100 strike tr">$123.45</span>
+                                    </div>
+                                 </div>
+                             </div>
+                            </div>
+                        </div>
+    
+                      <!-- checkout-summary-section -->
+                       <div class="flex flex-column justify-end gap--24 h-100">
+                            <div class="flex flex-column gap--16 pad--x--16">
+                                <!-- total-container -->
+                                <div class="flex pt2 bt br--col--mystic">
+                                    <div class="w-100 flex gap--16">
+                                        <div class="w-100 flex justify-between items-end gap--5">
+                                            <span class="fs--16 lh--24 fw6 poppins gray-50">Total</span>
+                                            <span class="fs--24 lh--32 fw6 ttu poppins col--brand-green">USD$6.99</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- checkbox-container -->
+                                <div class="flex items-center gap--10">
+                                    <label class="flex items-center gap--8" data-form-input-type="checkbox" data-form-accent-color="green">
+                                        <input type="checkbox" name="save" data-required="0" value="save" class="w--16 h--16 pointer">
+                                        <p class="ma0 fs--14 fw4 lh--20 poppins gray-400 tracked--0-2">I agree to Fansocial’s <a href="#" class="fs--14 fw5 lh--20 poppins col--brand-green tracked--0-2">Terms and Condition</a> and <a href="#" class="fs--14 fw5 lh--20 poppins col--brand-green tracked--0-2">Privacy Policy</a>. </p>
+                                     </label>
+                                </div>
+                                <!-- button -->
+                                <button data-button-proceed-payment data-button-proceed-payment-enabled type="button" class="bg-white-20 h--48 pad--x--8 pad--right--10 flex items-center gap--10 justify-center relative size-large" data-button-size="large" data-button-icon-position="left" data-skip-svg-color="" data-skip-svg-width="" data-button-loader="" data-button-loader-success="" data-button-loader-success-text="Your settings have been updated." data-for-new-dashboard="1" data-button-adjust-padding="1">
+                                    <div data-button-text-wrap="" class="flex items-center gap--10 justify-center relative">
+                                        <span class=" poppins wb flex pad--y--4 fs--16 fw6 lh--30 black ttu">Proceed Payment</span>
+                                        <div class="flex justify-center items-center w--24 h--24">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16" fill="black">
+                                                <path d="M1 8H15M15 8L8 1M15 8L8 15" stroke="black" fill="black"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </button>
+                            </div>
+                       </div>
+                 </div>
+             </div>
+             
+        </div>
+        <!-- template ends here -->
+
+
+    </div>
+</body>
+</html>

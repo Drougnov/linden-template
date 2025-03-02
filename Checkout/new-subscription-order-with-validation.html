@@ -30,91 +30,6 @@
         <div data-checkout-container class="flex br--10 of--hidden bg-white-10">
             <!-- column-left -->
              <div class="flex flex-column gap--24 w-50 pad--x--16 pad--y--24">
-                <!-- payment-method-container -->
-                <div class="flex flex-column gap--16">
-                    <!-- section-title-container -->
-                    <div class="flex justify-between items-center gap--8 h--24">
-                        <!-- section-title -->
-                        <div class="flex items-center gap--8">
-                            <div class="w--20 h--20 flex justify-center items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                    <path d="M18.3337 8.33317H1.66699M1.66699 6.83317L1.66699 13.1665C1.66699 14.0999 1.66699 14.5666 1.84865 14.9232C2.00844 15.2368 2.2634 15.4917 2.57701 15.6515C2.93353 15.8332 3.40024 15.8332 4.33366 15.8332L15.667 15.8332C16.6004 15.8332 17.0671 15.8332 17.4236 15.6515C17.7372 15.4917 17.9922 15.2368 18.152 14.9232C18.3337 14.5666 18.3337 14.0999 18.3337 13.1665V6.83317C18.3337 5.89975 18.3337 5.43304 18.152 5.07652C17.9922 4.76292 17.7372 4.50795 17.4236 4.34816C17.0671 4.16651 16.6004 4.16651 15.667 4.1665L4.33366 4.1665C3.40024 4.1665 2.93353 4.1665 2.57701 4.34816C2.2634 4.50795 2.00844 4.76292 1.84865 5.07652C1.66699 5.43304 1.66699 5.89975 1.66699 6.83317Z" stroke="#F9FAFB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                            <span class="fs--16 lh--24 fw6 ttu poppins gray-50">PAYMENT METHOD</span>
-                        </div>
-                        <!-- section-dropdown-right -->
-                         <!-- <div class="flex items-center gap--10 pointer">
-                            <span class="fs--14 lh--20 fw5 poppins gray-200">Change Card</span>
-                            <div class="w--24 h--24 flex justify-center items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                    <path d="M6 9L12 15L18 9" stroke="#98A2B3" stroke-width="1.77778" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                         </div> -->
-                    </div>
-
-                    <!-- payment-card-wrapper -->
-                     <div class="flex gap--16">
-                        <!-- payment-card-container-->
-                        <div data-checkout-payment-card class="w-100 br--12">
-                            <div class="w-100 h-100 flex flex-column justify-between pad--24 br--12">
-                                <!-- checbox-container -->
-                                <div class="flex items-center gap--10">
-                                    <label class="flex items-center gap--8" data-form-input-type="checkbox" data-form-accent-color="green">
-                                        <input type="checkbox" name="save" data-required="0" value="save" class="w--16 h--16 pointer" checked>
-                                        <p class="ma0 fs--14 fw4 lh--20 poppins gray-400">Save this card for faster checkout.</p>
-                                     </label>
-                                </div>
-                                <!-- inputs-fields-->
-                                <div class="flex gap--8">
-                                    <div class="w-100 flex flex-column gap--8">
-                                        <!-- field-group -->
-                                         <div class="flex flex-column flex-row-ns w-100 gap--16">
-                                            <!-- input-field -->
-                                             <div class="w-100 flex flex-column gap--6 flex--max" data-form-input-type="text" data-form-input-label-position="" data-input-label-type="">
-                                                <label class="fs--14 fw5 lh--20 gray-50 relative">Card Number</label>
-                                                <div class="h--40 flex gap--8 items-center br--2 br--bottom br--left bb br--col--mischka bg-white-10 sh--7" data-input-wrapper="">
-                                                    <input data-display-name="" name="card-number" placeholder="Card Number" type="text" class="w-100 bn flex-auto fs--16 lh--24 gray-50 pad--y--10 pad--x--14 ttc">
-                                                </div>
-                                             </div>
-                                             <!-- input-field -->
-                                             <div class="w-100 flex flex-column gap--6 flex--max" data-form-input-type="date" data-form-input-label-position="" data-input-label-type="">
-                                                <label class="fs--14 fw5 lh--20 gray-50 relative">Expiration Date</label>
-                                                <div class="h--40 flex gap--8 items-center br--2 br--bottom br--left bb br--col--mischka bg-white-10 sh--7" data-input-wrapper="">
-                                                    <input data-display-name="" name="date" placeholder="MM/YY" type="text" class="w-100 bn flex-auto fs--16 lh--24 gray-50 pad--y--10 pad--x--14 ttc">
-                                                    <div data-input-icon-center-right class="absolute flex justify-center items-center pointer">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16" fill="none">
-                                                            <path d="M13 6.66659H1M9.66667 1.33325V3.99992M4.33333 1.33325V3.99992M4.2 14.6666H9.8C10.9201 14.6666 11.4802 14.6666 11.908 14.4486C12.2843 14.2569 12.5903 13.9509 12.782 13.5746C13 13.1467 13 12.5867 13 11.4666V5.86659C13 4.74648 13 4.18643 12.782 3.7586C12.5903 3.38228 12.2843 3.07632 11.908 2.88457C11.4802 2.66659 10.9201 2.66659 9.8 2.66659H4.2C3.0799 2.66659 2.51984 2.66659 2.09202 2.88457C1.71569 3.07632 1.40973 3.38228 1.21799 3.7586C1 4.18643 1 4.74648 1 5.86659V11.4666C1 12.5867 1 13.1467 1.21799 13.5746C1.40973 13.9509 1.71569 14.2569 2.09202 14.4486C2.51984 14.6666 3.0799 14.6666 4.2 14.6666Z" stroke="#EAECF0" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                             </div>
-                                         </div>
-
-                                         <!-- field-group -->
-                                         <div class="flex flex-column flex-row-ns w-100 gap--16">
-                                            <!-- input-field -->
-                                             <div class="w-100 flex flex-column gap--6 flex--max" data-form-input-type="text" data-form-input-label-position="" data-input-label-type="">
-                                                <label class="fs--14 fw5 lh--20 gray-50 relative">Cardholder Name</label>
-                                                <div class="h--40 flex gap--8 items-center br--2 br--bottom br--left bb br--col--mischka bg-white-10 sh--7" data-input-wrapper="">
-                                                    <input data-display-name="" name="Cardholder name" placeholder="Cardholder Name" type="text" class="w-100 bn flex-auto fs--16 lh--24 gray-50 pad--y--10 pad--x--14 ttc">
-                                                </div>
-                                             </div>
-                                             <!-- input-field -->
-                                             <div class="w-100 flex flex-column gap--6 flex--max" data-form-input-type="text" data-form-input-label-position="" data-input-label-type="">
-                                                <label class="fs--14 fw5 lh--20 gray-50 relative">CVV</label>
-                                                <div class="h--40 flex gap--8 items-center br--2 br--bottom br--left bb br--col--mischka bg-white-10 sh--7" data-input-wrapper="">
-                                                    <input data-display-name="" name="card-number" placeholder="CVV" type="text" class="w-100 bn flex-auto fs--16 lh--24 gray-50 pad--y--10 pad--x--14 ttc">
-                                                </div>
-                                             </div>
-                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                     </div>
-                </div>
                 <!-- billing-address-container -->
                  <div class="flex flex-column gap--16">
                     <!-- section-title-container -->
@@ -127,11 +42,11 @@
                                     <path d="M10.0002 18.3334C13.3335 15.0001 16.6668 12.0153 16.6668 8.33342C16.6668 4.65152 13.6821 1.66675 10.0002 1.66675C6.31826 1.66675 3.3335 4.65152 3.3335 8.33342C3.3335 12.0153 6.66683 15.0001 10.0002 18.3334Z" stroke="#F9FAFB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </div>
-                            <span class="fs--16 lh--24 fw6 ttu poppins gray-50">BILLING ADDRESS</span>
+                            <span class="fs--16 lh--24 fw6 ttu poppins gray-50">SHIPPING ADDRESS</span>
                         </div>
                         <!-- section-dropdown-right -->
                          <div class="flex items-center gap--10 pointer">
-                            <!-- <span class="fs--14 lh--20 fw5 poppins gray-200">Change Card</span> -->
+                            <span class="fs--14 lh--20 fw5 poppins gray-200">Change Address</span>
                             <div class="w--24 h--24 flex justify-center items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                     <path d="M6 9L12 15L18 9" stroke="#98A2B3" stroke-width="1.77778" stroke-linecap="round" stroke-linejoin="round"/>
@@ -149,14 +64,14 @@
                                  <div class="w-100 flex flex-column gap--6 flex--max" data-form-input-type="text" data-form-input-label-position="" data-input-label-type="">
                                     <label class="fs--14 fw5 lh--20 gray-50 relative">Last Name</label>
                                     <div class="h--40 flex gap--8 items-center br--2 br--bottom br--left bb br--col--mischka bg-white-10 sh--7" data-input-wrapper="">
-                                        <input data-display-name="" name="Last Name" placeholder="Last Name" type="text" class="w-100 bn flex-auto fs--16 lh--24 gray-50 pad--y--10 pad--x--14 ttc">
+                                        <input data-display-name="" name="Last Name" placeholder="Last Name" value="Chan" type="text" class="w-100 bn flex-auto fs--16 lh--24 gray-50 pad--y--10 pad--x--14 ttc">
                                     </div>
                                  </div>
                                  <!-- input-field -->
                                  <div class="w-100 flex flex-column gap--6 flex--max" data-form-input-type="text" data-form-input-label-position="" data-input-label-type="">
                                     <label class="fs--14 fw5 lh--20 gray-50 relative">First Name</label>
                                     <div class="h--40 flex gap--8 items-center br--2 br--bottom br--left bb br--col--mischka bg-white-10 sh--7" data-input-wrapper="">
-                                        <input data-display-name="" name="First Name" placeholder="First Name" type="text" class="w-100 bn flex-auto fs--16 lh--24 gray-50 pad--y--10 pad--x--14 ttc">
+                                        <input data-display-name="" name="First Name" placeholder="First Name" value="Tai Man" type="text" class="w-100 bn flex-auto fs--16 lh--24 gray-50 pad--y--10 pad--x--14 ttc">
                                     </div>
                                  </div>
                              </div>
@@ -167,7 +82,7 @@
                                  <div class="w-100 flex flex-column gap--6 flex--max" data-form-input-type="text" data-form-input-label-position="" data-input-label-type="">
                                     <label class="fs--14 fw5 lh--20 gray-50 relative">Address Line 1</label>
                                     <div class="h--40 flex gap--8 items-center br--2 br--bottom br--left bb br--col--mischka bg-white-10 sh--7" data-input-wrapper="">
-                                        <input data-display-name="" name="Address Line 1" placeholder="Address Line 1" type="text" class="w-100 bn flex-auto fs--16 lh--24 gray-50 pad--y--10 pad--x--14 ttc">
+                                        <input data-display-name="" name="Address Line 1" placeholder="Address Line 1" value="10/F Block5" type="text" class="w-100 bn flex-auto fs--16 lh--24 gray-50 pad--y--10 pad--x--14 ttc">
                                     </div>
                                  </div>
                              </div>
@@ -178,7 +93,7 @@
                                  <div class="w-100 flex flex-column gap--6 flex--max" data-form-input-type="text" data-form-input-label-position="" data-input-label-type="">
                                     <label class="fs--14 fw5 lh--20 gray-50 relative">Address Line 2</label>
                                     <div class="h--40 flex gap--8 items-center br--2 br--bottom br--left bb br--col--mischka bg-white-10 sh--7" data-input-wrapper="">
-                                        <input data-display-name="" name="Address Line 2" placeholder="Address Line 2" type="text" class="w-100 bn flex-auto fs--16 lh--24 gray-50 pad--y--10 pad--x--14 ttc">
+                                        <input data-display-name="" name="Address Line 2" placeholder="Address Line 2" value="Fook Yip Bldg" type="text" class="w-100 bn flex-auto fs--16 lh--24 gray-50 pad--y--10 pad--x--14 ttc">
                                     </div>
                                  </div>
                              </div>
@@ -236,89 +151,156 @@
                              </div>
                         </div>
                     </div>
-                    <!-- checbox-container -->
-                    <div class="flex items-center gap--10">
-                        <label class="flex items-center gap--8" data-form-input-type="checkbox" data-form-accent-color="green">
-                            <input type="checkbox" name="save" data-required="0" value="save" class="w--16 h--16 pointer" checked>
-                            <p class="ma0 fs--14 fw4 lh--20 poppins gray-400">Save this address for future use.</p>
-                         </label>
+
+                    <!-- button-container -->
+                    <div class="flex justify-end items-center gap--8">
+                        <!-- cancle-button -->
+                         <button data-checkout-button class="flex justify-center items-center gap--10 pa2 ba mw--85 w--120 h--32 bg-black-50 hover--bg--col-brand-green br--col--brand-green border-box">
+                            <span class="fs--14 fw5 lh--24 col-brand-green poppins tracked--0-4">Cancel</span>
+                        </button>
+                        <button data-checkout-button class="flex justify-center items-center gap--10 pa2 ba mw--85 w--120 h--32 bg--col--brand-green br--col--brand-green border-box">
+                            <span class="fs--14 fw5 lh--24 col--ebony--variation-2 poppins tracked--0-4">Update</span>
+                        </button>
+                    </div>
+                 </div>
+
+                <!-- payment-method-container -->
+                <div class="flex flex-column gap--16">
+                    <!-- section-title-container -->
+                    <div class="flex justify-between items-center gap--8 h--24">
+                        <!-- section-title -->
+                        <div class="flex items-center gap--8">
+                            <div class="w--20 h--20 flex justify-center items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path d="M18.3337 8.33317H1.66699M1.66699 6.83317L1.66699 13.1665C1.66699 14.0999 1.66699 14.5666 1.84865 14.9232C2.00844 15.2368 2.2634 15.4917 2.57701 15.6515C2.93353 15.8332 3.40024 15.8332 4.33366 15.8332L15.667 15.8332C16.6004 15.8332 17.0671 15.8332 17.4236 15.6515C17.7372 15.4917 17.9922 15.2368 18.152 14.9232C18.3337 14.5666 18.3337 14.0999 18.3337 13.1665V6.83317C18.3337 5.89975 18.3337 5.43304 18.152 5.07652C17.9922 4.76292 17.7372 4.50795 17.4236 4.34816C17.0671 4.16651 16.6004 4.16651 15.667 4.1665L4.33366 4.1665C3.40024 4.1665 2.93353 4.1665 2.57701 4.34816C2.2634 4.50795 2.00844 4.76292 1.84865 5.07652C1.66699 5.43304 1.66699 5.89975 1.66699 6.83317Z" stroke="#F9FAFB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <span class="fs--16 lh--24 fw6 ttu poppins gray-50">PAYMENT METHOD</span>
+                        </div>
+                        <!-- section-dropdown-right -->
+                        <div class="flex items-center gap--10 pointer">
+                            <span class="fs--14 lh--20 fw5 poppins gray-200">Change Card</span>
+                            <div class="w--24 h--24 flex justify-center items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M6 9L12 15L18 9" stroke="#98A2B3" stroke-width="1.77778" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                         </div>
+                    </div>
+
+                    <!-- payment-card-wrapper -->
+                     <div class="flex gap--16">
+                        <!-- payment-card-container-->
+                        <div data-checkout-payment-card class="w-100 br--12">
+                            <div class="w-100 h-100 flex flex-column justify-between pad--24 br--12">
+                                <!-- checbox-container -->
+                                <div class="flex items-center gap--10">
+                                    <label class="flex items-center gap--8" data-form-input-type="checkbox" data-form-accent-color="green">
+                                        <input type="checkbox" name="save" data-required="0" value="save" class="w--16 h--16 pointer" checked>
+                                        <p class="ma0 fs--14 fw4 lh--20 poppins gray-400">Save this card for faster checkout.</p>
+                                     </label>
+                                </div>
+                                <!-- inputs-fields-->
+                                <div class="flex gap--8">
+                                    <div class="w-100 flex flex-column gap--8">
+                                        <!-- field-group -->
+                                         <div class="flex flex-column flex-row-ns w-100 gap--16">
+                                            <!-- input-field -->
+                                             <div class="w-100 flex flex-column gap--6 flex--max" data-form-input-type="text" data-form-input-label-position="" data-input-label-type="">
+                                                <label class="fs--14 fw5 lh--20 gray-50 relative">Card Number</label>
+                                                <div class="h--40 flex gap--8 items-center br--2 br--bottom br--left bb br--col--mischka bg-white-10 sh--7" data-input-wrapper="">
+                                                    <input data-display-name="" name="card-number" placeholder="Card Number" value="1111 2222 3333 4444" type="text" class="w-100 bn flex-auto fs--16 lh--24 gray-50 pad--y--10 pad--x--14 ttc">
+                                                </div>
+                                             </div>
+                                             <!-- input-field -->
+                                             <div class="w-100 flex flex-column gap--6 flex--max" data-form-input-type="date" data-form-input-label-position="" data-input-label-type="">
+                                                <label class="fs--14 fw5 lh--20 gray-50 relative">Expiration Date</label>
+                                                <div class="h--40 flex gap--8 items-center br--2 br--bottom br--left bb br--col--mischka bg-white-10 sh--7" data-input-wrapper="">
+                                                    <input data-display-name="" name="date" placeholder="MM/YY" value="02/30" type="text" class="w-100 bn flex-auto fs--16 lh--24 gray-50 pad--y--10 pad--x--14 ttc">
+                                                    <div data-input-icon-center-right class="absolute flex justify-center items-center pointer">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16" fill="none">
+                                                            <path d="M13 6.66659H1M9.66667 1.33325V3.99992M4.33333 1.33325V3.99992M4.2 14.6666H9.8C10.9201 14.6666 11.4802 14.6666 11.908 14.4486C12.2843 14.2569 12.5903 13.9509 12.782 13.5746C13 13.1467 13 12.5867 13 11.4666V5.86659C13 4.74648 13 4.18643 12.782 3.7586C12.5903 3.38228 12.2843 3.07632 11.908 2.88457C11.4802 2.66659 10.9201 2.66659 9.8 2.66659H4.2C3.0799 2.66659 2.51984 2.66659 2.09202 2.88457C1.71569 3.07632 1.40973 3.38228 1.21799 3.7586C1 4.18643 1 4.74648 1 5.86659V11.4666C1 12.5867 1 13.1467 1.21799 13.5746C1.40973 13.9509 1.71569 14.2569 2.09202 14.4486C2.51984 14.6666 3.0799 14.6666 4.2 14.6666Z" stroke="#EAECF0" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                             </div>
+                                         </div>
+
+                                         <!-- field-group -->
+                                         <div class="flex flex-column flex-row-ns w-100 gap--16">
+                                            <!-- input-field -->
+                                             <div class="w-100 flex flex-column gap--6 flex--max" data-form-input-type="text" data-form-input-label-position="" data-input-label-type="">
+                                                <label class="fs--14 fw5 lh--20 gray-50 relative">Cardholder Name</label>
+                                                <div class="h--40 flex gap--8 items-center br--2 br--bottom br--left bb br--col--mischka bg-white-10 sh--7" data-input-wrapper="">
+                                                    <input data-display-name="" name="Cardholder name" placeholder="Cardholder Name" value="John Carter" type="text" class="w-100 bn flex-auto fs--16 lh--24 gray-50 pad--y--10 pad--x--14 ttc">
+                                                </div>
+                                             </div>
+                                             <!-- input-field -->
+                                             <div class="w-100 flex flex-column gap--6 flex--max" data-form-input-type="text" data-form-input-label-position="" data-input-label-type="">
+                                                <label class="fs--14 fw5 lh--20 gray-50 relative">CVV</label>
+                                                <div class="h--40 flex gap--8 items-center br--2 br--bottom br--left bb br--col--mischka bg-white-10 sh--7" data-input-wrapper="">
+                                                    <input data-display-name="" name="card-number" placeholder="CVV" type="text" value="123" class="w-100 bn flex-auto fs--16 lh--24 gray-50 pad--y--10 pad--x--14 ttc">
+                                                </div>
+                                             </div>
+                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+                </div>
+
+                <!-- billing-address-container -->
+                <div class="flex flex-column gap--16">
+                    <!-- section-title-container -->
+                    <div class="flex justify-between items-center gap--8 h--24">
+                        <!-- section-title -->
+                        <div class="flex items-center gap--8">
+                            <div class="w--20 h--20 flex justify-center items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path d="M10.0002 10.8334C11.3809 10.8334 12.5002 9.71413 12.5002 8.33342C12.5002 6.9527 11.3809 5.83341 10.0002 5.83341C8.61945 5.83341 7.50016 6.9527 7.50016 8.33342C7.50016 9.71413 8.61945 10.8334 10.0002 10.8334Z" stroke="#F9FAFB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M10.0002 18.3334C13.3335 15.0001 16.6668 12.0153 16.6668 8.33342C16.6668 4.65152 13.6821 1.66675 10.0002 1.66675C6.31826 1.66675 3.3335 4.65152 3.3335 8.33342C3.3335 12.0153 6.66683 15.0001 10.0002 18.3334Z" stroke="#F9FAFB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <span class="fs--16 lh--24 fw6 ttu poppins gray-50">BILLING ADDRESS</span>
+                        </div>
+                        <!-- section-dropdown-right -->
+                         <div class="flex items-center gap--10 pointer">
+                            <span class="fs--14 lh--20 fw5 poppins gray-200">Change Address</span>
+                            <div class="w--24 h--24 flex justify-center items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M6 9L12 15L18 9" stroke="#98A2B3" stroke-width="1.77778" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                         </div>
+                    </div>
+
+                    <!-- inputs-fields-->
+                    <div class="flex flex-column gap--16">
+                        <div class="w-100 flex flex-column gap--8">
+                            <!-- field-group -->
+                             <div class="w-100 flex flex-column flex-row-ns w-100 gap--16">
+                                <!-- input-field -->
+                                <div class="w-100 flex flex-column justify-center items-center gap--6 flex--max relative" data-form-input-type="text" data-form-input-label-position="" data-input-label-type="">
+                                    <div data-billing-address-text-area-wrapper class="pad--x--16 pad--y--8 w-100">
+                                        <textarea name="" id="" cols="" rows="" class="fs--16 lh--24 fw5 poppins gray-200">Chan Tai Man,10/F Block5,Fook Yip Bldg,12345,Kwai Chung,Hong Kong</textarea>
+                                    </div>
+                                    <div data-input-icon-center-right class="absolute justify-center items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                            <path d="M15.75 13.4999L14.9999 14.3205C14.6021 14.7555 14.0626 14.9999 13.5001 14.9999C12.9376 14.9999 12.3981 14.7555 12.0003 14.3205C11.6019 13.8863 11.0625 13.6425 10.5001 13.6425C9.93778 13.6425 9.39835 13.8863 8.99998 14.3205M2.25 14.9999H3.50591C3.87279 14.9999 4.05624 14.9999 4.22887 14.9585C4.38192 14.9217 4.52824 14.8611 4.66245 14.7789C4.81382 14.6861 4.94354 14.5564 5.20296 14.297L14.625 4.87493C15.2463 4.25361 15.2463 3.24625 14.625 2.62493C14.0037 2.00361 12.9963 2.00361 12.375 2.62493L2.95295 12.047C2.69352 12.3064 2.5638 12.4361 2.47104 12.5875C2.3888 12.7217 2.32819 12.868 2.29145 13.0211C2.25 13.1937 2.25 13.3772 2.25 13.744V14.9999Z" stroke="#EAECF0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                             </div>
+                        </div>
                     </div>
                  </div>
              </div>
+             <!-- column-right -->
              <div class="w-50">
-                <!-- column-right -->
-                <div data-checkout-column-right class="flex flex-column gap--12 bg-black-50 pad--y--24">
-                    <!-- subscription-section -->
-                    <div class="pad--x--16">
-                        <div class="flex flex-column gap--16">
-                            <!-- section-title-container -->
-                            <div class="flex justify-between items-center gap--8 h--24">
-                                <!-- section-title -->
-                                <div class="flex items-center gap--8">
-                                    <div class="w--20 h--20 flex justify-center items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 39 39" fill="none">
-                                            <rect width="39" height="39" rx="12" ry="12" fill="#F9FAFB"/>
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M24.4308 29.0551L16.1061 29.9741C14.4559 30.1569 13.2307 28.482 13.8977 26.9653L15.5083 23.2945C16.0072 22.1582 15.4094 20.8539 14.4559 20.0585C13.1714 18.9913 12.2821 17.44 12.0845 15.6466C11.6794 11.961 14.3324 8.65083 18.0131 8.24571C21.6938 7.84059 25.0089 10.4936 25.414 14.1743C25.6165 16.0072 25.0583 17.7463 23.996 19.0802C23.2155 20.0683 22.8943 21.5011 23.6403 22.5139L25.9327 25.6363C26.9159 26.9752 26.0809 28.8773 24.4308 29.0551Z" fill="#333"/>
-                                        </svg>    
-                                    </div>
-                                    <span class="fs--16 lh--24 fw6 ttu poppins gray-50">SUBSCRIPTION</span>
-                                </div>
-                                <!-- section-dropdown-right -->
-                                <!-- <div class="flex items-center gap--10 pointer">
-                                    <span class="fs--14 lh--20 fw5 poppins gray-200">Change Card</span>
-                                    <div class="w--24 h--24 flex justify-center items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                            <path d="M6 9L12 15L18 9" stroke="#98A2B3" stroke-width="1.77778" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </div>
-                                </div> -->
-                            </div>
-                            <!-- new-subscription-container -->
-                            <div class="flex flex-column gap--8">
-                                <span class="fs--12 lh--18 fw5 poppins gray-400">New Subscription</span>
-                                <div data-subscription-content data-subscription-content-yellow class="flex items-center self-stretch">
-                                    <div data-subscription-icon-container class="flex justify-center items-center self-stretch relative">
-                                        <div data-subscription-icon>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
-                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M31.8253 37.8442L20.981 39.0411C18.8314 39.2792 17.2353 37.0978 18.1041 35.1222L20.2022 30.341C20.8522 28.861 20.0735 27.1621 18.8314 26.1261C17.1581 24.7361 15.9996 22.7155 15.7422 20.3796C15.2145 15.5791 18.6705 11.2677 23.4652 10.74C28.2599 10.2123 32.5783 13.6679 33.1061 18.462C33.3699 20.8494 32.6427 23.1145 31.259 24.852C30.2421 26.139 29.8238 28.0051 30.7956 29.3243L33.7818 33.3912C35.0626 35.1351 33.9749 37.6126 31.8253 37.8442Z" fill="black"/>
-                                            </svg>
-                                        </div>
-                                        <div class="h-100 absolute right-0">
-                                            <div class="rectangle-icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="81" viewBox="0 0 20 79" fill="none">
-                                                    <!-- Solid black with 75% opacity -->
-                                                    <path d="M20 0V79H0L20 0Z" fill="black" fill-opacity="0.75"/>
-                                                    
-                                                    <!-- Gradient from transparent to semi-transparent black -->
-                                                    <path d="M20 0V79H0L20 0Z" fill="url(#icon-gradient)" fill-opacity="0.4"/>
-                                                    
-                                                    <defs>
-                                                        <!-- Define the gradient to match the container -->
-                                                        <linearGradient id="icon-gradient" x1="10" y1="0" x2="10" y2="79" gradientUnits="userSpaceOnUse">
-                                                            <stop stop-color="black" stop-opacity="0"/> <!-- Transparent at the top -->
-                                                            <stop offset="1" stop-color="black" stop-opacity="0.4"/> <!-- Semi-transparent at the bottom -->
-                                                        </linearGradient>
-                                                    </defs>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex justify-end items-center bg--blur--10">
-                                        <div class="flex flex-column items-start gap--8 flex--max" data-subscription-info-container>
-                                            <div class="flex flex-column justify-center items-start self-stretch pad--8">
-                                                <p class="fs--14 fw6 lh--20 poppins white text--sh--black--40 truncate-text truncate-text-line-2">FEATURED library of LOREM LPSUM ATIER dolor sit amet, consectetur adipiscing elit.</p>
-                                                <span class="h--24 fs--18 fw5 lh--28 fw6 poppins white text--sh--black--40 truncate-text">USD$499.99<span class="fs--14 fw5 lh--20 white">/mo</span></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="fs--12 lh--18 fw4 poppins gray-400">Your subscription will begin as soon as you complete checkout. Your billing cycle will start (02-26-2025).</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- notes-section -->
-                    <div class="flex flex-column gap--24 pad--x--16">
+                <div data-checkout-column-right class="flex flex-column gap--24 bg-black-50 pad--y--24">
+                     <!-- notes-section -->
+                     <div class="flex flex-column gap--24 pad--x--16">
                         <!-- section-title-container -->
                         <div class="flex justify-between items-center gap--8 h--24">
                             <!-- section-title -->
@@ -340,10 +322,10 @@
                                 </div>
                             </div> -->
                         </div>
-
+    
                         <!-- input-container -->
-                        <div class="flex flex-column gap--8">
-                            <div>
+                         <div class="flex flex-column gap--8">
+                            <div class="flex items-center gap--8">
                                 <div class="flex items-center gap--4 pad--x--4 h2 bb br--col--brand-green w--max-content">
                                     <div class="flex justify-center items-center w2 h2">
                                         <div class="w--24 h--24 pad--x--2-8 pad--x--10-responsive-mobile relative">
@@ -351,9 +333,35 @@
                                             <div data-online-avatar="true"></div>
                                         </div>
                                     </div>
-
-                                    <div class="h--18">
-                                        <span class="fs--12 fw4 lh--18 col--brand-green truncate flex items-center gap--4">Princess Carrot Pop</span>
+    
+                                    <div class="flex items-center gap--8">
+                                        <div class="h--18">
+                                            <span class="fs--12 fw4 lh--18 col--brand-green truncate flex items-center gap--4">Princess Carrot Pop</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex justify-center items-center w2 h2">
+                                    <div class="w--24 h--24 pad--x--2-8 pad--x--10-responsive-mobile relative">
+                                        <img src="./Vector1.svg" alt="">
+                                        <div data-online-avatar="true"></div>
+                                    </div>
+                                </div>
+                                <div class="flex justify-center items-center w2 h2">
+                                    <div class="w--24 h--24 pad--x--2-8 pad--x--10-responsive-mobile relative">
+                                        <img src="./Vector1.svg" alt="">
+                                        <div data-online-avatar="true"></div>
+                                    </div>
+                                </div>
+                                <div class="flex justify-center items-center w2 h2">
+                                    <div class="w--24 h--24 pad--x--2-8 pad--x--10-responsive-mobile relative">
+                                        <img src="./Vector1.svg" alt="">
+                                        <div data-online-avatar="true"></div>
+                                    </div>
+                                </div>
+                                <div class="flex justify-center items-center w2 h2">
+                                    <div class="w--24 h--24 pad--x--2-8 pad--x--10-responsive-mobile relative">
+                                        <img src="./Vector1.svg" alt="">
+                                        <div data-online-avatar="true"></div>
                                     </div>
                                 </div>
                             </div>
@@ -364,9 +372,9 @@
                                     <div class="h--100 br--2 br--bottom br--left bb br--col--mischka bg-white-10 sh--7 relative">
                                         <textarea data-checkout-textarea name="" id="" class="h-100 pa2" placeholder="Enter notes to @jenny1234...."></textarea>
                                         <!-- placeholder image container -->
-                                        <div>
-
-                                        </div>
+                                         <div>
+    
+                                         </div>
                                         <!-- words left container -->
                                         <div data-input-icon-bottom-right class="absolute flex items-center gap--10">
                                             <span class="fs--12 lh--24 tr fw4 tracked--0-12 gray-50 o-50">300 Characters Left</span>
@@ -384,15 +392,39 @@
                                             </div>
                                         </div>
                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                      </div>
+
+                    <!-- Order-summary-container -->
+                    <div class="flex flex-column gap--16 pad--x--16">
+                        <!-- section-title-container -->
+                        <div class="flex justify-between items-center gap--8 h--24">
+                            <!-- section-title -->
+                            <div class="flex items-center gap--8">
+                                <div class="w--20 h--20 flex justify-center items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                        <path d="M2.5 10H12.5M2.5 5H17.5M2.5 15H17.5" stroke="#F9FAFB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <span class="fs--16 lh--24 fw6 ttu poppins gray-50">ORDER SUMMARY</span>
+                            </div>
+                            <!-- section-dropdown-right -->
+                            <div class="flex items-center gap--10 pointer">
+                                <!-- <span class="fs--14 lh--20 fw5 poppins gray-200">Change Address</span> -->
+                                <div class="w--24 h--24 flex justify-center items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M6 9L12 15L18 9" stroke="#98A2B3" stroke-width="1.77778" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- checkout-summary-section -->
-                    <div class="flex flex-column justify-end gap--24 h-100">
+    
+                      <!-- checkout-summary-section -->
+                       <div class="flex flex-column justify-end gap--24 h-100">
                             <div class="flex flex-column gap--16 pad--x--16">
-                                <p class="fs--14 lh--20 fw4 poppins gray-400 tracked--0-2">You will be charged <span class="fs--14 lh--20 fw4 poppins col--brand-green tracked--0-2">$499.99</span> today (02-26-2025) and on the same day each month. This subscription renews automatically, and you can cancel anytime in your account.</p>
                                 <!-- total-container -->
                                 <div class="flex pt2 bt br--col--mystic">
                                     <div class="w-100 flex gap--16">
@@ -402,12 +434,31 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- alert-container -->
+                                <div data-checkout-alert-wrapper class="flex items-center h--48 bb bw--0-50">
+                                    <div class="flex w--3 h--48 bg--col--vermilion">
+                                    </div>
+                                    <div data-checkout-alert-container class="flex justify-center items-center flex--max relative h--48">
+                                        <div data-checkout-alert-content class="flex items-center gap--16">
+                                            <div class="flex w--40 h--40 justify-center items-center">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                                    <rect xmlns="http://www.w3.org/2000/svg" width="40" height="40" rx="8" fill="#FF4405" fill-opacity="0.1"/>
+                                                    <path d="M19.9994 16.4998V21.1664M19.9994 25.8331H20.0111M18.3839 10.5401L8.78823 27.1145C8.25599 28.0338 7.98987 28.4935 8.0292 28.8708C8.06351 29.1998 8.2359 29.4988 8.50349 29.6934C8.81027 29.9164 9.34141 29.9164 10.4037 29.9164H29.5951C30.6574 29.9164 31.1885 29.9164 31.4953 29.6934C31.7629 29.4988 31.9353 29.1998 31.9696 28.8708C32.0089 28.4935 31.7428 28.0338 31.2105 27.1145L21.6148 10.5401C21.0845 9.6241 20.8194 9.16609 20.4734 9.01226C20.1716 8.87808 19.8271 8.87808 19.5254 9.01226C19.1794 9.16609 18.9143 9.6241 18.3839 10.5401Z" stroke="#FF4405" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </div>
+    
+                                            <div class="flex flex--max z-2">
+                                                <span class="fs--14 lh--20 fw6 col--vermilion">Please confirm your updated addresses and credit card information.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <!-- checkbox-container -->
                                 <div class="flex items-center gap--10">
                                     <label class="flex items-center gap--8" data-form-input-type="checkbox" data-form-accent-color="green">
                                         <input type="checkbox" name="save" data-required="0" value="save" class="w--16 h--16 pointer">
                                         <p class="ma0 fs--14 fw4 lh--20 poppins gray-400 tracked--0-2">I agree to Fansocial’s <a href="#" class="fs--14 fw5 lh--20 poppins col--brand-green tracked--0-2">Terms and Condition</a> and <a href="#" class="fs--14 fw5 lh--20 poppins col--brand-green tracked--0-2">Privacy Policy</a>. </p>
-                                    </label>
+                                     </label>
                                 </div>
                                 <!-- button -->
                                 <button data-button-proceed-payment type="button" class="bg-white-20 h--48 pad--x--8 pad--right--10 flex items-center gap--10 justify-center relative size-large" data-button-size="large" data-button-icon-position="left" data-skip-svg-color="" data-skip-svg-width="" data-button-loader="" data-button-loader-success="" data-button-loader-success-text="Your settings have been updated." data-for-new-dashboard="1" data-button-adjust-padding="1">
@@ -421,8 +472,8 @@
                                     </div>
                                 </button>
                             </div>
-                    </div>
-                </div>
+                       </div>
+                 </div>
              </div>
         </div>
         <!-- template ends here -->
