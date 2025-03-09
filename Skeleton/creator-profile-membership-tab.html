@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="dns-prefetch" href="//staging.fansocial.app">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <title>Skeleton - Creator Profile Membership Tab</title>
+    <link rel="stylesheet" id="google-fonts-css" href="https://fonts.googleapis.com/css2?family=Poppins%3Awght%40300%3B400%3B500%3B600%3B700%3B800%3B900&amp;display=swap&amp;ver=1.0.0" media="">
+    <link rel="stylesheet" id="theme-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/theme.css?ver=1.0.0" media="">
+    <link rel="stylesheet" id="final-main-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/main.css?ver=1.0.0" media="">
+    <link rel="stylesheet" id="components-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/css/components.css?ver=1.0.0" media="">
+    <link rel="stylesheet" id="tachyonsStylesheet-css" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.11.1/tachyons.min.css?ver=1.0.0" media="">
+    <link rel="stylesheet" id="pageElements-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/FINAL/css/pageElements.css?ver=1.0.0" media="">
+    <link rel="stylesheet" id="finalCustomTachyonsStylesheet-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/customTachyons.css?ver=1.0.0" media="">
+    <link rel="stylesheet" id="tachyonsV2-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/tachyons-v2.css?ver=1.0.0" media="">
+    <link rel="stylesheet" id="dashboardStyles-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/css/dev/dashboardStylesheet.css?ver=1.0.0" media="">
+    <link rel="icon" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/favicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/pages/overview.css?ver=1.0.0">
+
+    <!-- custom styles for skeleton -->
+    <style>
+        html{font-size: 1rem;}
+
+        .minw--200{min-width: 12.5rem;}
+        .minw--250{min-width: 15.625rem;}
+        .minw--324{min-width: 20.25rem;}
+
+        .w--250{width: 15.625rem;}
+        .w--324{width: 20.25rem;}
+
+        .h--50{height: 3.125rem;}
+        .h--144{height: 9rem;}
+        .h--250{height: 15.625rem;}
+        .h--324{height: 20.25rem;}
+
+        .pad--y--20{padding-top: 1.25rem;padding-bottom: 1.25rem;}
+
+        .bg--blur--400{-webkit-backdrop-filter: blur(400px);backdrop-filter: blur(400px);}
+
+
+        [data-creator-profile-membership-skeleton-tablet]{
+            display: none;
+        }
+
+        @media screen and (max-width: 768px) {
+            [data-creator-profile-membership-skeleton-desktop]{
+                display: none;
+            }
+            [data-creator-profile-membership-skeleton-tablet]{
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body style="background-color: #444;">
+    <!-- skeleton starts from here -->
+    <div data-creator-profile-membership-skeleton-desktop class="flex flex-column gap--40 w-100 pad--40 bg-black-20 bg--blur--400 of--hidden">
+        <!-- benefits -->
+         <div class="flex flex-column gap--16">
+            <div class="flex items-center gap--16">
+                <h2 class="fs--18 lh--28 fw5 poppins col--gull-gray">YOUR BENEFITS</h2>
+                <div class="flex items-center gap--4">
+                    <span class="fs--12 lh--18 fw5 poppins col--brand-green">Manage membership</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M2.66675 8H13.3334M13.3334 8L9.33341 4M13.3334 8L9.33341 12" stroke="#07F468" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="flex items-center gap--16 pad--x--8 of--visible">
+                <div class="skeleton minw--200 w--200 h--50 br--4"></div>
+                <div class="skeleton minw--200 w--200 h--50 br--4"></div>
+                <div class="skeleton minw--200 w--200 h--50 br--4"></div>
+                <div class="skeleton minw--200 w--200 h--50 br--4"></div>
+            </div>
+         </div>
+
+        <!-- member-media -->
+        <div class="flex flex-column gap--16">
+            <h2 class="fs--18 lh--28 fw5 poppins col--gull-gray">MEMBER MEDIA</h2>
+            <div class="flex items-center gap--16 of--visible">
+                <div class="skeleton minw--324 w--324 h--186 br--6"></div>
+                <div class="skeleton minw--324 w--324 h--186 br--6"></div>
+                <div class="skeleton minw--324 w--324 h--186 br--6"></div>
+                <div class="skeleton minw--324 w--324 h--186 br--6"></div>
+                <div class="skeleton minw--324 w--324 h--186 br--6"></div>
+            </div>
+        </div>
+
+        <!-- exclusive-merch -->
+        <div class="flex flex-column gap--16">
+            <h2 class="fs--18 lh--28 fw5 poppins col--gull-gray">EXCLUSIVE MERCH</h2>
+            <div class="flex items-center gap--16 of--visible">
+                <div class="skeleton minw--324 w--324 h--324 br--6"></div>
+                <div class="skeleton minw--324 w--324 h--324 br--6"></div>
+                <div class="skeleton minw--324 w--324 h--324 br--6"></div>
+                <div class="skeleton minw--324 w--324 h--324 br--6"></div>
+                <div class="skeleton minw--324 w--324 h--324 br--6"></div>
+            </div>
+        </div>
+    </div>
+
+    <div data-creator-profile-membership-skeleton-tablet class="flex flex-column gap--24 w-100 pad--y--24 bg-black-20 bg--blur--400 of--hidden">
+        <!-- benefits -->
+         <div class="flex flex-column gap--16 pad--x--8">
+            <div class="flex justify-between items-center gap--16">
+                <h2 class="fs--16 lh--24 fw5 poppins col--gull-gray">YOUR BENEFITS</h2>
+                <div class="flex items-center gap--4">
+                    <span class="fs--12 lh--18 fw5 poppins col--brand-green">Manage membership</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M2.66675 8H13.3334M13.3334 8L9.33341 4M13.3334 8L9.33341 12" stroke="#07F468" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="flex items-center gap--16 pad--x--8 of--visible">
+                <div class="skeleton minw--200 w--200 h--50 br--4"></div>
+                <div class="skeleton minw--200 w--200 h--50 br--4"></div>
+            </div>
+         </div>
+
+        <!-- member-media -->
+        <div class="flex flex-column gap--16 pad--x--8">
+            <div class="flex justify-between items-center">
+                <h2 class="fs--16 lh--24 fw5 poppins col--gull-gray">MEMBER MEDIA</h2>
+                <span class="fs--12 lh--18 fw5 poppins col--brand-green">VIEW ALL</span>
+            </div>
+            <div class="flex items-center gap--8 of--visible pad--y--20">
+                <div class="skeleton minw--250 w--250 h--144 br--6"></div>
+                <div class="skeleton minw--250 w--250 h--144 br--6"></div>
+                <div class="skeleton minw--250 w--250 h--144 br--6"></div>
+            </div>
+            <div class="flex items-center gap--8 of--visible pad--y--20">
+                <div class="skeleton minw--250 w--250 h--144 br--6"></div>
+                <div class="skeleton minw--250 w--250 h--144 br--6"></div>
+                <div class="skeleton minw--250 w--250 h--144 br--6"></div>
+            </div>
+        </div>
+
+        <!-- exclusive-merch -->
+        <div class="flex flex-column gap--16 pad--x--8">
+            <div class="flex justify-between items-center">
+                <h2 class="fs--16 lh--24 fw5 poppins col--gull-gray">EXCLUSIVE MERCH</h2>
+                <span class="fs--12 lh--18 fw5 poppins col--brand-green">VIEW ALL</span>
+            </div>
+            <div class="flex items-center gap--8 of--visible pad--y--20">
+                <div class="skeleton minw--250 w--250 h--250 br--6"></div>
+                <div class="skeleton minw--250 w--250 h--250 br--6"></div>
+                <div class="skeleton minw--250 w--250 h--250 br--6"></div>
+            </div>
+        </div>
+    </div>
+    <!-- skeleton ends here -->
+</body>
+</html>
