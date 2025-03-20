@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="max-image-preview:large">
+        <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="dns-prefetch" href="//staging.fansocial.app">
+        <link rel="dns-prefetch" href="//fonts.googleapis.com">
+        <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+        <title>Merch popup</title>
+        <link rel="stylesheet" id="google-fonts-css" href="https://fonts.googleapis.com/css2?family=Poppins%3Awght%40300%3B400%3B500%3B600%3B700%3B800%3B900&amp;display=swap&amp;ver=1.0.0" media="">
+        <link rel="stylesheet" id="theme-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/theme.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="final-main-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/main.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="components-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/css/components.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="tachyonsStylesheet-css" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.11.1/tachyons.min.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="popup-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/css/dev/popup.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="pageElements-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/FINAL/css/pageElements.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="finalCustomTachyonsStylesheet-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/customTachyons.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="tachyonsV2-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/tachyons-v2.css?ver=1.0.0" media="">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css?ver=1.0.0">
+        <link rel="stylesheet" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/profilePage.css?ver=1.0.0">
+        <link rel="stylesheet" id="frontPageTabletLandscapeStyle-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/tachyons-tablet-landscape.css?ver=1.0.0" media="screen and (min-width: 1010px) and (max-width: 1365px)">
+        <link rel="stylesheet" id="frontPageTabletStyle-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/tachyons-tablet.css?ver=1.0.0" media="screen and (min-width: 768px) and (max-width: 1009px)">
+        <link rel="stylesheet" id="frontPageMobileStyle-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/tachyons-mobile.css?ver=1.0.0" media="screen and (min-width: 480px) and (max-width: 767px)">
+        <link rel="stylesheet" id="frontPageMobilePortraitStyle-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/tachyons-mobile-portrait.css?ver=1.0.0" media="screen and (max-width: 479px)">
+    
+        <!-- custom style for the media popup -->
+        <style>
+            .mx--24 {
+                margin-left: 1.5rem;
+                margin-right: 1.5rem;
+            }
+
+            .top--24{
+                top: 1.5rem;
+            }
+
+            .bottom--30{
+                bottom: 1.875rem;
+            }
+
+            .lh--15{
+                line-height: 0.9375rem;
+            }
+
+
+            .col--gray--warm--100{
+                color: #F5F5F4;
+            }
+
+            .col--gray--warm--200{
+                color: #E7E5E4;
+            }
+
+            span.elm_GlZRaY {
+                height: 1.375rem;
+                min-width: 3rem;
+                max-width: 9.375rem;
+                padding: 0 0.313rem;
+                border-radius: 0.125rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: rgba(255, 255, 255, 0.2);
+                color: white;
+                font-size: 0.75rem;
+                font-weight: 400;
+                line-height: 1.125rem;
+                letter-spacing: 0.01875em;
+                text-transform: capitalize;
+                cursor: pointer;
+            }
+
+            [data-media-details-popup] [data-info-container]{
+                margin-top: 10.9375rem;
+            }
+
+            [data-media-details-popup] [data-info-description] {
+                border-left: 0.5px solid rgba(231, 229, 228, 1)
+            }
+
+            [data-price-span]{
+                margin-bottom: 0.3125rem;
+                margin-right: 0.25rem;
+            }
+
+            @media screen and (min-width: 1365px){
+                .display--flex--responsive-desktop{
+                    display: flex;
+                }
+
+                .display--inline--responsive-desktop{
+                    display: inline;
+                }
+
+                .display--none--responsive-desktop{
+                    display: none;
+                }
+
+                .gap--24--responsive-desktop{
+                    gap: 1.5rem;
+                }
+
+                .gap--16--responsive-desktop{
+                    gap: 1rem;
+                }
+
+                .gap--12--responsive-desktop{
+                    gap: 0.75rem;
+                }
+
+                .gap--8--responsive-desktop{
+                    gap: 0.5rem;
+                }
+            }
+
+            @media screen and (max-width: 1364px){
+                [data-new-subscriber-button]{
+                    width: 50%;
+                    max-width: 440px;
+                }
+
+                [data-cart-button]{
+                    width: 50%;
+                    max-width: 540px;
+                }
+            }
+
+            @media screen and (max-width: 1009px){
+                .mx--16-respnosive-tablet {
+                    margin-left: 1rem;
+                    margin-right: 1rem;
+                }
+                .w--48--responsive-tablet{
+                    width: 3rem;
+                }
+                .h--48--responsive-tablet{
+                    height: 3rem;
+                }
+                [data-new-subscriber-button]{
+                    width: 100%;
+                    max-width: unset;
+                }
+
+                [data-cart-button]{
+                    width: 100%;
+                    max-width: unset;
+                }
+
+                [data-cart-button] [data-add-to-cart].flex--max{
+                    flex: unset;
+                }
+
+                .fs--16-responsive-tablet {
+                    font-size: 1rem;
+                }
+
+                .fs--12-responsive-tablet {
+                    font-size: 0.75rem;
+                }
+
+                [data-media-details-popup] [data-info-text-container].w-683{
+                    max-width: 31.625rem;
+                }
+            }
+
+            @media screen and (max-width: 767px){
+                [data-media-details-popup]{
+                    background: rgba(12, 17, 29, 1);
+                    overflow: auto;
+                }
+
+                [data-media-big-image]{
+                    position: static;
+                    width: 100%;
+                    min-height: 27.625rem;
+                }
+                [data-media-details-popup] [data-info-container]{
+                    width: 100%;
+                    background: rgba(12, 17, 29, 1);
+                    position: static;
+                    margin-top: 0;
+                    padding: 1.5rem .5rem 3rem .5rem;
+                }
+
+                [data-media-details-popup] [data-info-container] [info],
+                [data-media-details-popup] [data-info-text-container]{
+                    max-width: unset;
+                    width: 100%;
+                }
+
+                [data-feed-user-avatar]{
+                    width: 1.5rem;
+                    height: 1.5rem;
+                    margin-top: .25rem;
+                }
+
+                [data-media-details-popup] [data-info-description] {
+                    border-left: none;
+                    padding-left: 0;
+                    gap: .5rem;
+                }
+
+                span.elm_GlZRaY.display-none--responsive-mobile{
+                    display: none;
+                }
+
+                .fs--10--responsive-mobile{
+                    font-size: .625rem;
+                }
+
+                [data-cart-button] [data-buy-now-button]{
+                    padding: .3125rem;
+                }
+
+                [data-cart-button] [data-add-to-cart].flex--max {
+                    width: max-content;
+                    min-width: 58px;
+                }
+
+                [data-price-off]{
+                    padding: 0 2px;
+                    font-size: 0.625rem;
+                    line-height: 1.125rem;
+                    top: 0.375rem;
+                }
+
+                .display--inline--responsive-mobile{
+                    display: inline;
+                }
+
+                [data-old-price]{
+                    margin-top: 0.25rem;
+                    margin-left: 0.25rem;
+                }
+
+                [data-price-off-yellow]{
+                    color: #FCE40D;
+                    background-color: #000000E5;
+                }
+            }
+
+            @media screen and (max-width: 580px){
+                [data-media-big-image]{
+                    min-height: 13.5125rem;
+                }
+
+                [data-cart-button] [data-add-to-cart].flex--max {
+                    padding: 0.3125rem 0.75rem;
+                }
+            }
+        </style>
+    </head>
+    <body class="relative min-h--100">
+
+        <!-- popup-template-starts-from-here -->
+        <div data-media-details-popup="" data-media-id="1900" data-media-access="false" class="fixed top-0 left-0 w-100 h-100 cover flex flex--column-responsive-mobile flex--column-responsive-mobile-portrait items-center z--10100 bg-black">
+            <!-- mobile-navigation-top -->
+            <div class="flex justify-between items-center pa2 w-100">
+                <div class="flex justify-center items-center pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 14" fill="none">
+                        <path d="M7 13L1 7L7 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+
+                <span class="fs--14 lh--20 fw6 white poppins">cheese pizza asmr</span>
+
+                <div class="flex justify-center items-center pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="4" height="18" viewBox="0 0 4 18" fill="none">
+                        <path d="M2 10C2.55228 10 3 9.55228 3 9C3 8.44772 2.55228 8 2 8C1.44772 8 1 8.44772 1 9C1 9.55228 1.44772 10 2 10Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 3C2.55228 3 3 2.55228 3 2C3 1.44772 2.55228 1 2 1C1.44772 1 1 1.44772 1 2C1 2.55228 1.44772 3 2 3Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 17C2.55228 17 3 16.5523 3 16C3 15.4477 2.55228 15 2 15C1.44772 15 1 15.4477 1 16C1 16.5523 1.44772 17 2 17Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- background overlay -->
+            <div class="absolute top-0 left-0 w-100 h-100 db cover bg-center blur--50 z-1 display--none-responsive-mobile display--none-responsive-mobile-portrait" style="background-image: url('https://fansocial-user-media.s3.amazonaws.com/user-1/images/4uBWI3pzRd8oHBAHcU2N4rCTg1wXSI/4uBWI3pzRd8oHBAHcU2N4rCTg1wXSI-w-50.jpg');">
+            </div>
+
+            <!-- background image -->
+            <div data-media-big-image="" class="absolute top-0 left-0 w-100 h-100 db cover bg-center z-2 " style="background-image: url(&quot;https://fansocial-user-media.s3.amazonaws.com/user-1/images/4uBWI3pzRd8oHBAHcU2N4rCTg1wXSI/4uBWI3pzRd8oHBAHcU2N4rCTg1wXSI-w-768.jpg&quot;);"></div> <!-- change cover to contain to toggle full stretch view/fit view -->
+
+            <!-- actions (top) -->
+            <div data-media-actions="" class="flex absolute top--24 left-0 right-0 justify-between items-center mx--24 mx--16-respnosive-tablet z-3 display-none--responsive-mobile display-none--responsive-mobile-portrait">
+                <!-- back (left arrow) button -->
+                <span data-media-details-close="" data-close-button="" class="inline-flex display-none--responsive-tablet w--48 h--48 justify-center items-center gap--10 br--50 bg-black-10 pointer backdrop-blur--10">
+                    <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/short_arrow_left.svg" alt="short_arrow_left" class="filter--col--white w2 h2">
+                </span>
+
+                <span data-media-details-close="" data-close-button="" class="dn display-flex--responsive-tablet w--48 h--48 justify-center items-center gap--10 br--50 bg-black-10 pointer backdrop-blur--10">
+                    <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/cross.svg" alt="short_arrow_left" class="filter--col--white w2 h2">
+                </span>
+
+                <!-- icons-right (like, upload, settings) -->
+                <div class="dn items-center gap--8 display-flex--responsive-tablet-landscape display-flex--responsive-tablet justify-between">
+                    <span class="inline-flex justify-center items-center gap--10 br--50 bg-black-10 pointer backdrop-blur--10 w--64 h--64 w--48--responsive-tablet h--48--responsive-tablet">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="27" viewBox="0 0 30 27" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M14.9907 4.47349C12.3249 1.35693 7.8795 0.518589 4.53943 3.37242C1.19936 6.22624 0.729128 10.9977 3.3521 14.3729C5.53293 17.1792 12.1329 23.0979 14.296 25.0135C14.538 25.2278 14.659 25.335 14.8001 25.3771C14.9233 25.4138 15.0581 25.4138 15.1813 25.3771C15.3224 25.335 15.4434 25.2278 15.6854 25.0135C17.8485 23.0979 24.4485 17.1792 26.6293 14.3729C29.2523 10.9977 28.8395 6.19622 25.442 3.37242C22.0445 0.548609 17.6565 1.35693 14.9907 4.47349Z" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+
+                    <span class="inline-flex justify-center items-center gap--10 br--50 bg-black-10 pointer backdrop-blur--10 w--64 h--64 w--48--responsive-tablet h--48--responsive-tablet">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="27" viewBox="0 0 28 27" fill="none">
+                            <path d="M26 13.6257V19.2257C26 21.4659 26 22.586 25.564 23.4417C25.1805 24.1943 24.5686 24.8063 23.816 25.1898C22.9603 25.6257 21.8402 25.6257 19.6 25.6257H8.4C6.15979 25.6257 5.03969 25.6257 4.18404 25.1898C3.43139 24.8063 2.81947 24.1943 2.43597 23.4417C2 22.586 2 21.4659 2 19.2257V13.6257M19.3333 6.95907L14 1.62573M14 1.62573L8.66667 6.95907M14 1.62573V17.6257" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+
+                    <span class="inline-flex justify-center items-center gap--10 br--50 bg-black-10 pointer backdrop-blur--10 w--64 h--64 w--48--responsive-tablet h--48--responsive-tablet">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="27" viewBox="0 0 8 27" fill="none">
+                            <path d="M3.99984 14.9592C4.73622 14.9592 5.33317 14.3623 5.33317 13.6259C5.33317 12.8895 4.73622 12.2926 3.99984 12.2926C3.26346 12.2926 2.6665 12.8895 2.6665 13.6259C2.6665 14.3623 3.26346 14.9592 3.99984 14.9592Z" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M3.99984 5.6259C4.73622 5.6259 5.33317 5.02894 5.33317 4.29256C5.33317 3.55618 4.73622 2.95923 3.99984 2.95923C3.26346 2.95923 2.6665 3.55618 2.6665 4.29256C2.6665 5.02894 3.26346 5.6259 3.99984 5.6259Z" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M3.99984 24.2926C4.73622 24.2926 5.33317 23.6956 5.33317 22.9592C5.33317 22.2228 4.73622 21.6259 3.99984 21.6259C3.26346 21.6259 2.6665 22.2228 2.6665 22.9592C2.6665 23.6956 3.26346 24.2926 3.99984 24.2926Z" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                </div>
+            </div>
+
+            <!-- actions (bottom right) -->
+            <div data-media-actions="" class="dn display--flex--responsive-desktop absolute right-0 justify-between items-center ph4 z-3 gap--8 z--2000 bottom--30">
+               <span data-media-action="" like-media="" class="flex justify-center items-center br--50 pointer w2 h2">
+                  <svg class="stroke--col--white w1 h1" data-icon="likes_2" xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+                     <path fill-rule="evenodd" clip-rule="evenodd" d="M12.4932 5.13581C10.4938 2.7984 7.15975 2.16964 4.65469 4.31001C2.14964 6.45038 1.79697 10.029 3.7642 12.5604C5.39982 14.6651 10.3498 19.1041 11.9721 20.5408C12.1536 20.7016 12.2444 20.7819 12.3502 20.8135C12.4426 20.8411 12.5437 20.8411 12.6361 20.8135C12.7419 20.7819 12.8327 20.7016 13.0142 20.5408C14.6365 19.1041 19.5865 14.6651 21.2221 12.5604C23.1893 10.029 22.8797 6.42787 20.3316 4.31001C17.7835 2.19216 14.4925 2.7984 12.4932 5.13581Z" stroke="gray"></path>
+                  </svg>
+               </span>
+
+                <span data-media-action="" class="flex justify-center items-center br--50 pointer w2 h2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                        <path d="M13 7.375V10.175C13 11.2951 13 11.8552 12.782 12.283C12.5903 12.6593 12.2843 12.9653 11.908 13.157C11.4802 13.375 10.9201 13.375 9.8 13.375H4.2C3.07989 13.375 2.51984 13.375 2.09202 13.157C1.71569 12.9653 1.40973 12.6593 1.21799 12.283C1 11.8552 1 11.2951 1 10.175V7.375M9.66667 4.04167L7 1.375M7 1.375L4.33333 4.04167M7 1.375V9.375" stroke="#E9E5D3" stroke-opacity="0.9" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+
+               <!-- <div data-media-action="" share-media="" class="relative target-id br--50 backdrop-blur--10 flex pa2 justify-center items-center" style="--target-half-width: 17px;">
+                  <span class="pointer target-id-button" data-target="profile-media-more-1900" menu-loaded="true">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none" class="stroke--col--white, w1, h1">
+                        <path d="M7.99992 9.61682C8.36811 9.61682 8.66659 9.31834 8.66659 8.95015C8.66659 8.58196 8.36811 8.28349 7.99992 8.28349C7.63173 8.28349 7.33325 8.58196 7.33325 8.95015C7.33325 9.31834 7.63173 9.61682 7.99992 9.61682Z" stroke="#E9E5D3" stroke-opacity="0.9" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M7.99992 4.95015C8.36811 4.95015 8.66659 4.65168 8.66659 4.28349C8.66659 3.9153 8.36811 3.61682 7.99992 3.61682C7.63173 3.61682 7.33325 3.9153 7.33325 4.28349C7.33325 4.65168 7.63173 4.95015 7.99992 4.95015Z" stroke="#E9E5D3" stroke-opacity="0.9" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M7.99992 14.2835C8.36811 14.2835 8.66659 13.985 8.66659 13.6168C8.66659 13.2486 8.36811 12.9502 7.99992 12.9502C7.63173 12.9502 7.33325 13.2486 7.33325 13.6168C7.33325 13.985 7.63173 14.2835 7.99992 14.2835Z" stroke="#E9E5D3" stroke-opacity="0.9" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path>
+                     </svg>
+                  </span>
+                  <div class="common_elm_JNhzNd dn flex-column br--3 bg-black menu-id auto-width right no-arrows elm_tdJjHQ elm_DFvpHT" data-menu="profile-media-more-1900" style="display: none;">
+                     <span class="flex items-center gap--8 pointer pad--y--8 pad--x--16" onclick="open_popup({ 'target': '#report-popup' });">
+                     <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/report.svg" alt="report" class="w--24 h--24 pad--2">
+                     <span class="col--iron-gray fs--14 fs-normal fw4 lh--24 ttc">Report</span>
+                     </span>
+                  </div>
+               </div> -->
+            </div>
+
+            <!-- info -->
+            <div data-info-container class="ph4 flex justify-between items-end absolute left-0 right-0 z-3 bottom--30 pad--x--16-responsive-tablet gap--16--responsive-mobile gap--16--responsive-mobile-portrait">
+               <div info="" class="w--900 flex flex-column items-start gap--48 gap--16--responsive-mobile gap--16--responsive-mobile-portrait">
+                  <!-- text-container -->
+                  <div data-info-text-container class="flex flex-column gap--16 w--683">
+                    <!-- profile-info containers -->
+                     <div class="flex items-center gap--20 display--none-responsive-mobile display-none--responsive-mobile-portrait">
+                        <div class="dn display--flex--responsive-desktop justify-start items-center gap--16">
+                            <div class="w--36 h--36 cover br-100 flex" style="background-image: url('https://fansocial-user-media.s3-accelerate.amazonaws.com/user-1/images/3BOVgfqweFilvn8XMMPXoQrzdqvxgy/3BOVgfqweFilvn8XMMPXoQrzdqvxgy.png');">
+
+                            </div>
+                            <div class="flex flex-column ">
+                                <div class="flex justify-center items-center gap--8">
+                                    <span class="col--gray--warm--200 fs--14 fs-normal fw6 lh--normal ls--0-14">@jenny_098767</span>
+                                    <span class="flex justify-center items-center">
+                                       <svg class="w1 h1" data-icon="check-verified-03_filled" xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                                          <g clip-path="url(#clip0_8003_16105)">
+                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M6.74853 14.2232C6.57447 14.0892 6.35375 14.0299 6.13525 14.0588L5.13237 14.1914C4.80129 14.2351 4.48131 14.0506 4.35392 13.7418L3.95321 12.7729C3.8784 12.5914 3.73471 12.4477 3.55324 12.3729L2.58444 11.9722C2.27557 11.844 2.09114 11.5248 2.13484 11.1937L2.27187 10.1522C2.29779 9.95816 2.2452 9.76187 2.12596 9.60632L1.48675 8.77375C1.28306 8.50931 1.28306 8.14043 1.48675 7.87525L2.12596 7.04268C2.24446 6.88787 2.29705 6.69158 2.27187 6.49751L2.13484 5.45606C2.09114 5.12496 2.27557 4.80571 2.58444 4.67756L3.55324 4.27757C3.73397 4.20202 3.87766 4.05832 3.95321 3.87759L4.35318 2.90872C4.48131 2.59984 4.80055 2.4154 5.13163 2.45911L6.17303 2.59614C6.36708 2.62132 6.56336 2.56873 6.71891 2.45022L7.55143 1.81098C7.81585 1.60728 8.18471 1.60728 8.44987 1.81098L9.2824 2.45022C9.4372 2.56873 9.63348 2.62132 9.82753 2.59466L10.8689 2.45763C11.2 2.41392 11.52 2.59836 11.6474 2.90724L12.0481 3.8761C12.1229 4.05758 12.2666 4.20128 12.4481 4.27609L13.4169 4.67682C13.7257 4.80497 13.9102 5.12422 13.8665 5.45532L13.7294 6.49677C13.7035 6.69084 13.7561 6.88713 13.8753 7.04268L14.5146 7.87525C14.7182 8.13969 14.7182 8.50857 14.5146 8.77375L13.899 9.57595C13.765 9.75002 13.7057 9.97075 13.7346 10.1893L13.8665 11.1929C13.9102 11.524 13.7257 11.844 13.4169 11.9714L12.4481 12.3722C12.2666 12.447 12.1229 12.5907 12.0481 12.7722L11.6474 13.741C11.5192 14.0499 11.2 14.2343 10.8689 14.1906L9.82753 14.0536C9.63348 14.0277 9.4372 14.0803 9.28165 14.1995L8.44913 14.8388C8.18471 15.0425 7.81585 15.0425 7.55069 14.8388L6.74853 14.2232ZM10.8054 7.12961C11.0657 6.86926 11.0657 6.44715 10.8054 6.1868C10.545 5.92645 10.1229 5.92645 9.86258 6.1868L7.33398 8.71539L6.47206 7.85347C6.21171 7.59312 5.7896 7.59312 5.52925 7.85347C5.2689 8.11382 5.2689 8.53593 5.52925 8.79628L6.86258 10.1296C7.12293 10.39 7.54504 10.39 7.80539 10.1296L10.8054 7.12961Z" fill="#07F468"></path>
+                                             <path d="M6.13525 14.0588C6.35375 14.0299 6.57447 14.0892 6.74853 14.2232L7.55069 14.8388C7.81585 15.0425 8.18471 15.0425 8.44913 14.8388L9.28165 14.1995C9.4372 14.0803 9.63348 14.0277 9.82754 14.0536L10.8689 14.1906C11.2 14.2343 11.5192 14.0499 11.6474 13.741L12.0481 12.7722C12.1229 12.5907 12.2666 12.447 12.4481 12.3722L13.4169 11.9714C13.7257 11.844 13.9102 11.524 13.8665 11.1929L13.7346 10.1893C13.7057 9.97075 13.765 9.75001 13.899 9.57595L14.5146 8.77375C14.7182 8.50857 14.7182 8.13969 14.5146 7.87525L13.8753 7.04268C13.7561 6.88713 13.7035 6.69084 13.7294 6.49677L13.8665 5.45532C13.9102 5.12422 13.7257 4.80497 13.4169 4.67682L12.4481 4.27609C12.2666 4.20128 12.1229 4.05758 12.0481 3.8761L11.6474 2.90724C11.52 2.59836 11.2 2.41392 10.8689 2.45763L9.82754 2.59466C9.63348 2.62132 9.4372 2.56873 9.2824 2.45022L8.44987 1.81098C8.18471 1.60728 7.81585 1.60728 7.55143 1.81098L6.71891 2.45022C6.56336 2.56873 6.36708 2.62132 6.17303 2.59614L5.13163 2.45911C4.80055 2.4154 4.48131 2.59984 4.35318 2.90872L3.95321 3.87759C3.87766 4.05832 3.73397 4.20202 3.55324 4.27757L2.58444 4.67756C2.27557 4.80571 2.09114 5.12496 2.13484 5.45606L2.27187 6.49751C2.29705 6.69158 2.24446 6.88787 2.12596 7.04268L1.48675 7.87525C1.28306 8.14043 1.28306 8.50931 1.48675 8.77375L2.12596 9.60632C2.2452 9.76187 2.29779 9.95816 2.27187 10.1522L2.13484 11.1937C2.09114 11.5248 2.27557 11.844 2.58444 11.9722L3.55324 12.3729C3.73471 12.4477 3.8784 12.5914 3.95321 12.7729L4.35392 13.7418C4.48131 14.0506 4.80129 14.2351 5.13237 14.1914L6.13525 14.0588Z" stroke="#07F468" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                          </g>
+                                          <defs>
+                                             <clipPath id="clip0_8003_16105">
+                                                <rect width="16" height="16" fill="white" transform="translate(0 0.324951)"></rect>
+                                             </clipPath>
+                                          </defs>
+                                       </svg>
+                                    </span>
+                                 </div>
+                            </div>
+                         </div>
+
+                         <div class="flex display--none--responsive-desktop justify-start items-center items--start-responsive-mobile items--start-responsive-mobile-portrait gap--8">
+                            <div data-feed-user-avatar class="w--36 h--36 cover br-100 flex w--24-responsive-mobile h--24-responsive-mobile" style="background-image: url('https://fansocial-user-media.s3-accelerate.amazonaws.com/user-1/images/3BOVgfqweFilvn8XMMPXoQrzdqvxgy/3BOVgfqweFilvn8XMMPXoQrzdqvxgy.png');">
+
+                            </div>
+                            <div class="flex flex-column gap--4">
+                                <div class="flex justify-center items-center gap--4">
+                                    <span class="col--gray--warm--200 fs--12 fs-normal fw6 lh--18 ls--0-14">@jenny_098767</span>
+                                    <span class="flex justify-center items-center ">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="11" viewBox="0 0 10 11" fill="none">
+                                            <g clip-path="url(#clip0_18413_71088)">
+                                            <path d="M7.72237 2.17095C7.81734 2.40064 7.99965 2.58322 8.2292 2.67854L9.03413 3.01195C9.26384 3.10711 9.44635 3.28961 9.5415 3.51933C9.63665 3.74904 9.63665 4.00714 9.5415 4.23686L9.20833 5.04121C9.11313 5.27102 9.113 5.52939 9.20863 5.7591L9.54122 6.56321C9.58839 6.67698 9.61268 6.79894 9.6127 6.9221C9.61272 7.04527 9.58847 7.16723 9.54134 7.28102C9.4942 7.39481 9.42511 7.49819 9.33801 7.58527C9.2509 7.67235 9.14749 7.74141 9.03369 7.7885L8.22934 8.12168C7.99964 8.21665 7.81706 8.39896 7.72174 8.62851L7.38833 9.43344C7.29318 9.66315 7.11067 9.84566 6.88096 9.94081C6.65124 10.036 6.39314 10.036 6.16343 9.94081L5.35907 9.60764C5.12935 9.51272 4.87134 9.51291 4.64177 9.60818L3.83684 9.94111C3.60725 10.036 3.34937 10.036 3.11984 9.94089C2.89032 9.84581 2.70791 9.66352 2.6127 9.43406L2.27918 8.62889C2.18421 8.39919 2.0019 8.21661 1.77235 8.12129L0.967421 7.78788C0.737807 7.69277 0.555355 7.51038 0.460169 7.2808C0.364983 7.05121 0.364854 6.79323 0.45981 6.56355L0.792984 5.7592C0.8879 5.52948 0.887707 5.27147 0.792445 5.04189L0.459749 4.23639C0.41258 4.12261 0.388291 4.00066 0.388272 3.87749C0.388252 3.75433 0.412501 3.63237 0.459634 3.51858C0.506767 3.40479 0.57586 3.3014 0.662965 3.21432C0.75007 3.12725 0.853479 3.05819 0.967283 3.01109L1.77164 2.67792C2.00113 2.58302 2.1836 2.40095 2.27899 2.17166L2.6124 1.36673C2.70755 1.13702 2.89006 0.954511 3.11978 0.85936C3.34949 0.76421 3.60759 0.76421 3.83731 0.85936L4.64166 1.19253C4.87138 1.28745 5.12939 1.28726 5.35897 1.19199L6.16424 0.859877C6.39392 0.76478 6.65197 0.764799 6.88164 0.859931C7.11131 0.955063 7.29379 1.13752 7.38895 1.36717L7.72247 2.17234L7.72237 2.17095Z" fill="#0788F5"/>
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M6.95829 4.08928C7.02509 3.98436 7.04747 3.85719 7.02051 3.73576C6.99356 3.61433 6.91946 3.50859 6.81454 3.44178C6.70961 3.37498 6.58245 3.3526 6.46102 3.37956C6.33959 3.40652 6.23384 3.48061 6.16704 3.58553L4.33141 6.46991L3.49141 5.41991C3.41375 5.32277 3.30069 5.26047 3.17709 5.24669C3.05349 5.23292 2.92949 5.26881 2.83235 5.34647C2.73522 5.42413 2.67291 5.53719 2.65914 5.66079C2.64536 5.78439 2.68125 5.9084 2.75891 6.00553L4.00891 7.56803C4.0555 7.62634 4.11533 7.67268 4.18344 7.7032C4.25154 7.73372 4.32595 7.74753 4.40047 7.7435C4.47499 7.73946 4.54747 7.71769 4.61188 7.68C4.67629 7.64231 4.73077 7.58978 4.77079 7.52678L6.95829 4.08928Z" fill="white"/>
+                                            </g>
+                                            <defs>
+                                            <clipPath id="clip0_18413_71088">
+                                            <rect width="10" height="10" fill="white" transform="translate(0 0.399902)"/>
+                                            </clipPath>
+                                            </defs>
+                                        </svg>
+                                    </span>
+                                 </div>
+
+                                 <span class="fs--12 lh--18 fw5 poppins col--gray--warm--200 display-none--responsive-mobile display-none--responsive-mobile-portrait">@sammisjelly187</span>
+
+                                 <div class="flex gap--12">
+                                    <div class="flex items-center gap--4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="13" viewBox="0 0 12 13" fill="none">
+                                            <path d="M6.00008 8.1499C4.15086 8.1499 2.50637 9.04277 1.45941 10.4284C1.23407 10.7266 1.1214 10.8757 1.12509 11.0772C1.12793 11.2329 1.2257 11.4293 1.34821 11.5255C1.50677 11.6499 1.7265 11.6499 2.16596 11.6499H9.83419C10.2737 11.6499 10.4934 11.6499 10.6519 11.5255C10.7744 11.4293 10.8722 11.2329 10.8751 11.0772C10.8788 10.8757 10.7661 10.7266 10.5407 10.4284C9.49378 9.04277 7.84929 8.1499 6.00008 8.1499Z" stroke="#EAECF0" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M6.00008 6.3999C7.44982 6.3999 8.62508 5.22465 8.62508 3.7749C8.62508 2.32515 7.44982 1.1499 6.00008 1.1499C4.55033 1.1499 3.37508 2.32515 3.37508 3.7749C3.37508 5.22465 4.55033 6.3999 6.00008 6.3999Z" stroke="#EAECF0" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        <span class="fs--12 lh--18 fw4 poppins col--gray--warm--200">15.2K</span>
+                                    </div>
+                                    <div class="flex items-center gap--4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M6.99609 3.39579C5.8298 2.0323 3.88493 1.66553 2.42365 2.91408C0.962374 4.16263 0.756646 6.25014 1.9042 7.7268C2.85831 8.95455 5.74578 11.544 6.69214 12.3821C6.79802 12.4758 6.85096 12.5227 6.91271 12.5411C6.9666 12.5572 7.02557 12.5572 7.07947 12.5411C7.14122 12.5227 7.19416 12.4758 7.30003 12.3821C8.24639 11.544 11.1339 8.95455 12.088 7.7268C13.2355 6.25014 13.0549 4.14949 11.5685 2.91408C10.0821 1.67866 8.16238 2.0323 6.99609 3.39579Z" stroke="#EAECF0" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        <span class="fs--12 lh--18 fw4 poppins col--gray--warm--200">99K</span>
+                                    </div>
+                                 </div>
+                            </div>
+                         </div>
+                     </div>
+
+                     <div data-info-description info-description="" class="flex flex-column pad--left--24 items-start gap--20 self-stretch">
+                        <span class="col--gray--warm--100 fs--28 fs--16-responsive-tablet fs-normal fw6 lh--normal ls--0-28">Record breaking fried chicken eating ! See my attempt to break world’s record! Watch now!</span>
+                        
+                        <span class="elm_GlZRaY display-none--responsive-mobile display-none--responsive-mobile-portrait" >11/12/23</span>
+                        
+                        <span class="white fs--16 fs--12-responsive-tablet fs-normal fw4 lh--normal lh--24-responsive-tablet tracked--150">Lorem Ipsum I hate the color orange so much I have to close my eyes while I eat them</span>
+                        
+                        <div class="dn display-flex--responsive-mobile display-flex--responsive-mobile justify-start items-center items--start-responsive-mobile items--start-responsive-mobile-portrait gap--8 mb2">
+                            <div data-feed-user-avatar class="w--36 h--36 cover br-100 flex w--24-responsive-mobile h--24-responsive-mobile" style="background-image: url('https://fansocial-user-media.s3-accelerate.amazonaws.com/user-1/images/3BOVgfqweFilvn8XMMPXoQrzdqvxgy/3BOVgfqweFilvn8XMMPXoQrzdqvxgy.png');">
+
+                            </div>
+                            <div class="flex flex-column gap--4">
+                                <div class="flex justify-center items-center gap--4">
+                                    <span class="col--gray--warm--200 fs--12 fs-normal fw6 lh--18 ls--0-14">@jenny_098767</span>
+                                    <span class="flex justify-center items-center ">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="11" viewBox="0 0 10 11" fill="none">
+                                            <g clip-path="url(#clip0_18413_71088)">
+                                            <path d="M7.72237 2.17095C7.81734 2.40064 7.99965 2.58322 8.2292 2.67854L9.03413 3.01195C9.26384 3.10711 9.44635 3.28961 9.5415 3.51933C9.63665 3.74904 9.63665 4.00714 9.5415 4.23686L9.20833 5.04121C9.11313 5.27102 9.113 5.52939 9.20863 5.7591L9.54122 6.56321C9.58839 6.67698 9.61268 6.79894 9.6127 6.9221C9.61272 7.04527 9.58847 7.16723 9.54134 7.28102C9.4942 7.39481 9.42511 7.49819 9.33801 7.58527C9.2509 7.67235 9.14749 7.74141 9.03369 7.7885L8.22934 8.12168C7.99964 8.21665 7.81706 8.39896 7.72174 8.62851L7.38833 9.43344C7.29318 9.66315 7.11067 9.84566 6.88096 9.94081C6.65124 10.036 6.39314 10.036 6.16343 9.94081L5.35907 9.60764C5.12935 9.51272 4.87134 9.51291 4.64177 9.60818L3.83684 9.94111C3.60725 10.036 3.34937 10.036 3.11984 9.94089C2.89032 9.84581 2.70791 9.66352 2.6127 9.43406L2.27918 8.62889C2.18421 8.39919 2.0019 8.21661 1.77235 8.12129L0.967421 7.78788C0.737807 7.69277 0.555355 7.51038 0.460169 7.2808C0.364983 7.05121 0.364854 6.79323 0.45981 6.56355L0.792984 5.7592C0.8879 5.52948 0.887707 5.27147 0.792445 5.04189L0.459749 4.23639C0.41258 4.12261 0.388291 4.00066 0.388272 3.87749C0.388252 3.75433 0.412501 3.63237 0.459634 3.51858C0.506767 3.40479 0.57586 3.3014 0.662965 3.21432C0.75007 3.12725 0.853479 3.05819 0.967283 3.01109L1.77164 2.67792C2.00113 2.58302 2.1836 2.40095 2.27899 2.17166L2.6124 1.36673C2.70755 1.13702 2.89006 0.954511 3.11978 0.85936C3.34949 0.76421 3.60759 0.76421 3.83731 0.85936L4.64166 1.19253C4.87138 1.28745 5.12939 1.28726 5.35897 1.19199L6.16424 0.859877C6.39392 0.76478 6.65197 0.764799 6.88164 0.859931C7.11131 0.955063 7.29379 1.13752 7.38895 1.36717L7.72247 2.17234L7.72237 2.17095Z" fill="#0788F5"/>
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M6.95829 4.08928C7.02509 3.98436 7.04747 3.85719 7.02051 3.73576C6.99356 3.61433 6.91946 3.50859 6.81454 3.44178C6.70961 3.37498 6.58245 3.3526 6.46102 3.37956C6.33959 3.40652 6.23384 3.48061 6.16704 3.58553L4.33141 6.46991L3.49141 5.41991C3.41375 5.32277 3.30069 5.26047 3.17709 5.24669C3.05349 5.23292 2.92949 5.26881 2.83235 5.34647C2.73522 5.42413 2.67291 5.53719 2.65914 5.66079C2.64536 5.78439 2.68125 5.9084 2.75891 6.00553L4.00891 7.56803C4.0555 7.62634 4.11533 7.67268 4.18344 7.7032C4.25154 7.73372 4.32595 7.74753 4.40047 7.7435C4.47499 7.73946 4.54747 7.71769 4.61188 7.68C4.67629 7.64231 4.73077 7.58978 4.77079 7.52678L6.95829 4.08928Z" fill="white"/>
+                                            </g>
+                                            <defs>
+                                            <clipPath id="clip0_18413_71088">
+                                            <rect width="10" height="10" fill="white" transform="translate(0 0.399902)"/>
+                                            </clipPath>
+                                            </defs>
+                                        </svg>
+                                    </span>
+                                 </div>
+
+                                 <span class="fs--12 lh--18 fw5 poppins col--gray--warm--200 display-none--responsive-mobile display-none--responsive-mobile-portrait">@sammisjelly187</span>
+
+                                 <div class="flex gap--12">
+                                    <div class="flex items-center gap--4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="13" viewBox="0 0 12 13" fill="none">
+                                            <path d="M6.00008 8.1499C4.15086 8.1499 2.50637 9.04277 1.45941 10.4284C1.23407 10.7266 1.1214 10.8757 1.12509 11.0772C1.12793 11.2329 1.2257 11.4293 1.34821 11.5255C1.50677 11.6499 1.7265 11.6499 2.16596 11.6499H9.83419C10.2737 11.6499 10.4934 11.6499 10.6519 11.5255C10.7744 11.4293 10.8722 11.2329 10.8751 11.0772C10.8788 10.8757 10.7661 10.7266 10.5407 10.4284C9.49378 9.04277 7.84929 8.1499 6.00008 8.1499Z" stroke="#EAECF0" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M6.00008 6.3999C7.44982 6.3999 8.62508 5.22465 8.62508 3.7749C8.62508 2.32515 7.44982 1.1499 6.00008 1.1499C4.55033 1.1499 3.37508 2.32515 3.37508 3.7749C3.37508 5.22465 4.55033 6.3999 6.00008 6.3999Z" stroke="#EAECF0" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        <span class="fs--12 lh--18 fw4 poppins col--gray--warm--200">15.2K</span>
+                                    </div>
+                                    <div class="flex items-center gap--4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M6.99609 3.39579C5.8298 2.0323 3.88493 1.66553 2.42365 2.91408C0.962374 4.16263 0.756646 6.25014 1.9042 7.7268C2.85831 8.95455 5.74578 11.544 6.69214 12.3821C6.79802 12.4758 6.85096 12.5227 6.91271 12.5411C6.9666 12.5572 7.02557 12.5572 7.07947 12.5411C7.14122 12.5227 7.19416 12.4758 7.30003 12.3821C8.24639 11.544 11.1339 8.95455 12.088 7.7268C13.2355 6.25014 13.0549 4.14949 11.5685 2.91408C10.0821 1.67866 8.16238 2.0323 6.99609 3.39579Z" stroke="#EAECF0" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        <span class="fs--12 lh--18 fw4 poppins col--gray--warm--200">99K</span>
+                                    </div>
+                                 </div>
+                            </div>
+                         </div>
+                        
+                        <div class="flex items-center gap--8 flex-wrap">
+                           <span class="elm_GlZRaY" onclick="Media.openTagPopup('Armpit_Fetish', event);">Armpit Fetish</span>
+                           <span class="elm_GlZRaY" onclick="Media.openTagPopup('Asian_Fetish', event);">Asian Fetish</span>
+                           <span class="elm_GlZRaY" onclick="Media.openTagPopup('ASMR', event);">ASMR</span>
+                           <span class="elm_GlZRaY" onclick="Media.openTagPopup('Asshole_Fetish', event);">Asshole Fetish</span>
+                           <span class="elm_GlZRaY" onclick="Media.openTagPopup('Ass_Worship', event);">Ass Worship</span>
+                        </div>
+                     </div>
+                  </div>
+
+                  <!-- button-container -->
+                  <div info-buttons="" class="flex flex--column-responsive-tablet flex--column-responsive-mobile flex--column-responsive-mobile-portrait gap--12--responsive-desktop gap--24-responsive-tablet gap--16-responsive-mobile gap--16-responsive-mobile-portrait self-stretch">
+                     <!-- New Subscriber Button -->
+                     <div data-new-subscriber-button class="w-100 pad--x--20 flex items-start w--100-responsive-tablet">
+                        <!-- Buy Now Button -->
+                        <a href="https://staging.fansocial.app/checkout/?add-to-cart=2439&amp;variation_id=3968" data-button-style="skew-right-top" data-button-theme="pink-1" data-button-bg="image" class="h--72 h--56-responsive-mobile h--56-responsive-mobile-portrait pad--x--24 pad--y--5 h--60 flex--max flex items-center gap--4 gap--24--responsive-desktop justify-center elm_dEfrtu" onclick="open_popup({ 'target': '#subscription-popup' });">
+                            <span data-button-label="" class="fs--24 fw5 lh--32 ttu white nowrap dn display--inline--responsive-desktop">SUBSCRIBE</span>
+                            <div class="items-center dn display--flex--responsive-desktop mt2">
+                                <span data-button-label="" class="fs--12 fw5 lh--15 white nowrap fs--10--responsive-mobile">USD$</span>
+                                <span data-button-label="" class="fs--30 fw6 lh--38 white fs--24--responsive-mobile fs--24--responsive-mobile-portrait lh--32-responsive-mobile lh--32--responsive-mobile-portrait" data-price-span>0.99</span>
+                                <span data-button-label="" class="fs--12 fw5 lh--15 white nowrap fs--10--responsive-mobile">/month</span>
+                            </div>
+                            <div class="flex items-center display--none--responsive-desktop mt2">
+                                <span data-button-label="" class="fs--12 fw5 lh--15 white nowrap fs--10--responsive-mobile">$</span>
+                                <span data-button-label="" class="fs--30 fw6 lh--38 white fs--24--responsive-mobile fs--24--responsive-mobile-portrait lh--32-responsive-mobile lh--32--responsive-mobile-portrait" data-price-span>0.99</span>
+                                <span data-button-label="" class="fs--12 fw5 lh--15 white nowrap fs--10--responsive-mobile">/month</span>
+                            </div>
+                            <span data-button-label="" class="fs--24 fw5 lh--32 white nowrap di display--none--responsive-desktop fs--18-responsive-mobile fs--18-responsive-mobile-portrait lh--28-responsive-mobile lh--28-responsive-mobile-portrait">Subscribe Now</span>
+                        </a>
+                        <!-- /Buy Now Button -->
+                     </div>
+
+                     <!-- Cart Button golden -->
+                     <div data-cart-button class="w-100 pad--x--20 items-start w--100-responsive-tablet dn display-flex--responsive-mobile display-flex--responsive-mobile-portrait">
+                        <!-- Buy Now Button -->
+                        <a data-buy-now-button href="https://staging.fansocial.app/checkout/?add-to-cart=5021" data-button-bg="image" data-button-style="skew-right-top" data-button-theme="yellow" class="h--72 h--56-responsive-mobile h--56-responsive-mobile-portrait pad--x--40 pad--y--5 h--60 flex--max flex items-center justify-center gap--4 gap--24--responsive-desktop relative">
+                            <span data-price-off-yellow data-price-off="" class="bg-white pad--x--8 pad--y--2 fs--16 fw6 lh--24 col--vibrant-blue absolute dn display--flex--responsive-desktop display-flex--responsive-mobile display-flex--responsive-mobile-portrait">10% off</span>
+                            <span data-button-label="" class="fs--24 fw5 lh--32 ttu white nowrap pad--left--16 dn display--flex--responsive-desktop">BUY NOW</span>
+                            <div class="items-center dn display--flex--responsive-desktop mt2">
+                                <span data-button-label="" class="fs--12 fw5 lh--15 white nowrap">USD$</span>
+                                <span data-button-label="" class="fs--30 fw6 lh--38 white fs--24--responsive-mobile fs--24--responsive-mobile-portrait lh--32-responsive-mobile lh--32--responsive-mobile-portrait" data-price-span>100.99</span>
+                                <span data-button-label="" class="fs--12 fw5 lh--15 white nowrap">/month</span>
+                            </div>
+                            <div class="flex items-center display--none--responsive-desktop mt2">
+                                <span data-button-label="" class="fs--12 fw5 lh--15 white nowrap fs--10--responsive-mobile">$</span>
+                                <span data-button-label="" class="fs--30 fw6 lh--38 white fs--24--responsive-mobile fs--24--responsive-mobile-portrait lh--32-responsive-mobile lh--32--responsive-mobile-portrait" data-price-span>100.99</span>
+                                <span data-button-label="" class="fs--12 fw5 lh--15 white nowrap fs--10--responsive-mobile lh--24--responsive-mobile lh--24--responsive-mobile-portrait dn display--inline--responsive-mobile strike" data-old-price>1000.99</span>
+                            </div>
+                            <span data-button-label="" class="fs--24 fw5 lh--32 white nowrap di display--none--responsive-desktop fs--18-responsive-mobile fs--18-responsive-mobile-portrait lh--28-responsive-mobile lh--28-responsive-mobile-portrait">Buy now</span>
+                        </a>
+                        <!-- /Buy Now Button -->
+
+                        <!-- Add to cart Button -->
+                        <a data-add-to-cart href="https://staging.fansocial.app/checkout/?add-to-cart=5021" data-button-style="skew-right-top" data-button-theme="yellow" class="h--72 h--56-responsive-mobile h--56-responsive-mobile-portrait pad--x--40 pad--y--5 h--60 flex--max flex items-center justify-center">
+                            <span data-button-label="" class="fs--18 fw5 lh--28 white nowrap display--none-responsive-mobile-portrait">Add to cart</span>
+                            <div data-button-label="" class="dn display-flex--responsive-mobile-portrait justify-center items-center pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
+                                    <path d="M4.94561 12.3667H15.892C16.7361 12.3667 17.1581 12.3667 17.494 12.2093C17.79 12.0707 18.0386 11.8482 18.2091 11.5693C18.4026 11.2528 18.4492 10.8334 18.5424 9.99452L19.0941 4.81047M2.4455 2.3667H3.48586C3.70638 2.3667 3.81664 2.3667 3.9029 2.40864C3.97884 2.44556 4.04178 2.50468 4.08336 2.57817C4.1306 2.66165 4.13747 2.77169 4.15123 2.99178L4.90643 15.075C4.92018 15.295 4.92706 15.4051 4.9743 15.4886C5.01588 15.5621 5.07881 15.6212 5.15476 15.6581C5.24102 15.7 5.35128 15.7 5.5718 15.7H16.6122M7.02883 18.6167H7.03716M14.5288 18.6167H14.5372M7.4455 18.6167C7.4455 18.8468 7.25895 19.0334 7.02883 19.0334C6.79871 19.0334 6.61216 18.8468 6.61216 18.6167C6.61216 18.3866 6.79871 18.2 7.02883 18.2C7.25895 18.2 7.4455 18.3866 7.4455 18.6167ZM14.9455 18.6167C14.9455 18.8468 14.7589 19.0334 14.5288 19.0334C14.2987 19.0334 14.1122 18.8468 14.1122 18.6167C14.1122 18.3866 14.2987 18.2 14.5288 18.2C14.7589 18.2 14.9455 18.3866 14.9455 18.6167Z" stroke="#FFFADD" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M11.6122 2.3667L11.6122 9.03337M11.6122 9.03337L8.27882 5.70003M11.6122 9.03337L14.9455 5.70003" stroke="#FFFADD" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </a>
+                        <!-- Add to cart Button -->
+                     </div>
+                     <!-- /Cart Button golden -->
+
+                     <!-- Cart Button -->
+                     <div data-cart-button class="w-100 pad--x--20 flex items-start w--100-responsive-tablet">
+                        <!-- Buy Now Button -->
+                        <a data-buy-now-button href="https://staging.fansocial.app/checkout/?add-to-cart=5021" data-button-bg="image" data-button-style="skew-right-top" data-button-theme="blue" class="h--72 h--56-responsive-mobile h--56-responsive-mobile-portrait pad--x--40 pad--y--5 h--60 flex--max flex items-center justify-center gap--4 gap--24--responsive-desktop relative">
+                            <span data-price-off="" class="bg-white pad--x--8 pad--y--2 fs--16 fw6 lh--24 col--vibrant-blue absolute dn display--flex--responsive-desktop display-flex--responsive-mobile display-flex--responsive-mobile-portrait">10% off</span>
+                            <span data-button-label="" class="fs--24 fw5 lh--32 ttu white nowrap pad--left--16 dn display--flex--responsive-desktop">BUY NOW</span>
+                            <div class="items-center dn display--flex--responsive-desktop mt2">
+                                <span data-button-label="" class="fs--12 fw5 lh--15 white nowrap">USD$</span>
+                                <span data-button-label="" class="fs--30 fw6 lh--38 white fs--24--responsive-mobile fs--24--responsive-mobile-portrait lh--32-responsive-mobile lh--32--responsive-mobile-portrait" data-price-span>100.99</span>
+                                <span data-button-label="" class="fs--12 fw5 lh--15 white nowrap">/month</span>
+                            </div>
+                            <div class="flex items-center display--none--responsive-desktop mt2">
+                                <span data-button-label="" class="fs--12 fw5 lh--15 white nowrap fs--10--responsive-mobile">$</span>
+                                <span data-button-label="" class="fs--30 fw6 lh--38 white fs--24--responsive-mobile fs--24--responsive-mobile-portrait lh--32-responsive-mobile lh--32--responsive-mobile-portrait" data-price-span>100.99</span>
+                                <span data-button-label="" class="fs--12 fw5 lh--15 white nowrap fs--10--responsive-mobile lh--24--responsive-mobile lh--24--responsive-mobile-portrait dn display--inline--responsive-mobile strike" data-old-price>1000.99</span>
+                            </div>
+                            <span data-button-label="" class="fs--24 fw5 lh--32 white nowrap di display--none--responsive-desktop fs--18-responsive-mobile fs--18-responsive-mobile-portrait lh--28-responsive-mobile lh--28-responsive-mobile-portrait">Buy now</span>
+                        </a>
+                        <!-- /Buy Now Button -->
+
+                        <!-- Add to cart Button -->
+                        <a data-add-to-cart href="https://staging.fansocial.app/checkout/?add-to-cart=5021" data-button-style="skew-right-top" data-button-theme="black-blue" class="h--72 h--56-responsive-mobile h--56-responsive-mobile-portrait pad--x--40 pad--y--5 h--60 flex--max flex items-center justify-center">
+                            <span data-button-label="" class="fs--18 fw5 lh--28 white nowrap display--none-responsive-mobile-portrait">Add to cart</span>
+                            <div data-button-label="" class="dn display-flex--responsive-mobile-portrait justify-center items-center pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
+                                    <path d="M4.94561 12.3667H15.892C16.7361 12.3667 17.1581 12.3667 17.494 12.2093C17.79 12.0707 18.0386 11.8482 18.2091 11.5693C18.4026 11.2528 18.4492 10.8334 18.5424 9.99452L19.0941 4.81047M2.4455 2.3667H3.48586C3.70638 2.3667 3.81664 2.3667 3.9029 2.40864C3.97884 2.44556 4.04178 2.50468 4.08336 2.57817C4.1306 2.66165 4.13747 2.77169 4.15123 2.99178L4.90643 15.075C4.92018 15.295 4.92706 15.4051 4.9743 15.4886C5.01588 15.5621 5.07881 15.6212 5.15476 15.6581C5.24102 15.7 5.35128 15.7 5.5718 15.7H16.6122M7.02883 18.6167H7.03716M14.5288 18.6167H14.5372M7.4455 18.6167C7.4455 18.8468 7.25895 19.0334 7.02883 19.0334C6.79871 19.0334 6.61216 18.8468 6.61216 18.6167C6.61216 18.3866 6.79871 18.2 7.02883 18.2C7.25895 18.2 7.4455 18.3866 7.4455 18.6167ZM14.9455 18.6167C14.9455 18.8468 14.7589 19.0334 14.5288 19.0334C14.2987 19.0334 14.1122 18.8468 14.1122 18.6167C14.1122 18.3866 14.2987 18.2 14.5288 18.2C14.7589 18.2 14.9455 18.3866 14.9455 18.6167Z" stroke="#FFFADD" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M11.6122 2.3667L11.6122 9.03337M11.6122 9.03337L8.27882 5.70003M11.6122 9.03337L14.9455 5.70003" stroke="#FFFADD" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </a>
+                        <!-- Add to cart Button -->
+                     </div>
+                     <!-- /Cart Button -->
+                  </div>
+               </div>
+            </div>
+         </div>
+        <!-- popup-template-ends-here -->
+         
+    </body>
+</html>
