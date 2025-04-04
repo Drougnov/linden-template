@@ -98,6 +98,17 @@
             margin-right: 0;
         }
 
+        [data-responsive-select-dropdown-container] [data-form-input-type=checkbox][data-form-accent-color=transparent] input[type=checkbox]:not(:checked),
+        [data-responsive-select-dropdown-container] [data-form-input-type=checkbox][data-form-accent-color=transparent] input[type=checkbox]:checked {
+            background-color: #000;
+            border-color: var(--Brand-green, #07f468);
+        }
+
+        [data-responsive-select-dropdown-container] [data-form-input-type=checkbox][data-form-accent-color=transparent] input[type=checkbox]:not(:checked)+div span,
+        [data-responsive-select-dropdown-container] [data-form-input-type=checkbox][data-form-accent-color=transparent] input[type=checkbox]:checked+div span{
+            color: var(--color-brand-green, #07f468);
+        }
+
         [data-responsive-select-dropdown-container] [data-form-input-type=checkbox][data-form-accent-color=basic] input[type=checkbox]:checked::after {
             border-color: var(--color-brand-green, #07f468);
             left: .3rem;
@@ -1267,7 +1278,7 @@
                                         <span class="fs--14 fw6 lh--20 col--ebony--variation-2">Video</span>
                                         <small class="fs--12 lh--18 col--ebony--variation-2 h2">15</small>
                                     </div>
-                                    <input id="media_type_video" name="types[]" data-name="types" value="video" type="checkbox" data-filter-select-type="media_type" checked="" js-loaded="true">
+                                    <input id="media_type_video" name="types[]" data-name="types" value="video" type="checkbox" data-filter-select-type="media_type" checked="" js-loaded="true" class="pointer">
                                 </label>
                             </div>
                             </div>
