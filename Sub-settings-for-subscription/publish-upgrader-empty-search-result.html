@@ -118,6 +118,42 @@
             top: .12rem;
         }
 
+        /* search-filter */
+        [data-filter-adding="true"]{
+            background-color: white;
+        }
+
+        [data-filter-active="true"] [data-input-wrapper],
+        [data-filter-adding="true"] [data-input-wrapper]{
+            box-shadow: 0 1.5px 0 0 rgba(12, 17, 29, 1);
+        }
+
+        [data-filter-adding="true"] [data-filter-search-result-box]{
+            display: flex;
+            top: calc(100% + 2.5px);
+            z-index: 101;
+            background-color: #F4F6F8;
+            box-shadow: 0px 0px 8px 0px #0000001A;
+        }
+
+        /* searched-tags-section */
+        [data-searched-tags-container]{
+            min-height: 1.75rem;
+        }
+
+        /* empty-result-container */
+        [data-sub-settings-empty-result-section]{
+            flex: 1;
+        }
+
+        [data-sub-settings-empty-result-container]{
+            border: 1px dashed rgba(208, 213, 221, 1);
+            overflow: scroll;
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
+
+        /* media-queries */
         @media screen and (max-width: 1365px) {
             .pad--x--16-responsive-tablet-landscape{
                 padding-left: 1rem;
@@ -227,13 +263,33 @@
                             <!-- filter-section -->
                             <div class="flex gap--16 items-center gap--8-responsive-mobile gap--8-responsive-mobile-portrait">
                                 <!-- input-field -->
-                                <div class="flex flex-column gap--6 w-100 flex--max" data-input-wrapper="" data-form-input-type="text" data-form-input-label-position="left" data-input-label-type="icon" data-input-new-dashboard="">
+                                <div class="flex flex-column gap--6 w-100 flex--max relative" data-input-wrapper="" data-form-input-type="text" data-form-input-label-position="left" data-input-label-type="icon" data-input-new-dashboard="" data-sub-settings-filter-container data-filter-active="true">
                                     <div class="pad--x--14 pad--y--10 flex items-center gap--8 br--2 br--bottom--left--right bb br--col--mischka-gray bg-white-50 sh--7 relative h--48" data-input-wrapper="">
                                         <span>
                                             <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/search-sm-icon.svg" alt="search-sm-icon" class="w--20 h--20 filter--col--pale-sky">
                                         </span>
-                                        <input type="text" name="search" class="w-100 bn flex-auto fs--16 lh--24 col--ebony" placeholder=" Search by title, model name, tags...">
+                                        <input type="text" name="search" class="w-100 bn flex-auto fs--16 lh--24 col--ebony" placeholder=" Search by title, model name, tags..." value="Avocado toast" data-sub-settings-filter-input>
                                     </div>
+
+                                    <!-- search-result-box -->
+                                    <div class="absolute dn w-100 bg--blur--100" data-filter-search-result-box>
+                                        <div class="pad--16">
+                                            <div>
+                                                <div class="flex flex-column gap--16">
+                                                    <span class="fs--14 lh--20 fw5 poppins col--pale-sky">Search by Tags:</span>
+                                                    <div class="flex items-center gap--8 flex-wrap">
+                                                        <!-- tag -->
+                                                        <div class="bg-white flex items-center justify-center gap--4 pad--x--8 pad--y--4 mw--75 pointer">
+                                                            <span class="col--oxford-blue fs--14 fw5 lh--20 poppins nowrap">Cosplay</span>
+                                                        </div>
+                                                        <!-- End tag -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- search-tag-box -->
                                 </div>
 
                                 <!-- filter-button -->
@@ -246,596 +302,31 @@
                                 </div>
                             </div>
                             <!-- end filter-section -->
+
+                            <!-- searched-tags-container -->
+                            <div class="flex items-center gap--4 overflow-y-visible overflow-x-scroll h--28" data-searched-tags-container>
+                                <!-- tag -->
+                                <div class="bg--col--ebony--variation-2 flex items-center justify-center gap--4 pad--x--8 pad--y--4 mw--75 pointer h--28">
+                                    <span class="white fs--14 fw5 lh--20 poppins nowrap">Cosplay</span>
+                                    <div class="flex justify-center items-center pointer">
+                                        <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/close-btn.svg" alt="" class="w--16 h--16 filter--col--white">
+                                    </div>
+                                </div>
+                            </div>
                             
-                            <!-- cards-section -->
-                            <div class="w-100 grid gap--8 gap--4-responsive-mobile gap--4-responsive-mobile-portrait grid--cols--2-responsive-mobile-portrait pad--2-responsive-mobile pad--2-responsive-mobile-portrait grid-media-main grid--cols--4 overflow-auto" data-sub-settings-cards-wrapper>
-                                <!-- card -->
-                                <div class="br--2 pointer relative aspect--ratio--16-9" data-media-card>
-                                    <div class="relative ">
-                                       <img src="https://fansocial-user-media.s3.amazonaws.com/user-1/images/Ai8HD2ZNW5fTIfNez7L4LzU5MSnXEo/Ai8HD2ZNW5fTIfNez7L4LzU5MSnXEo.png" alt="Media 4761" loading="lazy" class="w-100 aspect--ratio--16-9 fit--cover cp--inset--0">
+                            <!-- empty-result-section -->
+                            <div class="flex h-50" data-sub-settings-empty-result-section>
+                                <div data-sub-settings-empty-result-container class="flex flex-column justify-center items-center w-100 h-100 br--12 gap--24">
+                                    <!-- image-icon -->
+                                    <div class="flex justify-center items-center w--64 h--64">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="51" height="51" viewBox="0 0 51 51" fill="none">
+                                            <path d="M49.5 49.75L33.5003 33.75M38.8333 20.4167C38.8333 30.726 30.476 39.0833 20.1667 39.0833C9.85735 39.0833 1.5 30.726 1.5 20.4167C1.5 10.1074 9.85735 1.75 20.1667 1.75C30.476 1.75 38.8333 10.1074 38.8333 20.4167Z" stroke="#98A2B3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
                                     </div>
-
-                                    <!-- Video tag -->
-                                    <div data-media-type-tag class="absolute right-0 bottom-0 bg--col--trans-dark-black-70 pad--x--4 pad--y--1 flex items-center justify-center gap--3 z-1">
-                                        <span class="fs--12 lh--18 white tracked--0-12">video</span>
-                                        <span>
-                                            <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/play-square-02.svg" alt="play-square-02" class="w--16 h--16 filter--col--white">
-                                        </span>
-                                    </div>
-                                    <!-- End Video tag -->
-
-                                    <!-- add button -->
-                                    <div class="absolute right-0 top-0 bg--col-brand-green w--24 h--24 flex justify-center items-center z-3" data-plus-icon-container>
-                                        <img data-button-icon="" src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/plus.svg" alt="plus" class="w--24 h--24 filter--col--black">
-                                    </div>
-                                    <!-- End add button -->
-
-                                    <!-- overlay-info -->
-                                    <div data-media-overlay-info-container class="w-100 h-100 flex flex-column justify-end pa1 gap--8 absolute left-0 bottom-0 o--hidden z-2 bg--gd--black--t0--180 o-0 overflow-hidden">
-                                        <h4 class="fs--12 lh--18 fw5 white poppins text--sh--black--40 truncate-text-line-2">Record breaking fried chicken eating! Watch me break world’s record! Watch now!</h4>
-                                        <!-- tags-container -->
-                                        <div class="flex items-center gap--4 overflow-visible">
-                                            <!-- tag -->
-                                            <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
-                                                <span class="white fs--10 fw5 lh--15 poppins nowrap">Fried Chicken</span>
-                                            </div>
-                                            <!-- End tag -->
-
-                                            <!-- tag -->
-                                            <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
-                                                <span class="white fs--10 fw5 lh--15 poppins nowrap">Mostly Eating</span>
-                                            </div>
-                                            <!-- End tag -->
-
-                                            <!-- tag -->
-                                            <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
-                                                <span class="white fs--10 fw5 lh--15 poppins nowrap">Seasonal Fruits</span>
-                                            </div>
-                                            <!-- End tag -->
-                                        </div>
-                                    </div>
-                                    <!-- End overlay-info -->
+    
+                                    <p class="fs--16 lh--24 fw5 tc poppins col--pale-sky">Search result not found.</p>
+                                    <p class="fs--12 lh--18 tc poppins col--pale-sky">Try using different key words or adjust filter.</p>
                                 </div>
-                                <!-- end card -->
-
-                                <!-- card -->
-                                <div class="br--2 pointer relative aspect--ratio--16-9" data-media-card>
-                                    <div class="relative ">
-                                       <img src="https://fansocial-user-media.s3.amazonaws.com/user-1/images/Ai8HD2ZNW5fTIfNez7L4LzU5MSnXEo/Ai8HD2ZNW5fTIfNez7L4LzU5MSnXEo.png" alt="Media 4761" loading="lazy" class="w-100 aspect--ratio--16-9 fit--cover cp--inset--0">
-                                    </div>
-
-                                    <!-- Video tag -->
-                                    <div data-media-type-tag class="absolute right-0 bottom-0 bg--col--trans-dark-black-70 pad--x--4 pad--y--1 flex items-center justify-center gap--3 z-1">
-                                        <span class="fs--12 lh--18 white tracked--0-12">video</span>
-                                        <span>
-                                            <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/play-square-02.svg" alt="play-square-02" class="w--16 h--16 filter--col--white">
-                                        </span>
-                                    </div>
-                                    <!-- End Video tag -->
-
-                                    <!-- add button -->
-                                    <div class="absolute right-0 top-0 bg--col-brand-green w--24 h--24 flex justify-center items-center z-3" data-plus-icon-container>
-                                        <img data-button-icon="" src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/plus.svg" alt="plus" class="w--24 h--24 filter--col--black">
-                                    </div>
-                                    <!-- End add button -->
-
-                                    <!-- overlay-info -->
-                                    <div data-media-overlay-info-container class="w-100 h-100 flex flex-column justify-end pa1 gap--8 absolute left-0 bottom-0 o--hidden z-2 bg--gd--black--t0--180 o-0 overflow-hidden">
-                                        <h4 class="fs--12 lh--18 fw5 white poppins text--sh--black--40 truncate-text-line-2">Record breaking fried chicken eating! Watch me break world’s record! Watch now!</h4>
-                                        <!-- tags-container -->
-                                        <div class="flex items-center gap--4 overflow-visible">
-                                            <!-- tag -->
-                                            <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
-                                                <span class="white fs--10 fw5 lh--15 poppins nowrap">Fried Chicken</span>
-                                            </div>
-                                            <!-- End tag -->
-
-                                            <!-- tag -->
-                                            <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
-                                                <span class="white fs--10 fw5 lh--15 poppins nowrap">Mostly Eating</span>
-                                            </div>
-                                            <!-- End tag -->
-
-                                            <!-- tag -->
-                                            <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
-                                                <span class="white fs--10 fw5 lh--15 poppins nowrap">Seasonal Fruits</span>
-                                            </div>
-                                            <!-- End tag -->
-                                        </div>
-                                    </div>
-                                    <!-- End overlay-info -->
-                                </div>
-                                <!-- end card -->
-
-                                <!-- card -->
-                                <div class="br--2 pointer relative aspect--ratio--16-9" data-media-card>
-                                    <div class="relative ">
-                                       <img src="https://fansocial-user-media.s3.amazonaws.com/user-1/images/Ai8HD2ZNW5fTIfNez7L4LzU5MSnXEo/Ai8HD2ZNW5fTIfNez7L4LzU5MSnXEo.png" alt="Media 4761" loading="lazy" class="w-100 aspect--ratio--16-9 fit--cover cp--inset--0">
-                                    </div>
-
-                                    <!-- Video tag -->
-                                    <div data-media-type-tag class="absolute right-0 bottom-0 bg--col--trans-dark-black-70 pad--x--4 pad--y--1 flex items-center justify-center gap--3 z-1">
-                                        <span class="fs--12 lh--18 white tracked--0-12">video</span>
-                                        <span>
-                                            <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/play-square-02.svg" alt="play-square-02" class="w--16 h--16 filter--col--white">
-                                        </span>
-                                    </div>
-                                    <!-- End Video tag -->
-
-                                    <!-- add button -->
-                                    <div class="absolute right-0 top-0 bg--col-brand-green w--24 h--24 flex justify-center items-center z-3" data-plus-icon-container>
-                                        <img data-button-icon="" src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/plus.svg" alt="plus" class="w--24 h--24 filter--col--black">
-                                    </div>
-                                    <!-- End add button -->
-
-                                    <!-- overlay-info -->
-                                    <div data-media-overlay-info-container class="w-100 h-100 flex flex-column justify-end pa1 gap--8 absolute left-0 bottom-0 o--hidden z-2 bg--gd--black--t0--180 o-0 overflow-hidden">
-                                        <h4 class="fs--12 lh--18 fw5 white poppins text--sh--black--40 truncate-text-line-2">Record breaking fried chicken eating! Watch me break world’s record! Watch now!</h4>
-                                        <!-- tags-container -->
-                                        <div class="flex items-center gap--4 overflow-visible">
-                                            <!-- tag -->
-                                            <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
-                                                <span class="white fs--10 fw5 lh--15 poppins nowrap">Fried Chicken</span>
-                                            </div>
-                                            <!-- End tag -->
-
-                                            <!-- tag -->
-                                            <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
-                                                <span class="white fs--10 fw5 lh--15 poppins nowrap">Mostly Eating</span>
-                                            </div>
-                                            <!-- End tag -->
-
-                                            <!-- tag -->
-                                            <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
-                                                <span class="white fs--10 fw5 lh--15 poppins nowrap">Seasonal Fruits</span>
-                                            </div>
-                                            <!-- End tag -->
-                                        </div>
-                                    </div>
-                                    <!-- End overlay-info -->
-                                </div>
-                                <!-- end card -->
-
-                                <!-- card -->
-                                <div class="br--2 pointer relative aspect--ratio--16-9" data-media-card>
-                                    <div class="relative ">
-                                       <img src="https://fansocial-user-media.s3.amazonaws.com/user-1/images/Ai8HD2ZNW5fTIfNez7L4LzU5MSnXEo/Ai8HD2ZNW5fTIfNez7L4LzU5MSnXEo.png" alt="Media 4761" loading="lazy" class="w-100 aspect--ratio--16-9 fit--cover cp--inset--0">
-                                    </div>
-
-                                    <!-- Video tag -->
-                                    <div data-media-type-tag class="absolute right-0 bottom-0 bg--col--trans-dark-black-70 pad--x--4 pad--y--1 flex items-center justify-center gap--3 z-1">
-                                        <span class="fs--12 lh--18 white tracked--0-12">video</span>
-                                        <span>
-                                            <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/play-square-02.svg" alt="play-square-02" class="w--16 h--16 filter--col--white">
-                                        </span>
-                                    </div>
-                                    <!-- End Video tag -->
-
-                                    <!-- add button -->
-                                    <div class="absolute right-0 top-0 bg--col-brand-green w--24 h--24 flex justify-center items-center z-3" data-plus-icon-container>
-                                        <img data-button-icon="" src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/plus.svg" alt="plus" class="w--24 h--24 filter--col--black">
-                                    </div>
-                                    <!-- End add button -->
-
-                                    <!-- overlay-info -->
-                                    <div data-media-overlay-info-container class="w-100 h-100 flex flex-column justify-end pa1 gap--8 absolute left-0 bottom-0 o--hidden z-2 bg--gd--black--t0--180 o-0 overflow-hidden">
-                                        <h4 class="fs--12 lh--18 fw5 white poppins text--sh--black--40 truncate-text-line-2">Record breaking fried chicken eating! Watch me break world’s record! Watch now!</h4>
-                                        <!-- tags-container -->
-                                        <div class="flex items-center gap--4 overflow-visible">
-                                            <!-- tag -->
-                                            <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
-                                                <span class="white fs--10 fw5 lh--15 poppins nowrap">Fried Chicken</span>
-                                            </div>
-                                            <!-- End tag -->
-
-                                            <!-- tag -->
-                                            <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
-                                                <span class="white fs--10 fw5 lh--15 poppins nowrap">Mostly Eating</span>
-                                            </div>
-                                            <!-- End tag -->
-
-                                            <!-- tag -->
-                                            <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
-                                                <span class="white fs--10 fw5 lh--15 poppins nowrap">Seasonal Fruits</span>
-                                            </div>
-                                            <!-- End tag -->
-                                        </div>
-                                    </div>
-                                    <!-- End overlay-info -->
-                                </div>
-                                <!-- end card -->
-
-                                <!-- card -->
-                                <div class="br--2 pointer relative aspect--ratio--16-9" data-media-card>
-                                    <div class="relative ">
-                                       <img src="https://fansocial-user-media.s3.amazonaws.com/user-1/images/Ai8HD2ZNW5fTIfNez7L4LzU5MSnXEo/Ai8HD2ZNW5fTIfNez7L4LzU5MSnXEo.png" alt="Media 4761" loading="lazy" class="w-100 aspect--ratio--16-9 fit--cover cp--inset--0">
-                                    </div>
-
-                                    <!-- Video tag -->
-                                    <div data-media-type-tag class="absolute right-0 bottom-0 bg--col--trans-dark-black-70 pad--x--4 pad--y--1 flex items-center justify-center gap--3 z-1">
-                                        <span class="fs--12 lh--18 white tracked--0-12">video</span>
-                                        <span>
-                                            <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/play-square-02.svg" alt="play-square-02" class="w--16 h--16 filter--col--white">
-                                        </span>
-                                    </div>
-                                    <!-- End Video tag -->
-
-                                    <!-- add button -->
-                                    <div class="absolute right-0 top-0 bg--col-brand-green w--24 h--24 flex justify-center items-center z-3" data-plus-icon-container>
-                                        <img data-button-icon="" src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/plus.svg" alt="plus" class="w--24 h--24 filter--col--black">
-                                    </div>
-                                    <!-- End add button -->
-
-                                    <!-- overlay-info -->
-                                    <div data-media-overlay-info-container class="w-100 h-100 flex flex-column justify-end pa1 gap--8 absolute left-0 bottom-0 o--hidden z-2 bg--gd--black--t0--180 o-0 overflow-hidden">
-                                        <h4 class="fs--12 lh--18 fw5 white poppins text--sh--black--40 truncate-text-line-2">Record breaking fried chicken eating! Watch me break world’s record! Watch now!</h4>
-                                        <!-- tags-container -->
-                                        <div class="flex items-center gap--4 overflow-visible">
-                                            <!-- tag -->
-                                            <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
-                                                <span class="white fs--10 fw5 lh--15 poppins nowrap">Fried Chicken</span>
-                                            </div>
-                                            <!-- End tag -->
-
-                                            <!-- tag -->
-                                            <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
-                                                <span class="white fs--10 fw5 lh--15 poppins nowrap">Mostly Eating</span>
-                                            </div>
-                                            <!-- End tag -->
-
-                                            <!-- tag -->
-                                            <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
-                                                <span class="white fs--10 fw5 lh--15 poppins nowrap">Seasonal Fruits</span>
-                                            </div>
-                                            <!-- End tag -->
-                                        </div>
-                                    </div>
-                                    <!-- End overlay-info -->
-                                </div>
-                                <!-- end card -->
-
-                                <!-- card -->
-                                <div class="br--2 pointer relative aspect--ratio--16-9" data-media-card>
-                                    <div class="relative ">
-                                       <img src="https://fansocial-user-media.s3.amazonaws.com/user-1/images/Ai8HD2ZNW5fTIfNez7L4LzU5MSnXEo/Ai8HD2ZNW5fTIfNez7L4LzU5MSnXEo.png" alt="Media 4761" loading="lazy" class="w-100 aspect--ratio--16-9 fit--cover cp--inset--0">
-                                    </div>
-
-                                    <!-- Video tag -->
-                                    <div data-media-type-tag class="absolute right-0 bottom-0 bg--col--trans-dark-black-70 pad--x--4 pad--y--1 flex items-center justify-center gap--3 z-1">
-                                        <span class="fs--12 lh--18 white tracked--0-12">video</span>
-                                        <span>
-                                            <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/play-square-02.svg" alt="play-square-02" class="w--16 h--16 filter--col--white">
-                                        </span>
-                                    </div>
-                                    <!-- End Video tag -->
-
-                                    <!-- add button -->
-                                    <div class="absolute right-0 top-0 bg--col-brand-green w--24 h--24 flex justify-center items-center z-3" data-plus-icon-container>
-                                        <img data-button-icon="" src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/plus.svg" alt="plus" class="w--24 h--24 filter--col--black">
-                                    </div>
-                                    <!-- End add button -->
-
-                                    <!-- overlay-info -->
-                                    <div data-media-overlay-info-container class="w-100 h-100 flex flex-column justify-end pa1 gap--8 absolute left-0 bottom-0 o--hidden z-2 bg--gd--black--t0--180 o-0 overflow-hidden">
-                                        <h4 class="fs--12 lh--18 fw5 white poppins text--sh--black--40 truncate-text-line-2">Record breaking fried chicken eating! Watch me break world’s record! Watch now!</h4>
-                                        <!-- tags-container -->
-                                        <div class="flex items-center gap--4 overflow-visible">
-                                            <!-- tag -->
-                                            <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
-                                                <span class="white fs--10 fw5 lh--15 poppins nowrap">Fried Chicken</span>
-                                            </div>
-                                            <!-- End tag -->
-
-                                            <!-- tag -->
-                                            <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
-                                                <span class="white fs--10 fw5 lh--15 poppins nowrap">Mostly Eating</span>
-                                            </div>
-                                            <!-- End tag -->
-
-                                            <!-- tag -->
-                                            <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
-                                                <span class="white fs--10 fw5 lh--15 poppins nowrap">Seasonal Fruits</span>
-                                            </div>
-                                            <!-- End tag -->
-                                        </div>
-                                    </div>
-                                    <!-- End overlay-info -->
-                                </div>
-                                <!-- end card -->
-
-                                <!-- card -->
-                                <div class="br--2 pointer relative aspect--ratio--16-9" data-media-card>
-                                    <div class="relative ">
-                                       <img src="https://fansocial-user-media.s3.amazonaws.com/user-1/images/Ai8HD2ZNW5fTIfNez7L4LzU5MSnXEo/Ai8HD2ZNW5fTIfNez7L4LzU5MSnXEo.png" alt="Media 4761" loading="lazy" class="w-100 aspect--ratio--16-9 fit--cover cp--inset--0">
-                                    </div>
-
-                                    <!-- Video tag -->
-                                    <div data-media-type-tag class="absolute right-0 bottom-0 bg--col--trans-dark-black-70 pad--x--4 pad--y--1 flex items-center justify-center gap--3 z-1">
-                                        <span class="fs--12 lh--18 white tracked--0-12">video</span>
-                                        <span>
-                                            <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/play-square-02.svg" alt="play-square-02" class="w--16 h--16 filter--col--white">
-                                        </span>
-                                    </div>
-                                    <!-- End Video tag -->
-
-                                    <!-- add button -->
-                                    <div class="absolute right-0 top-0 bg--col-brand-green w--24 h--24 flex justify-center items-center z-3" data-plus-icon-container>
-                                        <img data-button-icon="" src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/plus.svg" alt="plus" class="w--24 h--24 filter--col--black">
-                                    </div>
-                                    <!-- End add button -->
-
-                                    <!-- overlay-info -->
-                                    <div data-media-overlay-info-container class="w-100 h-100 flex flex-column justify-end pa1 gap--8 absolute left-0 bottom-0 o--hidden z-2 bg--gd--black--t0--180 o-0 overflow-hidden">
-                                        <h4 class="fs--12 lh--18 fw5 white poppins text--sh--black--40 truncate-text-line-2">Record breaking fried chicken eating! Watch me break world’s record! Watch now!</h4>
-                                        <!-- tags-container -->
-                                        <div class="flex items-center gap--4 overflow-visible">
-                                            <!-- tag -->
-                                            <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
-                                                <span class="white fs--10 fw5 lh--15 poppins nowrap">Fried Chicken</span>
-                                            </div>
-                                            <!-- End tag -->
-
-                                            <!-- tag -->
-                                            <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
-                                                <span class="white fs--10 fw5 lh--15 poppins nowrap">Mostly Eating</span>
-                                            </div>
-                                            <!-- End tag -->
-
-                                            <!-- tag -->
-                                            <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
-                                                <span class="white fs--10 fw5 lh--15 poppins nowrap">Seasonal Fruits</span>
-                                            </div>
-                                            <!-- End tag -->
-                                        </div>
-                                    </div>
-                                    <!-- End overlay-info -->
-                                </div>
-                                <!-- end card -->
-
-                                <!-- card -->
-                                <div class="br--2 pointer relative aspect--ratio--16-9" data-media-card>
-                                    <div class="relative ">
-                                       <img src="https://fansocial-user-media.s3.amazonaws.com/user-1/images/Ai8HD2ZNW5fTIfNez7L4LzU5MSnXEo/Ai8HD2ZNW5fTIfNez7L4LzU5MSnXEo.png" alt="Media 4761" loading="lazy" class="w-100 aspect--ratio--16-9 fit--cover cp--inset--0">
-                                    </div>
-
-                                    <!-- Video tag -->
-                                    <div data-media-type-tag class="absolute right-0 bottom-0 bg--col--trans-dark-black-70 pad--x--4 pad--y--1 flex items-center justify-center gap--3 z-1">
-                                        <span class="fs--12 lh--18 white tracked--0-12">video</span>
-                                        <span>
-                                            <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/play-square-02.svg" alt="play-square-02" class="w--16 h--16 filter--col--white">
-                                        </span>
-                                    </div>
-                                    <!-- End Video tag -->
-
-                                    <!-- add button -->
-                                    <div class="absolute right-0 top-0 bg--col-brand-green w--24 h--24 flex justify-center items-center z-3" data-plus-icon-container>
-                                        <img data-button-icon="" src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/plus.svg" alt="plus" class="w--24 h--24 filter--col--black">
-                                    </div>
-                                    <!-- End add button -->
-
-                                    <!-- overlay-info -->
-                                    <div data-media-overlay-info-container class="w-100 h-100 flex flex-column justify-end pa1 gap--8 absolute left-0 bottom-0 o--hidden z-2 bg--gd--black--t0--180 o-0 overflow-hidden">
-                                        <h4 class="fs--12 lh--18 fw5 white poppins text--sh--black--40 truncate-text-line-2">Record breaking fried chicken eating! Watch me break world’s record! Watch now!</h4>
-                                        <!-- tags-container -->
-                                        <div class="flex items-center gap--4 overflow-visible">
-                                            <!-- tag -->
-                                            <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
-                                                <span class="white fs--10 fw5 lh--15 poppins nowrap">Fried Chicken</span>
-                                            </div>
-                                            <!-- End tag -->
-
-                                            <!-- tag -->
-                                            <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
-                                                <span class="white fs--10 fw5 lh--15 poppins nowrap">Mostly Eating</span>
-                                            </div>
-                                            <!-- End tag -->
-
-                                            <!-- tag -->
-                                            <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
-                                                <span class="white fs--10 fw5 lh--15 poppins nowrap">Seasonal Fruits</span>
-                                            </div>
-                                            <!-- End tag -->
-                                        </div>
-                                    </div>
-                                    <!-- End overlay-info -->
-                                </div>
-                                <!-- end card -->
-
-                                <!-- card -->
-                                <div class="br--2 pointer relative aspect--ratio--16-9" data-media-card>
-                                    <div class="relative ">
-                                       <img src="https://fansocial-user-media.s3.amazonaws.com/user-1/images/Ai8HD2ZNW5fTIfNez7L4LzU5MSnXEo/Ai8HD2ZNW5fTIfNez7L4LzU5MSnXEo.png" alt="Media 4761" loading="lazy" class="w-100 aspect--ratio--16-9 fit--cover cp--inset--0">
-                                    </div>
-
-                                    <!-- Video tag -->
-                                    <div data-media-type-tag class="absolute right-0 bottom-0 bg--col--trans-dark-black-70 pad--x--4 pad--y--1 flex items-center justify-center gap--3 z-1">
-                                        <span class="fs--12 lh--18 white tracked--0-12">video</span>
-                                        <span>
-                                            <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/play-square-02.svg" alt="play-square-02" class="w--16 h--16 filter--col--white">
-                                        </span>
-                                    </div>
-                                    <!-- End Video tag -->
-
-                                    <!-- add button -->
-                                    <div class="absolute right-0 top-0 bg--col-brand-green w--24 h--24 flex justify-center items-center z-3" data-plus-icon-container>
-                                        <img data-button-icon="" src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/plus.svg" alt="plus" class="w--24 h--24 filter--col--black">
-                                    </div>
-                                    <!-- End add button -->
-
-                                    <!-- overlay-info -->
-                                    <div data-media-overlay-info-container class="w-100 h-100 flex flex-column justify-end pa1 gap--8 absolute left-0 bottom-0 o--hidden z-2 bg--gd--black--t0--180 o-0 overflow-hidden">
-                                        <h4 class="fs--12 lh--18 fw5 white poppins text--sh--black--40 truncate-text-line-2">Record breaking fried chicken eating! Watch me break world’s record! Watch now!</h4>
-                                        <!-- tags-container -->
-                                        <div class="flex items-center gap--4 overflow-visible">
-                                            <!-- tag -->
-                                            <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
-                                                <span class="white fs--10 fw5 lh--15 poppins nowrap">Fried Chicken</span>
-                                            </div>
-                                            <!-- End tag -->
-
-                                            <!-- tag -->
-                                            <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
-                                                <span class="white fs--10 fw5 lh--15 poppins nowrap">Mostly Eating</span>
-                                            </div>
-                                            <!-- End tag -->
-
-                                            <!-- tag -->
-                                            <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
-                                                <span class="white fs--10 fw5 lh--15 poppins nowrap">Seasonal Fruits</span>
-                                            </div>
-                                            <!-- End tag -->
-                                        </div>
-                                    </div>
-                                    <!-- End overlay-info -->
-                                </div>
-                                <!-- end card -->
-
-                                <!-- card -->
-                                <div class="br--2 pointer relative aspect--ratio--16-9" data-media-card>
-                                    <div class="relative ">
-                                       <img src="https://fansocial-user-media.s3.amazonaws.com/user-1/images/Ai8HD2ZNW5fTIfNez7L4LzU5MSnXEo/Ai8HD2ZNW5fTIfNez7L4LzU5MSnXEo.png" alt="Media 4761" loading="lazy" class="w-100 aspect--ratio--16-9 fit--cover cp--inset--0">
-                                    </div>
-
-                                    <!-- Video tag -->
-                                    <div data-media-type-tag class="absolute right-0 bottom-0 bg--col--trans-dark-black-70 pad--x--4 pad--y--1 flex items-center justify-center gap--3 z-1">
-                                        <span class="fs--12 lh--18 white tracked--0-12">video</span>
-                                        <span>
-                                            <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/play-square-02.svg" alt="play-square-02" class="w--16 h--16 filter--col--white">
-                                        </span>
-                                    </div>
-                                    <!-- End Video tag -->
-
-                                    <!-- add button -->
-                                    <div class="absolute right-0 top-0 bg--col-brand-green w--24 h--24 flex justify-center items-center z-3" data-plus-icon-container>
-                                        <img data-button-icon="" src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/plus.svg" alt="plus" class="w--24 h--24 filter--col--black">
-                                    </div>
-                                    <!-- End add button -->
-
-                                    <!-- overlay-info -->
-                                    <div data-media-overlay-info-container class="w-100 h-100 flex flex-column justify-end pa1 gap--8 absolute left-0 bottom-0 o--hidden z-2 bg--gd--black--t0--180 o-0 overflow-hidden">
-                                        <h4 class="fs--12 lh--18 fw5 white poppins text--sh--black--40 truncate-text-line-2">Record breaking fried chicken eating! Watch me break world’s record! Watch now!</h4>
-                                        <!-- tags-container -->
-                                        <div class="flex items-center gap--4 overflow-visible">
-                                            <!-- tag -->
-                                            <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
-                                                <span class="white fs--10 fw5 lh--15 poppins nowrap">Fried Chicken</span>
-                                            </div>
-                                            <!-- End tag -->
-
-                                            <!-- tag -->
-                                            <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
-                                                <span class="white fs--10 fw5 lh--15 poppins nowrap">Mostly Eating</span>
-                                            </div>
-                                            <!-- End tag -->
-
-                                            <!-- tag -->
-                                            <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
-                                                <span class="white fs--10 fw5 lh--15 poppins nowrap">Seasonal Fruits</span>
-                                            </div>
-                                            <!-- End tag -->
-                                        </div>
-                                    </div>
-                                    <!-- End overlay-info -->
-                                </div>
-                                <!-- end card -->
-
-                                <!-- card -->
-                                <div class="br--2 pointer relative aspect--ratio--16-9" data-media-card>
-                                    <div class="relative ">
-                                       <img src="https://fansocial-user-media.s3.amazonaws.com/user-1/images/Ai8HD2ZNW5fTIfNez7L4LzU5MSnXEo/Ai8HD2ZNW5fTIfNez7L4LzU5MSnXEo.png" alt="Media 4761" loading="lazy" class="w-100 aspect--ratio--16-9 fit--cover cp--inset--0">
-                                    </div>
-
-                                    <!-- Video tag -->
-                                    <div data-media-type-tag class="absolute right-0 bottom-0 bg--col--trans-dark-black-70 pad--x--4 pad--y--1 flex items-center justify-center gap--3 z-1">
-                                        <span class="fs--12 lh--18 white tracked--0-12">video</span>
-                                        <span>
-                                            <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/play-square-02.svg" alt="play-square-02" class="w--16 h--16 filter--col--white">
-                                        </span>
-                                    </div>
-                                    <!-- End Video tag -->
-
-                                    <!-- add button -->
-                                    <div class="absolute right-0 top-0 bg--col-brand-green w--24 h--24 flex justify-center items-center z-3" data-plus-icon-container>
-                                        <img data-button-icon="" src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/plus.svg" alt="plus" class="w--24 h--24 filter--col--black">
-                                    </div>
-                                    <!-- End add button -->
-
-                                    <!-- overlay-info -->
-                                    <div data-media-overlay-info-container class="w-100 h-100 flex flex-column justify-end pa1 gap--8 absolute left-0 bottom-0 o--hidden z-2 bg--gd--black--t0--180 o-0 overflow-hidden">
-                                        <h4 class="fs--12 lh--18 fw5 white poppins text--sh--black--40 truncate-text-line-2">Record breaking fried chicken eating! Watch me break world’s record! Watch now!</h4>
-                                        <!-- tags-container -->
-                                        <div class="flex items-center gap--4 overflow-visible">
-                                            <!-- tag -->
-                                            <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
-                                                <span class="white fs--10 fw5 lh--15 poppins nowrap">Fried Chicken</span>
-                                            </div>
-                                            <!-- End tag -->
-
-                                            <!-- tag -->
-                                            <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
-                                                <span class="white fs--10 fw5 lh--15 poppins nowrap">Mostly Eating</span>
-                                            </div>
-                                            <!-- End tag -->
-
-                                            <!-- tag -->
-                                            <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
-                                                <span class="white fs--10 fw5 lh--15 poppins nowrap">Seasonal Fruits</span>
-                                            </div>
-                                            <!-- End tag -->
-                                        </div>
-                                    </div>
-                                    <!-- End overlay-info -->
-                                </div>
-                                <!-- end card -->
-
-                                <!-- card -->
-                                <div class="br--2 pointer relative aspect--ratio--16-9" data-media-card>
-                                    <div class="relative ">
-                                       <img src="https://fansocial-user-media.s3.amazonaws.com/user-1/images/Ai8HD2ZNW5fTIfNez7L4LzU5MSnXEo/Ai8HD2ZNW5fTIfNez7L4LzU5MSnXEo.png" alt="Media 4761" loading="lazy" class="w-100 aspect--ratio--16-9 fit--cover cp--inset--0">
-                                    </div>
-
-                                    <!-- Video tag -->
-                                    <div data-media-type-tag class="absolute right-0 bottom-0 bg--col--trans-dark-black-70 pad--x--4 pad--y--1 flex items-center justify-center gap--3 z-1">
-                                        <span class="fs--12 lh--18 white tracked--0-12">video</span>
-                                        <span>
-                                            <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/play-square-02.svg" alt="play-square-02" class="w--16 h--16 filter--col--white">
-                                        </span>
-                                    </div>
-                                    <!-- End Video tag -->
-
-                                    <!-- add button -->
-                                    <div class="absolute right-0 top-0 bg--col-brand-green w--24 h--24 flex justify-center items-center z-3" data-plus-icon-container>
-                                        <img data-button-icon="" src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/plus.svg" alt="plus" class="w--24 h--24 filter--col--black">
-                                    </div>
-                                    <!-- End add button -->
-
-                                    <!-- overlay-info -->
-                                    <div data-media-overlay-info-container class="w-100 h-100 flex flex-column justify-end pa1 gap--8 absolute left-0 bottom-0 o--hidden z-2 bg--gd--black--t0--180 o-0 overflow-hidden">
-                                        <h4 class="fs--12 lh--18 fw5 white poppins text--sh--black--40 truncate-text-line-2">Record breaking fried chicken eating! Watch me break world’s record! Watch now!</h4>
-                                        <!-- tags-container -->
-                                        <div class="flex items-center gap--4 overflow-visible">
-                                            <!-- tag -->
-                                            <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
-                                                <span class="white fs--10 fw5 lh--15 poppins nowrap">Fried Chicken</span>
-                                            </div>
-                                            <!-- End tag -->
-
-                                            <!-- tag -->
-                                            <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
-                                                <span class="white fs--10 fw5 lh--15 poppins nowrap">Mostly Eating</span>
-                                            </div>
-                                            <!-- End tag -->
-
-                                            <!-- tag -->
-                                            <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
-                                                <span class="white fs--10 fw5 lh--15 poppins nowrap">Seasonal Fruits</span>
-                                            </div>
-                                            <!-- End tag -->
-                                        </div>
-                                    </div>
-                                    <!-- End overlay-info -->
-                                </div>
-                                <!-- end card -->
                             </div>
                         </div>
 
@@ -1355,6 +846,25 @@
             </div>
         </div>
     </div>
+    <script>
+        const filterInput = document.querySelector('[data-sub-settings-filter-input]');
+        const filterContainer = document.querySelector('[data-sub-settings-filter-container]');
+
+        // Add event listeners for click and typing
+        filterInput.addEventListener('focus', () => {
+            filterContainer.setAttribute('data-filter-adding', 'true');
+        });
+
+        filterInput.addEventListener('blur', () => {
+        if (!filterInput.value) {
+            filterContainer.removeAttribute('data-filter-adding');
+        }
+        });
+
+        filterInput.addEventListener('input', () => {
+            filterContainer.setAttribute('data-filter-adding', 'true');
+        });
+    </script>
     <script src='https://staging.fansocial.app/wp-content/plugins/fansocial/assets/FINAL/js/nice-select.js?ver=1.0.0' id='niceSelect-js'></script>
     <script src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/FINAL/js/popup.js?ver=1.0.0" id="popup-js"></script>
 </body>

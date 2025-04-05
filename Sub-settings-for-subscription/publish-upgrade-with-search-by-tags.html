@@ -59,14 +59,91 @@
             filter: brightness(0) saturate(100%) invert(75%) sepia(23%) saturate(7280%) hue-rotate(93deg) brightness(109%) contrast(95%);
         }
 
+        [data-minus-icon-container]:hover{
+            background-color: #FF4405;
+        }
+
         [data-sub-settings-media-uploader]{
             border: 1px dashed rgba(208, 213, 221, 1);
         }
 
+        /* dropdown-popup */
+        [data-popup-id="sub_settings_published"] .elm_qJBugX{
+            height: max-content !important;
+            position: absolute !important;
+            top: 8.35rem;
+            right: 1.45rem;
+        }
+
+        /* dropdown */
+        [data-responsive-select-dropdown-container]{
+            min-width: 17.9098rem;
+            top: calc(100% + 1rem);
+            right: -1px;
+            transition: 0.15s ease-in-out;
+            z-index: 100;
+        }
+
+        [data-sub-settings-select-dropdown] .nice-select.v1{
+            border: none;
+        }
+
+        [data-sub-settings-select-dropdown] .nice-select.v1 .current,
+        [data-sub-settings-select-dropdown] .nice-select:not(.has-tags).v1 .current{
+            padding: 0;
+        }
+
+        [data-responsive-select-dropdown-container] [data-form-input-type=checkbox] input[type=checkbox]{
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        [data-responsive-select-dropdown-container] [data-form-input-type=checkbox][data-form-accent-color=transparent] input[type=checkbox]:not(:checked),
+        [data-responsive-select-dropdown-container] [data-form-input-type=checkbox][data-form-accent-color=transparent] input[type=checkbox]:checked {
+            background-color: #000;
+            border-color: var(--Brand-green, #07f468);
+        }
+
+        [data-responsive-select-dropdown-container] [data-form-input-type=checkbox][data-form-accent-color=transparent] input[type=checkbox]:not(:checked)+div span,
+        [data-responsive-select-dropdown-container] [data-form-input-type=checkbox][data-form-accent-color=transparent] input[type=checkbox]:checked+div span{
+            color: var(--color-brand-green, #07f468);
+        }
+
+        [data-responsive-select-dropdown-container] [data-form-input-type=checkbox][data-form-accent-color=basic] input[type=checkbox]:checked::after {
+            border-color: var(--color-brand-green, #07f468);
+            left: .3rem;
+            width: .275rem;
+            height: .475rem;
+            border-width: 0 2px 2px 0;
+            top: .12rem;
+        }
+
+        /* search-filter */
+        [data-filter-adding="true"]{
+            background-color: white;
+        }
+
+        [data-filter-adding="true"] [data-input-wrapper]{
+            box-shadow: 0 1.5px 0 0 rgba(12, 17, 29, 1);
+        }
+
+        [data-filter-adding="true"] [data-filter-search-result-box]{
+            display: flex;
+            top: calc(100% + 2.5px);
+            z-index: 101;
+            background-color: #F4F6F8;
+            box-shadow: 0px 0px 8px 0px #0000001A;
+        }
+
+        /* media-queries */
         @media screen and (max-width: 1365px) {
             .pad--x--16-responsive-tablet-landscape{
                 padding-left: 1rem;
                 padding-right: 1rem;
+            }
+
+            [data-popup-id="sub_settings_published"] .elm_qJBugX{
+                right: .975rem;
             }
         }
 
@@ -90,6 +167,12 @@
                 height: 100% !important;
                 margin-top: 0px !important;
             }
+
+            [data-popup-id="sub_settings_published"] .elm_qJBugX{
+                min-width: unset !important;
+                max-width: 17.9098rem !important;
+                right: .45rem;
+            }
         }
 
         @media screen and (max-width: 479px) {
@@ -104,6 +187,22 @@
             [data-sub-settings-main-container]{
                 height: calc(100dvh - 4.6875rem - 3.5rem); /* 4.6875rem = header height, 3.5rem = footer height */
             }
+
+            [data-popup-id="sub_settings_published"] .elm_qJBugX{
+                width: 100vw;
+                height: 100svh !important;
+                max-width: unset!important;
+                top: 0;
+                right: 0;
+            }
+
+            [data-responsive-select-dropdown-container]{
+                flex: 1;
+            }
+
+            [data-reset-filter-button-container]{
+                position: fixed;
+            }
         }
     </style>
 
@@ -111,6 +210,7 @@
     <link rel="stylesheet" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-tablet.css" media="screen and (min-width: 768px) and (max-width: 1365px)">
     <link rel="stylesheet" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-mobile.css" media="screen and (min-width: 480px) and (max-width: 767px)">
     <link rel="stylesheet" id="dashboardStylesMobilePortrait-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-mobile-portrait.css" media="screen and (max-width: 479px)">
+    <link rel='stylesheet' id='niceSelect-css' href='https://staging.fansocial.app/wp-content/plugins/fansocial/assets/FINAL/css/nice-select.css?ver=1.0.0' media='' />
 </head>
 <body style="background-color: #80808080;">
     <div class="no-scroll prevent-close elm_UoRWYY items-center justify-center fixed dn top-0 left-0 w-100 h-100 z-9999 overflow-auto slidein-right-popup flex opened" id="subSettingSubscriptionPopup" data-popup-type="slidein-right-popup" sub-setting-subscription-popup="" data-popup-overlay-color="rgba(0,0,0,0.65)" data-popup-id="subSettingSubscriptionPopup" filters-form-js-applied="true" data-opened-target-selector="[data-popup-id='subSettingSubscriptionPopup']" style="background-color: rgba(0, 0, 0, 0.65);">
@@ -145,22 +245,40 @@
                             <!-- filter-section -->
                             <div class="flex gap--16 items-center gap--8-responsive-mobile gap--8-responsive-mobile-portrait">
                                 <!-- input-field -->
-                                <div class="flex flex-column gap--6 w-100 flex--max" data-input-wrapper="" data-form-input-type="text" data-form-input-label-position="left" data-input-label-type="icon" data-input-new-dashboard="">
+                                <div class="flex flex-column gap--6 w-100 flex--max relative" data-input-wrapper="" data-form-input-type="text" data-form-input-label-position="left" data-input-label-type="icon" data-input-new-dashboard="" data-sub-settings-filter-container>
                                     <div class="pad--x--14 pad--y--10 flex items-center gap--8 br--2 br--bottom--left--right bb br--col--mischka-gray bg-white-50 sh--7 relative h--48" data-input-wrapper="">
                                         <span>
                                             <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/search-sm-icon.svg" alt="search-sm-icon" class="w--20 h--20 filter--col--pale-sky">
                                         </span>
-                                        <input type="text" name="search" class="w-100 bn flex-auto fs--16 lh--24 col--ebony" placeholder=" Search by title, model name, tags...">
+                                        <input type="text" name="search" class="w-100 bn flex-auto fs--16 lh--24 col--ebony" placeholder=" Search by title, model name, tags..." data-sub-settings-filter-input>
+                                    </div>
+
+                                    <!-- search-result-box -->
+                                    <div class="absolute dn w-100 bg--blur--100" data-filter-search-result-box>
+                                        <div class="pad--16">
+                                            <div>
+                                                <div class="flex flex-column gap--16">
+                                                    <span class="fs--14 lh--20 fw5 poppins col--pale-sky">Search by Tags:</span>
+                                                    <div class="flex items-center gap--8 flex-wrap">
+                                                        <!-- tag -->
+                                                        <div class="bg-white flex items-center justify-center gap--4 pad--x--8 pad--y--4 mw--75 pointer">
+                                                            <span class="col--oxford-blue fs--14 fw5 lh--20 poppins nowrap">Cosplay</span>
+                                                        </div>
+                                                        <!-- End tag -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
                                 <!-- filter-button -->
-                                <div data-filter-open="" class="mh--40 pad--y--8 pad--x--16 br--5 flex justify-center items-center gap--8 c--pointer">
+                                <div data-filter-open="" class="mh--40 pad--y--8 pad--x--16 br--5 flex justify-center items-center gap--8 c--pointer relative bg-white" onclick="open_popup({ target: &quot;[data-popup-id=\&quot;sub_settings_published\&quot;]&quot; })">
                                     <span class="flex flex-none">
                                         <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/filter-funnel-02.svg" alt="filter-funnel-02" class="w--20 h--20 filter--col--oxford-blue">	
                                     </span>
                                     <span class="fs--14 fw6 lh--20 col--oxford-blue flex nowrap">Filter</span>
-                                    <span class="w--8 h--8 br-100 bg--col--rose flex-none dn"></span> <!-- change 'dn' to 'db' to show red dot -->
+                                    <span class="w--8 h--8 br-100 bg--col--rose flex-none db"></span> <!-- change 'dn' to 'db' to show red dot -->
                                 </div>
                             </div>
                             <!-- end filter-section -->
@@ -759,15 +877,309 @@
 
                         <!-- bottom-section -->
                         <div class="flex h-50">
-                            <div data-sub-settings-media-uploader class="flex flex-column justify-center items-center w-100 h-100 br--12 gap--24 pointer">
-                                <!-- image-icon -->
-                                <div class="flex justify-center items-center w--64 h--64">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="57" height="51" viewBox="0 0 57 51" fill="none" class="h--48">
-                                        <path d="M7.89229 49.0244L25.4831 31.4337C26.5391 30.3776 27.0671 29.8496 27.676 29.6518C28.2116 29.4777 28.7885 29.4777 29.3241 29.6518C29.933 29.8496 30.461 30.3776 31.517 31.4337L48.9905 48.9071M33.8334 33.75L41.4831 26.1003C42.5391 25.0443 43.0671 24.5163 43.676 24.3184C44.2116 24.1444 44.7885 24.1444 45.3241 24.3184C45.933 24.5163 46.461 25.0443 47.517 26.1003L55.1667 33.75M23.1667 17.75C23.1667 20.6955 20.7789 23.0833 17.8334 23.0833C14.8879 23.0833 12.5 20.6955 12.5 17.75C12.5 14.8045 14.8879 12.4167 17.8334 12.4167C20.7789 12.4167 23.1667 14.8045 23.1667 17.75ZM14.6334 49.75H42.3667C46.8471 49.75 49.0873 49.75 50.7986 48.8781C52.3039 48.1111 53.5278 46.8872 54.2948 45.3819C55.1667 43.6706 55.1667 41.4304 55.1667 36.95V14.55C55.1667 10.0696 55.1667 7.82937 54.2948 6.11808C53.5278 4.61278 52.3039 3.38893 50.7986 2.62195C49.0873 1.75 46.8471 1.75 42.3667 1.75H14.6334C10.153 1.75 7.91274 1.75 6.20145 2.62195C4.69615 3.38893 3.47231 4.61278 2.70532 6.11808C1.83337 7.82937 1.83337 10.0696 1.83337 14.55V36.95C1.83337 41.4304 1.83337 43.6706 2.70532 45.3819C3.47231 46.8872 4.69615 48.1111 6.20145 48.8781C7.91274 49.75 10.153 49.75 14.6334 49.75Z" stroke="#98A2B3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
+                            <div class="flex flex-column gap--8">
+                                <!-- title-container -->
+                                <div class="flex items-end gap--8">
+                                    <h4 class="fs--14 lh--20 fw6 col--ebony--variation-2 poppins">Already in this tier</h4>
+                                    <span class="fs--12 lh--28 col--ebony--variation-2 poppins">6</span>
                                 </div>
+                                
+                                <!-- cards-section -->
+                                <div class="w-100 grid gap--8 gap--4-responsive-mobile gap--4-responsive-mobile-portrait grid--cols--2-responsive-mobile-portrait pad--2-responsive-mobile pad--2-responsive-mobile-portrait grid-media-main grid--cols--4 overflow-auto" data-sub-settings-cards-wrapper>
+                                    <!-- card -->
+                                    <div class="br--2 pointer relative aspect--ratio--16-9" data-media-card>
+                                        <div class="relative ">
+                                        <img src="https://fansocial-user-media.s3.amazonaws.com/user-1/images/Ai8HD2ZNW5fTIfNez7L4LzU5MSnXEo/Ai8HD2ZNW5fTIfNez7L4LzU5MSnXEo.png" alt="Media 4761" loading="lazy" class="w-100 aspect--ratio--16-9 fit--cover cp--inset--0">
+                                        </div>
 
-                                <p class="fs--12 lh--18 tc poppins col--pale-sky">Looks like this tier is feeling a little empty—let’s throw some media in!</p>
+                                        <!-- Video tag -->
+                                        <div data-media-type-tag class="absolute right-0 bottom-0 bg--col--trans-dark-black-70 pad--x--4 pad--y--1 flex items-center justify-center gap--3 z-1">
+                                            <span class="fs--12 lh--18 white tracked--0-12">video</span>
+                                            <span>
+                                                <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/play-square-02.svg" alt="play-square-02" class="w--16 h--16 filter--col--white">
+                                            </span>
+                                        </div>
+                                        <!-- End Video tag -->
+
+                                        <!-- remove button -->
+                                        <div class="absolute right-0 top-0 bg--col--ebony--variation-2 w--24 h--24 flex justify-center items-center z-3" data-minus-icon-container>
+                                            <img data-button-icon="" src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/minus.svg" alt="minus" class="w--24 h--24 filter--col--white">
+                                        </div>
+                                        <!-- End add button -->
+
+                                        <!-- overlay-info -->
+                                        <div data-media-overlay-info-container class="w-100 h-100 flex flex-column justify-end pa1 gap--8 absolute left-0 bottom-0 o--hidden z-2 bg--gd--black--t0--180 o-0 overflow-hidden">
+                                            <h4 class="fs--12 lh--18 fw5 white poppins text--sh--black--40 truncate-text-line-2">Record breaking fried chicken eating! Watch me break world’s record! Watch now!</h4>
+                                            <!-- tags-container -->
+                                            <div class="flex items-center gap--4 overflow-visible">
+                                                <!-- tag -->
+                                                <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
+                                                    <span class="white fs--10 fw5 lh--15 poppins nowrap">Fried Chicken</span>
+                                                </div>
+                                                <!-- End tag -->
+
+                                                <!-- tag -->
+                                                <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
+                                                    <span class="white fs--10 fw5 lh--15 poppins nowrap">Mostly Eating</span>
+                                                </div>
+                                                <!-- End tag -->
+
+                                                <!-- tag -->
+                                                <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
+                                                    <span class="white fs--10 fw5 lh--15 poppins nowrap">Seasonal Fruits</span>
+                                                </div>
+                                                <!-- End tag -->
+                                            </div>
+                                        </div>
+                                        <!-- End overlay-info -->
+                                    </div>
+                                    <!-- end card -->
+
+                                    <!-- card -->
+                                    <div class="br--2 pointer relative aspect--ratio--16-9" data-media-card>
+                                        <div class="relative ">
+                                        <img src="https://fansocial-user-media.s3.amazonaws.com/user-1/images/Ai8HD2ZNW5fTIfNez7L4LzU5MSnXEo/Ai8HD2ZNW5fTIfNez7L4LzU5MSnXEo.png" alt="Media 4761" loading="lazy" class="w-100 aspect--ratio--16-9 fit--cover cp--inset--0">
+                                        </div>
+
+                                        <!-- Video tag -->
+                                        <div data-media-type-tag class="absolute right-0 bottom-0 bg--col--trans-dark-black-70 pad--x--4 pad--y--1 flex items-center justify-center gap--3 z-1">
+                                            <span class="fs--12 lh--18 white tracked--0-12">video</span>
+                                            <span>
+                                                <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/play-square-02.svg" alt="play-square-02" class="w--16 h--16 filter--col--white">
+                                            </span>
+                                        </div>
+                                        <!-- End Video tag -->
+
+                                        <!-- remove button -->
+                                        <div class="absolute right-0 top-0 bg--col--ebony--variation-2 w--24 h--24 flex justify-center items-center z-3" data-minus-icon-container>
+                                            <img data-button-icon="" src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/minus.svg" alt="minus" class="w--24 h--24 filter--col--white">
+                                        </div>
+                                        <!-- End add button -->
+
+                                        <!-- overlay-info -->
+                                        <div data-media-overlay-info-container class="w-100 h-100 flex flex-column justify-end pa1 gap--8 absolute left-0 bottom-0 o--hidden z-2 bg--gd--black--t0--180 o-0 overflow-hidden">
+                                            <h4 class="fs--12 lh--18 fw5 white poppins text--sh--black--40 truncate-text-line-2">Record breaking fried chicken eating! Watch me break world’s record! Watch now!</h4>
+                                            <!-- tags-container -->
+                                            <div class="flex items-center gap--4 overflow-visible">
+                                                <!-- tag -->
+                                                <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
+                                                    <span class="white fs--10 fw5 lh--15 poppins nowrap">Fried Chicken</span>
+                                                </div>
+                                                <!-- End tag -->
+
+                                                <!-- tag -->
+                                                <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
+                                                    <span class="white fs--10 fw5 lh--15 poppins nowrap">Mostly Eating</span>
+                                                </div>
+                                                <!-- End tag -->
+
+                                                <!-- tag -->
+                                                <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
+                                                    <span class="white fs--10 fw5 lh--15 poppins nowrap">Seasonal Fruits</span>
+                                                </div>
+                                                <!-- End tag -->
+                                            </div>
+                                        </div>
+                                        <!-- End overlay-info -->
+                                    </div>
+                                    <!-- end card -->
+
+                                    <!-- card -->
+                                    <div class="br--2 pointer relative aspect--ratio--16-9" data-media-card>
+                                        <div class="relative ">
+                                        <img src="https://fansocial-user-media.s3.amazonaws.com/user-1/images/Ai8HD2ZNW5fTIfNez7L4LzU5MSnXEo/Ai8HD2ZNW5fTIfNez7L4LzU5MSnXEo.png" alt="Media 4761" loading="lazy" class="w-100 aspect--ratio--16-9 fit--cover cp--inset--0">
+                                        </div>
+
+                                        <!-- Video tag -->
+                                        <div data-media-type-tag class="absolute right-0 bottom-0 bg--col--trans-dark-black-70 pad--x--4 pad--y--1 flex items-center justify-center gap--3 z-1">
+                                            <span class="fs--12 lh--18 white tracked--0-12">video</span>
+                                            <span>
+                                                <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/play-square-02.svg" alt="play-square-02" class="w--16 h--16 filter--col--white">
+                                            </span>
+                                        </div>
+                                        <!-- End Video tag -->
+
+                                        <!-- remove button -->
+                                        <div class="absolute right-0 top-0 bg--col--ebony--variation-2 w--24 h--24 flex justify-center items-center z-3" data-minus-icon-container>
+                                            <img data-button-icon="" src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/minus.svg" alt="minus" class="w--24 h--24 filter--col--white">
+                                        </div>
+                                        <!-- End add button -->
+
+                                        <!-- overlay-info -->
+                                        <div data-media-overlay-info-container class="w-100 h-100 flex flex-column justify-end pa1 gap--8 absolute left-0 bottom-0 o--hidden z-2 bg--gd--black--t0--180 o-0 overflow-hidden">
+                                            <h4 class="fs--12 lh--18 fw5 white poppins text--sh--black--40 truncate-text-line-2">Record breaking fried chicken eating! Watch me break world’s record! Watch now!</h4>
+                                            <!-- tags-container -->
+                                            <div class="flex items-center gap--4 overflow-visible">
+                                                <!-- tag -->
+                                                <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
+                                                    <span class="white fs--10 fw5 lh--15 poppins nowrap">Fried Chicken</span>
+                                                </div>
+                                                <!-- End tag -->
+
+                                                <!-- tag -->
+                                                <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
+                                                    <span class="white fs--10 fw5 lh--15 poppins nowrap">Mostly Eating</span>
+                                                </div>
+                                                <!-- End tag -->
+
+                                                <!-- tag -->
+                                                <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
+                                                    <span class="white fs--10 fw5 lh--15 poppins nowrap">Seasonal Fruits</span>
+                                                </div>
+                                                <!-- End tag -->
+                                            </div>
+                                        </div>
+                                        <!-- End overlay-info -->
+                                    </div>
+                                    <!-- end card -->
+
+                                    <!-- card -->
+                                    <div class="br--2 pointer relative aspect--ratio--16-9" data-media-card>
+                                        <div class="relative ">
+                                        <img src="https://fansocial-user-media.s3.amazonaws.com/user-1/images/Ai8HD2ZNW5fTIfNez7L4LzU5MSnXEo/Ai8HD2ZNW5fTIfNez7L4LzU5MSnXEo.png" alt="Media 4761" loading="lazy" class="w-100 aspect--ratio--16-9 fit--cover cp--inset--0">
+                                        </div>
+
+                                        <!-- Video tag -->
+                                        <div data-media-type-tag class="absolute right-0 bottom-0 bg--col--trans-dark-black-70 pad--x--4 pad--y--1 flex items-center justify-center gap--3 z-1">
+                                            <span class="fs--12 lh--18 white tracked--0-12">video</span>
+                                            <span>
+                                                <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/play-square-02.svg" alt="play-square-02" class="w--16 h--16 filter--col--white">
+                                            </span>
+                                        </div>
+                                        <!-- End Video tag -->
+
+                                        <!-- remove button -->
+                                        <div class="absolute right-0 top-0 bg--col--ebony--variation-2 w--24 h--24 flex justify-center items-center z-3" data-minus-icon-container>
+                                            <img data-button-icon="" src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/minus.svg" alt="minus" class="w--24 h--24 filter--col--white">
+                                        </div>
+                                        <!-- End add button -->
+
+                                        <!-- overlay-info -->
+                                        <div data-media-overlay-info-container class="w-100 h-100 flex flex-column justify-end pa1 gap--8 absolute left-0 bottom-0 o--hidden z-2 bg--gd--black--t0--180 o-0 overflow-hidden">
+                                            <h4 class="fs--12 lh--18 fw5 white poppins text--sh--black--40 truncate-text-line-2">Record breaking fried chicken eating! Watch me break world’s record! Watch now!</h4>
+                                            <!-- tags-container -->
+                                            <div class="flex items-center gap--4 overflow-visible">
+                                                <!-- tag -->
+                                                <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
+                                                    <span class="white fs--10 fw5 lh--15 poppins nowrap">Fried Chicken</span>
+                                                </div>
+                                                <!-- End tag -->
+
+                                                <!-- tag -->
+                                                <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
+                                                    <span class="white fs--10 fw5 lh--15 poppins nowrap">Mostly Eating</span>
+                                                </div>
+                                                <!-- End tag -->
+
+                                                <!-- tag -->
+                                                <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
+                                                    <span class="white fs--10 fw5 lh--15 poppins nowrap">Seasonal Fruits</span>
+                                                </div>
+                                                <!-- End tag -->
+                                            </div>
+                                        </div>
+                                        <!-- End overlay-info -->
+                                    </div>
+                                    <!-- end card -->
+
+                                    <!-- card -->
+                                    <div class="br--2 pointer relative aspect--ratio--16-9" data-media-card>
+                                        <div class="relative ">
+                                        <img src="https://fansocial-user-media.s3.amazonaws.com/user-1/images/Ai8HD2ZNW5fTIfNez7L4LzU5MSnXEo/Ai8HD2ZNW5fTIfNez7L4LzU5MSnXEo.png" alt="Media 4761" loading="lazy" class="w-100 aspect--ratio--16-9 fit--cover cp--inset--0">
+                                        </div>
+
+                                        <!-- Video tag -->
+                                        <div data-media-type-tag class="absolute right-0 bottom-0 bg--col--trans-dark-black-70 pad--x--4 pad--y--1 flex items-center justify-center gap--3 z-1">
+                                            <span class="fs--12 lh--18 white tracked--0-12">video</span>
+                                            <span>
+                                                <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/play-square-02.svg" alt="play-square-02" class="w--16 h--16 filter--col--white">
+                                            </span>
+                                        </div>
+                                        <!-- End Video tag -->
+
+                                        <!-- remove button -->
+                                        <div class="absolute right-0 top-0 bg--col--ebony--variation-2 w--24 h--24 flex justify-center items-center z-3" data-minus-icon-container>
+                                            <img data-button-icon="" src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/minus.svg" alt="minus" class="w--24 h--24 filter--col--white">
+                                        </div>
+                                        <!-- End add button -->
+
+                                        <!-- overlay-info -->
+                                        <div data-media-overlay-info-container class="w-100 h-100 flex flex-column justify-end pa1 gap--8 absolute left-0 bottom-0 o--hidden z-2 bg--gd--black--t0--180 o-0 overflow-hidden">
+                                            <h4 class="fs--12 lh--18 fw5 white poppins text--sh--black--40 truncate-text-line-2">Record breaking fried chicken eating! Watch me break world’s record! Watch now!</h4>
+                                            <!-- tags-container -->
+                                            <div class="flex items-center gap--4 overflow-visible">
+                                                <!-- tag -->
+                                                <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
+                                                    <span class="white fs--10 fw5 lh--15 poppins nowrap">Fried Chicken</span>
+                                                </div>
+                                                <!-- End tag -->
+
+                                                <!-- tag -->
+                                                <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
+                                                    <span class="white fs--10 fw5 lh--15 poppins nowrap">Mostly Eating</span>
+                                                </div>
+                                                <!-- End tag -->
+
+                                                <!-- tag -->
+                                                <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
+                                                    <span class="white fs--10 fw5 lh--15 poppins nowrap">Seasonal Fruits</span>
+                                                </div>
+                                                <!-- End tag -->
+                                            </div>
+                                        </div>
+                                        <!-- End overlay-info -->
+                                    </div>
+                                    <!-- end card -->
+
+                                    <!-- card -->
+                                    <div class="br--2 pointer relative aspect--ratio--16-9" data-media-card>
+                                        <div class="relative ">
+                                        <img src="https://fansocial-user-media.s3.amazonaws.com/user-1/images/Ai8HD2ZNW5fTIfNez7L4LzU5MSnXEo/Ai8HD2ZNW5fTIfNez7L4LzU5MSnXEo.png" alt="Media 4761" loading="lazy" class="w-100 aspect--ratio--16-9 fit--cover cp--inset--0">
+                                        </div>
+
+                                        <!-- Video tag -->
+                                        <div data-media-type-tag class="absolute right-0 bottom-0 bg--col--trans-dark-black-70 pad--x--4 pad--y--1 flex items-center justify-center gap--3 z-1">
+                                            <span class="fs--12 lh--18 white tracked--0-12">video</span>
+                                            <span>
+                                                <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/play-square-02.svg" alt="play-square-02" class="w--16 h--16 filter--col--white">
+                                            </span>
+                                        </div>
+                                        <!-- End Video tag -->
+
+                                        <!-- remove button -->
+                                        <div class="absolute right-0 top-0 bg--col--ebony--variation-2 w--24 h--24 flex justify-center items-center z-3" data-minus-icon-container>
+                                            <img data-button-icon="" src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/minus.svg" alt="minus" class="w--24 h--24 filter--col--white">
+                                        </div>
+                                        <!-- End add button -->
+
+                                        <!-- overlay-info -->
+                                        <div data-media-overlay-info-container class="w-100 h-100 flex flex-column justify-end pa1 gap--8 absolute left-0 bottom-0 o--hidden z-2 bg--gd--black--t0--180 o-0 overflow-hidden">
+                                            <h4 class="fs--12 lh--18 fw5 white poppins text--sh--black--40 truncate-text-line-2">Record breaking fried chicken eating! Watch me break world’s record! Watch now!</h4>
+                                            <!-- tags-container -->
+                                            <div class="flex items-center gap--4 overflow-visible">
+                                                <!-- tag -->
+                                                <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
+                                                    <span class="white fs--10 fw5 lh--15 poppins nowrap">Fried Chicken</span>
+                                                </div>
+                                                <!-- End tag -->
+
+                                                <!-- tag -->
+                                                <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
+                                                    <span class="white fs--10 fw5 lh--15 poppins nowrap">Mostly Eating</span>
+                                                </div>
+                                                <!-- End tag -->
+
+                                                <!-- tag -->
+                                                <div class="bg--col--white-0-20 bg--blur--10 flex items-center justify-center gap--4 pad--x--4">
+                                                    <span class="white fs--10 fw5 lh--15 poppins nowrap">Seasonal Fruits</span>
+                                                </div>
+                                                <!-- End tag -->
+                                            </div>
+                                        </div>
+                                        <!-- End overlay-info -->
+                                    </div>
+                                    <!-- end card -->
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -785,6 +1197,18 @@
                                     </div>
                                 </button>
                             </div>
+                            
+                            <!-- done-button -->
+                            <div class="flex justify-end " media-uploader-update="">
+                                <button data-media-uploader-update data-button-style="skew-left shadow-none" data-button-color="green" data-button-loader class="h--40 pad--x--8 flex items-center gap--10 justify-center hover--bg--col-ebony hover--col--brand-green hover--br--col-brand-green hover--parent--child--col--brand-green">
+                                    <span class="flex justify-center items-center pointer w--20 h--20">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                                            <path d="M21 10.0857V11.0057C20.9988 13.1621 20.3005 15.2604 19.0093 16.9875C17.7182 18.7147 15.9033 19.9782 13.8354 20.5896C11.7674 21.201 9.55726 21.1276 7.53447 20.3803C5.51168 19.633 3.78465 18.2518 2.61096 16.4428C1.43727 14.6338 0.879791 12.4938 1.02168 10.342C1.16356 8.19029 1.99721 6.14205 3.39828 4.5028C4.79935 2.86354 6.69279 1.72111 8.79619 1.24587C10.8996 0.770634 13.1003 0.988061 15.07 1.86572M21 3L11 13.01L8 10.01" stroke="#0C111D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </span>
+                                    <span class="flex pad--y--4 fs--18 fw5 lh--28 black">Done</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                     <!-- end footer -->
@@ -796,5 +1220,197 @@
         </div>
         <!-- end inner wrapper -->
     </div>
+
+    <!-- dropdown-popup -->
+    <div data-popup="" data-popup-type="slidein-right-popup" data-popup-max-width="480px" data-popup-id="sub_settings_published" class="elm_UoRWYY items-center justify-center fixed dn top-0 left-0 w-100 h-100 z--99999 overflow-auto slidein-right-popup" data-popup-overlay-color="rgba(0,0,0,0.65)" data-popup-id="sub_settings_published" data-opened-target-selector="[data-popup-id='sub_settings_published']" style="background-color: rgba(0, 0, 0, 0.65);">
+        <!-- inner-wrapper -->
+        <div data-popup-inner="" class="elm_yNwqwJ top-0 w-100 flex items-center justify-center absolute">
+            <!-- container -->
+            <div data-popup-content-container="" data-ajax-content="" data-attribute-popup-ajax-container="" class="bg--blur--50 bg--col--athens-gray--90 elm_qJBugX flex flex-column w--352 w--100-responsive-mobile w--100-responsive-mobile-portrait sh--popup-1 no-full-width no-height">
+                <!-- header -->
+                <div class="pad--8 dn justify-between display-flex--responsive-mobile-portrait">
+                    <h3 class="fs--14 fw6 lh--20 fw6 poppins col--oxford-blue">Filter</h3>
+
+                    <!-- Close Icon -->
+                    <div class="elm_UOkrrN flex justify-center items-center pointer w--24 h--24">
+                        <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/close-btn.svg" alt="" class="w--24 h--24 filter--col--gull-gray">
+                    </div>
+                </div>
+                <!-- dropdown-container -->
+                <div data-responsive-select-dropdown-container class="bg-white-50">
+                    <div class="flex flex-column">
+                        <!-- select-dropdown-container -->
+                        <div class="flex flex-column">
+                            <!-- Label -->
+                            <div class="pad--y--8 pad--x--10 flex-auto">
+                                <span class="fs--12 fw6 lh--18 col--pale-sky ttu">Sort By:</span>
+                            </div>
+                            <!-- End Label -->
+                            
+                            <!-- Field -->
+                            <div class="pad--x--8" data-sub-settings-select-dropdown>
+                                <div class="br--8 bg-white-70 relative">
+                                    <!-- Select Field -->
+                                    <div class="relative z--10000 h--40 flex items-center">
+                                        <select
+                                            data-nice-select
+                                            data-dropdown-trigger="click"
+                                            data-theme="media-mobile-dropdown"
+                                            data-dropdown-type="media-type-tabs"
+                                            data-dropdown-icon-down="select_arrow_down" 
+                                            data-dropdown-icon-up="select_arrow_up"  
+                                            data-copy-attributes="data-dropdown-type,data-theme"
+                                            data-id="courier-select"
+                                            class="pad--y--10 pad--x--14"
+                                            >
+                                            <option data-icon="arrow-up" data-icon-position="right" value="newest">
+                                                <span>Upload Date</span>
+                                            </option>
+                                            <option data-icon-position="left" value="name_asc">
+                                                Name								
+                                            </option>
+                                            <option data-icon-position="left" value="likes">
+                                                Most Liked								
+                                            </option>
+                                            <option data-icon-position="left" value="views">
+                                                Most Viewed								
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <!-- End Select Field -->
+                                </div>
+                            </div>
+                            <!-- End Field -->
+                        </div>
+
+                        <!-- checkbox-container -->
+                        <div class="pad--x--8 flex flex-column gap--4 mt2">
+                            <!--Title -->
+                            <div class="w-100 pad--y--4 flex items-center justify-between">
+                            <span class="fs--12 fw6 lh--18 col--pale-sky ttu">Media Type</span>
+                            <!-- Select All Checkbox -->
+                            <div class="flex items-center gap--8">
+                                <div class="w-100 flex justify-start items-end c--pointer flex-column" data-form-input-type="checkbox" data-form-input-layout="vertical" data-form-accent-color="transparent">
+                                    <label class="w-100 flex flex-row items-center justify-between flex-shrink-0 gap--4 pad--x--2 pad--y--3 c--pointer relative bg-black">
+                                        <input type="checkbox" checked="" data-filter-select-all="media_type" class="ml0">
+                                        <div class="flex items-center gap--8 flex--max">
+                                        <span class="fs--12 fw6 lh--18 black">Select All</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- End Select All Checkbox -->
+                            </div>
+                            <!--End Title -->
+
+                            <!-- Input Item -->
+                            <div class="flex items-center gap--8 pad--8 h--48">
+                            <div class="w-100 flex justify-start items-start c--pointer flex-column" data-form-input-type="checkbox" data-form-input-layout="vertical" data-form-accent-color="basic">
+                                <label class="w-100 flex flex-row items-center justify-between flex-shrink-0 gap10 gap--8 c--pointer">
+                                    <div class="flex items-center gap--8">
+                                        <span>
+                                            <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/icons/play-square.svg" alt="" class="w--20 h--20 filter--col--ebony--variation-2">
+                                        </span>
+                                        <span class="fs--14 fw6 lh--20 col--ebony--variation-2">Video</span>
+                                        <small class="fs--12 lh--18 col--ebony--variation-2 h2">15</small>
+                                    </div>
+                                    <input id="media_type_video" name="types[]" data-name="types" value="video" type="checkbox" data-filter-select-type="media_type" checked="" js-loaded="true" class="pointer">
+                                </label>
+                            </div>
+                            </div>
+                            <!-- End Input Item -->
+
+                            <!-- Input Item -->
+                            <div class="flex items-center gap--8 pad--8 h--48">
+                            <div class="w-100 flex justify-start items-start c--pointer flex-column  " data-form-input-type="checkbox" data-form-input-layout="vertical" data-form-accent-color="basic">
+                                <label class="w-100 flex flex-row items-center justify-between flex-shrink-0 gap10 gap--8 c--pointer">
+                                    <div class="flex items-center gap--8">
+                                        <span>
+                                        <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/icons/image-03.svg" alt="" class="w--20 h--20 filter--col--ebony--variation-2">
+                                        </span>
+                                        <span class="fs--14 fw6 lh--20 col--ebony--variation-2">Single Image</span>
+                                        <small class="fs--12 lh--18 col--ebony--variation-2 h2">15</small>
+                                    </div>
+                                    <input id="media_type_image" name="types[]" data-name="types" value="image" type="checkbox" data-filter-select-type="media_type" checked="" js-loaded="true">
+                                </label>
+                            </div>
+                            </div>
+                            <!-- End Input Item -->
+
+                            <!-- Input Item -->
+                            <div class="flex items-center gap--8 pad--8 h--48">
+                            <div class="w-100 flex justify-start items-start c--pointer flex-column  " data-form-input-type="checkbox" data-form-input-layout="vertical" data-form-accent-color="basic">
+                                <label class="w-100 flex flex-row items-center justify-between flex-shrink-0 gap10 gap--8 c--pointer">
+                                    <div class="flex items-center gap--8">
+                                        <span>
+                                        <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/icons/image-gallery.svg" alt="" class="w--20 h--20 filter--col--ebony--variation-2">
+                                        </span>
+                                        <span class="fs--14 fw6 lh--20 col--ebony--variation-2">Image Gallery</span>
+                                        <small class="fs--12 lh--18 col--ebony--variation-2 h2">15</small>
+                                    </div>
+                                    <input id="media_type_image-gallery" name="types[]" data-name="types" value="image-gallery" type="checkbox" data-filter-select-type="media_type" checked="" js-loaded="true">
+                                </label>
+                            </div>
+                            </div>
+                            <!-- End Input Item -->
+
+                            <!-- Input Item -->
+                            <div class="flex items-center gap--8 pad--8 h--48">
+                            <div class="w-100 flex justify-start items-start c--pointer flex-column  " data-form-input-type="checkbox" data-form-input-layout="vertical" data-form-accent-color="basic">
+                                <label class="w-100 flex flex-row items-center justify-between flex-shrink-0 gap10 gap--8 c--pointer">
+                                    <div class="flex items-center gap--8">
+                                        <span>
+                                        <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/icons/recording-02.svg" alt="" class="w--20 h--20 filter--col--ebony--variation-2">
+                                        </span>
+                                        <span class="fs--14 fw6 lh--20 col--ebony--variation-2">Audio</span>
+                                        <small class="fs--12 lh--18 col--ebony--variation-2 h2">15</small>
+                                    </div>
+                                    <input id="media_type_audio" name="types[]" data-name="types" value="audio" type="checkbox" data-filter-select-type="media_type" checked="" js-loaded="true">
+                                </label>
+                            </div>
+                            </div>
+                            <!-- End Input Item -->
+                        </div>
+
+                        <!-- reset and apply button -->
+                        <div class="pad--8 relative bottom-0 left-0 w-100" data-reset-filter-button-container>
+                            <div class="flex items-center gap--16">
+                                <button type="button" data-media-filter-reset="" class="flex--max h--36 bg-white pad--x--8 flex items-center justify-center gap--10 flex--max-responsive-mobile flex--max-responsive-mobile-portrait hover--bg--col--white--100 hover--parent--child--milano-red ttc">
+                                    <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/icons/refresh-ccw-02.svg" alt="" class="w--20 h--20 filter--col--vermilion hover--filter--col--milano-red">
+                                    <span class="fs--14 fw5 lh--24 col--vermilion tracked--0-35 hover--col--milano-red-text">Reset Filter</span>
+                                </button>
+
+                                <button type="button" data-filter-submit-form="yes" class="flex--max bg-black h--36 pad--x--8 flex justify-center items-center gap--10 hover--bg--col-brand-green hover--parent--child--col--black-ribbon">
+                                    <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/icons/check-circle-broken.svg" alt="" class="w--20 h--20 filter--col--spring-green hov--filter--col--black-ribbon">
+                                    <span class="fs--16 fw5 lh--24 col-brand-green ttu">Apply</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const filterInput = document.querySelector('[data-sub-settings-filter-input]');
+        const filterContainer = document.querySelector('[data-sub-settings-filter-container]');
+
+        // Add event listeners for click and typing
+        filterInput.addEventListener('focus', () => {
+            filterContainer.setAttribute('data-filter-adding', 'true');
+        });
+
+        filterInput.addEventListener('blur', () => {
+        if (!filterInput.value) {
+            filterContainer.removeAttribute('data-filter-adding');
+        }
+        });
+
+        filterInput.addEventListener('input', () => {
+            filterContainer.setAttribute('data-filter-adding', 'true');
+        });
+    </script>
+    <script src='https://staging.fansocial.app/wp-content/plugins/fansocial/assets/FINAL/js/nice-select.js?ver=1.0.0' id='niceSelect-js'></script>
+    <script src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/FINAL/js/popup.js?ver=1.0.0" id="popup-js"></script>
 </body>
 </html>
