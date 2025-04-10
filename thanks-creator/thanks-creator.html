@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="max-image-preview:large">
+        <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="dns-prefetch" href="//staging.fansocial.app">
+        <link rel="dns-prefetch" href="//fonts.googleapis.com">
+        <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+        <title>Thank you creator templates</title>
+        <link rel="stylesheet" id="google-fonts-css" href="https://fonts.googleapis.com/css2?family=Poppins%3Awght%40300%3B400%3B500%3B600%3B700%3B800%3B900&amp;display=swap&amp;ver=1.0.0" media="">
+        <link rel="stylesheet" id="theme-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/theme.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="final-main-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/main.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="components-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/css/components.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="tachyonsStylesheet-css" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.11.1/tachyons.min.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="popup-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/css/dev/popup.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="pageElements-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/FINAL/css/pageElements.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="finalCustomTachyonsStylesheet-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/customTachyons.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="tachyonsV2-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/tachyons-v2.css?ver=1.0.0" media="">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css?ver=1.0.0">
+        <link rel="stylesheet" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-tablet.css" media="screen and (min-width: 768px) and (max-width: 1365px)">
+        <link rel="stylesheet" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-mobile.css" media="screen and (min-width: 480px) and (max-width: 767px)">
+        <link rel="stylesheet" id="dashboardStylesMobilePortrait-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-mobile-portrait.css" media="screen and (max-width: 479px)">
+    
+        <!-- custom styles for this template -->
+        <style>
+
+            [data-thank-you-wrapper] {
+                background-image: url('./images/thank-you-bg.png');
+            }
+
+            [data-thank-you-left-column],
+            [data-thank-you-right-column] {
+                flex-grow: 1;
+                flex-shrink: 0;
+                flex-basis: 50%;
+            }
+
+            .text--wrap--unset{ text-wrap: unset; }
+
+            .gap--3-33{ gap: 0.20815rem; }
+
+            .drop--sh--25 { filter: drop-shadow(0 0 0.5rem rgba(0, 0, 0, 0.25)); }
+
+            /* Reduce line-height for the empty <br> gap */
+            [data-thank-you-left-column] p br.line-break {
+                display: block;
+                content: "";
+                margin-top: -0.625rem;
+            }
+
+            /* order-summary product image */
+            [data-order-summary-product-thumb]:not(.db):empty{
+                display: flex;
+            }
+
+            [data-order-summary-product-thumb]{
+                width: 80px;
+                min-width: 80px;
+                height: 75px;
+                overflow: hidden;
+            }
+
+            [data-order-summary-product-thumb] img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            [data-product-text-user-details]{
+                height: 1.875rem;
+                gap: 0.416875rem;
+            }
+
+            @media screen and (max-width: 1009px){
+                [data-thank-you-wrapper] {
+                    background-image: url('./images/thank-you-bg-tablet.png');
+                }
+
+                [data-thank-you-wrapper] {
+                    flex-direction: column;
+                }
+
+                [data-thank-you-left-column],
+                [data-thank-you-right-column] {
+                    flex-basis: 100%;
+                }
+
+                [data-thank-you-left-column] {
+                    min-height: calc(100svh - 4rem);
+                }
+
+                [data-thank-you-right-column]{
+                    gap: 1.5rem;
+                    padding-bottom: 0;
+                }
+
+                [data-left-column-text-wrapper]{
+                    flex: 1;
+                    height: 100%;
+                }
+
+                [data-left-column-text-container]{
+                    flex: 1;
+                    justify-content: space-between;
+                }
+
+                [data-mobile-button-container]{
+                    display: flex;
+                    margin-right: -.75rem;
+                    margin-bottom: .25rem;
+                }
+            }
+
+            @media screen and (max-width: 767px){
+                [data-thank-you-left-column] {
+                    min-height: unset;
+                }
+
+                [data-mobile-button-container]{
+                    margin-right: -.25rem;
+                }
+
+                [data-mobile-button-container] button.h--40{
+                    height: 2rem;
+                }
+
+                [data-order-summary-product-thumb]{
+                    height: auto;
+                    max-height: 95px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div data-thank-you-wrapper class="flex sh--11 bg--blur--100 cover min-vh-100">
+            <!-- left-column -->
+            <div data-thank-you-left-column class="flex flex-column gap--24 w-100 h-100 bg--black-25 pad--24 min-vh-100 pad--x--16-responsive-tablet pad--x--8-responsive-mobile pad--x--8-responsive-mobile-portrait pad--y--16-responsive-mobile pad--y--16-responsive-mobile-portrait">
+                <!-- icon -->
+                <div class="flex justify-center align-items-center w--48 h--48">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                        <g opacity="0.5">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M33.6422 2H14.3522C7.52761 2 2 7.53256 2 14.3562V33.6438C2 40.4674 7.52761 46 14.3522 46H33.6422C40.4667 46 46 40.4674 46 33.6438V14.3562C46 7.53256 40.4667 2 33.6422 2ZM30.0062 35.303L20.4631 36.3562C18.5715 36.5658 17.1669 34.6461 17.9315 32.9076L19.7778 28.7001C20.3499 27.3977 19.6646 25.9027 18.5715 24.991C17.099 23.7678 16.0795 21.9897 15.853 19.9341C15.3886 15.7097 18.4299 11.9156 22.6492 11.4512C26.8686 10.9869 30.6688 14.0278 31.1332 18.2466C31.3654 20.3475 30.7254 22.3408 29.5078 23.8698C28.6129 25.0023 28.2448 26.6445 29.1 27.8054L31.7279 31.3843C32.8549 32.9189 31.8978 35.0991 30.0062 35.303Z" fill="white"/>
+                        </g>
+                    </svg>
+                </div>
+
+                <!-- text-section -->
+                <div data-left-column-text-wrapper class="flex flex-column items-start gap--24">
+                    <!-- text-container -->
+                    <div data-left-column-text-container class="flex flex-column gap--24 drop--sh--1">
+                        <h3 class="fs--48 lh--60 fw5 tracked--neg--0-96 poppins white text--wrap--unset">Thank you for supporting the creators! 😍</h3>
+                        <p class="fs--18 fw5 lh--28 poppins col--led-grey">Your order just came through — thank you again! 💛<br>You can check your dashboard anytime for updates or past purchases.<br class="line-break"><br>
+                            Need help or have a request? Send a message or email us at support@fansocial.app — we're here for you!</p>
+                    </div>
+
+                    <!-- button -->
+                    <button data-button-style="skew-right bottom" data-button-color="green" type="button" class="h--40 pad--x--8 pad--right--10 flex items-center gap--10 justify-center relative size-large clip-path--polygon-responsive-mobile-portrait clip-path--polygon-responsive-mobile w--130-responsive-mobile-portrait w--130-responsive-mobile hover--parent--child--col--brand-green" data-button-size="large" data-button-icon-position="left" data-skip-svg-color="" data-skip-svg-width="" data-for-new-dashboard="1" data-button-adjust-padding="1">
+                        <div data-button-text-wrap="" class="flex items-center gap--10 justify-center relative">
+                            <span class="w--24 h--24 flex justify-center align-items-center hov--filter--col--brand-green">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+                                    <path d="M10.9823 1.764C10.631 1.49075 10.4553 1.35412 10.2613 1.3016C10.0902 1.25526 9.9098 1.25526 9.73865 1.3016C9.54468 1.35412 9.36902 1.49075 9.0177 1.764L2.23539 7.03912C1.78202 7.39175 1.55534 7.56806 1.39203 7.78886C1.24737 7.98444 1.1396 8.20478 1.07403 8.43905C1 8.70352 1 8.9907 1 9.56505V16.8C1 17.9201 1 18.4801 1.21799 18.908C1.40973 19.2843 1.71569 19.5903 2.09202 19.782C2.51984 20 3.0799 20 4.2 20H6.2C6.48003 20 6.62004 20 6.727 19.9455C6.82108 19.8976 6.89757 19.8211 6.9455 19.727C7 19.62 7 19.48 7 19.2V12.6C7 12.0399 7 11.7599 7.10899 11.546C7.20487 11.3578 7.35785 11.2049 7.54601 11.109C7.75992 11 8.03995 11 8.6 11H11.4C11.9601 11 12.2401 11 12.454 11.109C12.6422 11.2049 12.7951 11.3578 12.891 11.546C13 11.7599 13 12.0399 13 12.6V19.2C13 19.48 13 19.62 13.0545 19.727C13.1024 19.8211 13.1789 19.8976 13.273 19.9455C13.38 20 13.52 20 13.8 20H15.8C16.9201 20 17.4802 20 17.908 19.782C18.2843 19.5903 18.5903 19.2843 18.782 18.908C19 18.4801 19 17.9201 19 16.8V9.56505C19 8.9907 19 8.70352 18.926 8.43905C18.8604 8.20478 18.7526 7.98444 18.608 7.78886C18.4447 7.56806 18.218 7.39175 17.7646 7.03913L10.9823 1.764Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                           <span class="poppins wb flex pad--y--4 fs--18 fw5 lh--28 black ttu">DASHBOARD HOME</span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- right-column -->
+            <div data-thank-you-right-column class="flex flex-column gap--40 w-100 h-100 bg-white-10 bg--blur--75 pad--24 min-vh-100 pad--x--16-responsive-tablet pad--x--8-responsive-mobile pad--x--8-responsive-mobile-portrait pad--y--24-responsive-mobile pad--y--24-responsive-mobile-portrait">
+                <!-- order-details-section -->
+                <div class="flex gap--24 drop--sh--25">
+                    <div class="flex flex-column gap--16 w-100">
+                        <!-- section-title -->
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center gap--8">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path d="M11.6673 9.16663H6.66732M8.33398 12.5H6.66732M13.334 5.83329H6.66732M16.6673 5.66663V14.3333C16.6673 15.7334 16.6673 16.4335 16.3948 16.9683C16.1552 17.4387 15.7727 17.8211 15.3023 18.0608C14.7675 18.3333 14.0674 18.3333 12.6673 18.3333H7.33398C5.93385 18.3333 5.23379 18.3333 4.69901 18.0608C4.2286 17.8211 3.84615 17.4387 3.60647 16.9683C3.33398 16.4335 3.33398 15.7334 3.33398 14.3333V5.66663C3.33398 4.26649 3.33398 3.56643 3.60647 3.03165C3.84615 2.56124 4.2286 2.17879 4.69901 1.93911C5.23379 1.66663 5.93385 1.66663 7.33398 1.66663H12.6673C14.0674 1.66663 14.7675 1.66663 15.3023 1.93911C15.7727 2.17879 16.1552 2.56124 16.3948 3.03165C16.6673 3.56643 16.6673 4.26649 16.6673 5.66663Z" stroke="#F9FAFB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span class="fs--16 lh--24 fw6 poppins col--athens-gray-2">ORDER DETAIL</span>
+                            </div>
+                        </div>
+
+                        <!-- table -->
+                        <div class="flex flex-column gap--16">
+                            <!-- row -->
+                            <div class="flex items-start gap--16 flex--column-responsive-mobile-portrait gap--8-responsive-mobile-portrait">
+                                <div class="w-50 flex flex-column w--100-responsive-mobile-portrait">
+                                    <span class="fs--14 lh--24 tracked--0-6 col-brand-green">Order number</span>
+                                    <p class="fs--16 lh--24 fw5 tracked--0-6 col--led-grey">1234-5678-9012</p>
+                                </div>
+                                <div class="w-50 flex flex-column w--100-responsive-mobile-portrait">
+                                    <span class="fs--14 lh--24 tracked--0-6 col-brand-green">Date</span>
+                                    <p class="fs--16 lh--24 fw5 tracked--0-6 col--led-grey">01-03-2024</p>
+                                </div>
+                            </div>
+
+                            <!-- row -->
+                            <div class="flex items-start gap--16 flex--column-responsive-mobile-portrait gap--8-responsive-mobile-portrait">
+                                <div class="w-50 flex flex-column w--100-responsive-mobile-portrait">
+                                    <span class="fs--14 lh--24 tracked--0-6 col-brand-green">Email</span>
+                                    <p class="fs--16 lh--24 fw5 tracked--0-6 col--led-grey">email@email.com</p>
+                                </div>
+                                <div class="w-50 flex flex-column w--100-responsive-mobile-portrait">
+                                    <span class="fs--14 lh--24 tracked--0-6 col-brand-green">Shipping Address</span>
+                                    <p class="fs--16 lh--24 fw5 tracked--0-6 col--led-grey">Chan Tai Man,10/F Block5, Fook Yip Bldg,12345,Kwai Chung, Hong Kong</p>
+                                </div>
+                            </div>
+
+                            <!-- row -->
+                            <div class="flex items-start gap--16 flex--column-responsive-mobile-portrait gap--8-responsive-mobile-portrait">
+                                <div class="w-50 flex flex-column w--100-responsive-mobile-portrait">
+                                    <span class="fs--14 lh--24 tracked--0-6 col-brand-green">Billing Address</span>
+                                    <p class="fs--16 lh--24 fw5 tracked--0-6 col--led-grey">Chan Tai Man,10/F Block5, Fook Yip Bldg,12345,Kwai Chung, Hong Kong</p>
+                                </div>
+                                <div class="w-50 flex flex-column w--100-responsive-mobile-portrait">
+                                    <span class="fs--14 lh--24 tracked--0-6 col-brand-green">Payment Method</span>
+                                    <div class="flex items-center gap--8">
+                                        <p class="fs--16 lh--24 fw5 col--led-grey">****3746</p>
+
+                                        <!-- card-icon -->
+                                        <div class="flex justify-center items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="41" height="12" viewBox="0 0 41 12" fill="none">
+                                                <path d="M14.3726 11.8729L16.4177 0.233577H19.6876L17.6419 11.8729H14.3726ZM29.441 0.488918C28.5026 0.159139 27.5113 -0.00634029 26.5133 0.000185756C23.2862 0.000185756 21.0128 1.57686 20.9932 3.83703C20.9755 5.50751 22.6165 6.43923 23.8554 6.99507C25.1268 7.56516 25.5541 7.9286 25.548 8.43752C25.54 9.21664 24.5325 9.57235 23.5941 9.57235C22.2866 9.57235 21.5925 9.39422 20.5194 8.9625L20.0989 8.77779L19.6404 11.38C20.4031 11.7043 21.8141 11.9857 23.2782 12C26.7116 12 28.9403 10.4417 28.966 8.02835C28.9782 6.70586 28.1091 5.6993 26.2237 4.8697C25.0822 4.33524 24.3831 3.973 24.3905 3.42844C24.3905 2.94565 24.9824 2.42903 26.2611 2.42903C27.0989 2.41083 27.9314 2.56253 28.7053 2.87441L28.9978 3.00861L29.441 0.488918ZM37.8417 0.233577H35.3259C34.5466 0.233577 33.9633 0.440245 33.6211 1.19443L28.7854 11.8135H32.2273C32.2273 11.8135 32.7783 10.4014 32.905 10.0914L37.0288 10.0961C37.1249 10.4976 37.4205 11.8135 37.4205 11.8135H40.4762L37.8417 0.233577ZM33.8415 7.716C34.1114 7.04615 35.1429 4.46648 35.1429 4.46648C35.1233 4.49736 35.411 3.79307 35.5756 3.35659L35.7966 4.35902C35.7966 4.35902 36.4222 7.13404 36.5525 7.716H33.8415ZM11.5979 0.233577L8.40755 8.14297L8.0678 6.53545C7.47405 4.68266 5.62363 2.67547 3.55469 1.67069L6.47203 11.8135L9.91945 11.81L15.0496 0.233577H11.582" fill="url(#paint0_linear_20371_267696)"/>
+                                                <path d="M5.28621 0.233457H0.0422323L0 0.475141C4.09749 1.43776 6.80852 3.76326 7.9342 6.5567L6.78894 1.21211C6.59123 0.476338 6.01831 0.256614 5.30887 0.231079" fill="url(#paint1_linear_20371_267696)"/>
+                                                <defs>
+                                                    <linearGradient id="paint0_linear_20371_267696" x1="22.0154" y1="0" x2="22.0154" y2="12" gradientUnits="userSpaceOnUse">
+                                                        <stop stop-color="white"/>
+                                                        <stop offset="1" stop-color="white" stop-opacity="0.75"/>
+                                                    </linearGradient>
+                                                    <linearGradient id="paint1_linear_20371_267696" x1="3.9671" y1="0.231079" x2="3.9671" y2="6.5567" gradientUnits="userSpaceOnUse">
+                                                        <stop stop-color="white"/>
+                                                        <stop offset="1" stop-color="white" stop-opacity="0.75"/>
+                                                    </linearGradient>
+                                                </defs>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- row -->
+                            <div class="flex items-start gap--16 flex--column-responsive-mobile-portrait gap--8-responsive-mobile-portrait">
+                                <div class="w-50 flex flex-column w--100-responsive-mobile-portrait">
+                                    <span class="fs--14 lh--24 tracked--0-6 col-brand-green">Amount</span>
+                                    <p class="fs--16 lh--24 fw5 col--led-grey">USD$ 169.99</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- order-summary-section -->
+                <div class="flex flex-column gap--16 drop--sh--25">
+                    <!-- section-title -->
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center gap--8">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M2.5 10H12.5M2.5 5H17.5M2.5 15H17.5" stroke="#F9FAFB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span class="fs--16 lh--24 fw6 poppins col--athens-gray-2">ORDER SUMMARY</span>
+                        </div>
+
+                        <!-- arrow-down-icon -->
+                        <div class="flex justify-center items-center pointer w--24 h--24">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M6 9L12 15L18 9" stroke="#D0D5DD" stroke-width="1.77778" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- table -->
+                    <div class="flex flex-column gap--8">
+                        <!-- row -->
+                        <div class="flex items-center gap--8">
+                            <!-- product-image -->
+                            <div data-order-summary-product-thumb class="flex justify-center items-center bg-black">
+                                <img class="w-100 h-100" src="./images/nba-image.png" alt="">
+                            </div>
+                        
+                            <!-- product-text-container -->
+                            <div class="flex flex-column">
+                                <div class="flex flex-column">
+                                    <p class="fs--14 fw5 white poppins tracked--0-14 lh--20">1990 NBA Hoops Mark Jackson Knicks Menendez Brothers Courtside</p>
+                                    <!-- user-details -->
+                                    <div>
+                                        <div data-product-text-user-details class="flex items-center">
+                                            <div class="w--20 h--20 flex justify-center items-center">
+                                                <img src="./images/Vector1.svg" alt="">
+                                            </div>
+                                            <div>
+                                                <div class="flex items-center gap--3-33">
+                                                    <p class="fs--10 lh--15 fw5 col--athens-gray-3 poppins">Princess Carrot Pop</p>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="9" height="10" viewBox="0 0 9 10" fill="none">
+                                                        <g clip-path="url(#clip0_20712_5062)">
+                                                            <path d="M6.4364 2.3092C6.51555 2.50062 6.66747 2.65277 6.85877 2.7322L7.52954 3.01004C7.72097 3.08934 7.87306 3.24143 7.95235 3.43285C8.03164 3.62428 8.03164 3.83937 7.95235 4.0308L7.6747 4.70109C7.59538 4.8926 7.59527 5.10791 7.67495 5.29933L7.95212 5.96942C7.99143 6.06423 8.01167 6.16586 8.01168 6.2685C8.0117 6.37114 7.99149 6.47277 7.95221 6.5676C7.91294 6.66242 7.85536 6.74858 7.78277 6.82114C7.71018 6.89371 7.62401 6.95125 7.52917 6.9905L6.85888 7.26815C6.66747 7.34729 6.51532 7.49921 6.43588 7.69051L6.15804 8.36128C6.07875 8.55271 5.92666 8.7048 5.73523 8.78409C5.5438 8.86338 5.32872 8.86338 5.13729 8.78409L4.46699 8.50645C4.27556 8.42735 4.06055 8.42751 3.86924 8.5069L3.19846 8.78434C3.00714 8.86345 2.79224 8.86338 2.60097 8.78416C2.4097 8.70493 2.25769 8.55302 2.17834 8.3618L1.90042 7.69082C1.82127 7.49941 1.66935 7.34726 1.47806 7.26783L0.807283 6.98998C0.615938 6.91072 0.463894 6.75873 0.384573 6.56741C0.305251 6.37609 0.305143 6.16111 0.384273 5.96971L0.661918 5.29942C0.741015 5.10798 0.740854 4.89297 0.661469 4.70166L0.384223 4.0304C0.344915 3.93559 0.324674 3.83396 0.324658 3.73133C0.324642 3.62869 0.344849 3.52705 0.384127 3.43223C0.423405 3.3374 0.480982 3.25125 0.553569 3.17868C0.626156 3.10612 0.712331 3.04857 0.807168 3.00932L1.47746 2.73168C1.66871 2.6526 1.82077 2.50087 1.90026 2.3098L2.1781 1.63902C2.25739 1.4476 2.40948 1.29551 2.60091 1.21622C2.79234 1.13692 3.00743 1.13692 3.19885 1.21622L3.86915 1.49386C4.06058 1.57296 4.27559 1.5728 4.46691 1.49341L5.13796 1.21665C5.32937 1.1374 5.54441 1.13741 5.7358 1.21669C5.92719 1.29597 6.07926 1.44801 6.15856 1.63939L6.43649 2.31037L6.4364 2.3092Z" fill="#0788F5"/>
+                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M5.79988 3.90786C5.85554 3.82042 5.8742 3.71445 5.85173 3.61326C5.82927 3.51207 5.76752 3.42394 5.68008 3.36828C5.59265 3.31261 5.48667 3.29395 5.38548 3.31642C5.28429 3.33889 5.19617 3.40063 5.1405 3.48807L3.61081 5.89171L2.91081 5.01671C2.8461 4.93577 2.75188 4.88384 2.64888 4.87237C2.54588 4.86089 2.44254 4.8908 2.36159 4.95552C2.28065 5.02023 2.22873 5.11445 2.21725 5.21745C2.20577 5.32045 2.23568 5.42379 2.3004 5.50473L3.34206 6.80682C3.38088 6.8554 3.43074 6.89402 3.4875 6.91945C3.54425 6.94488 3.60626 6.9564 3.66836 6.95304C3.73046 6.94967 3.79086 6.93153 3.84454 6.90012C3.89821 6.86871 3.94361 6.82494 3.97696 6.77244L5.79988 3.90786V3.90786Z" fill="white"/>
+                                                        </g>
+                                                        <defs>
+                                                            <clipPath id="clip0_20712_5062">
+                                                                <rect width="8.33333" height="8.33333" fill="white" transform="translate(0 0.833374)"/>
+                                                            </clipPath>
+                                                        </defs>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- product-price-details -->
+                                    <div class="flex justify-between ">
+                                        <div class="flex items-center gap--4">
+                                            <span class="fs--16 lh--24 fw6 col-brand-green">USD$12.23</span>
+                                            <span class="fs--10 lh--15 white tracked--0-07">+$12.23 shipping</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- row -->
+                        <div class="flex items-center gap--8">
+                            <!-- product-image -->
+                            <div data-order-summary-product-thumb class="flex justify-center items-center bg-black">
+                                <img class="w-100 h-100" src="./images/nba-image.png" alt="">
+                            </div>
+                        
+                            <!-- product-text-container -->
+                            <div class="flex flex-column">
+                                <div class="flex flex-column">
+                                    <p class="fs--14 fw5 white poppins tracked--0-14 lh--20">1990 NBA Hoops Mark Jackson Knicks Menendez Brothers Courtside</p>
+                                    <!-- user-details -->
+                                    <div>
+                                        <div data-product-text-user-details class="flex items-center">
+                                            <div class="w--20 h--20 flex justify-center items-center">
+                                                <img src="./images/Vector1.svg" alt="">
+                                            </div>
+                                            <div>
+                                                <div class="flex items-center gap--3-33">
+                                                    <p class="fs--10 lh--15 fw5 col--athens-gray-3 poppins">Princess Carrot Pop</p>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="9" height="10" viewBox="0 0 9 10" fill="none">
+                                                        <g clip-path="url(#clip0_20712_5062)">
+                                                            <path d="M6.4364 2.3092C6.51555 2.50062 6.66747 2.65277 6.85877 2.7322L7.52954 3.01004C7.72097 3.08934 7.87306 3.24143 7.95235 3.43285C8.03164 3.62428 8.03164 3.83937 7.95235 4.0308L7.6747 4.70109C7.59538 4.8926 7.59527 5.10791 7.67495 5.29933L7.95212 5.96942C7.99143 6.06423 8.01167 6.16586 8.01168 6.2685C8.0117 6.37114 7.99149 6.47277 7.95221 6.5676C7.91294 6.66242 7.85536 6.74858 7.78277 6.82114C7.71018 6.89371 7.62401 6.95125 7.52917 6.9905L6.85888 7.26815C6.66747 7.34729 6.51532 7.49921 6.43588 7.69051L6.15804 8.36128C6.07875 8.55271 5.92666 8.7048 5.73523 8.78409C5.5438 8.86338 5.32872 8.86338 5.13729 8.78409L4.46699 8.50645C4.27556 8.42735 4.06055 8.42751 3.86924 8.5069L3.19846 8.78434C3.00714 8.86345 2.79224 8.86338 2.60097 8.78416C2.4097 8.70493 2.25769 8.55302 2.17834 8.3618L1.90042 7.69082C1.82127 7.49941 1.66935 7.34726 1.47806 7.26783L0.807283 6.98998C0.615938 6.91072 0.463894 6.75873 0.384573 6.56741C0.305251 6.37609 0.305143 6.16111 0.384273 5.96971L0.661918 5.29942C0.741015 5.10798 0.740854 4.89297 0.661469 4.70166L0.384223 4.0304C0.344915 3.93559 0.324674 3.83396 0.324658 3.73133C0.324642 3.62869 0.344849 3.52705 0.384127 3.43223C0.423405 3.3374 0.480982 3.25125 0.553569 3.17868C0.626156 3.10612 0.712331 3.04857 0.807168 3.00932L1.47746 2.73168C1.66871 2.6526 1.82077 2.50087 1.90026 2.3098L2.1781 1.63902C2.25739 1.4476 2.40948 1.29551 2.60091 1.21622C2.79234 1.13692 3.00743 1.13692 3.19885 1.21622L3.86915 1.49386C4.06058 1.57296 4.27559 1.5728 4.46691 1.49341L5.13796 1.21665C5.32937 1.1374 5.54441 1.13741 5.7358 1.21669C5.92719 1.29597 6.07926 1.44801 6.15856 1.63939L6.43649 2.31037L6.4364 2.3092Z" fill="#0788F5"/>
+                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M5.79988 3.90786C5.85554 3.82042 5.8742 3.71445 5.85173 3.61326C5.82927 3.51207 5.76752 3.42394 5.68008 3.36828C5.59265 3.31261 5.48667 3.29395 5.38548 3.31642C5.28429 3.33889 5.19617 3.40063 5.1405 3.48807L3.61081 5.89171L2.91081 5.01671C2.8461 4.93577 2.75188 4.88384 2.64888 4.87237C2.54588 4.86089 2.44254 4.8908 2.36159 4.95552C2.28065 5.02023 2.22873 5.11445 2.21725 5.21745C2.20577 5.32045 2.23568 5.42379 2.3004 5.50473L3.34206 6.80682C3.38088 6.8554 3.43074 6.89402 3.4875 6.91945C3.54425 6.94488 3.60626 6.9564 3.66836 6.95304C3.73046 6.94967 3.79086 6.93153 3.84454 6.90012C3.89821 6.86871 3.94361 6.82494 3.97696 6.77244L5.79988 3.90786V3.90786Z" fill="white"/>
+                                                        </g>
+                                                        <defs>
+                                                            <clipPath id="clip0_20712_5062">
+                                                                <rect width="8.33333" height="8.33333" fill="white" transform="translate(0 0.833374)"/>
+                                                            </clipPath>
+                                                        </defs>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- product-price-details -->
+                                    <div class="flex justify-between ">
+                                        <div class="flex items-center gap--4">
+                                            <span class="fs--16 lh--24 fw6 col-brand-green">USD$12.23</span>
+                                            <span class="fs--10 lh--15 white tracked--0-07">+$12.23 shipping</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- row -->
+                        <div class="flex items-center gap--8">
+                            <!-- product-image -->
+                            <div data-order-summary-product-thumb class="flex justify-center items-center bg-black">
+                                <img class="w-100 h-100" src="./images/nba-image.png" alt="">
+                            </div>
+                        
+                            <!-- product-text-container -->
+                            <div class="flex flex-column">
+                                <div class="flex flex-column">
+                                    <p class="fs--14 fw5 white poppins tracked--0-14 lh--20">1990 NBA Hoops Mark Jackson Knicks Menendez Brothers Courtside</p>
+                                    <!-- user-details -->
+                                    <div>
+                                        <div data-product-text-user-details class="flex items-center">
+                                            <div class="w--20 h--20 flex justify-center items-center">
+                                                <img src="./images/Vector1.svg" alt="">
+                                            </div>
+                                            <div>
+                                                <div class="flex items-center gap--3-33">
+                                                    <p class="fs--10 lh--15 fw5 col--athens-gray-3 poppins">Princess Carrot Pop</p>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="9" height="10" viewBox="0 0 9 10" fill="none">
+                                                        <g clip-path="url(#clip0_20712_5062)">
+                                                            <path d="M6.4364 2.3092C6.51555 2.50062 6.66747 2.65277 6.85877 2.7322L7.52954 3.01004C7.72097 3.08934 7.87306 3.24143 7.95235 3.43285C8.03164 3.62428 8.03164 3.83937 7.95235 4.0308L7.6747 4.70109C7.59538 4.8926 7.59527 5.10791 7.67495 5.29933L7.95212 5.96942C7.99143 6.06423 8.01167 6.16586 8.01168 6.2685C8.0117 6.37114 7.99149 6.47277 7.95221 6.5676C7.91294 6.66242 7.85536 6.74858 7.78277 6.82114C7.71018 6.89371 7.62401 6.95125 7.52917 6.9905L6.85888 7.26815C6.66747 7.34729 6.51532 7.49921 6.43588 7.69051L6.15804 8.36128C6.07875 8.55271 5.92666 8.7048 5.73523 8.78409C5.5438 8.86338 5.32872 8.86338 5.13729 8.78409L4.46699 8.50645C4.27556 8.42735 4.06055 8.42751 3.86924 8.5069L3.19846 8.78434C3.00714 8.86345 2.79224 8.86338 2.60097 8.78416C2.4097 8.70493 2.25769 8.55302 2.17834 8.3618L1.90042 7.69082C1.82127 7.49941 1.66935 7.34726 1.47806 7.26783L0.807283 6.98998C0.615938 6.91072 0.463894 6.75873 0.384573 6.56741C0.305251 6.37609 0.305143 6.16111 0.384273 5.96971L0.661918 5.29942C0.741015 5.10798 0.740854 4.89297 0.661469 4.70166L0.384223 4.0304C0.344915 3.93559 0.324674 3.83396 0.324658 3.73133C0.324642 3.62869 0.344849 3.52705 0.384127 3.43223C0.423405 3.3374 0.480982 3.25125 0.553569 3.17868C0.626156 3.10612 0.712331 3.04857 0.807168 3.00932L1.47746 2.73168C1.66871 2.6526 1.82077 2.50087 1.90026 2.3098L2.1781 1.63902C2.25739 1.4476 2.40948 1.29551 2.60091 1.21622C2.79234 1.13692 3.00743 1.13692 3.19885 1.21622L3.86915 1.49386C4.06058 1.57296 4.27559 1.5728 4.46691 1.49341L5.13796 1.21665C5.32937 1.1374 5.54441 1.13741 5.7358 1.21669C5.92719 1.29597 6.07926 1.44801 6.15856 1.63939L6.43649 2.31037L6.4364 2.3092Z" fill="#0788F5"/>
+                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M5.79988 3.90786C5.85554 3.82042 5.8742 3.71445 5.85173 3.61326C5.82927 3.51207 5.76752 3.42394 5.68008 3.36828C5.59265 3.31261 5.48667 3.29395 5.38548 3.31642C5.28429 3.33889 5.19617 3.40063 5.1405 3.48807L3.61081 5.89171L2.91081 5.01671C2.8461 4.93577 2.75188 4.88384 2.64888 4.87237C2.54588 4.86089 2.44254 4.8908 2.36159 4.95552C2.28065 5.02023 2.22873 5.11445 2.21725 5.21745C2.20577 5.32045 2.23568 5.42379 2.3004 5.50473L3.34206 6.80682C3.38088 6.8554 3.43074 6.89402 3.4875 6.91945C3.54425 6.94488 3.60626 6.9564 3.66836 6.95304C3.73046 6.94967 3.79086 6.93153 3.84454 6.90012C3.89821 6.86871 3.94361 6.82494 3.97696 6.77244L5.79988 3.90786V3.90786Z" fill="white"/>
+                                                        </g>
+                                                        <defs>
+                                                            <clipPath id="clip0_20712_5062">
+                                                                <rect width="8.33333" height="8.33333" fill="white" transform="translate(0 0.833374)"/>
+                                                            </clipPath>
+                                                        </defs>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- product-price-details -->
+                                    <div class="flex justify-between ">
+                                        <div class="flex items-center gap--4">
+                                            <span class="fs--16 lh--24 fw6 col-brand-green">USD$12.23</span>
+                                            <span class="fs--10 lh--15 white tracked--0-07">+$12.23 shipping</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- row -->
+                        <div class="flex items-center gap--8">
+                            <!-- product-image -->
+                            <div data-order-summary-product-thumb class="flex justify-center items-center bg-black">
+                                <img class="w-100 h-100" src="./images/nba-image.png" alt="">
+                            </div>
+                        
+                            <!-- product-text-container -->
+                            <div class="flex flex-column">
+                                <div class="flex flex-column">
+                                    <p class="fs--14 fw5 white poppins tracked--0-14 lh--20">1990 NBA Hoops Mark Jackson Knicks Menendez Brothers Courtside</p>
+                                    <!-- user-details -->
+                                    <div>
+                                        <div data-product-text-user-details class="flex items-center">
+                                            <div class="w--20 h--20 flex justify-center items-center">
+                                                <img src="./images/Vector1.svg" alt="">
+                                            </div>
+                                            <div>
+                                                <div class="flex items-center gap--3-33">
+                                                    <p class="fs--10 lh--15 fw5 col--athens-gray-3 poppins">Princess Carrot Pop</p>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="9" height="10" viewBox="0 0 9 10" fill="none">
+                                                        <g clip-path="url(#clip0_20712_5062)">
+                                                            <path d="M6.4364 2.3092C6.51555 2.50062 6.66747 2.65277 6.85877 2.7322L7.52954 3.01004C7.72097 3.08934 7.87306 3.24143 7.95235 3.43285C8.03164 3.62428 8.03164 3.83937 7.95235 4.0308L7.6747 4.70109C7.59538 4.8926 7.59527 5.10791 7.67495 5.29933L7.95212 5.96942C7.99143 6.06423 8.01167 6.16586 8.01168 6.2685C8.0117 6.37114 7.99149 6.47277 7.95221 6.5676C7.91294 6.66242 7.85536 6.74858 7.78277 6.82114C7.71018 6.89371 7.62401 6.95125 7.52917 6.9905L6.85888 7.26815C6.66747 7.34729 6.51532 7.49921 6.43588 7.69051L6.15804 8.36128C6.07875 8.55271 5.92666 8.7048 5.73523 8.78409C5.5438 8.86338 5.32872 8.86338 5.13729 8.78409L4.46699 8.50645C4.27556 8.42735 4.06055 8.42751 3.86924 8.5069L3.19846 8.78434C3.00714 8.86345 2.79224 8.86338 2.60097 8.78416C2.4097 8.70493 2.25769 8.55302 2.17834 8.3618L1.90042 7.69082C1.82127 7.49941 1.66935 7.34726 1.47806 7.26783L0.807283 6.98998C0.615938 6.91072 0.463894 6.75873 0.384573 6.56741C0.305251 6.37609 0.305143 6.16111 0.384273 5.96971L0.661918 5.29942C0.741015 5.10798 0.740854 4.89297 0.661469 4.70166L0.384223 4.0304C0.344915 3.93559 0.324674 3.83396 0.324658 3.73133C0.324642 3.62869 0.344849 3.52705 0.384127 3.43223C0.423405 3.3374 0.480982 3.25125 0.553569 3.17868C0.626156 3.10612 0.712331 3.04857 0.807168 3.00932L1.47746 2.73168C1.66871 2.6526 1.82077 2.50087 1.90026 2.3098L2.1781 1.63902C2.25739 1.4476 2.40948 1.29551 2.60091 1.21622C2.79234 1.13692 3.00743 1.13692 3.19885 1.21622L3.86915 1.49386C4.06058 1.57296 4.27559 1.5728 4.46691 1.49341L5.13796 1.21665C5.32937 1.1374 5.54441 1.13741 5.7358 1.21669C5.92719 1.29597 6.07926 1.44801 6.15856 1.63939L6.43649 2.31037L6.4364 2.3092Z" fill="#0788F5"/>
+                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M5.79988 3.90786C5.85554 3.82042 5.8742 3.71445 5.85173 3.61326C5.82927 3.51207 5.76752 3.42394 5.68008 3.36828C5.59265 3.31261 5.48667 3.29395 5.38548 3.31642C5.28429 3.33889 5.19617 3.40063 5.1405 3.48807L3.61081 5.89171L2.91081 5.01671C2.8461 4.93577 2.75188 4.88384 2.64888 4.87237C2.54588 4.86089 2.44254 4.8908 2.36159 4.95552C2.28065 5.02023 2.22873 5.11445 2.21725 5.21745C2.20577 5.32045 2.23568 5.42379 2.3004 5.50473L3.34206 6.80682C3.38088 6.8554 3.43074 6.89402 3.4875 6.91945C3.54425 6.94488 3.60626 6.9564 3.66836 6.95304C3.73046 6.94967 3.79086 6.93153 3.84454 6.90012C3.89821 6.86871 3.94361 6.82494 3.97696 6.77244L5.79988 3.90786V3.90786Z" fill="white"/>
+                                                        </g>
+                                                        <defs>
+                                                            <clipPath id="clip0_20712_5062">
+                                                                <rect width="8.33333" height="8.33333" fill="white" transform="translate(0 0.833374)"/>
+                                                            </clipPath>
+                                                        </defs>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- product-price-details -->
+                                    <div class="flex justify-between ">
+                                        <div class="flex items-center gap--4">
+                                            <span class="fs--16 lh--24 fw6 col-brand-green">USD$12.23</span>
+                                            <span class="fs--10 lh--15 white tracked--0-07">+$12.23 shipping</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- mobile-button -->
+                <div data-mobile-button-container class="dn justify-end">
+                    <button data-button-style="skew-left" data-button-color="green" type="button" class="h--40 pad--x--8 pad--right--10 flex items-center gap--10 justify-center relative size-large clip-path--polygon-responsive-mobile-portrait clip-path--polygon-responsive-mobile w--130-responsive-mobile-portrait w--130-responsive-mobile hover--parent--child--col--brand-green" data-button-size="large" data-button-icon-position="left" data-skip-svg-color="" data-skip-svg-width="" data-for-new-dashboard="1" data-button-adjust-padding="1">
+                        <div data-button-text-wrap="" class="flex items-center gap--10 justify-center relative">
+                            <span class="w--24 h--24 flex justify-center align-items-center hov--filter--col--brand-green w--20--responsive-mobile w--20--responsive-mobile-portrait h--20--responsive-mobile h--20--responsive-mobile-portrait">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+                                    <path d="M10.9823 1.764C10.631 1.49075 10.4553 1.35412 10.2613 1.3016C10.0902 1.25526 9.9098 1.25526 9.73865 1.3016C9.54468 1.35412 9.36902 1.49075 9.0177 1.764L2.23539 7.03912C1.78202 7.39175 1.55534 7.56806 1.39203 7.78886C1.24737 7.98444 1.1396 8.20478 1.07403 8.43905C1 8.70352 1 8.9907 1 9.56505V16.8C1 17.9201 1 18.4801 1.21799 18.908C1.40973 19.2843 1.71569 19.5903 2.09202 19.782C2.51984 20 3.0799 20 4.2 20H6.2C6.48003 20 6.62004 20 6.727 19.9455C6.82108 19.8976 6.89757 19.8211 6.9455 19.727C7 19.62 7 19.48 7 19.2V12.6C7 12.0399 7 11.7599 7.10899 11.546C7.20487 11.3578 7.35785 11.2049 7.54601 11.109C7.75992 11 8.03995 11 8.6 11H11.4C11.9601 11 12.2401 11 12.454 11.109C12.6422 11.2049 12.7951 11.3578 12.891 11.546C13 11.7599 13 12.0399 13 12.6V19.2C13 19.48 13 19.62 13.0545 19.727C13.1024 19.8211 13.1789 19.8976 13.273 19.9455C13.38 20 13.52 20 13.8 20H15.8C16.9201 20 17.4802 20 17.908 19.782C18.2843 19.5903 18.5903 19.2843 18.782 18.908C19 18.4801 19 17.9201 19 16.8V9.56505C19 8.9907 19 8.70352 18.926 8.43905C18.8604 8.20478 18.7526 7.98444 18.608 7.78886C18.4447 7.56806 18.218 7.39175 17.7646 7.03913L10.9823 1.764Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                            <span class="poppins wb flex pad--y--4 fs--18 fw5 lh--28 black ttu fs--16--responsive-mobile fs--16--responsive-mobile-portrait lh--24--responsive-mobile lh--24--responsive-mobile-portrait">DASHBOARD HOME</span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
