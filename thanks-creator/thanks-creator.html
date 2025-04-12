@@ -24,9 +24,23 @@
     
         <!-- custom styles for this template -->
         <style>
-
             [data-thank-you-wrapper] {
+                position: relative;
+            }
+
+            [data-thank-you-wrapper]::before {
+                content: '';
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: 100%;
+                height: 100%;
                 background-image: url('./images/thank-you-bg.png');
+                background-size: cover;
+                background-position: center center;
+                z-index: -1;
             }
 
             [data-thank-you-left-column],
@@ -34,6 +48,8 @@
                 flex-grow: 1;
                 flex-shrink: 0;
                 flex-basis: 50%;
+                height: 100svh;
+                overflow: auto;
             }
 
             .text--wrap--unset{ text-wrap: unset; }
@@ -73,8 +89,9 @@
             }
 
             @media screen and (max-width: 1009px){
-                [data-thank-you-wrapper] {
-                    background-image: url('./images/thank-you-bg-tablet.png');
+                [data-thank-you-wrapper]::before {
+                    background-image: url("./images/thank-you-bg-tablet.png");
+
                 }
 
                 [data-thank-you-wrapper] {
@@ -113,8 +130,12 @@
             }
 
             @media screen and (max-width: 767px){
-                [data-thank-you-left-column] {
-                    min-height: unset;
+                [data-thank-you-wrapper]::before {
+                    background-image: url('./images/thank-you-bg-mobile.png');
+                }
+
+                [data-left-column-text-container]{
+                    gap: 1rem;
                 }
 
                 [data-mobile-button-container]{
@@ -133,9 +154,9 @@
         </style>
     </head>
     <body>
-        <div data-thank-you-wrapper class="flex sh--11 bg--blur--100 cover min-vh-100">
+        <div data-thank-you-wrapper class="flex justify-center items-center cover">
             <!-- left-column -->
-            <div data-thank-you-left-column class="flex flex-column gap--24 w-100 h-100 bg--black-25 pad--24 min-vh-100 pad--x--16-responsive-tablet pad--x--8-responsive-mobile pad--x--8-responsive-mobile-portrait pad--y--16-responsive-mobile pad--y--16-responsive-mobile-portrait">
+            <div data-thank-you-left-column class="flex flex-column gap--24 w-100 h-100 bg--black-25 pad--24 pad--x--16-responsive-tablet pad--x--8-responsive-mobile pad--x--8-responsive-mobile-portrait pad--y--16-responsive-mobile pad--y--16-responsive-mobile-portrait">
                 <!-- icon -->
                 <div class="flex justify-center align-items-center w--48 h--48">
                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
@@ -169,7 +190,7 @@
             </div>
 
             <!-- right-column -->
-            <div data-thank-you-right-column class="flex flex-column gap--40 w-100 h-100 bg-white-10 bg--blur--75 pad--24 min-vh-100 pad--x--16-responsive-tablet pad--x--8-responsive-mobile pad--x--8-responsive-mobile-portrait pad--y--24-responsive-mobile pad--y--24-responsive-mobile-portrait">
+            <div data-thank-you-right-column class="flex flex-column gap--40 w-100 h-100 bg-white-10 bg--blur--75 pad--24 pad--x--16-responsive-tablet pad--x--8-responsive-mobile pad--x--8-responsive-mobile-portrait pad--y--24-responsive-mobile pad--y--24-responsive-mobile-portrait">
                 <!-- order-details-section -->
                 <div class="flex gap--24 drop--sh--25">
                     <div class="flex flex-column gap--16 w-100">
