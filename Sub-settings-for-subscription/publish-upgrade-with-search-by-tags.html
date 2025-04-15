@@ -198,6 +198,33 @@
             }
         }
 
+        /* adjusting column number and font size for certain (479-767) screen size */
+        @media (max-width: 767px) and (min-width: 479px){
+            [data-sub-settings-cards-wrapper].grid--cols--4{
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            /* reduced font sizes of card texts */
+            [data-media-card] .fs--12{
+                font-size: 0.625rem;
+            }
+            
+            /* reduced line height of card texts */
+            [data-media-card] .lh--18{
+                line-height: 1rem;
+            }
+
+            [data-media-duration-container] > svg{
+                width: 0.75rem;
+                height: 0.75rem;
+            }
+
+            [data-media-overlay-info-container],
+            [data-media-likes-views-container]{
+                gap: 0.25rem;
+            }
+        }
+
         @media screen and (max-width: 767px) {
             [sub-setting-subscription-popup].slidein-right-popup [data-attribute-popup-ajax-container="subSettingSubscriptionPopup"].elm_qJBugX {
                 min-height: 100svh;
