@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="max-image-preview:large">
+        <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="dns-prefetch" href="//staging.fansocial.app">
+        <link rel="dns-prefetch" href="//fonts.googleapis.com">
+        <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+        <title>Calender-roadmap template</title>
+        <link rel="stylesheet" id="google-fonts-css" href="https://fonts.googleapis.com/css2?family=Poppins%3Awght%40300%3B400%3B500%3B600%3B700%3B800%3B900&amp;display=swap&amp;ver=1.0.0" media="">
+        <link rel="stylesheet" id="theme-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/theme.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="final-main-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/main.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="components-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/css/components.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="tachyonsStylesheet-css" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.11.1/tachyons.min.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="finalCustomTachyonsStylesheet-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/customTachyons.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="tachyonsV2-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/tachyons-v2.css?ver=1.0.0" media="">
+        
+        <!-- custom styles for this template -->
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+
+            /* tachyons */
+            .lh--14 { line-height: 0.875rem; }
+
+            /* background-image-wrapper */
+            [data-background-wrapper]{
+                position: fixed;
+                top: 0;
+                left: -0.0825rem;
+                width: max(90rem, 100vw);
+                height: max(56.805rem, 100vh);
+                background-image: url('./images/main-bg-desktop.png');
+                background-repeat: no-repeat;
+                background-size: cover;
+                overflow: hidden;
+                z-index: -1;
+                pointer-events: none;
+            }
+
+            /* fansocial-icon */
+            [data-fansocial-icon-wrapper]{
+                height: 3.625rem;
+                bottom: 2rem;
+                left: 2rem;
+            }
+
+            [data-template-outer-wrapper]{
+                filter: drop-shadow(0px 0px 2px #00000040);
+            }
+
+            [data-template-inner-wrapper]{
+                width: calc(50% - 0.675rem);
+                gap: 1.75rem;
+            }
+
+            [data-calender-header]{
+                border-left: 1px solid #07F468;
+            }
+
+            [data-calender-header-text-big]{
+                font-size: 6.875rem;
+                line-height: 5.5rem;
+            }
+
+            [data-calender-header-text-small]{
+                font-size: 2.75rem;
+                line-height: 2.25rem;
+                letter-spacing: -0.1925rem;
+            }
+
+            [data-seasons-section]{
+                gap: 1.75rem;
+            }
+
+            [data-season-outer-wrapper]{
+                max-width: 45rem;
+                height: 15.25rem;
+                margin-top: 2.125rem;
+                background: linear-gradient(274.2deg, #07F468 0%, rgba(7, 244, 104, 0) 50%, #07F468 100%);
+            }
+
+            [data-season-inner-wrapper]{
+                width: 100%;
+                height: 17.375rem;
+                background-repeat: no-repeat;
+                background-size: calc(100% + 4px) 100%;
+                background-position: center bottom;
+                margin-bottom: -4px;
+                padding-top: 2rem;
+                padding-bottom: 1.15625rem;
+                padding-left: 1.125rem;
+                padding-right: 1.125rem;
+            }
+
+            [data-season-2-outer-wrapper] [data-season-inner-wrapper]{
+                background-image: url('./images/bg-season-2.png');
+                margin-bottom: -2.5px;
+            }
+
+            [data-season-3-outer-wrapper] [data-season-inner-wrapper]{
+                background-image: url('./images/bg-season-3.png');
+            }
+
+            [data-season-4-outer-wrapper] [data-season-inner-wrapper]{
+                background-image: url('./images/bg-season-4.png');
+            }
+
+            [data-season-tag]{
+                top: 1.875rem;
+            }
+
+            [data-season-2-outer-wrapper] [data-season-tag]{
+                top: 2rem;
+            }
+
+            [data-season-tag]::after{
+                position: absolute;
+                content: '';
+                top: 0;
+                right: -0.25rem;
+                display: block;
+                width: 0.75rem;
+                height: 1.5rem;
+                background-color: #07F468;
+                z-index: 1;
+                -webkit-transform: skew(-20deg, 0) translateX(3px);
+                transform: skew(-20deg, 0) translateX(3px);
+                -webkit-transition: all 0s ease-in-out;
+                transition: all 0s ease-in-out;
+            }
+
+            [data-timeline-container]{
+                grid-template-columns: repeat(5, 1fr);
+            }
+
+            [data-timeline]{
+                padding-top: 1.05rem;
+                border-top: 2px solid #FFFFFFB2;
+            }
+
+            [data-timeline]::after {
+                content: '';
+                position: absolute;
+                top: -0.4375rem;
+                left: 0;
+                width: 0.75rem;
+                height: 0.75rem;
+                background-color: #F9FAFB;
+                border-radius: 50%;
+                border: 1px solid #D0D5DD;
+                z-index: 1;
+            }
+
+            [data-timeline-first]::after {
+                left: -0.225rem;
+                background-color: white;
+                border: .225rem solid #FCE40D;
+            }
+
+
+            @media (max-width: 1464px){
+                [data-template-inner-wrapper]{
+                    width: calc(100% - 40.625rem);
+                }
+            }
+
+            @media (max-width: 1365px){
+                [data-background-wrapper]{
+                    width: max(51.15467rem, 100vw);
+                    height: max(56.805rem, 100vh);
+                    background-image: url('./images/main-bg-tablet.png');
+                }
+
+                [data-fansocial-icon-wrapper]{
+                    display: none;
+                }
+
+                [data-template-outer-wrapper]{
+                    padding: 1.5rem;
+                }
+
+                [data-template-inner-wrapper]{
+                    width: 100%;
+                }
+
+                [data-calender-header-roadmap-text-container]{
+                    display: flex;
+                }
+
+                [data-calender-header-roadmap-text]{
+                    font-size: 5rem;
+                    line-height: 5rem;
+                    letter-spacing: -0.35rem;
+                }
+
+                [data-calender-header-text-big]{
+                    font-size: 4.0625rem;
+                    line-height: 3.4375rem;
+                }
+
+                [data-calender-header-text-small]{
+                    font-size: 2.25rem;
+                    line-height: 2.25rem;
+                    letter-spacing: -0.1575rem;
+                }
+            }
+
+            @media (max-width: 680px){
+                [data-background-wrapper]{
+                    width: max(24.9778rem, 100vw);
+                    height: max(56.805rem, 100vh);
+                    left: 0;
+                    background-image: url('./images/main-bg-mobile.png');
+                }
+
+                [data-template-outer-wrapper].pad--16-responsive-mobile{
+                    padding: 0;
+                    padding-bottom: 1.5rem;
+                }
+
+                [data-template-inner-wrapper]{
+                    gap: 0;
+                }
+
+                [data-calender-header]{
+                    border-left: 1.25px solid #07F468;
+                }
+
+                [data-calender-header]{
+                    margin-left: .5rem;
+                    margin-top: .5rem;
+                    padding-right: .5rem;
+                    padding-bottom: .5rem;
+                }
+
+                [data-calender-header-roadmap-text-container]{
+                    gap: 1.253125rem;
+                }
+
+                [data-calender-header-roadmap-text]{
+                    font-size: 3.125rem;
+                    line-height: 3.133rem;
+                    letter-spacing: -0.240625rem;
+                }
+
+                [data-calender-header-text-big]{
+                    font-size: 2.5rem;
+                    line-height: 2.5rem;
+                }
+
+                [data-calender-header-text-small]{
+                    font-size: 1.5625rem;
+                    line-height: 1.875rem;
+                    letter-spacing: -0.109375rem;
+                }
+
+                [data-seasons-section]{
+                    gap: 1rem;
+                }
+
+                [data-season-outer-wrapper]{
+                    margin-top: 1rem;
+                }
+
+                [data-season-2-outer-wrapper]{
+                    margin-top: .5rem;
+                }
+
+                [data-season-inner-wrapper]{
+                    background-size: calc(100% + 8px) 100%;
+                    padding-left: .5rem;
+                    padding-right: .5rem;
+                    padding-bottom: 0.65625rem;
+                }
+
+                [data-season-2-outer-wrapper] [data-season-inner-wrapper]{
+                    background-image: url('./images/bg-season-2-mobile.png');
+                    margin-bottom: -2.5px;
+                }
+
+                [data-season-3-outer-wrapper] [data-season-inner-wrapper]{
+                    background-image: url('./images/bg-season-3-mobile.png');
+                }
+
+                [data-season-4-outer-wrapper] [data-season-inner-wrapper]{
+                    background-image: url('./images/bg-season-4-mobile.png');
+                }
+
+                [data-timeline-container]{
+                    grid-template-columns: repeat(3, 1fr);
+                    grid-template-rows: minmax(4.375rem, auto) minmax(3.5rem, auto);
+                    position: relative;
+                }
+
+                [data-timeline]{
+                    padding-top: 0.625rem;
+                    border-top: none;
+                }
+
+                [data-timeline]:nth-child(1){
+                    grid-column: 1/2;
+                    grid-row: 1/2;
+                }
+                [data-timeline]:nth-child(2){
+                    width: 75%;
+                    grid-column: 2/3;
+                    grid-row: 1/2;
+                }
+                [data-timeline]:nth-child(3){
+                    grid-column: 3/4;
+                    grid-row: 1/2;
+                }
+                [data-timeline]:nth-child(4){
+                    grid-column: 3/4;
+                    grid-row: 2/3;
+                }
+                [data-timeline]:nth-child(5){
+                    grid-column: 2/3;
+                    grid-row: 2/3;
+                }
+                [data-timeline]:nth-child(6){
+                    grid-column: 1/2;
+                    grid-row: 2/3;
+                }
+
+                [data-timeline-container]::after {
+                    content: '';
+                    position: absolute;
+                    top: -2px;
+                    left: 0;
+                    width: 100%;
+                    height: calc(50% + 0.625rem);
+                    background-image: url('./images/border-mobile.png');
+                    background-repeat: no-repeat;
+                    background-size: calc((100% * (2 / 3)) + 6px) 100%;
+                    pointer-events: none;;
+                }
+            }
+
+        </style>
+        
+        <link rel="stylesheet" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-tablet.css" media="screen and (min-width: 768px) and (max-width: 1365px)">
+        <link rel="stylesheet" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-mobile.css" media="screen and (min-width: 480px) and (max-width: 767px)">
+        <link rel="stylesheet" id="dashboardStylesMobilePortrait-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-mobile-portrait.css" media="screen and (max-width: 479px)">
+    </head>
+    <body class="bg-black">
+        <!-- background-image-wrapper -->
+        <div data-background-wrapper>
+
+        </div>
+
+        <!-- fansocial icon wrapper -->
+        <div data-fansocial-icon-wrapper class="flex justify-center items-center fixed o-50 w--56">
+            <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M40.2718 0H15.7209C7.03514 0 0 7.04144 0 15.7261V40.2739C0 48.9586 7.03514 56 15.7209 56H40.2718C48.9576 56 56 48.9586 56 40.2739V15.7261C56 7.04144 48.9576 0 40.2718 0ZM35.6442 42.3856L23.4985 43.7261C21.091 43.9928 19.3034 41.5495 20.2765 39.3369L22.6263 33.982C23.3544 32.3243 22.4822 30.4216 21.091 29.2613C19.2169 27.7045 17.9194 25.4414 17.6311 22.8252C17.04 17.4486 20.9108 12.6198 26.2809 12.0288C31.6509 11.4378 36.4876 15.3081 37.0786 20.6775C37.3742 23.3514 36.5597 25.8883 35.0099 27.8342C33.871 29.2757 33.4025 31.3658 34.4909 32.8432L37.8355 37.3982C39.2699 39.3514 38.0517 42.1261 35.6442 42.3856Z" fill="white"/>
+            </svg>
+        </div>
+
+        <!-- main wrapper -->
+        <div data-template-outer-wrapper class="w-100 h-100 pa4 flex justify-end pad--16-responsive-mobile">
+            <div data-template-inner-wrapper class="h-100 flex flex-column">
+                <!-- header -->
+                <div data-calender-header class="flex justify-between items-start pl2">
+                    <div class="flex flex-column">
+                        <div data-calender-header-roadmap-text-container class="dn gap--32">
+                            <span data-calender-header-roadmap-text class="fw7 i col--athens-gray-2">ROAD</span>
+                            <span data-calender-header-roadmap-text class="fw7 i col--athens-gray-2">MAP</span>
+                        </div>
+                        <div class="flex items-end gap--2">
+                            <span data-calender-header-text-big class="fw6 col--brand-green v-btm">2025</span>
+                            <span data-calender-header-text-small class="fw6 col--athens-gray-2 v-btm">SEASON 2-4</span>
+                        </div>
+                    </div>
+
+                    <!-- close-icon -->
+                    <div class="flex justify-center items-center pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <path d="M24 8L8 24M8 8L24 24" stroke="#07F468" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- seasons-section -->
+                <div data-seasons-section class="flex flex-column">
+                    <!-- season 2 -->
+                    <div data-season-outer-wrapper data-season-2-outer-wrapper class="flex items-end relative z-1">
+                        <div data-season-inner-wrapper class="flex justify-center items-end z-2 relative">
+                            <!-- season-tag -->
+                            <div data-season-tag class="h--24 flex justify-center items-center pad--x--8 bg--col--brand-green absolute top-2 left-0">
+                                <span class="fs--16 lh--24 fw6 col--black tc">SEASON 2</span>
+                            </div>
+
+                            <div data-season-container class="flex flex-column gap--10 w-100">
+                                <div class="flex flex-column">
+                                    <span class="fs--20 lh--20 fw7 white">PUBLIC BETA</span>
+                                    <p class="fs--12 lh--18 white">Public Beta from MAR 24 - JUN</p>
+                                </div>
+
+                                <!-- timeline-container -->
+                                <div data-timeline-container class="grid">
+                                    <div data-timeline data-timeline-first class="relative flex flex-column">
+                                        <span class="fs--12 lh--18 fw5 col--brand-green">MAR 24 - MAR 31</span>
+                                        <span class="fs--12 lh--14 fw6 white">Bug Fixes<br>Internal Beta</span>
+                                    </div>
+                                    <div data-timeline class="relative flex flex-column">
+                                        <span class="fs--12 lh--18 fw5 col--brand-green">APR 1 - APR 4</span>
+                                        <span class="fs--12 lh--14 fw6 white">Bug Fixes<br>Public Beta</span>
+                                    </div>
+                                    <div data-timeline data-timeline-invisible class="relative dn">
+
+                                    </div>
+                                    <div data-timeline class="relative flex flex-column">
+                                        <span class="fs--12 lh--18 fw5 col--brand-green">APR</span>
+                                        <span class="fs--12 lh--14 fw6 white">Feed<br>Cache Endpoints</span>
+                                    </div>
+                                    <div data-timeline class="relative flex flex-column">
+                                        <span class="fs--12 lh--18 fw5 col--brand-green">MAY</span>
+                                        <span class="fs--12 lh--14 fw6 white">Private+Group Chat<br>Custom Request</span>
+                                    </div>
+                                    <div data-timeline class="relative flex flex-column">
+                                        <span class="fs--12 lh--18 fw5 col--brand-green">JUN</span>
+                                        <span class="fs--12 lh--14 fw6 white">Video/Audio Call<br>Wish Tender</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- season 3 -->
+                    <div data-season-outer-wrapper data-season-3-outer-wrapper class="flex items-end relative z-1">
+                        <div data-season-inner-wrapper class="flex justify-center items-end z-2 relative">
+                            <!-- season-tag -->
+                            <div data-season-tag class="h--24 flex justify-center items-center pad--x--8 bg--col--brand-green absolute top-2 left-0">
+                                <span class="fs--16 lh--24 fw6 col--black tc">SEASON 3</span>
+                            </div>
+
+                            <div data-season-container class="flex flex-column gap--10 w-100">
+                                <div class="flex flex-column">
+                                    <span class="fs--20 lh--20 fw7 white">PUBLIC LAUNCH</span>
+                                    <p class="fs--12 lh--18 white">Officially open to Worldwide </p>
+                                </div>
+
+                                <!-- timeline-container -->
+                                <div data-timeline-container class="grid">
+                                    <div data-timeline data-timeline-first class="relative flex flex-column">
+                                        <span class="fs--12 lh--18 fw5 col--brand-green">JUL</span>
+                                        <span class="fs--12 lh--14 fw6 white">Logistics API<br>Live Support</span>
+                                    </div>
+                                    <div data-timeline class="relative flex flex-column">
+                                        <span class="fs--12 lh--18 fw5 col--brand-green">AUG</span>
+                                        <span class="fs--12 lh--14 fw6 white">Camera Filter(AR)<br>Video Editing</span>
+                                    </div>
+                                    <div data-timeline data-timeline-invisible class="relative dn">
+
+                                    </div>
+                                    <div data-timeline class="relative flex flex-column">
+                                        <span class="fs--12 lh--18 fw5 col--brand-green">AUG</span>
+                                        <span class="fs--12 lh--14 fw6 white">Auto Transcription<br>Captioning</span>
+                                    </div>
+                                    <div data-timeline class="relative flex flex-column">
+                                        <span class="fs--12 lh--18 fw5 col--brand-green">SEPT</span>
+                                        <span class="fs--12 lh--14 fw6 white">Video/Audio Call<br>with Lovense</span>
+                                    </div>
+                                    <div data-timeline class="relative flex flex-column">
+                                        <span class="fs--12 lh--18 fw5 col--brand-green">SEPT</span>
+                                        <span class="fs--12 lh--14 fw6 white">AI Training</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- season 4 -->
+                    <div data-season-outer-wrapper data-season-4-outer-wrapper class="flex items-end relative z-1">
+                        <div data-season-inner-wrapper class="flex justify-center items-end z-2 relative">
+                            <!-- season-tag -->
+                            <div data-season-tag class="h--24 flex justify-center items-center pad--x--8 bg--col--brand-green absolute top-2 left-0">
+                                <span class="fs--16 lh--24 fw6 col--black tc">SEASON 4</span>
+                            </div>
+
+                            <div data-season-container class="flex flex-column gap--10 w-100">
+                                <div class="flex flex-column">
+                                    <span class="fs--20 lh--20 fw7 white">ADVANCED DEVELOPMENT</span>
+                                    <p class="fs--12 lh--18 white">Deep AI training, Live Streaming Launch</p>
+                                </div>
+
+                                <!-- timeline-container -->
+                                <div data-timeline-container class="grid">
+                                    <div data-timeline data-timeline-first class="relative flex flex-column">
+                                        <span class="fs--12 lh--18 fw5 col--brand-green">OCT</span>
+                                        <span class="fs--12 lh--14 fw6 white">Live Streaming</span>
+                                    </div>
+                                    <div data-timeline class="relative flex flex-column">
+                                        <span class="fs--12 lh--18 fw5 col--brand-green">OCT</span>
+                                        <span class="fs--12 lh--14 fw6 white">Auto Transcription<br>Captioning</span>
+                                    </div>
+                                    <div data-timeline data-timeline-invisible class="relative dn">
+
+                                    </div>
+                                    <div data-timeline class="relative flex flex-column">
+                                        <span class="fs--12 lh--18 fw5 col--brand-green">NOV</span>
+                                        <span class="fs--12 lh--14 fw6 white">Call & Live Gaming</span>
+                                    </div>
+                                    <div data-timeline class="relative flex flex-column">
+                                        <span class="fs--12 lh--18 fw5 col--brand-green">NOV</span>
+                                        <span class="fs--12 lh--14 fw6 white">Live Shopping</span>
+                                    </div>
+                                    <div data-timeline class="relative flex flex-column">
+                                        <span class="fs--12 lh--18 fw5 col--brand-green">DEC</span>
+                                        <span class="fs--12 lh--14 fw6 white">AI Agent Beta Test</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
