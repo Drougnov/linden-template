@@ -264,11 +264,11 @@
                 }
 
                 [data-season-outer-wrapper]{
-                    margin-top: 1rem;
+                    margin-top: 1.rem;
                 }
 
                 [data-season-2-outer-wrapper]{
-                    margin-top: .5rem;
+                    margin-top: 1rem;
                 }
 
                 [data-season-inner-wrapper]{
@@ -291,9 +291,18 @@
                     background-image: url('./images/bg-season-4-mobile.png');
                 }
 
+                [data-season-tag]{
+                    top: 0.9375rem;
+                }
+
+                [data-season-2-outer-wrapper] [data-season-tag]{
+                    top: 1.5625rem;
+                }
+
                 [data-timeline-container]{
                     grid-template-columns: repeat(3, 1fr);
-                    grid-template-rows: minmax(4.375rem, auto) minmax(3.5rem, auto);
+                    /* grid-template-rows: minmax(4.375rem, auto) minmax(3.5rem, auto); */
+                    row-gap: 1rem;
                     position: relative;
                 }
 
@@ -306,6 +315,22 @@
                     grid-column: 1/2;
                     grid-row: 1/2;
                 }
+
+                [data-timeline]:nth-child(1)::before{
+                    content: '';
+                    position: absolute;
+                    top: -2px;
+                    left: 0;
+                    width: calc(200% + 6px);
+                    height: calc(100% + 1rem + 2px);
+                    background-image: url('./images/border-mobile.png');
+                    background-repeat: no-repeat;
+                    background-size: 100% 100%;
+                    pointer-events: none;
+                    overflow: visible;
+                    z-index: 10;
+                }
+
                 [data-timeline]:nth-child(2){
                     width: 75%;
                     grid-column: 2/3;
@@ -326,19 +351,6 @@
                 [data-timeline]:nth-child(6){
                     grid-column: 1/2;
                     grid-row: 2/3;
-                }
-
-                [data-timeline-container]::after {
-                    content: '';
-                    position: absolute;
-                    top: -2px;
-                    left: 0;
-                    width: 100%;
-                    height: calc(50% + 0.625rem);
-                    background-image: url('./images/border-mobile.png');
-                    background-repeat: no-repeat;
-                    background-size: calc((100% * (2 / 3)) + 6px) 100%;
-                    pointer-events: none;;
                 }
             }
 
