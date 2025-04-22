@@ -163,6 +163,10 @@
                 border: .225rem solid #FCE40D;
             }
 
+            [data-season-background-overlay-top-mobile]{
+                display: none;
+            }
+
 
             @media (max-width: 1464px){
                 [data-template-inner-wrapper]{
@@ -266,10 +270,44 @@
 
                 [data-season-outer-wrapper]{
                     margin-top: 1.25rem;
+                    background: none;
+                }
+
+                [data-season-outer-wrapper]::before{
+                    position: absolute;
+                    content: '';
+                    left: 0;
+                    bottom: -0.125rem;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(274.2deg, #07F468 0%, rgba(7, 244, 104, 0) 50%, #07F468 100%);
+                    z-index: -1;
                 }
 
                 [data-season-2-outer-wrapper]{
                     margin-top: 1rem;
+                }
+
+                [data-season-background-overlay-top-mobile]{
+                    display: unset;
+                    position: absolute;
+                    width: 100%;
+                    height: 17.375rem;
+                }
+
+                [data-season-background-overlay-top-mobile]::before{
+                    position: absolute;
+                    content: '';
+                    left: 0;
+                    top: 2.0625rem;
+                    width: 100%;
+                    height: 1.5rem;
+                    background: linear-gradient(274.2deg, #07F468 0%, rgba(7, 244, 104, 0) 50%, #07F468 100%);
+                    z-index: -1;
+                }
+
+                [data-season-2-outer-wrapper] [data-season-background-overlay-top-mobile]::before{
+                    top: 2.25rem;
                 }
 
                 [data-season-inner-wrapper]{
@@ -278,22 +316,16 @@
                     padding-right: .5rem;
                     padding-bottom: .5rem;
                     margin-left: 0;
-                    background-position: top;
+                    margin-bottom: 0;
+                    background-position: 75%;
+                    background-position-y: 0.25rem;
+                    z-index: 5;
                 }
 
                 [data-season-2-outer-wrapper] [data-season-inner-wrapper]{
-                    background-image: url('./images/bg-season-2-mobile.png');
                     background-size: cover;
                     margin-bottom: 0;
                     width: calc(100% + .25rem);
-                }
-
-                [data-season-3-outer-wrapper] [data-season-inner-wrapper]{
-                    background-image: url('./images/bg-season-3-mobile.png');
-                }
-
-                [data-season-4-outer-wrapper] [data-season-inner-wrapper]{
-                    background-image: url('./images/bg-season-4-mobile.png');
                 }
 
                 [data-season-tag]{
@@ -306,7 +338,7 @@
 
                 [data-timeline-container]{
                     grid-template-columns: repeat(3, 1fr);
-                    /* grid-template-rows: minmax(4.375rem, auto) minmax(3.5rem, auto); */
+                    grid-template-rows: auto auto;
                     row-gap: 1rem;
                     position: relative;
                 }
@@ -359,6 +391,16 @@
                 }
             }
 
+            @media (max-width: 480px){
+                [data-season-background-overlay-top-mobile]::before{
+                    top: 2rem;
+                }
+
+                [data-season-2-outer-wrapper] [data-season-background-overlay-top-mobile]::before{
+                    top: 2.1875rem;
+                }
+            }
+
         </style>
         
         <link rel="stylesheet" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-tablet.css" media="screen and (min-width: 768px) and (max-width: 1365px)">
@@ -406,6 +448,9 @@
                 <div data-seasons-section class="flex flex-column">
                     <!-- season 2 -->
                     <div data-season-outer-wrapper data-season-2-outer-wrapper class="flex items-end relative z-1">
+                        <div data-season-background-overlay-top-mobile>
+
+                        </div>
                         <div data-season-inner-wrapper class="flex justify-center items-end z-2 relative">
                             <!-- season-tag -->
                             <div data-season-tag class="h--24 flex justify-center items-center pad--x--8 bg--col--brand-green absolute top-2 left-0">
@@ -450,6 +495,9 @@
 
                     <!-- season 3 -->
                     <div data-season-outer-wrapper data-season-3-outer-wrapper class="flex items-end relative z-1">
+                        <div data-season-background-overlay-top-mobile>
+                            
+                        </div>
                         <div data-season-inner-wrapper class="flex justify-center items-end z-2 relative">
                             <!-- season-tag -->
                             <div data-season-tag class="h--24 flex justify-center items-center pad--x--8 bg--col--brand-green absolute top-2 left-0">
@@ -494,6 +542,9 @@
 
                     <!-- season 4 -->
                     <div data-season-outer-wrapper data-season-4-outer-wrapper class="flex items-end relative z-1">
+                        <div data-season-background-overlay-top-mobile>
+                            
+                        </div>
                         <div data-season-inner-wrapper class="flex justify-center items-end z-2 relative">
                             <!-- season-tag -->
                             <div data-season-tag class="h--24 flex justify-center items-center pad--x--8 bg--col--brand-green absolute top-2 left-0">
