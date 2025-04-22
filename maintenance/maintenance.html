@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="max-image-preview:large">
+        <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="dns-prefetch" href="//staging.fansocial.app">
+        <link rel="dns-prefetch" href="//fonts.googleapis.com">
+        <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+        <title>Calender-roadmap template</title>
+        <link rel="stylesheet" id="google-fonts-css" href="https://fonts.googleapis.com/css2?family=Poppins%3Awght%40300%3B400%3B500%3B600%3B700%3B800%3B900&amp;display=swap&amp;ver=1.0.0" media="">
+        <link rel="stylesheet" id="theme-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/theme.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="final-main-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/main.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="components-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/css/components.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="tachyonsStylesheet-css" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.11.1/tachyons.min.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="finalCustomTachyonsStylesheet-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/customTachyons.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="tachyonsV2-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/tachyons-v2.css?ver=1.0.0" media="">
+        
+        <!-- custom styles for this template -->
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+
+            [data-template-wrapper]{
+                background-image: url('./images/main-bg.png');
+                padding-left: 4.125rem;
+            }
+
+            [data-text-wrapper]{
+                max-width: 35.5rem;
+                filter: drop-shadow(0px 0px 2rem rgba(0, 0, 0, 0.1));
+            }
+
+            [data-text-heading]{
+                font-size: 3.75rem;
+                line-height: 4.5rem;
+                letter-spacing: -0.075rem;
+                text-wrap: auto;
+            }
+
+            @media (max-width: 768px){
+                [data-template-wrapper]{
+                    background-image: url('./images/main-bg-tablet.png');
+                    justify-content: center;
+                    align-items: end;
+                    padding-left: 0;
+                }
+
+                [data-text-section]{
+                    padding-top: 4.5rem;
+                    padding-bottom: 4.5rem;
+                    padding-left: 3rem;
+                    padding-right: 3rem;
+                }
+
+                [data-text-wrapper]{
+                    max-width: 100%;
+                    filter: unset;
+                }
+
+                [data-text-heading] {
+                    font-size: 3rem;
+                    line-height: 3.75rem;
+                    letter-spacing: -0.06rem;
+                }
+            }
+
+            @media (max-width: 480px){
+                [data-template-wrapper]{
+                    background-image: url('./images/main-bg-mobile.png');
+                }
+
+                [data-text-section]{
+                    padding-top: 4.5rem;
+                    padding-bottom: 4.5rem;
+                    padding-left: 1.5rem;
+                    padding-right: 1.5rem;
+                }
+
+                [data-text-heading]{
+                    font-size: 2.25rem;
+                    line-height: 2.75rem;
+                    letter-spacing: -0.045rem;
+                }
+
+                [data-text-paragraph]{
+                    line-height: 1.25rem;
+                }
+            }
+        </style>
+        <link rel="stylesheet" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-tablet.css" media="screen and (min-width: 768px) and (max-width: 1365px)">
+        <link rel="stylesheet" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-mobile.css" media="screen and (min-width: 480px) and (max-width: 767px)">
+        <link rel="stylesheet" id="dashboardStylesMobilePortrait-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-mobile-portrait.css" media="screen and (max-width: 479px)">
+    </head>
+    <body>
+        <!-- template starts from here -->
+        <div data-template-wrapper class="w-100 h-100 cover bg-center bg--no-repaet min-vh-100 flex justify-start items-center">
+            <!-- text-wrapper -->
+            <div data-text-section class="flex flex-column items-start gap--32 gap--24-responsive-mobile gap--24-responsive-mobile-portrait">
+                <!-- logo -->
+                <div class="flex justify-center items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="143" height="37" viewBox="0 0 143 37" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M26.1639 0H10.2136C4.5706 0 0 4.57529 0 10.2183V26.1686C0 31.8116 4.5706 36.3869 10.2136 36.3869H26.1639C31.8069 36.3869 36.3822 31.8116 36.3822 26.1686V10.2183C36.3822 4.57529 31.8069 0 26.1639 0ZM23.1574 27.5407L15.2666 28.4117C13.7024 28.585 12.5411 26.9975 13.1733 25.5598L14.6999 22.0803C15.1729 21.0032 14.6063 19.7669 13.7024 19.013C12.4849 18.0014 11.6419 16.531 11.4546 14.831C11.0706 11.3375 13.5854 8.19993 17.0742 7.81592C20.563 7.43191 23.7053 9.94668 24.0893 13.4355C24.2813 15.1729 23.7522 16.8213 22.7453 18.0857C22.0054 19.0223 21.701 20.3804 22.4081 21.3404L24.581 24.3001C25.513 25.5692 24.7215 27.3721 23.1574 27.5407Z" fill="#FF0066"/>
+                        <path d="M56.107 11.4172V13.4215H49.7521V17.8375H54.7068V19.8419H49.7521V26.3887H47.2983V11.4172H56.107ZM56.9171 20.3991C56.9171 19.205 57.1606 18.1513 57.6477 17.2334C58.1488 16.3156 58.8278 15.6038 59.6707 15.1027C60.5324 14.5875 61.4784 14.3253 62.5133 14.3253C63.4452 14.3253 64.2601 14.5126 64.9485 14.8873C65.6509 15.2478 66.2129 15.6974 66.6297 16.2453V14.522H69.107V26.3934H66.6297V24.6279C66.2129 25.1898 65.6462 25.6535 64.9297 26.0281C64.2132 26.4027 63.3937 26.5901 62.4758 26.5901C61.455 26.5901 60.523 26.3325 59.6754 25.8127C58.8278 25.2835 58.1534 24.5483 57.6524 23.6164C57.1653 22.6704 56.9218 21.598 56.9218 20.4085L56.9171 20.3991ZM66.6344 20.4413C66.6344 19.6218 66.4611 18.91 66.1192 18.3105C65.7867 17.7064 65.3512 17.2475 64.8033 16.9337C64.2601 16.62 63.67 16.4607 63.0378 16.4607C62.4056 16.4607 61.8156 16.62 61.2723 16.9337C60.7291 17.2334 60.2795 17.6877 59.9377 18.2918C59.6052 18.8819 59.4413 19.5843 59.4413 20.4038C59.4413 21.2234 59.6052 21.9398 59.9377 22.558C60.2842 23.1762 60.7291 23.6491 61.2723 23.9816C61.8343 24.2954 62.4197 24.4546 63.0378 24.4546C63.656 24.4546 64.2601 24.2954 64.8033 23.9816C65.3512 23.6679 65.7867 23.2043 66.1192 22.6048C66.4658 21.9867 66.6344 21.2702 66.6344 20.4507V20.4413ZM77.6815 14.3253C78.6135 14.3253 79.447 14.5173 80.1823 14.906C80.9315 15.2947 81.5122 15.866 81.929 16.6293C82.3458 17.3927 82.5518 18.3105 82.5518 19.3876V26.3887H80.1167V19.7529C80.1167 18.6899 79.8498 17.8797 79.3206 17.3177C78.7914 16.7417 78.0656 16.4561 77.143 16.4561C76.2204 16.4561 75.4899 16.7417 74.9467 17.3177C74.4175 17.8797 74.1506 18.6899 74.1506 19.7529V26.3887H71.6967V14.5173H74.1506V15.8754C74.5533 15.3883 75.0637 15.0043 75.6819 14.7327C76.3141 14.4611 76.9838 14.3253 77.6862 14.3253H77.6815ZM89.3422 26.5807C88.4103 26.5807 87.5674 26.4168 86.8228 26.0843C86.0922 25.7378 85.5068 25.2788 85.076 24.7075C84.6451 24.1174 84.4157 23.4665 84.3876 22.7453H86.9305C86.9726 23.2464 87.2114 23.6726 87.6423 24.0144C88.0872 24.3469 88.6398 24.5108 89.3001 24.5108C89.9604 24.5108 90.5223 24.3797 90.8923 24.1221C91.281 23.8505 91.473 23.504 91.473 23.0872C91.473 22.6423 91.2576 22.3098 90.8267 22.0944C90.4099 21.879 89.7403 21.6401 88.8224 21.3826C87.9326 21.1391 87.2068 20.9002 86.6448 20.6708C86.0828 20.4413 85.5958 20.0901 85.179 19.6171C84.7763 19.1441 84.5749 18.5166 84.5749 17.7439C84.5749 17.1117 84.7622 16.5357 85.1369 16.0205C85.5115 15.4914 86.0407 15.0746 86.7291 14.7702C87.4315 14.4705 88.237 14.3159 89.1408 14.3159C90.4895 14.3159 91.576 14.6625 92.3955 15.3509C93.2291 16.0252 93.674 16.9525 93.7302 18.1279H91.2763C91.2341 17.5987 91.0187 17.1726 90.63 16.8588C90.2413 16.545 89.7168 16.3858 89.0565 16.3858C88.3962 16.3858 87.9139 16.5076 87.572 16.7511C87.2255 16.9946 87.0569 17.3177 87.0569 17.7205C87.0569 18.0342 87.174 18.3012 87.4034 18.5166C87.6329 18.732 87.9139 18.9053 88.2417 19.0317C88.5742 19.1488 89.0612 19.2986 89.7075 19.486C90.5692 19.7154 91.2716 19.9543 91.8195 20.1978C92.3815 20.4272 92.8591 20.7738 93.2619 21.2327C93.6646 21.6917 93.8707 22.3004 93.8847 23.0638C93.8847 23.7381 93.6974 24.3422 93.3227 24.8714C92.9481 25.4006 92.4189 25.8174 91.7305 26.1218C91.0562 26.4215 90.2601 26.576 89.3375 26.576L89.3422 26.5807ZM101.045 26.5807C99.9258 26.5807 98.9142 26.3278 98.0057 25.8267C97.1019 25.3116 96.3901 24.5904 95.875 23.6726C95.3599 22.7406 95.0976 21.6636 95.0976 20.4413C95.0976 19.219 95.3645 18.1654 95.8937 17.2334C96.4229 16.3015 97.1488 15.5803 98.0713 15.0793C98.9892 14.5782 100.019 14.3253 101.153 14.3253C102.286 14.3253 103.316 14.5782 104.234 15.0793C105.152 15.5803 105.878 16.3015 106.412 17.2334C106.941 18.1654 107.208 19.2378 107.208 20.4413C107.208 21.6448 106.936 22.7172 106.388 23.6491C105.84 24.5811 105.096 25.3069 104.15 25.8267C103.218 26.3278 102.183 26.5807 101.05 26.5807H101.045ZM101.045 24.4499C101.677 24.4499 102.267 24.3001 102.811 23.9957C103.372 23.696 103.822 23.2417 104.169 22.6376C104.515 22.0335 104.684 21.303 104.684 20.4413C104.684 19.5796 104.52 18.8538 104.187 18.2637C103.855 17.6596 103.419 17.21 102.871 16.9056C102.323 16.6059 101.738 16.4514 101.106 16.4514C100.474 16.4514 99.8836 16.6012 99.3404 16.9056C98.8112 17.2053 98.3851 17.6596 98.0713 18.2637C97.7575 18.8538 97.5983 19.5796 97.5983 20.4413C97.5983 21.7197 97.9215 22.7125 98.5677 23.415C99.228 24.1034 100.052 24.4499 101.045 24.4499ZM108.168 20.4413C108.168 19.219 108.411 18.1513 108.898 17.2334C109.399 16.3015 110.088 15.5803 110.968 15.0793C111.844 14.5782 112.851 14.3253 113.984 14.3253C115.422 14.3253 116.607 14.6718 117.539 15.3602C118.484 16.0346 119.126 17.004 119.454 18.2684H116.803C116.588 17.6783 116.241 17.2194 115.768 16.8916C115.295 16.5591 114.696 16.3952 113.979 16.3952C112.973 16.3952 112.172 16.7558 111.568 17.4723C110.978 18.1747 110.683 19.1675 110.683 20.446C110.683 21.7244 110.978 22.7219 111.568 23.4384C112.172 24.1549 112.977 24.5155 113.979 24.5155C115.403 24.5155 116.34 23.8927 116.803 22.6423H119.454C119.107 23.8505 118.461 24.8105 117.515 25.527C116.569 26.2295 115.389 26.5807 113.984 26.5807C112.851 26.5807 111.844 26.3278 110.968 25.8267C110.093 25.3116 109.404 24.5904 108.898 23.6726C108.411 22.7406 108.168 21.6636 108.168 20.4413ZM122.507 12.9438C122.062 12.9438 121.688 12.794 121.388 12.4896C121.088 12.1899 120.934 11.8152 120.934 11.3703C120.934 10.9254 121.084 10.5508 121.388 10.2511C121.688 9.95138 122.062 9.79684 122.507 9.79684C122.952 9.79684 123.303 9.9467 123.608 10.2511C123.907 10.5508 124.062 10.9254 124.062 11.3703C124.062 11.8152 123.912 12.1899 123.608 12.4896C123.308 12.7893 122.938 12.9438 122.507 12.9438ZM123.715 14.5173V26.3887H121.262V14.5173H123.715ZM125.476 20.3991C125.476 19.205 125.72 18.1513 126.207 17.2334C126.708 16.3156 127.387 15.6038 128.23 15.1027C129.091 14.5875 130.037 14.3253 131.072 14.3253C132.004 14.3253 132.819 14.5126 133.508 14.8873C134.21 15.2478 134.772 15.6974 135.189 16.2453V14.522H137.666V26.3934H135.189V24.6279C134.772 25.1898 134.205 25.6535 133.489 26.0281C132.772 26.4027 131.953 26.5901 131.035 26.5901C130.014 26.5901 129.082 26.3325 128.234 25.8127C127.387 25.2835 126.713 24.5483 126.211 23.6164C125.724 22.6704 125.481 21.598 125.481 20.4085L125.476 20.3991ZM135.193 20.4413C135.193 19.6218 135.02 18.91 134.678 18.3105C134.35 17.7064 133.91 17.2475 133.362 16.9337C132.814 16.62 132.229 16.4607 131.597 16.4607C130.965 16.4607 130.375 16.62 129.831 16.9337C129.283 17.2334 128.839 17.6877 128.497 18.2918C128.164 18.8819 128 19.5843 128 20.4038C128 21.2234 128.164 21.9398 128.497 22.558C128.843 23.1762 129.288 23.6491 129.831 23.9816C130.393 24.2954 130.979 24.4546 131.597 24.4546C132.215 24.4546 132.819 24.2954 133.362 23.9816C133.91 23.6679 134.346 23.2043 134.678 22.6048C135.025 21.9867 135.193 21.2702 135.193 20.4507V20.4413ZM142.705 10.4478V26.3887H140.251V10.4478H142.705Z" fill="#FF0066"/>
+                    </svg>
+                </div>
+
+                <div data-text-wrapper class="flex flex-column gap--48">
+                    <div data-text-container class="flex flex-column gap--24">
+                        <h1 data-text-heading class="fw6 black poppins ma0">Your Favourite Spot Is Heating Up</h1>
+                        <p data-text-paragraph class="fs--24 lh--32 col--ebony fs--20-responsive-mobile fs--14-responsive-mobile-portrait lh--30-responsive-mobile">Our maintenance is scheduled for<br>April 1, 2025, from 12:00 AM to 2:00 AM.</p>
+                        <p data-text-paragraph class="fs--24 lh--32 col--ebony fs--20-responsive-mobile fs--14-responsive-mobile-portrait lh--30-responsive-mobile">We’re fine-tuning things to make your wildest desires come true. Stick around—we’ll be back to turn up the heat soon!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
