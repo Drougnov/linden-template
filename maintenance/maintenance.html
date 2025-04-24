@@ -24,11 +24,26 @@
                 box-sizing: border-box;
             }
 
+            :root {
+                --page-height: 100%;
+            }
+
+            html,
+            body {
+                padding: 0;
+                margin: 0;
+                overflow: hidden;
+                width: 100vw;
+                height: 100vh;
+                height: var(--page-height);
+            }
+
+
             [data-template-wrapper]{
                 background-image: url('./images/main-bg.png');
                 padding-left: 4.125rem;
                 width: 100vw;
-                height: 100vh;
+                height: 100%;
                 overflow: hidden;
             }
 
@@ -128,4 +143,12 @@
             </div>
         </div>
     </body>
+    <script>
+        const appHeight = () => {
+            const doc = document.documentElement
+            doc.style.setProperty('--page-height', `${window.innerHeight}px`)
+        }
+        window.addEventListener('resize', appHeight);
+        appHeight();
+    </script>
 </html>
