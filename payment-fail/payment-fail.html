@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="max-image-preview:large">
+        <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="dns-prefetch" href="//staging.fansocial.app">
+        <link rel="dns-prefetch" href="//fonts.googleapis.com">
+        <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+        <title>Calender-roadmap template</title>
+        <link rel="stylesheet" id="google-fonts-css" href="https://fonts.googleapis.com/css2?family=Poppins%3Awght%40300%3B400%3B500%3B600%3B700%3B800%3B900&amp;display=swap&amp;ver=1.0.0" media="">
+        <link rel="stylesheet" id="theme-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/theme.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="final-main-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/main.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="components-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/css/components.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="tachyonsStylesheet-css" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.11.1/tachyons.min.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="finalCustomTachyonsStylesheet-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/customTachyons.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="tachyonsV2-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/tachyons-v2.css?ver=1.0.0" media="">
+        <!-- custom styles for this template -->
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+
+            :root {
+                --page-height: 100%;
+            }
+
+            html,
+            body {
+                padding: 0;
+                margin: 0;
+                background-color: rgba(0, 0, 0, 0.8);
+            }
+
+            [data-template-outer-wrapper]{
+                background-image: url('./payment-fail-bg-desktop.jpg');
+                overflow: hidden;
+                backdrop-filter: blur(100px);
+            }
+
+            [data-text-wrapper]{
+                max-width: 56.25rem;
+            }
+
+            [data-error-header]{
+                text-wrap: auto;
+            }
+
+            [data-try-again-button]{
+                box-shadow: 5px 4px 0px 0px #07F468;
+            }
+
+            [data-try-again-button]:hover{
+                background: #07F468;
+            }
+
+            [data-try-again-button]:hover svg path{
+                stroke: black;
+            }
+
+            @media(max-width: 480px){
+                [data-error-svg-container]{
+                    width: 5rem;
+                    height: 5rem;
+                }
+
+                [data-error-header]{
+                    font-size: 1.5rem;
+                    line-height: 2rem;
+                }
+            }
+        </style>
+        <link rel="stylesheet" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-tablet.css" media="screen and (min-width: 768px) and (max-width: 1365px)">
+        <link rel="stylesheet" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-mobile.css" media="screen and (min-width: 480px) and (max-width: 767px)">
+        <link rel="stylesheet" id="dashboardStylesMobilePortrait-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-mobile-portrait.css" media="screen and (max-width: 479px)">
+    </head>
+    <body>
+        <!-- template starts from here -->
+        <div data-template-outer-wrapper class="w-100 h-100 cover bg-center bg--no-repaet flex justify-center items-center">
+            <div data-template-inner-wrapper class="w-100 h-100 min-vh-100 flex flex-column justify-center items-center bg-black-50 pad--24 gap--40">
+                <!-- logo -->
+                <div class="w-100 flex justify-start items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none" class="w--48 h--48">
+                        <g opacity="0.5">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M33.6422 2H14.3522C7.52761 2 2 7.53256 2 14.3562V33.6438C2 40.4674 7.52761 46 14.3522 46H33.6422C40.4667 46 46 40.4674 46 33.6438V14.3562C46 7.53256 40.4667 2 33.6422 2ZM30.0062 35.303L20.4631 36.3562C18.5715 36.5658 17.1669 34.6461 17.9315 32.9076L19.7778 28.7001C20.3499 27.3977 19.6646 25.9027 18.5715 24.991C17.099 23.7678 16.0795 21.9897 15.853 19.9341C15.3886 15.7097 18.4299 11.9156 22.6492 11.4512C26.8686 10.9869 30.6688 14.0278 31.1332 18.2466C31.3654 20.3475 30.7254 22.3408 29.5078 23.8698C28.6129 25.0023 28.2448 26.6445 29.1 27.8054L31.7279 31.3843C32.8549 32.9189 31.8978 35.0991 30.0062 35.303Z" fill="white"/>
+                        </g>
+                    </svg>
+                </div>
+
+                <!-- text-wrapper -->
+                <div data-text-wrapper class="flex flex-column justify-center items-center gap--24 tc flex-grow-1">
+                    <div data-error-svg-container class="flex flex-column justify-center items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150" fill="none">
+                            <path d="M74.998 56.25V81.25M74.998 106.25H75.0605M66.3437 24.3232L14.9382 113.115C12.0869 118.04 10.6613 120.502 10.872 122.523C11.0558 124.286 11.9793 125.888 13.4128 126.93C15.0563 128.125 17.9017 128.125 23.5925 128.125H126.404C132.094 128.125 134.94 128.125 136.583 126.93C138.017 125.888 138.94 124.286 139.124 122.523C139.335 120.502 137.909 118.04 135.058 113.115L83.6522 24.3232C80.8112 19.416 79.3907 16.9623 77.5374 16.1382C75.9207 15.4194 74.0752 15.4194 72.4586 16.1382C70.6053 16.9623 69.1848 19.416 66.3437 24.3232Z" stroke="#FF4405" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M74.998 56.25V81.25M74.998 106.25H75.0605M66.3437 24.3232L14.9382 113.115C12.0869 118.04 10.6613 120.502 10.872 122.523C11.0558 124.286 11.9793 125.888 13.4128 126.93C15.0563 128.125 17.9017 128.125 23.5925 128.125H126.404C132.094 128.125 134.94 128.125 136.583 126.93C138.017 125.888 138.94 124.286 139.124 122.523C139.335 120.502 137.909 118.04 135.058 113.115L83.6522 24.3232C80.8112 19.416 79.3907 16.9623 77.5374 16.1382C75.9207 15.4194 74.0752 15.4194 72.4586 16.1382C70.6053 16.9623 69.1848 19.416 66.3437 24.3232Z" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+
+                    <h3 data-error-header class="fs--36 lh--44 fw5 tc white poppins drop--sh--1 tracked--neg--0-72">Oops! Something went wrong with your payment.</h3>
+                    
+                    <div class="flex flex-column gap--24">
+                        <div class="flex flex-column gap--8">
+                            <p class="fs--18 lh--28 fw5 tc col--led-grey poppins drop--sh--1">We couldn’t process your payment due to the following reason:</p>
+                            <p class="fs--14 lh--20 tc col--pomegranate poppins drop--sh--1">Payment was unsuccessful due to a poor network connection. Please try again later</p>
+                        </div>
+                    </div>
+
+                    <p class="fs--14 lh--20 tc col--led-grey poppins drop--sh--1">Don't worry, your order is still safe with us. Please make sure the payment information provided is correct and try again. If the problem persists, please contact customer support - support@fansocial.app</p>
+                    
+                    <!-- button -->
+                    <div class="flex justify-center items-center gap--10 pad--x--16 pad--bottom--8">
+                        <button data-try-again-button class="flex justify-center items-center gap--10 h--40 pad--y--4 pad--x--16 bg-black pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="#07F468" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span class="fs--18 lh--28 fw5 poppins col--brand-green">TRY AGAIN</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- footer-link-container -->
+                <div class="flex items-center gap--24">
+                    <a href="#" class="fs--14 lh--20 tc col--led-grey poppins no-underline hover--col--brand-green pointer">Back to Previous</a>
+                    <a href="#" class="fs--14 lh--20 tc col--led-grey poppins no-underline hover--col--brand-green pointer">Customer Support</a>
+                </div>
+            </div>
+        </div>
+        <!-- template ends here -->
+    </body>
+</html>
