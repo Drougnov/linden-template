@@ -32,10 +32,8 @@
                 position: fixed;
                 top: 0;
                 left: -0.0825rem;
-                /* width: max(90rem, 100vw);
-                height: max(56.805rem, 100vh); */
-                width: 100%;
-                height: 100%;
+                width: max(90rem, 100vw);
+                height: max(56.805rem, 100vh);
                 background-image: url('./images/main-bg-desktop.png');
                 background-repeat: no-repeat;
                 background-size: cover;
@@ -170,40 +168,13 @@
             }
 
 
-            @media (max-width: 1464px) and (min-width: 1200px) {
-                [data-template-inner-wrapper] {
-                    width: calc(100% - min(40.625rem, 48%));
+            @media (max-width: 1464px){
+                [data-template-inner-wrapper]{
+                    width: calc(100% - 40.625rem);
                 }
             }
 
-            @media (max-width: 1365px) and (min-width: 1010px) {
-                [data-calender-header-text-big]{
-                    font-size: 5.625rem;
-                    line-height: 4.6875rem;
-                }
-
-                [data-calender-header-text-small]{
-                    font-size: 2.5rem;
-                    line-height: 2.5rem;
-                    letter-spacing: -0.175rem;
-                }
-            }
-
-            @media (max-width: 1200px) and (min-width: 1010px) {
-                [data-background-wrapper]{
-                    background-size: 100% 100%;
-                }
-
-                [data-template-inner-wrapper] {
-                    width: 52%;
-                }
-
-                [data-season-inner-wrapper]{
-                    background-position: calc(100% - 3.5px);
-                }
-            }
-
-            @media (max-width: 1010px){
+            @media (max-width: 1365px){
                 [data-background-wrapper]{
                     width: max(51.15467rem, 100vw);
                     height: max(56.805rem, 100vh);
