@@ -40,7 +40,7 @@
             }
             [data-ribbon-bottom]{
                 bottom: -2.5rem;
-                left: -11.35rem;
+                left: -11.25rem;
                 z-index: 7;
             }
             [data-envelope-container]{
@@ -223,13 +223,17 @@
                 }
 
                 [data-ribbon-top] {
+                    width: 21.8125rem;
+                    height: 21.8125rem;
                     top: 3.85rem;
-                    right: -6.5rem;
+                    right: -7.6875rem;
                 }
 
                 [data-ribbon-bottom] {
-                    bottom: -1.05rem;
-                    left: -5.8125rem;
+                    width: 23.8125rem;
+                    height: 23.8125rem;
+                    bottom: -2.05rem;
+                    left: -8.5rem;
                 }
 
                 [data-envelope-outer-wrapper].read-more [data-letter]{
@@ -328,16 +332,12 @@
 
             @media (max-width: 375px){
                 [data-ribbon-top] {
-                    top: 4.75rem;
-                    right: -6rem;
-                }
-
-                [data-ribbon-top] img {
-                    width: 19rem;
+                    top: 4.5rem;
+                    right: -7.125rem;
                 }
 
                 [data-ribbon-bottom] {
-                    bottom: -1.5rem;
+                    bottom: -2rem;
                     right: 4.35rem;
                 }
             }
@@ -348,7 +348,6 @@
         <link rel="stylesheet" id="dashboardStylesMobilePortrait-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-mobile-portrait.css" media="screen and (max-width: 479px)">
     </head>
     <body style="background-color: #4E4E4E;">
-
         <!-- template starts here -->
         <div class="flex flex-column items-center min-vh-100 relative overflow-x-hidden">
 
@@ -357,12 +356,10 @@
                 <!-- envelope-inner-wrapper -->
                 <div data-envelope-inner-wrapper class="flex relative">
                     <div data-ribbon-top class="absolute pointer-events-none">
-                        <img src="./ribbon-top.png" alt="" class="display-none--responsive-mobile display-none--responsive-mobile-portrait">
-                        <img src="./ribbon-top-mobile.png" alt="" class="dn display-flex--responsive-mobile display-flex--responsive-mobile-portrait">
+                        <img src="./ribbon-top.png" alt="">
                     </div>
                     <div data-ribbon-bottom class="absolute pointer-events-none">
-                        <img src="./ribbon-bottom.png" alt="" class="display-none--responsive-mobile display-none--responsive-mobile-portrait">
-                        <img src="./ribbon-bottom-mobile.png" alt="" class="dn display-flex--responsive-mobile display-flex--responsive-mobile-portrait">
+                        <img src="./ribbon-bottom-left.png" alt="">
                     </div>
 
                     <!-- envelope-container -->
