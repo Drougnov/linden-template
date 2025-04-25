@@ -61,6 +61,7 @@
                 width: 100%;
                 height: 100%;
                 background-image: url('./images/desktop/background-modal-desktop.png');
+                background-image: '';
                 background-size: cover;
                 z-index: 0;
                 pointer-events: none;
@@ -115,7 +116,7 @@
 
             [data-season-outer-wrapper]{
                 max-width: 45rem;
-                height: 15.25rem;
+                height: 12.1875rem;
                 margin-top: 2.125rem;
                 border: 1px solid;
                 border-image-slice: 1;
@@ -125,16 +126,21 @@
 
             [data-season-inner-wrapper]{
                 width: 100%;
-                height: 16.96875rem;
+                height: 13.625rem;
                 background-repeat: no-repeat;
                 background-size: cover;
-                background-position: center;
+                background-position: top;
                 padding-bottom: 1.15625rem;
                 padding-left: 1.125rem;
                 padding-right: 1.125rem;
             }
 
+            [data-season-2-outer-wrapper]{
+                height: 15.125rem;
+            }
+
             [data-season-2-outer-wrapper] [data-season-inner-wrapper]{
+                height: 17.125rem;
                 background-image: url('./images/bg-season-2.png');
             }
 
@@ -147,12 +153,12 @@
             }
 
             [data-season-tag]{
-                top: 1.875rem;
+                top: 1.5rem;
                 left: -0.125rem;
             }
 
             [data-season-2-outer-wrapper] [data-season-tag]{
-                top: 1.875rem;
+                top: 2.125rem;
             }
 
             [data-season-tag]::after{
@@ -227,22 +233,6 @@
                     top: 1.5rem;
                 }
 
-                [data-season-inner-wrapper]{
-                    background-position: right;
-                }
-
-                [data-season-2-outer-wrapper] [data-season-inner-wrapper] {
-                    margin-bottom: 0.125rem;
-                }
-
-                [data-season-3-outer-wrapper] [data-season-inner-wrapper] {
-                    margin-bottom: -0.03125rem;
-                }
-
-                [data-season-3-outer-wrapper] [data-season-tag] {
-                    top: 1.84375rem;
-                }
-
                 [data-season-2-outer-wrapper] [data-season-tag] {
                     top: 2rem;
                 }
@@ -265,8 +255,8 @@
                 [data-template-inner-wrapper]{
                     width: 100%;
                     padding-bottom: 1.5rem;
-                    padding-top: 0;
-                    margin-top: 0;
+                    padding-top: 1.5rem;
+                    margin-top: -1.5rem;
                 }
 
                 [data-calender-header-desktop]{
@@ -296,24 +286,6 @@
 
                 [data-season-outer-wrapper]{
                     max-width: unset;
-                    height: 16.25rem;
-                }
-
-                [data-season-inner-wrapper]{
-                    width: 100%;
-                    height: 18.375rem;
-                    margin-bottom: 0;
-                    background-position: 75%;
-                    background-position-y: 0.25rem;
-                    z-index: 5;
-                }
-
-                [data-season-2-outer-wrapper]{
-                    height: 16.0625rem;
-                }
-
-                [data-season-2-outer-wrapper] [data-season-inner-wrapper] {
-                    background-size: 100% 100%;
                 }
 
                 [data-calender-header-mobile]{
@@ -326,19 +298,31 @@
                 }
 
                 [data-season-tag] {
-                    top: 2.25rem;
+                    top: 1.5rem;
                     left: -.125rem;
                 }
 
                 [data-season-2-outer-wrapper] [data-season-tag] {
-                    top: 2.45rem;
+                    top: 2.065rem;
                     left: -.125rem;
+                }
+            }
+
+            @media(max-width: 1010px) and (min-width: 768px){
+                [data-season-inner-wrapper]{
+                    background-size: 100% 100%;
                 }
             }
 
             @media (max-width: 767px){
                 [data-background-container] {
                     padding: 1rem;
+                }
+
+                [data-template-inner-wrapper] {
+                    padding-bottom: 1rem;
+                    padding-top: 1rem;
+                    margin-top: -1rem;
                 }
 
                 [data-header-close-icon]{
@@ -356,7 +340,8 @@
                 }
 
                 [data-template-inner-wrapper]{
-                    padding-bottom: 0;
+                    padding-bottom: .5rem;
+                    height: calc(100vh + 1rem);
                 }
 
                 [data-calender-header-mobile]{
@@ -402,41 +387,54 @@
                 }
 
                 [data-season-outer-wrapper]{
-                    height: 16.25rem;
-                    margin-top: 1.25rem;
+                    height: 14.90625rem;
+                    margin-top: 0;
                     border-left: none;
                     border-right: none;
+                    border: 2px solid;
+                    border-image-slice: 2;
+                    border-width: 2px;
+                    border-image-source: linear-gradient(274.2deg, #07F468 0%, rgba(7, 244, 104, 0.2) 50%, #07F468 100%);
                 }
 
                 [data-season-2-outer-wrapper]{
-                    height: 16.125rem;
+                    height: 16.375rem;
                     margin-top: 1rem;
                 }
 
                 [data-season-inner-wrapper]{
-                    width: 100%;
-                    height: 18.375rem;
+                    width: calc(100% + 4px);
+                    height: 15.875rem;
                     padding-left: .5rem;
                     padding-right: .5rem;
                     padding-bottom: .5rem;
-                    margin-left: 0;
-                    margin-right: 0;
-                    background-position: 75%;
-                    background-position-y: 4px;
+                    margin-left: -2px;
+                    margin-right: -2px;
                     z-index: 5;
+                    background-position-y: 5px;
                 }
 
                 [data-season-2-outer-wrapper] [data-season-inner-wrapper]{
-                    background-size: cover;
-                    width: calc(100% + .25rem);
+                    height: 18.09375rem;
+                    background-image: url('./images/mobile/season-2-mobile.png');
+                    background-position-y: 4px;
+                }
+
+                [data-season-3-outer-wrapper] [data-season-inner-wrapper]{
+                    background-image: url('./images/mobile/season-3-mobile.png');
+                }
+
+                [data-season-4-outer-wrapper] [data-season-inner-wrapper]{
+                    background-image: url('./images/mobile/season-4-mobile.png');
+                    background-position-y: 4px;
                 }
 
                 [data-season-tag]{
-                    top: 2.25rem;
+                    top: 1.125rem;
                 }
 
                 [data-season-2-outer-wrapper] [data-season-tag]{
-                    top: 2.345rem;
+                    top: 1.875rem;
                 }
 
                 [data-timeline-container]{
