@@ -61,6 +61,7 @@
                 width: 100%;
                 height: 100%;
                 background-image: url('./images/desktop/background-modal-desktop.png');
+                background-image: '';
                 background-size: cover;
                 z-index: 0;
                 pointer-events: none;
@@ -81,10 +82,12 @@
 
             [data-template-inner-wrapper]{
                 width: 50vw;
-                height: calc(100vh - 2rem);
+                height: 100vh;
                 overflow: auto;
                 -ms-overflow-style: none;
                 scrollbar-width: none;
+                margin-top: -2rem;
+                padding-top: 2rem;
                 padding-bottom: 2rem;
             }
 
@@ -111,45 +114,60 @@
                 gap: 1.75rem;
             }
 
-            [data-season-outer-wrapper]{
-                max-width: 45rem;
-                height: 15.25rem;
-                margin-top: 2.125rem;
-                background: linear-gradient(274.2deg, #07F468 0%, rgba(7, 244, 104, 0) 50%, #07F468 100%);
+            [data-card-outer-wrapper]{
+                aspect-ratio: 720 / 195;
+                min-height: 12.1875rem;
+                border: 1px solid;
+                border-image-slice: 1;
+                border-width: 1px;
+                border-image-source: linear-gradient(274.2deg, #07F468 0%, rgba(7, 244, 104, 0.2) 50%, #07F468 100%);
+                margin-top: 1.75rem;
+            }
+            [data-card-outer-wrapper-season-2]{
+                aspect-ratio: 720 / 244;
+                min-height: 15rem;
+            }
+            [data-card-outer-wrapper]::after{
+                position: absolute;
+                content: '';
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, #000000 18.06%, rgba(0, 0, 0, 0) 43.56%), linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0) 49.5%);
+                transform: rotateX(180deg);
             }
 
-            [data-season-inner-wrapper]{
-                width: calc(100% - 0.25rem);
-                height: 17.375rem;
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-position: center;
-                margin-left: 0.125rem;
-                margin-bottom: -0.25rem;
-                padding-bottom: 1.15625rem;
-                padding-left: 1.125rem;
-                padding-right: 1.125rem;
+            [data-card-outer-wrapper-season-2] [data-card-background-wrapper]{
+                background-image: url('./images/card/season-2-bg.png');
+                background-size: auto 100%;
+            }
+            [data-card-outer-wrapper-season-3] [data-card-background-wrapper]{
+                background-image: url('./images/card/season-3-bg.png');
+                background-size: 100% auto;
+            }
+            [data-card-outer-wrapper-season-4] [data-card-background-wrapper]{
+                background-image: url('./images/card/season-4-bg.png');
+                background-size: 100% auto;
             }
 
-            [data-season-2-outer-wrapper] [data-season-inner-wrapper]{
-                background-image: url('./images/bg-season-2.png');
-                margin-bottom: -0.15625rem;
+            [data-card-outer-wrapper-season-2] [data-card-modal]{
+                height: calc(113.934426% + 2px);
+                background-image: url('./images/card/season-2-model.png');
+                background-size: auto 100%;
             }
-
-            [data-season-3-outer-wrapper] [data-season-inner-wrapper]{
-                background-image: url('./images/bg-season-3.png');
+            [data-card-outer-wrapper-season-3] [data-card-modal]{
+                height: calc(112.8205128% + 2px);
+                background-image: url('./images/card/season-3-model.png');
+                background-size: auto 100%;
             }
-
-            [data-season-4-outer-wrapper] [data-season-inner-wrapper]{
-                background-image: url('./images/bg-season-4.png');
+            [data-card-outer-wrapper-season-4] [data-card-modal]{
+                height: calc(112.8205128% + 2px);
+                background-image: url('./images/card/season-4-model.png');
+                background-size: auto 100%;
             }
 
             [data-season-tag]{
-                top: 1.875rem;
-            }
-
-            [data-season-2-outer-wrapper] [data-season-tag]{
-                top: 2rem;
+                margin-top: -1px;
+                margin-left: -1px;
             }
 
             [data-season-tag]::after{
@@ -174,6 +192,7 @@
 
             [data-timeline]{
                 padding-top: 1.05rem;
+                padding-right: .5rem;
                 border-top: 2px solid #FFFFFFB2;
             }
 
@@ -194,18 +213,6 @@
                 left: -0.225rem;
                 background-color: white;
                 border: .225rem solid #FCE40D;
-            }
-
-            [data-season-background-overlay-top-mobile]{
-                display: none;
-            }
-
-            @media (max-width: 1440px) and (min-width: 1365px){
-                [data-season-2-outer-wrapper] [data-season-inner-wrapper]{
-                    width: calc(100% + 0.25rem);
-                    margin-left: -0.125rem;
-                    margin-right: -0.125rem;
-                }
             }
 
             @media (max-width: 1365px) and (min-width: 1010px){
@@ -229,8 +236,10 @@
                     line-height: 2.5rem;
                     letter-spacing: -0.175rem;
                 }
-                [data-season-inner-wrapper]{
-                    background-position: calc(100% + 0.25rem);
+
+                [data-header-close-icon]{
+                    right: 1.5rem;
+                    top: 1.5rem;
                 }
             }
 
@@ -251,6 +260,8 @@
                 [data-template-inner-wrapper]{
                     width: 100%;
                     padding-bottom: 1.5rem;
+                    padding-top: 1.5rem;
+                    margin-top: -1.5rem;
                 }
 
                 [data-calender-header-desktop]{
@@ -280,28 +291,6 @@
 
                 [data-season-outer-wrapper]{
                     max-width: unset;
-                    height: 16.25rem;
-                }
-
-                [data-season-inner-wrapper]{
-                    width: 100%;
-                    height: 18.375rem;
-                    margin-left: 0.125rem;
-                    margin-right: 0.125rem;
-                    margin-bottom: 0;
-                    background-position: 75%;
-                    background-position-y: 0.25rem;
-                    z-index: 5;
-                }
-
-                [data-season-2-outer-wrapper] [data-season-inner-wrapper] {
-                    width: calc(100% + 4px);
-                    background-image: url(./images/bg-season-2.png);
-                    background-size: 100% 100%;
-                    margin-bottom: 0;
-                    margin-left: -2px;
-                    margin-right: -2px;
-                    margin-bottom: 0.1875rem;
                 }
 
                 [data-calender-header-mobile]{
@@ -312,15 +301,28 @@
                 [data-seasons-section] {
                     gap: 1rem;
                 }
+            }
 
-                [data-season-tag] {
-                    top: 2.125rem;
-                    left: -.125rem;
+            @media(max-width: 1010px) and (min-width: 768px){
+                [data-season-inner-wrapper]{
+                    background-size: 100% 100%;
+                }
+            }
+
+            @media (max-width: 767px){
+                [data-background-container] {
+                    padding: 1rem;
                 }
 
-                [data-season-2-outer-wrapper] [data-season-tag] {
-                    top: 2.25rem;
-                    left: .125rem;
+                [data-template-inner-wrapper] {
+                    padding-bottom: 1rem;
+                    padding-top: 1rem;
+                    margin-top: -1rem;
+                }
+
+                [data-header-close-icon]{
+                    right: 1rem;
+                    top: 1rem;
                 }
             }
 
@@ -333,7 +335,8 @@
                 }
 
                 [data-template-inner-wrapper]{
-                    padding-bottom: 0;
+                    padding-bottom: .5rem;
+                    height: calc(100vh + 1rem);
                 }
 
                 [data-calender-header-mobile]{
@@ -369,79 +372,55 @@
                     letter-spacing: -0.109375rem;
                 }
 
+                [data-header-close-icon]{
+                    right: .5rem;
+                    top: .5rem;
+                }
+
                 [data-seasons-section]{
                     gap: 1rem;
                 }
 
-                [data-season-outer-wrapper]{
-                    height: 16.25rem;
-                    margin-top: 1.25rem;
-                    background: none;
+                [data-card-outer-wrapper]{
+                    aspect-ratio: 470 / 240;
+                    min-height: 15rem;
+                    border-top-width: 2px;
+                    border-left: none;
+                    border-right: none;
+                    margin-top: 0;
+                }
+                [data-card-outer-wrapper-season-2]{
+                    aspect-ratio: 470 / 240;
+                    min-height: 16rem;
                 }
 
-                [data-season-outer-wrapper]::before{
-                    position: absolute;
-                    content: '';
-                    left: 0;
-                    bottom: -0.1875rem;
-                    width: 100%;
-                    height: 100%;
-                    background: linear-gradient(274.2deg, #07F468 0%, rgba(7, 244, 104, 0) 50%, #07F468 100%);
-                    z-index: -1;
+                [data-card-outer-wrapper-season-3]{
+                    margin-top: .25rem;
+                    margin-bottom: .25rem;
                 }
 
-                [data-season-2-outer-wrapper]{
-                    margin-top: 1rem;
+                [data-card-background-wrapper],
+                [data-card-outer-wrapper-season-3] [data-card-background-wrapper],
+                [data-card-outer-wrapper-season-4] [data-card-background-wrapper]{
+                    background-image: none;
+                }
+                [data-card-outer-wrapper-season-2] [data-card-modal]{
+                    background-image: url('./images/card/season-2-model-bg-mobile.png');
+                    background-position-y: 0.66rem;
+                }
+                [data-card-outer-wrapper-season-3] [data-card-modal]{
+                    background-image: url('./images/card/season-3-model-bg-mobile.png');
+                    background-position-y: 1.1rem;
+                }
+                [data-card-outer-wrapper-season-4] [data-card-modal]{
+                    background-image: url('./images/card/season-4-model-bg-mobile.png');
+                    background-position-y: 1.0375rem;
                 }
 
-                [data-season-background-overlay-top-mobile]{
-                    display: unset;
-                    position: absolute;
-                    width: 100%;
-                    height: 18.375rem;
-                }
-
-                [data-season-background-overlay-top-mobile]::before{
-                    position: absolute;
-                    content: '';
-                    left: 0;
-                    top: 2.09375rem;
-                    width: 100%;
-                    height: 1.5rem;
-                    background: linear-gradient(274.2deg, #07F468 0%, rgba(7, 244, 104, 0) 50%, #07F468 100%);
-                    z-index: -1;
-                }
-
-                [data-season-2-outer-wrapper] [data-season-background-overlay-top-mobile]::before{
-                    top: 2.5rem;
-                }
-
-                [data-season-inner-wrapper]{
-                    width: 100%;
-                    height: 18.375rem;
+                [data-season-container]{
                     padding-left: .5rem;
                     padding-right: .5rem;
                     padding-bottom: .5rem;
-                    margin-left: 0;
-                    margin-right: 0;
-                    margin-bottom: 0;
-                    background-position: 75%;
-                    background-position-y: 0.25rem;
-                    z-index: 5;
-                }
-
-                [data-season-2-outer-wrapper] [data-season-inner-wrapper]{
-                    background-size: cover;
-                    margin-bottom: 0;
-                    width: calc(100% + .25rem);
-                }
-
-                [data-season-tag]{
-                    top: 2.125rem;
-                }
-
-                [data-season-2-outer-wrapper] [data-season-tag]{
-                    top: 2.25rem;
                 }
 
                 [data-timeline-container]{
@@ -499,6 +478,16 @@
                 }
             }
 
+            @media (max-width: 375px){
+                [data-card-outer-wrapper]{
+                    min-height: 16rem;
+                }
+                [data-card-outer-wrapper-season-3] [data-card-modal],
+                [data-card-outer-wrapper-season-4] [data-card-modal] {
+                    height: calc(112.8205128% + .85px);
+                }
+            }
+
         </style>
     </head>
     <body>
@@ -511,7 +500,7 @@
                         <span data-calender-header-roadmap-text class="fw7 i poppins col--athens-gray-2 ttu">Map</span>
                     </div>
 
-                    <div data-template-inner-wrapper class="h-100 flex flex-column">
+                    <div data-template-inner-wrapper class="h-100 flex flex-column z-1">
                         <!-- header -->
                         <div data-calender-header-mobile class="flex justify-between items-start pl2">
                             <div class="flex flex-column">
@@ -526,7 +515,7 @@
                             </div>
         
                             <!-- close-icon -->
-                            <div class="flex justify-center items-center pointer">
+                            <div data-header-close-icon class="flex justify-center items-center pointer fixed top-2 right-2 z-5">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                                     <path d="M24 8L8 24M8 8L24 24" stroke="#07F468" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
@@ -535,18 +524,21 @@
         
                         <!-- seasons-section -->
                         <div data-seasons-section class="flex flex-column">
-                            <!-- season 2 -->
-                            <div data-season-outer-wrapper data-season-2-outer-wrapper class="flex items-end relative z-1">
-                                <div data-season-background-overlay-top-mobile>
-        
+                            <div data-card-outer-wrapper data-card-outer-wrapper-season-2 class="w-100 flex justify-center items-center relative">
+                                <div data-card-background-wrapper class="w-100 h-100 bg-center cover bg-black overflow-visible relative">
+                                    <div data-card-modal class="w-100 bg-center absolute right-0 bottom-0">
+
+                                    </div>
                                 </div>
-                                <div data-season-inner-wrapper class="flex justify-center items-end z-2 relative">
+
+                                <div data-card-contents-wrappper class="absolute w-100 h-100 z-5 flex flex-column justify-between items-start">
                                     <!-- season-tag -->
-                                    <div data-season-tag class="h--24 flex justify-center items-center pad--x--8 bg--col--brand-green absolute top-2 left-0">
+                                    <div data-season-tag class="h--24 flex justify-center items-center pad--x--8 bg--col--brand-green relative">
                                         <span class="fs--16 lh--24 fw6 col--black tc">SEASON 2</span>
                                     </div>
-        
-                                    <div data-season-container class="flex flex-column gap--10 w-100">
+
+
+                                    <div data-season-container class="flex flex-column gap--10 w-100 ph3 pb3">
                                         <div class="flex flex-column">
                                             <span class="fs--20 lh--20 fw7 white">PUBLIC BETA</span>
                                             <p class="fs--12 lh--18 white">Public Beta from MAR 24 - JUN</p>
@@ -581,95 +573,101 @@
                                     </div>
                                 </div>
                             </div>
-        
-                            <!-- season 3 -->
-                            <div data-season-outer-wrapper data-season-3-outer-wrapper class="flex items-end relative z-1">
-                                <div data-season-background-overlay-top-mobile>
-                                    
-                                </div>
-                                <div data-season-inner-wrapper class="flex justify-center items-end z-2 relative">
-                                    <!-- season-tag -->
-                                    <div data-season-tag class="h--24 flex justify-center items-center pad--x--8 bg--col--brand-green absolute top-2 left-0">
-                                        <span class="fs--16 lh--24 fw6 col--black tc">SEASON 3</span>
+
+                            <div data-card-outer-wrapper data-card-outer-wrapper-season-3 class="w-100 flex justify-center items-center relative">
+                                <div data-card-background-wrapper class="w-100 h-100 bg-center cover bg-black overflow-visible relative">
+                                    <div data-card-modal class="w-100 bg-center absolute right-0 bottom-0">
+
                                     </div>
-        
-                                    <div data-season-container class="flex flex-column gap--10 w-100">
+                                </div>
+
+                                <div data-card-contents-wrappper class="absolute w-100 h-100 z-5 flex flex-column justify-between items-start">
+                                    <!-- season-tag -->
+                                    <div data-season-tag class="h--24 flex justify-center items-center pad--x--8 bg--col--brand-green relative">
+                                        <span class="fs--16 lh--24 fw6 col--black tc">SEASON 2</span>
+                                    </div>
+
+
+                                    <div data-season-container class="flex flex-column gap--10 w-100 ph3 pb3">
                                         <div class="flex flex-column">
-                                            <span class="fs--20 lh--20 fw7 white">PUBLIC LAUNCH</span>
-                                            <p class="fs--12 lh--18 white">Officially open to Worldwide </p>
+                                            <span class="fs--20 lh--20 fw7 white">PUBLIC BETA</span>
+                                            <p class="fs--12 lh--18 white">Public Beta from MAR 24 - JUN</p>
                                         </div>
         
                                         <!-- timeline-container -->
                                         <div data-timeline-container class="grid">
                                             <div data-timeline data-timeline-first class="relative flex flex-column">
-                                                <span class="fs--12 lh--18 fw5 col--brand-green">JUL</span>
-                                                <span class="fs--12 lh--14 fw6 white">Logistics API<br>Live Support</span>
+                                                <span class="fs--12 lh--18 fw5 col--brand-green">MAR 24 - MAR 31</span>
+                                                <span class="fs--12 lh--14 fw6 white">Bug Fixes<br>Internal Beta</span>
                                             </div>
                                             <div data-timeline class="relative flex flex-column">
-                                                <span class="fs--12 lh--18 fw5 col--brand-green">AUG</span>
-                                                <span class="fs--12 lh--14 fw6 white">Camera Filter(AR)<br>Video Editing</span>
+                                                <span class="fs--12 lh--18 fw5 col--brand-green">APR 1 - APR 4</span>
+                                                <span class="fs--12 lh--14 fw6 white">Bug Fixes<br>Public Beta</span>
                                             </div>
                                             <div data-timeline data-timeline-invisible class="relative dn">
         
                                             </div>
                                             <div data-timeline class="relative flex flex-column">
-                                                <span class="fs--12 lh--18 fw5 col--brand-green">AUG</span>
-                                                <span class="fs--12 lh--14 fw6 white">Auto Transcription<br>Captioning</span>
+                                                <span class="fs--12 lh--18 fw5 col--brand-green">APR</span>
+                                                <span class="fs--12 lh--14 fw6 white">Feed<br>Cache Endpoints</span>
                                             </div>
                                             <div data-timeline class="relative flex flex-column">
-                                                <span class="fs--12 lh--18 fw5 col--brand-green">SEPT</span>
-                                                <span class="fs--12 lh--14 fw6 white">Video/Audio Call<br>with Lovense</span>
+                                                <span class="fs--12 lh--18 fw5 col--brand-green">MAY</span>
+                                                <span class="fs--12 lh--14 fw6 white">Private+Group Chat<br>Custom Request</span>
                                             </div>
                                             <div data-timeline class="relative flex flex-column">
-                                                <span class="fs--12 lh--18 fw5 col--brand-green">SEPT</span>
-                                                <span class="fs--12 lh--14 fw6 white">AI Training</span>
+                                                <span class="fs--12 lh--18 fw5 col--brand-green">JUN</span>
+                                                <span class="fs--12 lh--14 fw6 white">Video/Audio Call<br>Wish Tender</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-        
-                            <!-- season 4 -->
-                            <div data-season-outer-wrapper data-season-4-outer-wrapper class="flex items-end relative z-1">
-                                <div data-season-background-overlay-top-mobile>
-                                    
-                                </div>
-                                <div data-season-inner-wrapper class="flex justify-center items-end z-2 relative">
-                                    <!-- season-tag -->
-                                    <div data-season-tag class="h--24 flex justify-center items-center pad--x--8 bg--col--brand-green absolute top-2 left-0">
-                                        <span class="fs--16 lh--24 fw6 col--black tc">SEASON 4</span>
+
+                            <div data-card-outer-wrapper data-card-outer-wrapper-season-4 class="w-100 flex justify-center items-center relative">
+                                <div data-card-background-wrapper class="w-100 h-100 bg-center cover bg-black overflow-visible relative">
+                                    <div data-card-modal class="w-100 bg-center absolute right-0 bottom-0">
+
                                     </div>
-        
-                                    <div data-season-container class="flex flex-column gap--10 w-100">
+                                </div>
+
+                                <div data-card-contents-wrappper class="absolute w-100 h-100 z-5 flex flex-column justify-between items-start">
+                                    <!-- season-tag -->
+                                    <div data-season-tag class="h--24 flex justify-center items-center pad--x--8 bg--col--brand-green relative">
+                                        <span class="fs--16 lh--24 fw6 col--black tc">SEASON 2</span>
+                                    </div>
+
+
+                                    <div data-season-container class="flex flex-column gap--10 w-100 ph3 pb3">
                                         <div class="flex flex-column">
-                                            <span class="fs--20 lh--20 fw7 white">ADVANCED DEVELOPMENT</span>
-                                            <p class="fs--12 lh--18 white">Deep AI training, Live Streaming Launch</p>
+                                            <span class="fs--20 lh--20 fw7 white">PUBLIC BETA</span>
+                                            <p class="fs--12 lh--18 white">Public Beta from MAR 24 - JUN</p>
                                         </div>
         
                                         <!-- timeline-container -->
                                         <div data-timeline-container class="grid">
                                             <div data-timeline data-timeline-first class="relative flex flex-column">
-                                                <span class="fs--12 lh--18 fw5 col--brand-green">OCT</span>
-                                                <span class="fs--12 lh--14 fw6 white">Live Streaming</span>
+                                                <span class="fs--12 lh--18 fw5 col--brand-green">MAR 24 - MAR 31</span>
+                                                <span class="fs--12 lh--14 fw6 white">Bug Fixes<br>Internal Beta</span>
                                             </div>
                                             <div data-timeline class="relative flex flex-column">
-                                                <span class="fs--12 lh--18 fw5 col--brand-green">OCT</span>
-                                                <span class="fs--12 lh--14 fw6 white">Auto Transcription<br>Captioning</span>
+                                                <span class="fs--12 lh--18 fw5 col--brand-green">APR 1 - APR 4</span>
+                                                <span class="fs--12 lh--14 fw6 white">Bug Fixes<br>Public Beta</span>
                                             </div>
                                             <div data-timeline data-timeline-invisible class="relative dn">
         
                                             </div>
                                             <div data-timeline class="relative flex flex-column">
-                                                <span class="fs--12 lh--18 fw5 col--brand-green">NOV</span>
-                                                <span class="fs--12 lh--14 fw6 white">Call & Live Gaming</span>
+                                                <span class="fs--12 lh--18 fw5 col--brand-green">APR</span>
+                                                <span class="fs--12 lh--14 fw6 white">Feed<br>Cache Endpoints</span>
                                             </div>
                                             <div data-timeline class="relative flex flex-column">
-                                                <span class="fs--12 lh--18 fw5 col--brand-green">NOV</span>
-                                                <span class="fs--12 lh--14 fw6 white">Live Shopping</span>
+                                                <span class="fs--12 lh--18 fw5 col--brand-green">MAY</span>
+                                                <span class="fs--12 lh--14 fw6 white">Private+Group Chat<br>Custom Request</span>
                                             </div>
                                             <div data-timeline class="relative flex flex-column">
-                                                <span class="fs--12 lh--18 fw5 col--brand-green">DEC</span>
-                                                <span class="fs--12 lh--14 fw6 white">AI Agent Beta Test</span>
+                                                <span class="fs--12 lh--18 fw5 col--brand-green">JUN</span>
+                                                <span class="fs--12 lh--14 fw6 white">Video/Audio Call<br>Wish Tender</span>
                                             </div>
                                         </div>
                                     </div>
