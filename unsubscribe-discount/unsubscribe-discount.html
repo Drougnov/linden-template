@@ -17,6 +17,11 @@
         <link rel="stylesheet" id="tachyonsV2-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/tachyons-v2.css?ver=1.0.0" media="">
         <!-- custom styles for this template -->
         <style>
+            *{
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
             [data-template-wrapper] {
                 height: 33.625rem;
                 box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
@@ -24,17 +29,14 @@
             }
 
             [data-unsubscribe-left-column]{
-                width: 20.195rem;
+                width: 20.1875rem;
                 background-image: url('./images/left-column-bg-uncropped.png');
-                background-position: 20% 1%;
+                background-position-x: 20%;
             }
             [data-unsubscribe-left-column]::before {
                 position: absolute;
                 content: '';
-                top: 0.5px;
-                left: 0;
-                width: 100%;
-                height: 100%;
+                inset: 0;
                 background: linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.9) 100%);
                 pointer-events: none;
                 z-index: 1;
@@ -43,20 +45,22 @@
             [data-unsubscribe-description-text]{
                 color: #FCFAFF;
             }
+            [data-unsubscribe-left-column-text-container-mobile]{
+                display: none;
+            }
+            [data-unsubscribe-right-column]{
+                width: 32.5625rem;
+            }
             [data-unsubscribe-text-container]{
                 box-shadow: 0px 0px 10px -34px rgba(0, 0, 0, 0.1);
             }
             [data-unsubscribe-price-text]{
                 font-size: 1.875rem;
             }
-            [data-unsubscribe-discout-price-container]{
+            [data-unsubscribe-discout-price-wrapper]{
                 background-color: rgba(255, 197, 5, 0.3);
                 border: 0.75px solid rgba(255, 239, 186, 1);
                 box-shadow: 0px 0px 16px 0px rgba(255, 205, 41, 0.55);
-            }
-            [data-unsubscribe-right-column]{
-                width: 32.5625rem;
-                margin-left: -1px;
             }
             [data-unsubscribe-accept-offer-button]:hover{
                 box-shadow: 4px 4px 0px 0px #07F468;
@@ -76,16 +80,204 @@
             [data-unsubscribe-button-text]{
                 color: #FF692E;
             }
+            button[data-unsubscribe-button]:not(:disabled):not([data-for-new-dashboard="1"]):hover span{
+                color: #FF692E;
+            }
             [data-unsubscribe-close-button]{
                 top: -1.5rem;
                 right: -1.5rem;
             }
 
             @media (max-width: 1365px) {
+                :root{
+                    --background-image-height: 14.875rem;
+                }
                 [data-template-wrapper]{
                     flex-direction: column;
+                    justify-content: end;
                     width: 36.875rem;
                     height: 36.875rem;
+                }
+                [data-unsubscribe-left-column]{
+                    width: 100%;
+                    height: var(--background-image-height);
+                    background-size: cover;
+                }
+                [data-hide-text-on-mobile],
+                [data-unsubscribe-left-column]::before,
+                [data-unsubscribe-left-column-text-container]{
+                    display: none;
+                }
+                [data-unsubscribe-left-column-text-container-mobile]{
+                    display: flex;
+                    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.75) 100%);
+                }
+                [data-unsubscribe-right-column]{
+                    width: 100%;
+                    height: calc(100% - var(--background-image-height));
+                    justify-content: space-between;
+                    z-index: 1;
+                }
+                [data-unsubscribe-text-container]{
+                    flex-grow: unset;
+                }
+                [data-unsubscribe-button-container]{
+                    padding-left: 1rem;
+                    padding-right: 1rem;
+                }
+                [data-unsubscribe-text-container]{
+                    padding-top: 1rem;
+                    padding-left: 1rem;
+                    padding-right: 1rem;
+                }
+                [data-unsubscribe-current-price-wrapper],
+                [data-unsubscribe-discout-price-wrapper]{
+                    flex-direction: column;
+                    align-items: start;
+                }
+                [data-unsubscribe-current-price-container]{
+                    height: 2rem;
+                    align-self: flex-end;
+                    padding-top: 0;
+                }
+                [data-unsubscribe-discount-price-container]{
+                    height: 2.5rem;
+                    align-items: center;
+                    align-self: flex-end;
+                }
+                [data-unsubscribe-discount-tag]{
+                    left: unset;
+                    right: 0;
+                    height: 1.75rem;
+                }
+            }
+            @media (max-width: 1009px) and (min-width: 768px){
+                :root{
+                    --background-image-height: 29.3125rem;
+                }
+                [data-template-wrapper]{
+                    width: 32.5625rem;
+                    height: unset;
+                }
+                [data-unsubscribe-left-column]{
+                    width: 100%;
+                    height: var(--background-image-height);
+                    background-size: 185%;
+                    background-position-y: 10%;
+                }
+                [data-unsubscribe-current-price-wrapper] {
+                    gap: .5rem;
+                }
+            }
+            @media (max-width: 767px){
+                :root {
+                    --background-image-height: unset;
+                }
+                [data-template-outer-wrapper]{
+                    padding-top: 0;
+                    padding-bottom: 0;
+                }
+                [data-template-wrapper]{
+                    min-height: 100vh;
+                    width: 100%;
+                    height: 100%;
+                    background-image: url('./images/left-column-bg-uncropped.png');
+                    background-size: cover;
+                }
+                [data-unsubscribe-left-column]{
+                    background-image: none;
+                }
+                [data-unsubscribe-left-column-text-container-mobile]{
+                    padding: .5rem;
+                }
+                [data-unsubscribe-description-text]{
+                    font-size: 1rem;
+                    line-height: 1.5rem;
+                }
+                [data-unsubscribe-right-column]{
+                    background: rgba(0, 0, 0, 0.75);
+                    backdrop-filter: blur(20px);
+                }
+                [data-unsubscribe-text-container] {
+                    padding-top: .5rem;
+                    padding-left: .5rem;
+                    padding-right: .5rem;
+                }
+                [data-unsubscribe-current-price-wrapper],
+                [data-unsubscribe-discout-price-wrapper]{
+                    flex-direction: row;
+                    align-items: end;
+                }
+                [data-unsubscribe-discout-price-wrapper]{
+                    height: 4.1875rem;
+                }
+                [data-unsubscribe-current-price-container]{
+                    height: unset;
+                    align-self: flex-end;
+                    padding-top: 0.3125rem;
+                }
+                [data-unsubscribe-discount-price-container]{
+                    height: unset;
+                    align-items: baseline;
+                    align-self: center;
+                }
+                [data-unsubscribe-discount-tag]{
+                    left: 0;
+                    right: unset;
+                    height: 1.75rem;
+                }
+                [data-unsubscribe-discount-tag] span{
+                    font-size: 1rem;
+                    line-height: 1.5rem;
+                }
+                [data-unsubscribe-button-container]{
+                    flex-direction: row-reverse;
+                    padding-left: .5rem;
+                    padding-right: .5rem;
+                    padding-bottom: 1rem;
+                }
+                [data-unsubscribe-button-container] button{
+                    width: 50%;
+                }
+                [data-unsubscribe-close-button]{
+                    display: none;
+                }
+                [data-unsubscribe-close-button-mobile]{
+                    display: flex;
+                    top: 0.25rem;
+                    right: 0.5rem;
+                }
+            }
+
+            @media (max-width: 575px){
+                [data-unsubscribe-button-container]{
+                    flex-direction: column;
+                }
+                [data-unsubscribe-button-container] button{
+                    width: 100%;
+                }
+                [data-unsubscribe-current-price-wrapper],
+                [data-unsubscribe-discout-price-wrapper]{
+                    flex-direction: column;
+                    align-items: start;
+                }
+                [data-unsubscribe-discout-price-wrapper] {
+                    height: 5.75rem;
+                }
+                [data-unsubscribe-current-price-container]{
+                    height: unset;
+                    align-self: flex-end;
+                    padding-top: 0.3125rem;
+                }
+                [data-unsubscribe-discount-price-container]{
+                    height: 2.5rem;
+                    align-items: center;
+                    align-self: flex-end;
+                }
+                [data-unsubscribe-discount-tag]{
+                    left: unset;
+                    right: 0;
+                    height: 1.75rem;
                 }
             }
         </style>
@@ -94,12 +286,13 @@
         <link rel="stylesheet" id="dashboardStylesMobilePortrait-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-mobile-portrait.css" media="screen and (max-width: 479px)">
     </head>
     <body>
-        <div class="w-100 min-vh-100 flex justify-center items-center cover bg-center no-repeat" style="background-image: url('./images/template-bg-image.png');">
-            <!-- template starts from here -->
+        <!-- template starts from here -->
+        <div data-template-outer-wrapper class="w-100 min-vh-100 flex justify-center items-center cover bg-center no-repeat pt4 pb4" style="background-color: #444444;">
+            
             <div data-template-wrapper class="flex justify-center items-start bg-white-10 relative">
                 <!-- left-column -->
                 <div data-unsubscribe-left-column class="no-repeat h-100 flex justify-center items-end relative">
-                    <div class="flex w-100 pa3 drop--sh--1 z-3">
+                    <div data-unsubscribe-left-column-text-container class="flex w-100 pa3 drop--sh--1 z-3">
                         <div class="flex w--180">
                             <div class="flex flex-column w-100">
                                 <section class="flex items-center gap--4">
@@ -123,32 +316,42 @@
                             </div>
                         </div>
                     </div>
+
+                    <div data-unsubscribe-left-column-text-container-mobile class="flex flex-column pa3 gap--8 z-3">
+                        <p class="fs--12 lh--18 fw6 poppins col-brand-green">Unsubscribe from Princess Carrot Pop</p>
+                        <p class="fs--20 lh--30 fw5 poppins" data-unsubscribe-description-text>Your support means the world to me......consider staying with me for a little longer and I will give you something sweet...🫦</p>
+                    </div>
                 </div>
 
                 <!-- right-column -->
                 <div data-unsubscribe-right-column class="flex flex-column h-100">
                     <!-- text-container -->
                     <div data-unsubscribe-text-container class="flex flex-column gap--16 pad--24 flex-grow-1">
-                        <p class="fs--12 lh--18 fw6 poppins col-brand-green">Unsubscribe from Princess Carrot Pop</p>
+                        <p data-hide-text-on-mobile class="fs--12 lh--18 fw6 poppins col-brand-green">Unsubscribe from Princess Carrot Pop</p>
                         <div class="flex flex-column gap--40">
-                            <p class="fs--20 lh--30 fw5 poppins" data-unsubscribe-description-text>Your support means the world to me......consider staying with me for a little longer and I will give you something sweet...🫦</p>
+                            <p class="fs--20 lh--30 fw5 poppins" data-unsubscribe-description-text data-hide-text-on-mobile>Your support means the world to me......consider staying with me for a little longer and I will give you something sweet...🫦</p>
                             
                             <!-- price-section -->
                             <div class="flex flex-column gap--16">
-                                <div class="flex justify-between items-end pad--12 br--5">
+                                <div data-unsubscribe-current-price-wrapper class="flex justify-between items-end pad--12 br--5">
                                     <span class="fs--14 lh--20 fw5 poppins col--athens-gray-4">CURRENT PRICE</span>
 
-                                    <div class="flex gap--4 items-baseline pad--top--5">
+                                    <div data-unsubscribe-current-price-container class="flex gap--4 items-baseline pad--top--5">
                                         <p class="fs--20 lh--30 fw6 poppins col--athens-gray-4">USD<span data-unsubscribe-price-text class="lh--38 fw6 poppins col--athens-gray-4 strike">$16.99</span></p>
                                         <span class="fs--10 poppins col--athens-gray-4 tracked--0-01">/mo</span>
                                     </div>
                                 </div>
-                                <div data-unsubscribe-discout-price-container class="flex justify-between items-baseline pad--12 br--5">
+                                <div data-unsubscribe-discout-price-wrapper class="flex justify-between items-baseline pad--12 br--5 relative">
                                     <span class="fs--14 lh--20 fw5 poppins col--sunglow-yellow">JENNY’S OFFER IF YOU STAY</span>
                                     
-                                    <div class="flex gap--4 items-baseline">
+                                    <div data-unsubscribe-discount-price-container class="flex gap--4 items-baseline">
                                         <p class="fs--20 lh--30 fw6 poppins col--sunglow-yellow">USD$<span class="fs--48 lh--60 fw6 poppins col--sunglow-yellow tracked--neg--0-96">6.99</span></p>
                                         <span class="fs--10 poppins col--sunglow-yellow tracked--0-01">/mo</span>
+                                    </div>
+
+                                    <!-- discount-tag -->
+                                    <div data-unsubscribe-discount-tag class="absolute left-0 top-0 flex justify-center items-center bg--col--sunglow-yellow pad--y--2 pad--x--5">
+                                        <span class="fs--18 lh--28 fw7 poppins black">5% OFF</span>
                                     </div>
                                 </div>
                             </div>
@@ -156,7 +359,7 @@
                     </div>
 
                     <!-- button-container -->
-                    <div class="flex flex-column gap--16 pad--x--24 pad--bottom--24">
+                    <div data-unsubscribe-button-container class="flex flex-column gap--16 pad--x--24 pad--bottom--24">
                         <button data-unsubscribe-accept-offer-button class="flex justify-center items-center h--40 sh--10 bg--col--brand-green hover--bg--col--black pointer">
                             <div class="flex justify-center items-center gap--10 pad--y--4 pad--x--8 w-100 h-100">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
@@ -196,8 +399,16 @@
                         </defs>
                     </svg>
                 </div>
+
+                <!-- mobile-close-button -->
+                <div data-unsubscribe-close-button-mobile class="fixed dn justify-center items-center pointer w--32 h--32 br-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <path d="M24 8L8 24M8 8L24 24" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
             </div>
-            <!-- template ends here -->
+
         </div>
+         <!-- template ends here -->
     </body>
 </html>
