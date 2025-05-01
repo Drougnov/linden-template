@@ -68,9 +68,57 @@
                 backdrop-filter: drop-shadow(0px 0px 10px -34px rgba(0, 0, 0, 0.75));
             }
 
-            [data-card-background-image-sample-container]{
+            [data-card-background-color-sample-container]{
                 min-width: 3.9375rem;
                 height: 3.9375rem;
+            }
+
+            /* card with background color */
+            [data-card-outer-wrapper-bg-color]{
+                border-radius: 0.375rem;
+            }
+
+            [data-card-border-wrapper][data-card-border-wrapper-bg-color]{
+                border: 1px solid;
+                border-width: 1px;
+                border-image-slice: 1;
+                border-image-source: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(222, 222, 222, 0.25) 100%);
+            }
+
+            [data-card-outer-wrapper-bg-color] .col--white--responsive-mobile-portrait{
+                color: white;
+            }
+
+            [data-card-outer-wrapper-bg-color] .col--athens-gray-3-responsive-mobile{
+                color: #F2F4F7;
+            }
+
+            [data-card-outer-wrapper-bg-color] [data-card-logo-icon] path{
+                    fill: #FFFFFFCC;
+            }
+            [data-card-outer-wrapper-bg-color] [data-card-view-icon] path,
+            [data-card-outer-wrapper-bg-color] [data-card-view-icon] circle{
+                fill: white;
+            }
+            [data-card-outer-wrapper-bg-color] [data-card-credit-card-download-icon]{
+                background: #FFFFFFCC;
+            }
+            [data-card-outer-wrapper-bg-color] [data-card-credit-card-download-icon] path{
+                stroke: black;
+            }
+
+            [data-card-outer-wrapper-bg-color] [data-card-blur-outer-wrapper]{
+                background-color: unset;
+                -webkit-backdrop-filter: blur(0);
+                backdrop-filter: blur(0);
+            }
+
+            /* card with avatar */
+            [data-card-background-avatar-container]{
+                background-size: 60%;
+                filter: blur(4px);
+                -webkit-filter: blur(4px);
+                -moz-filter: blur(4px);
             }
 
             /* tab */
@@ -168,6 +216,13 @@
                 [data-card-credit-card-download-icon] path{
                     stroke: black;
                 }
+
+                /* tab */
+                [data-tab-content-container]{
+                    max-width: 33.3125rem;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
             }
 
             @media (max-width: 480px){
@@ -184,6 +239,21 @@
 
                 [data-card-content-bottom]{
                     gap: 0.125rem;
+                }
+
+                [data-tab-content-active][data-card-background-color-sample-wrapper]{
+                    padding: 0;
+                }
+
+                [data-card-background-color-sample-wrapper]{
+                    width: 3.125rem;
+                    height: 3.125rem;
+                }
+
+                [data-card-background-color-sample-container]{
+                    min-width: 2.375rem;
+                    width: 2.375rem;
+                    height: 2.375rem;
                 }
             }
         </style>
@@ -237,14 +307,22 @@
                             <!-- card-section -->
                             <div data-card-section class="flex justify-center items-center w-100">
                                 <!-- card-outer-wrapper -->
-                                <div data-card-outer-wrapper class="w--430 h--236 br--8 sh--14 relative overflow-hidden z-0 br--0-responsive-mobile br--0-responsive-mobile-portrait">
+                                <div data-card-outer-wrapper data-card-outer-wrapper-bg-color class="w--430 h--236 br--8 sh--14 relative overflow-hidden z-0 br--0-responsive-mobile br--0-responsive-mobile-portrait">
                                     <!-- card-background-wrapper -->
-                                    <div data-card-background-wrapper class="absolute z-0 flex justify-center items-center cover no-repeat bg-center">
+                                    <div data-card-background-wrapper class="absolute z-0 dn justify-center items-center cover no-repeat bg-center">
 
                                     </div>
 
+                                    <!-- card-background-wrapper for background-color -->
+                                    <div data-card-background-wrapper-bg-color data-bg-color="Viking Green" class="absolute top-0 left-0 w-100 h-100 pointer-events-none br--6 z-0 flex justify-center items-center overflow-hidden br--0-responsive-mobile br--0-responsive-mobile-portrait">
+                                        <!-- avatar-container -->
+                                        <div data-card-background-avatar-container style="background-image: url('./images/card-bg-sample/card-bg-avatar.png');" class="w-100 h-100 bg-center no-repeat">
+                                        
+                                        </div>
+                                    </div>
+
                                     <!-- card-border-wrapper -->
-                                    <div data-card-border-wrapper class="absolute top-0 left-0 w-100 h-100 z-1 flex justify-center items-center br--8 display--none-responsive-mobile display--none-responsive-mobile-portrait">
+                                    <div data-card-border-wrapper data-card-border-wrapper-bg-color class="absolute top-0 left-0 w-100 h-100 z-1 flex justify-center items-center br--8 display--none-responsive-mobile display--none-responsive-mobile-portrait">
 
                                     </div>
 
@@ -292,7 +370,7 @@
                                         </div>
 
                                         <!-- card-blur-bottom-section -->
-                                        <div class="flex justify-center items-center gap--20 pad--y--16 pad--x--20 h-100 bg--blur--5 bg-black-10">
+                                        <div data-card-blur-outer-wrapper class="flex justify-center items-center gap--20 pad--y--16 pad--x--20 h-100 bg--blur--5 bg-black-10">
                                             <div data-card-blur-wrapper class="flex justify-between items-start w-100 h-100">
                                                 <div class="flex flex-column">
                                                     <span class="fs--12 lh--18 poppins white">NAME</span>
@@ -330,10 +408,10 @@
                             <!-- tab-button-section -->
                             <div class="flex justify-center items-center">
                                 <div class="flex items-center br--5 bg--col--light-gray-50 ba br--col--mischka overflow-hidden">
-                                    <button data-tab-button data-tab-button-active class="flex justify-center items-center h--32 br br--col--mischka pad--x--8">
+                                    <button data-tab-button class="flex justify-center items-center h--32 br br--col--mischka pad--x--8">
                                         <span class="fs--12 lh--18 fw5 poppins col--gull-gray">Premium Design</span>
                                     </button>
-                                    <button data-tab-button class="flex justify-center items-center h--32 br br--col--mischka pad--x--8">
+                                    <button data-tab-button data-tab-button-active class="flex justify-center items-center h--32 br br--col--mischka pad--x--8">
                                         <span class="fs--12 lh--18 fw5 poppins col--gull-gray">User Avatar</span>
                                     </button>
                                     <button data-tab-button class="flex justify-center items-center h--32 br br--col--mischka pad--x--8">
@@ -343,30 +421,78 @@
                             </div>
 
                             <!-- tab-content-section -->
-                            <div class="flex justify-center items-center gap--16">
-                                <div data-tab-content data-tab-content-active class="flex justify-center items-center br-100">
-                                    <div data-card-background-image-sample-container style="background-image: url('./images/card-bg-sample/card-bg-sample-1.png');" class="flex justify-center items-center br-100 overflow-hidden sh--14 bg-center no-repeat">
+                            <div data-tab-content-container class="flex justify-center items-center gap--16 flex-wrap gap--8--responsive-mobile-portrait">
+                                <div data-tab-content data-card-background-color-sample-wrapper class="flex justify-center items-center br-100">
+                                    <div data-card-background-color-sample-container data-bg-color="Persian Rose" class="flex justify-center items-center br-100 overflow-hidden sh--14">
 
                                     </div>
                                 </div>
 
-                                <div data-tab-content class="flex justify-center items-center br-100">
-                                    <div data-card-background-image-sample-container style="background-image: url('./images/card-bg-sample/card-bg-sample-2.png');" class="flex justify-center items-center br-100 overflow-hidden sh--14 bg-center no-repeat">
+                                <div data-tab-content data-card-background-color-sample-wrapper class="flex justify-center items-center br-100">
+                                    <div data-card-background-color-sample-container data-bg-color="Electric Violet" class="flex justify-center items-center br-100 overflow-hidden sh--14">
 
                                     </div>
                                 </div>
-
-                                <div data-tab-content class="flex justify-center items-center br-100">
-                                    <div data-card-background-image-sample-container style="background-image: url('./images/card-bg-sample/card-bg-sample-3.png');" class="flex justify-center items-center br-100 overflow-hidden sh--14 bg-center no-repeat">
-
-                                    </div>
-                                </div>
-
-                                <div data-tab-content class="flex justify-center items-center br-100">
-                                    <div data-card-background-image-sample-container style="background-image: url('./images/card-bg-sample/card-bg-sample-4.png');" class="flex justify-center items-center br-100 overflow-hidden sh--14 bg-center no-repeat">
+                                
+                                <div data-tab-content data-card-background-color-sample-wrapper class="flex justify-center items-center br-100">
+                                    <div data-card-background-color-sample-container data-bg-color="Blue Gem" class="flex justify-center items-center br-100 overflow-hidden sh--14">
 
                                     </div>
                                 </div>
+                                
+                                <div data-tab-content data-card-background-color-sample-wrapper class="flex justify-center items-center br-100">
+                                    <div data-card-background-color-sample-container data-bg-color="Royal Blue" class="flex justify-center items-center br-100 overflow-hidden sh--14">
+
+                                    </div>
+                                </div>
+                                
+                                <div data-tab-content data-card-background-color-sample-wrapper class="flex justify-center items-center br-100">
+                                    <div data-card-background-color-sample-container data-bg-color="Shakespeare" class="flex justify-center items-center br-100 overflow-hidden sh--14">
+
+                                    </div>
+                                </div>
+                                
+                                <div data-tab-content data-card-background-color-sample-wrapper data-tab-content-active class="flex justify-center items-center br-100">
+                                    <div data-card-background-color-sample-container data-bg-color="Viking Green" class="flex justify-center items-center br-100 overflow-hidden sh--14">
+
+                                    </div>
+                                </div>
+                                
+                                <div data-tab-content data-card-background-color-sample-wrapper class="flex justify-center items-center br-100">
+                                    <div data-card-background-color-sample-container data-bg-color="Picton Blue" class="flex justify-center items-center br-100 overflow-hidden sh--14">
+
+                                    </div>
+                                </div>
+                                
+                                <div data-tab-content data-card-background-color-sample-wrapper class="flex justify-center items-center br-100">
+                                    <div data-card-background-color-sample-container data-bg-color="Cornflower Blue" class="flex justify-center items-center br-100 overflow-hidden sh--14">
+
+                                    </div>
+                                </div>
+                                
+                                <div data-tab-content data-card-background-color-sample-wrapper class="flex justify-center items-center br-100">
+                                    <div data-card-background-color-sample-container data-bg-color="Heliotrope" class="flex justify-center items-center br-100 overflow-hidden sh--14">
+
+                                    </div>
+                                </div>
+                                
+                                <div data-tab-content data-card-background-color-sample-wrapper class="flex justify-center items-center br-100">
+                                    <div data-card-background-color-sample-container data-bg-color="Blush Pink" class="flex justify-center items-center br-100 overflow-hidden sh--14">
+
+                                    </div>
+                                </div>
+                                
+                                <div data-tab-content data-card-background-color-sample-wrapper class="flex justify-center items-center br-100">
+                                    <div data-card-background-color-sample-container data-bg-color="Aquamarine" class="flex justify-center items-center br-100 overflow-hidden sh--14">
+
+                                    </div>
+                                </div>
+                                
+                                <div data-tab-content data-card-background-color-sample-wrapper class="flex justify-center items-center br-100">
+                                    <div data-card-background-color-sample-container data-bg-color="Spray" class="flex justify-center items-center br-100 overflow-hidden sh--14">
+
+                                    </div>
+                                </div>                                
                             </div>
                         </div>
 
