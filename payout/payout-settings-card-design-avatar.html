@@ -73,8 +73,8 @@
                 height: 3.9375rem;
             }
 
-            /* card with background color */
-            [data-card-outer-wrapper-bg-color]{
+            /* card with avatar */
+            [data-card-outer-wrapper-avatar]{
                 border-radius: 0.375rem;
             }
 
@@ -85,35 +85,44 @@
                 border-image-source: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(222, 222, 222, 0.25) 100%);
             }
 
-            [data-card-outer-wrapper-bg-color] .col--white--responsive-mobile-portrait{
+            [data-card-outer-wrapper-avatar] .col--white--responsive-mobile-portrait{
                 color: white;
             }
 
-            [data-card-outer-wrapper-bg-color] .col--athens-gray-3-responsive-mobile{
+            [data-card-outer-wrapper-avatar] .col--athens-gray-3-responsive-mobile{
                 color: #F2F4F7;
             }
 
-            [data-card-outer-wrapper-bg-color] [data-card-logo-icon] path{
+            [data-card-outer-wrapper-avatar] [data-card-logo-icon] path{
                     fill: #FFFFFFCC;
             }
-            [data-card-outer-wrapper-bg-color] [data-card-view-icon] path,
-            [data-card-outer-wrapper-bg-color] [data-card-view-icon] circle{
+            [data-card-outer-wrapper-avatar] [data-card-view-icon] path,
+            [data-card-outer-wrapper-avatar] [data-card-view-icon] circle{
                 fill: white;
             }
-            [data-card-outer-wrapper-bg-color] [data-card-credit-card-download-icon]{
+            [data-card-outer-wrapper-avatar] [data-card-credit-card-download-icon]{
                 background: #FFFFFFCC;
             }
-            [data-card-outer-wrapper-bg-color] [data-card-credit-card-download-icon] path{
+            [data-card-outer-wrapper-avatar] [data-card-credit-card-download-icon] path{
                 stroke: black;
             }
 
-            [data-card-outer-wrapper-bg-color] [data-card-blur-outer-wrapper]{
+
+            [data-card-outer-wrapper-avatar] [data-card-type-text]{
+                margin-top: -0.125rem;
+            }
+
+            [data-card-outer-wrapper-avatar] [data-card-blur-outer-wrapper],
+            [data-card-outer-wrapper-avatar] [data-card-blur-wrapper]{
+                height: max-content;
+            }
+
+            [data-card-outer-wrapper-avatar] [data-card-blur-outer-wrapper]{
                 background-color: unset;
                 -webkit-backdrop-filter: blur(0);
                 backdrop-filter: blur(0);
             }
 
-            /* card with avatar */
             [data-card-background-avatar-container]{
                 background-size: 60%;
                 filter: blur(4px);
@@ -307,8 +316,8 @@
                             <!-- card-section -->
                             <div data-card-section class="flex justify-center items-center w-100">
                                 <!-- card-outer-wrapper -->
-                                <div data-card-outer-wrapper data-card-outer-wrapper-bg-color class="w--430 h--236 br--8 sh--14 relative overflow-hidden z-0 br--0-responsive-mobile br--0-responsive-mobile-portrait">
-                                    <!-- card-background-wrapper -->
+                                <div data-card-outer-wrapper data-card-outer-wrapper-avatar class="w--430 h--236 br--8 sh--14 relative overflow-hidden z-0 br--0-responsive-mobile br--0-responsive-mobile-portrait">
+                                    <!-- card-background-wrapper (hidden with dn class) -->
                                     <div data-card-background-wrapper class="absolute z-0 dn justify-center items-center cover no-repeat bg-center">
 
                                     </div>
@@ -329,13 +338,13 @@
                                     <!-- card-contents-wrapper -->
                                     <div data-card-contents-wrapper class="w-100 h-100 flex flex-column z-2 relative">
                                         <!-- card-contents-container -->
-                                        <div class="flex flex-column">
+                                        <div class="flex flex-column justify-between flex-grow-1">
                                             <!-- cart-content__top -->
                                             <div class="w-100 flex flex-column pad--top--20 pad--x--20 pad--top--16-responsive-mobile pad--x--16-responsive-mobile">
                                                 <div class="flex justify-between items-start gap--20">
                                                     <div data-card-content-top-text-container class="flex flex-column">
                                                         <span class="fs--18 lh--28 fw7 black poppins tracked--neg--0-9 fs--14-responsive-mobile col--white--responsive-mobile lh--18-responsive-mobile fs--14-responsive-mobile-portrait col--white--responsive-mobile-portrait lh--18-responsive-mobile-portrait">FANSOCIAL</span>
-                                                        <span class="fs--16 lh--24 fw7 black poppins col--white--responsive-mobile fs--14-responsive-mobile col--white--responsive-mobile lh--18-responsive-mobile fs--14-responsive-mobile-portrait col--white--responsive-mobile-portrait lh--18-responsive-mobile-portrait">PREMIUM</span>
+                                                        <span data-card-type-text class="fs--16 lh--24 fw7 black poppins col--white--responsive-mobile fs--14-responsive-mobile col--white--responsive-mobile lh--18-responsive-mobile fs--14-responsive-mobile-portrait col--white--responsive-mobile-portrait lh--18-responsive-mobile-portrait">STANDARD</span>
                                                     </div>
 
                                                     <div data-card-logo-icon class="flex justify-center items-center w--36 h--36">
@@ -352,8 +361,8 @@
 
                                                 <div class="flex justify-between items-center gap--4">
                                                     <div class="flex items-center gap--4">
-                                                        <span class="fs--36 lh--44 fw5 black poppins tracked--neg--0-72 col--white--responsive-mobile fs--24-responsive-mobile lh--32--responsive-mobile col--white--responsive-mobile-portrait fs--24-responsive-mobile-portrait lh--32--responsive-mobile-portrait">$</span>
-                                                        <span class="fs--36 lh--44 fw5 black poppins tracked--neg--0-72 col--white--responsive-mobile fs--24-responsive-mobile lh--32--responsive-mobile col--white--responsive-mobile-portrait fs--24-responsive-mobile-portrait lh--32--responsive-mobile-portrait">30054.40</span>
+                                                        <span class="fs--24 lh--32 fw5 black poppins tracked--neg--0-72 col--white--responsive-mobile fs--24-responsive-mobile lh--32--responsive-mobile col--white--responsive-mobile-portrait fs--24-responsive-mobile-portrait lh--32--responsive-mobile-portrait">$</span>
+                                                        <span class="fs--24 lh--32 fw5 black poppins tracked--neg--0-72 col--white--responsive-mobile fs--24-responsive-mobile lh--32--responsive-mobile col--white--responsive-mobile-portrait fs--24-responsive-mobile-portrait lh--32--responsive-mobile-portrait">30054.40</span>
                                                         <svg data-card-view-icon xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="pointer">
                                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M12.0002 6.3551C8.32394 6.3551 5.11701 8.37016 3.42597 11.3608C3.20176 11.7573 3.20176 12.2425 3.42597 12.639C5.11701 15.6297 8.32394 17.6447 12.0002 17.6447C15.6765 17.6447 18.8834 15.6297 20.5745 12.639C20.7987 12.2425 20.7987 11.7573 20.5745 11.3608C18.8834 8.37017 15.6765 6.3551 12.0002 6.3551ZM1.68501 10.3764C3.71644 6.78378 7.57406 4.3551 12.0002 4.3551C16.4264 4.3551 20.284 6.78378 22.3154 10.3764C22.885 11.3838 22.885 12.6161 22.3154 13.6234C20.284 17.216 16.4264 19.6447 12.0002 19.6447C7.57406 19.6447 3.71644 17.216 1.68501 13.6234C1.11541 12.6161 1.11541 11.3838 1.68501 10.3764Z" fill="black"/>
                                                             <circle cx="12" cy="11.9999" r="4" fill="black"/>
@@ -373,8 +382,8 @@
                                         <div data-card-blur-outer-wrapper class="flex justify-center items-center gap--20 pad--y--16 pad--x--20 h-100 bg--blur--5 bg-black-10">
                                             <div data-card-blur-wrapper class="flex justify-between items-start w-100 h-100">
                                                 <div class="flex flex-column">
-                                                    <span class="fs--12 lh--18 poppins white">NAME</span>
-                                                    <span class="fs--14 lh--20 fw5 poppins white">MAX WANG</span>
+                                                    <span class="fs--12 lh--18 poppins white col--athens-gray-3-responsive-mobile">NAME</span>
+                                                    <span class="fs--14 lh--20 fw5 poppins white col--white--responsive-mobile">MAX WANG</span>
                                                 </div>
 
                                                 <div data-card-transaction-container class="flex flex-column">
