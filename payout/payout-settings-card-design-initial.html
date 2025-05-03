@@ -176,6 +176,10 @@
                 transition: all 0s ease-in-out;
             }
 
+            button[data-payout-settings-save-button]:not(:disabled):hover span{
+                color: var(--color-brand-green, #07F468);
+            }
+
             @media (max-width: 1365px) and (min-width: 1010px){
                 .pad--bottom--16-responsive-tablet-landscape { padding-bottom: 1rem; }
             }
@@ -526,7 +530,7 @@
 
                         <!-- footer -->
                         <div class="fixed bottom-0 right-0 w-100 flex items-center justify-end">
-                            <button data-payout-settings-save-button class="flex justify-center items-center gap--5 relative h--40 pad--x--8 bg-black">
+                            <button data-payout-settings-save-button class="flex justify-center items-center gap--5 relative h--40 pad--x--8 bg-black hover--parent--child--col--brand-green">
                                 <div class="flex justify-center items-center gap--10">
                                     <div class="w--24 h--24 flex justify-center items-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">

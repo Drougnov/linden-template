@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="max-image-preview:large">
+        <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="dns-prefetch" href="//staging.fansocial.app">
+        <link rel="dns-prefetch" href="//fonts.googleapis.com">
+        <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+        <title>Payout settings popup</title>
+        <link rel="stylesheet" id="google-fonts-css" href="https://fonts.googleapis.com/css2?family=Poppins%3Awght%40300%3B400%3B500%3B600%3B700%3B800%3B900&amp;display=swap&amp;ver=1.0.0" media="">
+        <link rel="stylesheet" id="theme-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/theme.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="final-main-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/main.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="components-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/css/components.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="tachyonsStylesheet-css" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.11.1/tachyons.min.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="popup-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/css/dev/popup.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="pageElements-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/FINAL/css/pageElements.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="finalCustomTachyonsStylesheet-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/customTachyons.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="tachyonsV2-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/tachyons-v2.css?ver=1.0.0" media="">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css?ver=1.0.0">
+        <link rel="stylesheet" id="niceSelect-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/FINAL/css/nice-select.css?ver=1.0.21" media="">
+        
+        
+        <script defer src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/FINAL/js/nice-select.js?ver=1.0.21" id="niceSelect-js" type="text/javascript"></script>
+        <!-- custom styles for this template -->
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+
+            /* tachyons */
+            .col--grey-800 { color: var(--Gray-800, #182230); }
+
+            [data-payout-settings-popup].slidein-right-popup:not([data-popup-noui]) .elm_qJBugX{
+                max-width: 45rem;
+            }
+
+            [data-popup-contents-wrapper]{
+                flex: 1 1 0;
+                overflow: auto;
+                overflow-x: hidden;
+            }
+
+            /* text-input */
+            [data-payout-form-text-input]::placeholder{
+                font-family: Poppins;
+                font-weight: 400;
+                font-size: 1rem;
+                line-height: 1.5rem;
+                letter-spacing: 0;
+                color: var(--color-pale-sky, #667085);
+            }
+
+            /* footer */
+            [data-payout-settings-save-button]::before{
+                position: absolute;
+                top: 0;
+                left: -0.625rem;
+                content: '';
+                display: block;
+                width: 2rem;
+                height: 100%;
+                background-color: black;
+                z-index: -1;
+                -webkit-transform: skew(163deg, 0) translateX(3px);
+                transform: skew(163deg, 0) translateX(3px);
+                -webkit-transition: all 0s ease-in-out;
+                transition: all 0s ease-in-out;
+            }
+
+            button[data-payout-settings-save-button]:not(:disabled):hover span{
+                color: var(--color-brand-green, #07F468);
+            }
+
+            @media (max-width: 1365px) and (min-width: 1010px){
+                .pad--bottom--16-responsive-tablet-landscape { padding-bottom: 1rem; }
+            }
+
+            @media (max-width: 1009px) and (min-width: 768px){
+                [data-payout-settings-popup].slidein-right-popup:not([data-popup-noui]) .elm_qJBugX{
+                    max-width: 29.1875rem;
+                }
+            }
+
+            @media (max-width: 767px){
+                .pad--y--16--responsive-mobile { padding-top: 1rem; padding-bottom: 1rem; }
+
+                [data-payout-settings-popup].elm_UoRWYY:not([data-popup-noui]) .elm_yNwqwJ:not(.no-height){
+                    height: 100vh;
+                }
+
+                [data-payout-settings-popup].slidein-right-popup:not([data-popup-noui]) .elm_qJBugX {
+                    max-width: unset;
+                }
+
+                [data-payout-settings-popup] [data-popup-header-title-icon]{
+                    width: 1rem;
+                    height: 1rem;
+                }
+            }
+        </style>
+        <link rel="stylesheet" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-tablet.css" media="screen and (min-width: 768px) and (max-width: 1365px)">
+        <link rel="stylesheet" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-tablet-landscape.css" media="screen and (min-width: 768px) and (max-width: 1010px)">
+        <link rel="stylesheet" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-mobile.css" media="screen and (min-width: 480px) and (max-width: 767px)">
+        <link rel="stylesheet" id="dashboardStylesMobilePortrait-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-mobile-portrait.css" media="screen and (max-width: 479px)">
+    </head>
+    <body>
+        <div class="min-vh-100" style="background-color: #444;">
+
+            <!-- template starts from here -->
+            <div data-payout-settings-popup data-popup="" data-popup-type="slidein-right-popup" data-popup-overlay-color="rgba(0,0,0,0.65)" data-popup-max-width="720px" class="elm_UoRWYY items-center justify-center fixed dn top-0 left-0 w-100 h-100 z--99999 overflow-auto slidein-right-popup flex opened" style="background-color: rgba(0, 0, 0, 0.65);">
+                <!-- inner wrapper -->
+                <div data-popup-inner="" class="elm_yNwqwJ top-0 w-100 flex items-center justify-center absolute">
+                    <!-- container -->
+                    <div class="bg--blur--100 bg--col--athens-gray--90 elm_qJBugX flex flex-column w-100 sh--popup-1 no-full-width no-height">
+                        <!-- popup header-->
+                        <div class="w-100 pad--x--16 pad--top--24 pad--bottom--8 flex items-center justify-between pad--bottom--16-responsive-tablet-landscape pad--y--8--responsive-mobile pad--y--8--responsive-mobile-portrait">
+                            <div class="flex items-center gap--8">
+                                <div data-popup-header-title-icon class="flex justify-center items-center w--24 h--24">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M16 18L19 15M19 15L22 18M19 15V21M22 10H2M22 12V8.2C22 7.0799 22 6.51984 21.782 6.09202C21.5903 5.7157 21.2843 5.40974 20.908 5.21799C20.4802 5 19.9201 5 18.8 5H5.2C4.0799 5 3.51984 5 3.09202 5.21799C2.7157 5.40973 2.40973 5.71569 2.21799 6.09202C2 6.51984 2 7.0799 2 8.2V15.8C2 16.9201 2 17.4802 2.21799 17.908C2.40973 18.2843 2.71569 18.5903 3.09202 18.782C3.51984 19 4.0799 19 5.2 19H12" stroke="#344054" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <span class="fs--14 fw6 lh--20 col--oxford-blue poppins">Add new payout method</span>
+                            </div>
+                            <span class="w--24 h--24 flex justify-center items-center pointer elm_UOkrrN">
+                                <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/icons/close-btn.svg" alt="" class="w--24 h--24 filter--col--gull-gray">
+                            </span>
+                        </div>
+
+                        <!-- popup contents -->
+                        <div data-popup-contents-wrapper class="flex flex-column gap--24 pad--y--16 pad--x--24 pad--y--16--responsive-mobile pad--x--8-responsive-mobile gap--16-responsive-mobile gap--16-responsive-mobile-portrait pad--x--8-responsive-mobile-portrait">
+                            <!-- navigation-section -->
+                            <div class="flex items-center gap--10">
+                                <a href="#" class="flex items-center gap--4">
+                                    <div class="flex justify-center items-center pointer w1 h1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                            <path d="M10 12L6 8L10 4" stroke="#667085" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+
+                                    <span class="fs--12 lh--18 fw5 poppins col--pale-sky">Back</span>
+                                </a>
+                            </div>
+
+                            <h3 class="fs--18 lh--28 fw5 col--ebony--variation-2 fs--16--responsive-mobile fs--16--responsive-mobile-portrait lh--24--responsive-mobile lh--24--responsive-mobile-portrait">Payout Details</h3>
+
+                            <p class="fs--16 lh--24 poppins col--ebony--variation-2">Please provide the following information for your transaction:</p>
+                        
+                            <!-- Bank-information-form -->
+                            <div class="flex flex-column gap--16">
+                                <!-- input-field -->
+                                <div class="flex flex-column gap--6" data-form-input-type="text">
+                                    <label for="bank-code" class="fs--14 lh--20 fw5 poppins col--pale-sky">Bank Swift/BIC Code</label>
+                                    <div class="pad--x--14 h--40 flex items-center gap--8 br--2 br--bottom--left--right bb br--col--mischka-gray bg-white-50 sh--7 relative" data-input-wrapper="">
+                                        <input data-payout-form-text-input type="text" class="w-100 bn flex-auto fs--16 lh--24 col--ebony" name="bank-code" value="123456789012" placeholder="Enter BIC/SWIFT code">
+                                        <div class="w1 h1 flex justify-center items-center pointer">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                <g clip-path="url(#clip0_23203_20947)">
+                                                    <path d="M6.05992 6.00001C6.21665 5.55446 6.52602 5.17875 6.93322 4.93943C7.34042 4.70012 7.81918 4.61264 8.2847 4.69248C8.75022 4.77233 9.17246 5.01436 9.47664 5.3757C9.78081 5.73703 9.94729 6.19436 9.94659 6.66668C9.94659 8.00001 7.94659 8.66668 7.94659 8.66668M7.99992 11.3333H8.00659M14.6666 8.00001C14.6666 11.6819 11.6818 14.6667 7.99992 14.6667C4.31802 14.6667 1.33325 11.6819 1.33325 8.00001C1.33325 4.31811 4.31802 1.33334 7.99992 1.33334C11.6818 1.33334 14.6666 4.31811 14.6666 8.00001Z" stroke="#98A2B3" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_23203_20947">
+                                                        <rect width="16" height="16" fill="white"/>
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                 <!-- input-field -->
+                                <div class="flex flex-column gap--6" data-form-input-type="text">
+                                    <label for="bank-code" class="fs--14 lh--20 fw5 poppins col--pale-sky">Bank Account Number or IBAN</label>
+                                    <div class="pad--x--14 h--40 flex items-center gap--8 br--2 br--bottom--left--right bb br--col--mischka-gray bg-white-50 sh--7 relative" data-input-wrapper="">
+                                        <input data-payout-form-text-input type="text" class="w-100 bn flex-auto fs--16 lh--24 col--ebony" name="bank-code" placeholder="Enter BIC/SWIFT code">
+                                    </div>
+                                    <p class="fs--14 lh--20 poppins col--fiord-gray fs--12-responsive-mobile fs--12-responsive-mobile-portrait lh--18-responsive-mobile lh--18-responsive-mobile-portrait">If you are not sure if you need an intermediary Bank for international transfer, please contact your bank for future information.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- footer -->
+                        <div class="fixed bottom-0 right-0 w-100 flex items-center justify-end">
+                            <button data-payout-settings-save-button class="flex justify-center items-center gap--5 relative h--40 pad--x--8 bg-black hover--parent--child--col--brand-green">
+                                <div class="flex justify-center items-center gap--10">
+                                    <div class="w--24 h--24 flex justify-center items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                                            <path d="M21 10.0857V11.0057C20.9988 13.1621 20.3005 15.2604 19.0093 16.9875C17.7182 18.7147 15.9033 19.9782 13.8354 20.5896C11.7674 21.201 9.55726 21.1276 7.53447 20.3803C5.51168 19.633 3.78465 18.2518 2.61096 16.4428C1.43727 14.6338 0.879791 12.4938 1.02168 10.342C1.16356 8.19029 1.99721 6.14205 3.39828 4.5028C4.79935 2.86354 6.69279 1.72111 8.79619 1.24587C10.8996 0.770634 13.1003 0.988061 15.07 1.86572M21 3L11 13.01L8 10.01" stroke="#07F468" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <span class="poppins fs--18 lh--28 fw5 ttu col-brand-green">SAVE</span>
+                                </div>
+                             </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
