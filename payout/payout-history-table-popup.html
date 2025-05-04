@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="max-image-preview:large">
+        <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="dns-prefetch" href="//staging.fansocial.app">
+        <link rel="dns-prefetch" href="//fonts.googleapis.com">
+        <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+        <title>Payout settings popup</title>
+        <link rel="stylesheet" id="google-fonts-css" href="https://fonts.googleapis.com/css2?family=Poppins%3Awght%40300%3B400%3B500%3B600%3B700%3B800%3B900&amp;display=swap&amp;ver=1.0.0" media="">
+        <link rel="stylesheet" id="theme-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/theme.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="final-main-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/main.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="components-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/css/components.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="tachyonsStylesheet-css" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.11.1/tachyons.min.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="popup-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/css/dev/popup.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="pageElements-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/FINAL/css/pageElements.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="finalCustomTachyonsStylesheet-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/customTachyons.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="tachyonsV2-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/tachyons-v2.css?ver=1.0.0" media="">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css?ver=1.0.0">
+        <!-- custom styles for this template -->
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+
+            /* tachyons */
+            .pad--left--12{ padding-left: 0.75rem; }
+            .min--h--72 { min-height: 4.5rem; }
+            .col--warning-300 { color: #FEC84B; }
+            .bg--col--warning-300 { background-color: #FEC84B; }
+
+            [data-payout-settings-popup].slidein-right-popup:not([data-popup-noui]) .elm_qJBugX{
+                max-width: 55.9375rem;
+            }
+
+            [data-popup-contents-wrapper]{
+                flex: 1 1 0;
+                overflow: auto;
+                overflow-x: hidden;
+            }
+
+            /* table */
+            [data-desktop-table-header]{
+                min-height: 2.625rem;
+            }
+            [data-payout-table-row]:nth-child(odd){
+                background: #F8F9FA;
+            }
+            [data-payout-history-table-date-column],
+            [data-payout-history-table-type-column],
+            [data-payout-history-table-from-column],
+            [data-payout-history-table-detail-column],
+            [data-payout-history-table-total-column],
+            [data-payout-history-table-final-payout-column]{
+                width: 12.7184%;
+            }
+            [data-payout-history-table-order-column]{
+                width: 5.5rem;
+            }
+            [data-payout-history-table-commission-column]{
+                width: 7.75rem;
+            }
+
+            @media (max-width: 1365px) and (min-width: 1010px){
+                .pad--bottom--16-responsive-tablet-landscape { padding-bottom: 1rem; }
+            }
+
+            @media (max-width: 1009px) and (min-width: 768px){
+                [data-payout-settings-popup].slidein-right-popup:not([data-popup-noui]) .elm_qJBugX{
+                    max-width: 42.375rem;
+                }
+
+                [data-popup-table-inner-wrapper]{
+                    width: 55.9375rem;
+                }
+            }
+
+            @media (max-width: 767px){
+                .pad--y--16--responsive-mobile { padding-top: 1rem; padding-bottom: 1rem; }
+
+                [data-payout-settings-popup].elm_UoRWYY:not([data-popup-noui]) .elm_yNwqwJ:not(.no-height){
+                    height: 100vh;
+                }
+
+                [data-payout-settings-popup].slidein-right-popup:not([data-popup-noui]) .elm_qJBugX {
+                    max-width: unset;
+                }
+
+                [data-payout-transaction-popup-header]{
+                    backdrop-filter: blur(50px);
+                }
+
+                [data-payout-transaction-popup-header-text-top]{
+                    font-size: 0.875rem;
+                    font-weight: 600;
+                    line-height: 1.25rem;
+                    color: var(--color-oxford-blue, #344054);
+                }
+
+                [data-payout-transaction-popup-header-text-bottom]{
+                    font-size: 0.75rem;
+                    font-weight: 500;
+                    line-height: 1.125rem;
+                    color: var(--color-pale-sky, #667085);
+                }
+
+                /* table */
+                [data-table-row-mobile]{
+                    border: 1.5px solid #D0D5DD;
+                }
+                [data-table-row-mobile-left]{
+                    min-width: 15.5rem;
+                }
+            }
+
+            @media (max-width: 480px){
+                [data-table-row-mobile-left]{
+                    min-width: 12.875rem;
+                }
+            }
+        </style>
+        <link rel="stylesheet" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-tablet.css" media="screen and (min-width: 768px) and (max-width: 1365px)">
+        <link rel="stylesheet" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-tablet-landscape.css" media="screen and (min-width: 768px) and (max-width: 1010px)">
+        <link rel="stylesheet" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-mobile.css" media="screen and (min-width: 480px) and (max-width: 767px)">
+        <link rel="stylesheet" id="dashboardStylesMobilePortrait-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-mobile-portrait.css" media="screen and (max-width: 479px)">
+    </head>
+    <body>
+        <div class="min-vh-100" style="background-color: #444;">
+
+            <!-- template starts from here -->
+            <div data-payout-settings-popup data-popup="" data-popup-type="slidein-right-popup" data-popup-overlay-color="rgba(0,0,0,0.65)" data-popup-max-width="720px" class="elm_UoRWYY items-center justify-center fixed dn top-0 left-0 w-100 h-100 z--99999 overflow-auto slidein-right-popup flex opened" style="background-color: rgba(0, 0, 0, 0.65);">
+                <!-- inner wrapper -->
+                <div data-popup-inner="" class="elm_yNwqwJ top-0 w-100 flex items-center justify-center absolute">
+                   <!-- container -->
+                   <div class="bg--blur--100 bg--col--athens-gray--90 elm_qJBugX flex flex-column gap--16 w-100 sh--popup-1 no-full-width no-height gap--0-responsive-mobile gap--0-responsive-mobile-portrait">
+                        <!-- popup header-->
+                        <div class="w-100 pad--top--8 pad--y-0-responsive-mobile pad--y-0-responsive-mobile-portrait">
+                            <div data-payout-transaction-popup-header class="w-100 pad--x--16 pad--y--5 flex items-center justify-between pad--8-responsive-mobile h--48-responsive-mobile h--48-responsive-mobile-portrait pad--8-responsive-mobile-portrait">
+                                <div class="flex flex-column gap--4 gap--0-responsive-mobile gap--0-responsive-mobile-portrait">
+                                    <span data-payout-transaction-popup-header-text-top class="fs--12 fw5 lh--18 col--pale-sky poppins">PAYOUT HISTORY</span>
+                                    <h3 data-payout-transaction-popup-header-text-bottom class="fs--16 lh--24 fw6 poppins col--oxford-blue">1 Jan 2024 - 31 Jan 2024</h3>
+                                </div>
+                                
+                                <span class="w--24 h--24 flex justify-center items-center pointer elm_UOkrrN">
+                                    <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/icons/close-btn.svg" alt="" class="w--24 h--24 filter--col--gull-gray">
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- popup contents -->
+                        <div data-popup-contents-wrapper class="flex flex-column">
+                            <!-- table-wrapper -->
+                            <div class="w-100 overflow-auto">
+                                <div data-popup-table-inner-wrapper class="flex w-100 overflow-auto">
+                                    <!-- desktop-table-wrapper -->
+                                    <div data-desktop-table-wrapper class="flex flex-column w-100 display--none-responsive-mobile display--none-responsive-mobile-portrait">
+                                        <!-- table-header -->
+                                        <div data-desktop-table-header class="flex items-center bb br--col--pale-sky">
+                                            <div data-payout-history-table-date-column class="flex items-center pad--y--10 pad--left--12 pad--right--10">
+                                                <span class="fs--14 lh--20 poppins col--pale-sky">Date</span>
+                                            </div>
+                                            <div data-payout-history-table-type-column class="flex items-center pad--y--10 pad--left--12 pad--right--10">
+                                                <span class="fs--14 lh--20 poppins col--pale-sky">Type</span>
+                                            </div>
+                                            <div data-payout-history-table-from-column class="flex items-center pad--10">
+                                                <span class="fs--14 lh--20 poppins col--pale-sky">From</span>
+                                            </div>
+                                            <div data-payout-history-table-detail-column class="flex items-center pad--y--10 pad--left--24 pad--right--10">
+                                                <span class="fs--14 lh--20 poppins col--pale-sky">Detail</span>
+                                            </div>
+                                            <div data-payout-history-table-order-column class="flex items-center pad--y--10 pad--left--10 pad--right--24">
+                                                <span class="fs--14 lh--20 poppins col--pale-sky">Order#</span>
+                                            </div>
+                                            <div data-payout-history-table-total-column class="flex justify-end items-center pad--y--10 pad--left--10 pad--right--24">
+                                                <span class="fs--14 lh--20 poppins col--pale-sky tr">Total</span>
+                                            </div>
+                                            <div data-payout-history-table-commission-column class="flex items-center pad--10">
+                                                <span class="fs--14 lh--20 poppins col--pale-sky">Commission %</span>
+                                            </div>
+                                            <div data-payout-history-table-final-payout-column class="flex items-center pad--y--10 pad--left--10 pad--right--12">
+                                                <span class="fs--14 lh--20 poppins col--pale-sky">Final Payout</span>
+                                            </div>
+                                        </div>
+                                        <!-- table-row-container -->
+                                        <div class="flex flex-column w-100">
+                                            <!-- row -->
+                                            <div data-payout-table-row class="min--h--72 flex items-center w-100">
+                                                <!-- date -->
+                                                <div data-payout-history-table-date-column class="flex items-center pad--y--8 pad--x--12">
+                                                    <span class="fs--12 lh--18 poppins col--shuttle-gray tracked--0-12">31 Jan 2024</span>
+                                                </div>
+                                                <!-- type -->
+                                                <div data-payout-history-table-type-column class="flex items-center pad--y--8 pad--x--12">
+                                                    <div class="flex items-center">
+                                                        <div class="w--24 h--24 bg--col-brand-green pa1 bg--blur--20">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+                                                                <path d="M4.83334 10.6666C4.83334 12.1393 6.02725 13.3333 7.50001 13.3333H10.1667C11.6394 13.3333 12.8333 12.1393 12.8333 10.6666C12.8333 9.19383 11.6394 7.99992 10.1667 7.99992H7.50001C6.02725 7.99992 4.83334 6.80601 4.83334 5.33325C4.83334 3.86049 6.02725 2.66659 7.50001 2.66659H10.1667C11.6394 2.66659 12.8333 3.86049 12.8333 5.33325M8.83334 1.33325V14.6666" stroke="black" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="h--24 bg-black pad--x--6 flex items-center bg--blur--20">
+                                                            <span class="fs--12 lh--18 fw5 poppins col-brand-green">Sales</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- from -->
+                                                <div data-payout-history-table-from-column class="flex items-center pad--y--8 pad--x--12">
+                                                    <div class="flex items-center gap--4">
+                                                        <div class="w--20 h--20 flex justify-center items-center br--100">
+                                                            <img src="./images/Avatar.png" alt="" class="w-100 h-100 fit--cover">
+                                                        </div>
+                                                        <span data-payout-history-table-from-column-text class="fs--12 lh--18 poppins col--oxford-blue truncate mw3">@Mangoes4eva</span>
+                                                    </div>
+                                                </div>
+                                                <!-- detail -->
+                                                <div data-payout-history-table-detail-column class="flex items-center pad--y--8 pad--x--12">
+                                                    <span class="fs--12 lh--18 poppins col--shuttle-gray tracked--0-12 truncate">CR-Kinks</span>
+                                                </div>
+                                                <!-- order -->
+                                                <div data-payout-history-table-order-column class="flex items-center pad--y--8 pad--left--12 pad--right--24">
+                                                    <span class="fs--12 lh--18 fw5 poppins col--blue-ribbon-2">#00123</span>
+                                                </div>
+                                                <!-- total -->
+                                                <div data-payout-history-table-total-column class="flex justify-end items-center pad--y--8 pad--left--12 pad--right--24">
+                                                    <span class="fs--12 lh--18 poppins col--ebony--variation-2 tr">USD$ 130.86</span>
+                                                </div>
+                                                <!-- commission -->
+                                                <div data-payout-history-table-commission-column class="flex justify-end items-center pad--y--8 pad--left--12 pad--right--24">
+                                                    <span class="fs--12 lh--18 poppins col--ebony--variation-2 tr">88.8%</span>
+                                                </div>
+                                                <!-- final-payout -->
+                                                <div data-payout-history-table-final-payout-column class="flex justify-end items-center pad--y--8 pad--x--12">
+                                                    <span class="fs--14 lh--20 fw6 poppins col--ebony--variation-2 tr">USD$ 23.12</span>
+                                                </div>
+                                            </div>
+                                            <!-- row -->
+                                            <div data-payout-table-row class="min--h--72 flex items-center w-100">
+                                                <!-- date -->
+                                                <div data-payout-history-table-date-column class="flex items-center pad--y--8 pad--x--12">
+                                                    <span class="fs--12 lh--18 poppins col--shuttle-gray tracked--0-12">31 Jan 2024</span>
+                                                </div>
+                                                <!-- type -->
+                                                <div data-payout-history-table-type-column class="flex items-center pad--y--8 pad--x--12">
+                                                    <div class="flex items-center">
+                                                        <div class="w--24 h--24 bg--col-brand-green pa1 bg--blur--20">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+                                                                <path d="M4.83334 10.6666C4.83334 12.1393 6.02725 13.3333 7.50001 13.3333H10.1667C11.6394 13.3333 12.8333 12.1393 12.8333 10.6666C12.8333 9.19383 11.6394 7.99992 10.1667 7.99992H7.50001C6.02725 7.99992 4.83334 6.80601 4.83334 5.33325C4.83334 3.86049 6.02725 2.66659 7.50001 2.66659H10.1667C11.6394 2.66659 12.8333 3.86049 12.8333 5.33325M8.83334 1.33325V14.6666" stroke="black" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="h--24 bg-black pad--x--6 flex items-center bg--blur--20">
+                                                            <span class="fs--12 lh--18 fw5 poppins col-brand-green">Sales</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- from -->
+                                                <div data-payout-history-table-from-column class="flex items-center pad--y--8 pad--x--12">
+                                                    <div class="flex items-center gap--4">
+                                                        <div class="w--20 h--20 flex justify-center items-center br--100">
+                                                            <img src="./images/Avatar.png" alt="" class="w-100 h-100 fit--cover">
+                                                        </div>
+                                                        <span data-payout-history-table-from-column-text class="fs--12 lh--18 poppins col--oxford-blue truncate mw3">@Mangoes4eva</span>
+                                                    </div>
+                                                </div>
+                                                <!-- detail -->
+                                                <div data-payout-history-table-detail-column class="flex items-center pad--y--8 pad--x--12">
+                                                    <span class="fs--12 lh--18 poppins col--shuttle-gray tracked--0-12 truncate">CR-Clips</span>
+                                                </div>
+                                                <!-- order -->
+                                                <div data-payout-history-table-order-column class="flex items-center pad--y--8 pad--left--12 pad--right--24">
+                                                    <span class="fs--12 lh--18 fw5 poppins col--blue-ribbon-2">#00123</span>
+                                                </div>
+                                                <!-- total -->
+                                                <div data-payout-history-table-total-column class="flex justify-end items-center pad--y--8 pad--left--12 pad--right--24">
+                                                    <span class="fs--12 lh--18 poppins col--ebony--variation-2 tr">USD$ 130.86</span>
+                                                </div>
+                                                <!-- commission -->
+                                                <div data-payout-history-table-commission-column class="flex justify-end items-center pad--y--8 pad--left--12 pad--right--24">
+                                                    <span class="fs--12 lh--18 poppins col--ebony--variation-2 tr">88.8%</span>
+                                                </div>
+                                                <!-- final-payout -->
+                                                <div data-payout-history-table-final-payout-column class="flex justify-end items-center pad--y--8 pad--x--12">
+                                                    <span class="fs--14 lh--20 fw6 poppins col--ebony--variation-2 tr">USD$ 23.12</span>
+                                                </div>
+                                            </div>
+                                            <!-- row -->
+                                            <div data-payout-table-row class="min--h--72 flex items-center w-100">
+                                                <!-- date -->
+                                                <div data-payout-history-table-date-column class="flex items-center pad--y--8 pad--x--12">
+                                                    <span class="fs--12 lh--18 poppins col--shuttle-gray tracked--0-12">31 Jan 2024</span>
+                                                </div>
+                                                <!-- type -->
+                                                <div data-payout-history-table-type-column class="flex items-center pad--y--8 pad--x--12">
+                                                    <div class="flex items-center">
+                                                        <div class="w--24 h--24 bg--col-brand-green pa1 bg--blur--20">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+                                                                <path d="M4.83334 10.6666C4.83334 12.1393 6.02725 13.3333 7.50001 13.3333H10.1667C11.6394 13.3333 12.8333 12.1393 12.8333 10.6666C12.8333 9.19383 11.6394 7.99992 10.1667 7.99992H7.50001C6.02725 7.99992 4.83334 6.80601 4.83334 5.33325C4.83334 3.86049 6.02725 2.66659 7.50001 2.66659H10.1667C11.6394 2.66659 12.8333 3.86049 12.8333 5.33325M8.83334 1.33325V14.6666" stroke="black" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="h--24 bg-black pad--x--6 flex items-center bg--blur--20">
+                                                            <span class="fs--12 lh--18 fw5 poppins col-brand-green">Sales</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- from -->
+                                                <div data-payout-history-table-from-column class="flex items-center pad--y--8 pad--x--12">
+                                                    <div class="flex items-center gap--4">
+                                                        <div class="w--20 h--20 flex justify-center items-center br--100">
+                                                            <img src="./images/Avatar.png" alt="" class="w-100 h-100 fit--cover">
+                                                        </div>
+                                                        <span data-payout-history-table-from-column-text class="fs--12 lh--18 poppins col--oxford-blue truncate mw3">@Mangoes4eva</span>
+                                                    </div>
+                                                </div>
+                                                <!-- detail -->
+                                                <div data-payout-history-table-detail-column class="flex items-center pad--y--8 pad--x--12">
+                                                    <span class="fs--12 lh--18 poppins col--shuttle-gray tracked--0-12 truncate">Merch</span>
+                                                </div>
+                                                <!-- order -->
+                                                <div data-payout-history-table-order-column class="flex items-center pad--y--8 pad--left--12 pad--right--24">
+                                                    <span class="fs--12 lh--18 fw5 poppins col--blue-ribbon-2">#00123</span>
+                                                </div>
+                                                <!-- total -->
+                                                <div data-payout-history-table-total-column class="flex justify-end items-center pad--y--8 pad--left--12 pad--right--24">
+                                                    <span class="fs--12 lh--18 poppins col--ebony--variation-2 tr">USD$ 130.86</span>
+                                                </div>
+                                                <!-- commission -->
+                                                <div data-payout-history-table-commission-column class="flex justify-end items-center pad--y--8 pad--left--12 pad--right--24">
+                                                    <span class="fs--12 lh--18 poppins col--ebony--variation-2 tr">88.8%</span>
+                                                </div>
+                                                <!-- final-payout -->
+                                                <div data-payout-history-table-final-payout-column class="flex justify-end items-center pad--y--8 pad--x--12">
+                                                    <span class="fs--14 lh--20 fw6 poppins col--ebony--variation-2 tr">USD$ 23.12</span>
+                                                </div>
+                                            </div>
+                                            <!-- row -->
+                                            <div data-payout-table-row class="min--h--72 flex items-center w-100">
+                                                <!-- date -->
+                                                <div data-payout-history-table-date-column class="flex items-center pad--y--8 pad--x--12">
+                                                    <span class="fs--12 lh--18 poppins col--shuttle-gray tracked--0-12">31 Jan 2024</span>
+                                                </div>
+                                                <!-- type -->
+                                                <div data-payout-history-table-type-column class="flex items-center pad--y--8 pad--x--12">
+                                                    <div class="flex items-center">
+                                                        <div class="w--24 h--24 bg--col--warning-300 pa1 bg--blur--20">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+                                                                <g clip-path="url(#clip0_23258_9960)">
+                                                                    <path d="M9.03912 2.46899C5.975 2.46917 3.49127 4.95366 3.49127 8.01782C3.49144 11.0818 5.9751 13.5655 9.03912 13.5657C12.1033 13.5657 14.5878 11.0819 14.588 8.01782C14.588 4.95355 12.1034 2.46899 9.03912 2.46899Z" fill="black" stroke="black" stroke-width="3.15851"/>
+                                                                    <path d="M1.5003 7.98284C1.5003 11.9193 4.69144 15.1104 8.62791 15.1104C12.5644 15.1104 15.7555 11.9193 15.7555 7.98284C15.7555 4.04636 12.5644 0.855225 8.62791 0.855225C4.69144 0.855225 1.5003 4.04636 1.5003 7.98284Z" fill="#FEC84B"/>
+                                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.62791 14.4441C5.05944 14.4441 2.16663 11.5513 2.16663 7.98284C2.16663 4.41437 5.05944 1.52155 8.62791 1.52155C12.1964 1.52155 15.0892 4.41437 15.0892 7.98284C15.0892 11.5513 12.1964 14.4441 8.62791 14.4441ZM8.62791 15.1104C4.69144 15.1104 1.5003 11.9193 1.5003 7.98284C1.5003 4.04636 4.69144 0.855225 8.62791 0.855225C12.5644 0.855225 15.7555 4.04636 15.7555 7.98284C15.7555 11.9193 12.5644 15.1104 8.62791 15.1104Z" fill="black"/>
+                                                                    <path d="M3.08369 7.98291C3.08369 11.0446 5.56569 13.5266 8.62739 13.5266C11.6891 13.5266 14.1711 11.0446 14.1711 7.98291C14.1711 4.92121 11.6891 2.43921 8.62739 2.43921C5.56569 2.43921 3.08369 4.92121 3.08369 7.98291Z" fill="#FEC84B"/>
+                                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.62739 12.8603C5.93369 12.8603 3.75001 10.6766 3.75001 7.98291C3.75001 5.28921 5.93369 3.10554 8.62739 3.10554C11.3211 3.10554 13.5048 5.28921 13.5048 7.98291C13.5048 10.6766 11.3211 12.8603 8.62739 12.8603ZM8.62739 13.5266C5.56569 13.5266 3.08369 11.0446 3.08369 7.98291C3.08369 4.92121 5.56569 2.43921 8.62739 2.43921C11.6891 2.43921 14.1711 4.92121 14.1711 7.98291C14.1711 11.0446 11.6891 13.5266 8.62739 13.5266Z" fill="black"/>
+                                                                    <path d="M10.2697 9.19106C9.97631 8.81551 10.0824 8.27109 10.3577 7.88205C10.6926 7.40875 10.8547 6.81171 10.7676 6.19223C10.5864 4.90262 9.39404 4.00411 8.10443 4.18535C6.81482 4.36659 5.91631 5.55896 6.09755 6.84857C6.18291 7.45591 6.49253 7.97651 6.93095 8.33843C7.2927 8.63707 7.53436 9.12346 7.35863 9.55839L6.89021 10.7178C6.65524 11.2993 7.13796 11.9172 7.7591 11.8299L10.4815 11.4473C11.1026 11.36 11.3963 10.633 11.0101 10.1388L10.2697 9.19106Z" fill="black"/>
+                                                                </g>
+                                                                <defs>
+                                                                    <clipPath id="clip0_23258_9960">
+                                                                        <rect width="16" height="16" fill="white" transform="translate(0.833344)"/>
+                                                                    </clipPath>
+                                                                </defs>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="h--24 bg-black pad--x--6 flex items-center bg--blur--20">
+                                                            <span class="fs--12 lh--18 fw5 poppins col--warning-300">Tokens</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- from -->
+                                                <div data-payout-history-table-from-column class="flex items-center pad--y--8 pad--x--12">
+                                                    <div class="flex items-center gap--4">
+                                                        <div class="w--20 h--20 flex justify-center items-center br--100">
+                                                            <img src="./images/Avatar.png" alt="" class="w-100 h-100 fit--cover">
+                                                        </div>
+                                                        <span data-payout-history-table-from-column-text class="fs--12 lh--18 poppins col--oxford-blue truncate mw3">@Mangoes4eva</span>
+                                                    </div>
+                                                </div>
+                                                <!-- detail -->
+                                                <div data-payout-history-table-detail-column class="flex items-center pad--y--8 pad--x--12">
+                                                    <span class="fs--12 lh--18 poppins col--shuttle-gray tracked--0-12 truncate">Tip</span>
+                                                </div>
+                                                <!-- order -->
+                                                <div data-payout-history-table-order-column class="flex items-center pad--y--8 pad--left--12 pad--right--24">
+                                                    <span class="fs--12 lh--18 fw5 poppins col--blue-ribbon-2">-</span>
+                                                </div>
+                                                <!-- total -->
+                                                <div data-payout-history-table-total-column class="flex justify-end items-center pad--y--8 pad--left--12 pad--right--24">
+                                                    <span class="fs--12 lh--18 poppins col--ebony--variation-2 tr">USD$ 130.86</span>
+                                                </div>
+                                                <!-- commission -->
+                                                <div data-payout-history-table-commission-column class="flex justify-end items-center pad--y--8 pad--left--12 pad--right--24">
+                                                    <span class="fs--12 lh--18 poppins col--ebony--variation-2 tr">88.8%</span>
+                                                </div>
+                                                <!-- final-payout -->
+                                                <div data-payout-history-table-final-payout-column class="flex justify-end items-center pad--y--8 pad--x--12">
+                                                    <span class="fs--14 lh--20 fw6 poppins col--ebony--variation-2 tr">USD$ 23.12</span>
+                                                </div>
+                                            </div>
+                                            <!-- row -->
+                                            <div data-payout-table-row class="min--h--72 flex items-center w-100">
+                                                <!-- date -->
+                                                <div data-payout-history-table-date-column class="flex items-center pad--y--8 pad--x--12">
+                                                    <span class="fs--12 lh--18 poppins col--shuttle-gray tracked--0-12">31 Jan 2024</span>
+                                                </div>
+                                                <!-- type -->
+                                                <div data-payout-history-table-type-column class="flex items-center pad--y--8 pad--x--12">
+                                                    <div class="flex items-center">
+                                                        <div class="w--24 h--24 bg--col--warning-300 pa1 bg--blur--20">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+                                                                <g clip-path="url(#clip0_23258_9960)">
+                                                                    <path d="M9.03912 2.46899C5.975 2.46917 3.49127 4.95366 3.49127 8.01782C3.49144 11.0818 5.9751 13.5655 9.03912 13.5657C12.1033 13.5657 14.5878 11.0819 14.588 8.01782C14.588 4.95355 12.1034 2.46899 9.03912 2.46899Z" fill="black" stroke="black" stroke-width="3.15851"/>
+                                                                    <path d="M1.5003 7.98284C1.5003 11.9193 4.69144 15.1104 8.62791 15.1104C12.5644 15.1104 15.7555 11.9193 15.7555 7.98284C15.7555 4.04636 12.5644 0.855225 8.62791 0.855225C4.69144 0.855225 1.5003 4.04636 1.5003 7.98284Z" fill="#FEC84B"/>
+                                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.62791 14.4441C5.05944 14.4441 2.16663 11.5513 2.16663 7.98284C2.16663 4.41437 5.05944 1.52155 8.62791 1.52155C12.1964 1.52155 15.0892 4.41437 15.0892 7.98284C15.0892 11.5513 12.1964 14.4441 8.62791 14.4441ZM8.62791 15.1104C4.69144 15.1104 1.5003 11.9193 1.5003 7.98284C1.5003 4.04636 4.69144 0.855225 8.62791 0.855225C12.5644 0.855225 15.7555 4.04636 15.7555 7.98284C15.7555 11.9193 12.5644 15.1104 8.62791 15.1104Z" fill="black"/>
+                                                                    <path d="M3.08369 7.98291C3.08369 11.0446 5.56569 13.5266 8.62739 13.5266C11.6891 13.5266 14.1711 11.0446 14.1711 7.98291C14.1711 4.92121 11.6891 2.43921 8.62739 2.43921C5.56569 2.43921 3.08369 4.92121 3.08369 7.98291Z" fill="#FEC84B"/>
+                                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.62739 12.8603C5.93369 12.8603 3.75001 10.6766 3.75001 7.98291C3.75001 5.28921 5.93369 3.10554 8.62739 3.10554C11.3211 3.10554 13.5048 5.28921 13.5048 7.98291C13.5048 10.6766 11.3211 12.8603 8.62739 12.8603ZM8.62739 13.5266C5.56569 13.5266 3.08369 11.0446 3.08369 7.98291C3.08369 4.92121 5.56569 2.43921 8.62739 2.43921C11.6891 2.43921 14.1711 4.92121 14.1711 7.98291C14.1711 11.0446 11.6891 13.5266 8.62739 13.5266Z" fill="black"/>
+                                                                    <path d="M10.2697 9.19106C9.97631 8.81551 10.0824 8.27109 10.3577 7.88205C10.6926 7.40875 10.8547 6.81171 10.7676 6.19223C10.5864 4.90262 9.39404 4.00411 8.10443 4.18535C6.81482 4.36659 5.91631 5.55896 6.09755 6.84857C6.18291 7.45591 6.49253 7.97651 6.93095 8.33843C7.2927 8.63707 7.53436 9.12346 7.35863 9.55839L6.89021 10.7178C6.65524 11.2993 7.13796 11.9172 7.7591 11.8299L10.4815 11.4473C11.1026 11.36 11.3963 10.633 11.0101 10.1388L10.2697 9.19106Z" fill="black"/>
+                                                                </g>
+                                                                <defs>
+                                                                    <clipPath id="clip0_23258_9960">
+                                                                        <rect width="16" height="16" fill="white" transform="translate(0.833344)"/>
+                                                                    </clipPath>
+                                                                </defs>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="h--24 bg-black pad--x--6 flex items-center bg--blur--20">
+                                                            <span class="fs--12 lh--18 fw5 poppins col--warning-300">Tokens</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- from -->
+                                                <div data-payout-history-table-from-column class="flex items-center pad--y--8 pad--x--12">
+                                                    <div class="flex items-center gap--4">
+                                                        <div class="w--20 h--20 flex justify-center items-center br--100">
+                                                            <img src="./images/Avatar.png" alt="" class="w-100 h-100 fit--cover">
+                                                        </div>
+                                                        <span data-payout-history-table-from-column-text class="fs--12 lh--18 poppins col--oxford-blue truncate mw3">@Mangoes4eva</span>
+                                                    </div>
+                                                </div>
+                                                <!-- detail -->
+                                                <div data-payout-history-table-detail-column class="flex items-center pad--y--8 pad--x--12">
+                                                    <span class="fs--12 lh--18 poppins col--shuttle-gray tracked--0-12 truncate">Private Chat</span>
+                                                </div>
+                                                <!-- order -->
+                                                <div data-payout-history-table-order-column class="flex items-center pad--y--8 pad--left--12 pad--right--24">
+                                                    <span class="fs--12 lh--18 fw5 poppins col--blue-ribbon-2">-</span>
+                                                </div>
+                                                <!-- total -->
+                                                <div data-payout-history-table-total-column class="flex justify-end items-center pad--y--8 pad--left--12 pad--right--24">
+                                                    <span class="fs--12 lh--18 poppins col--ebony--variation-2 tr">USD$ 130.86</span>
+                                                </div>
+                                                <!-- commission -->
+                                                <div data-payout-history-table-commission-column class="flex justify-end items-center pad--y--8 pad--left--12 pad--right--24">
+                                                    <span class="fs--12 lh--18 poppins col--ebony--variation-2 tr">88.8%</span>
+                                                </div>
+                                                <!-- final-payout -->
+                                                <div data-payout-history-table-final-payout-column class="flex justify-end items-center pad--y--8 pad--x--12">
+                                                    <span class="fs--14 lh--20 fw6 poppins col--ebony--variation-2 tr">USD$ 23.12</span>
+                                                </div>
+                                            </div>
+                                            <!-- row -->
+                                            <div data-payout-table-row class="min--h--72 flex items-center w-100">
+                                                <!-- date -->
+                                                <div data-payout-history-table-date-column class="flex items-center pad--y--8 pad--x--12">
+                                                    <span class="fs--12 lh--18 poppins col--shuttle-gray tracked--0-12">31 Jan 2024</span>
+                                                </div>
+                                                <!-- type -->
+                                                <div data-payout-history-table-type-column class="flex items-center pad--y--8 pad--x--12">
+                                                    <div class="flex items-center">
+                                                        <div class="w--24 h--24 bg--col-brand-green pa1 bg--blur--20">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+                                                                <path d="M4.83334 10.6666C4.83334 12.1393 6.02725 13.3333 7.50001 13.3333H10.1667C11.6394 13.3333 12.8333 12.1393 12.8333 10.6666C12.8333 9.19383 11.6394 7.99992 10.1667 7.99992H7.50001C6.02725 7.99992 4.83334 6.80601 4.83334 5.33325C4.83334 3.86049 6.02725 2.66659 7.50001 2.66659H10.1667C11.6394 2.66659 12.8333 3.86049 12.8333 5.33325M8.83334 1.33325V14.6666" stroke="black" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="h--24 bg-black pad--x--6 flex items-center bg--blur--20">
+                                                            <span class="fs--12 lh--18 fw5 poppins col-brand-green">Sales</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- from -->
+                                                <div data-payout-history-table-from-column class="flex items-center pad--y--8 pad--x--12">
+                                                    <div class="flex items-center gap--4">
+                                                        <div class="w--20 h--20 flex justify-center items-center br--100">
+                                                            <img src="./images/Avatar.png" alt="" class="w-100 h-100 fit--cover">
+                                                        </div>
+                                                        <span data-payout-history-table-from-column-text class="fs--12 lh--18 poppins col--oxford-blue truncate mw3">@Mangoes4eva</span>
+                                                    </div>
+                                                </div>
+                                                <!-- detail -->
+                                                <div data-payout-history-table-detail-column class="flex items-center pad--y--8 pad--x--12">
+                                                    <span class="fs--12 lh--18 poppins col--shuttle-gray tracked--0-12 truncate">Merch</span>
+                                                </div>
+                                                <!-- order -->
+                                                <div data-payout-history-table-order-column class="flex items-center pad--y--8 pad--left--12 pad--right--24">
+                                                    <span class="fs--12 lh--18 fw5 poppins col--blue-ribbon-2">#00123</span>
+                                                </div>
+                                                <!-- total -->
+                                                <div data-payout-history-table-total-column class="flex justify-end items-center pad--y--8 pad--left--12 pad--right--24">
+                                                    <span class="fs--12 lh--18 poppins col--ebony--variation-2 tr">USD$ 130.86</span>
+                                                </div>
+                                                <!-- commission -->
+                                                <div data-payout-history-table-commission-column class="flex justify-end items-center pad--y--8 pad--left--12 pad--right--24">
+                                                    <span class="fs--12 lh--18 poppins col--ebony--variation-2 tr">88.8%</span>
+                                                </div>
+                                                <!-- final-payout -->
+                                                <div data-payout-history-table-final-payout-column class="flex justify-end items-center pad--y--8 pad--x--12">
+                                                    <span class="fs--14 lh--20 fw6 poppins col--ebony--variation-2 tr">USD$ 23.12</span>
+                                                </div>
+                                            </div>
+                                            <!-- row -->
+                                            <div data-payout-table-row class="min--h--72 flex items-center w-100">
+                                                <!-- date -->
+                                                <div data-payout-history-table-date-column class="flex items-center pad--y--8 pad--x--12">
+                                                    <span class="fs--12 lh--18 poppins col--shuttle-gray tracked--0-12">31 Jan 2024</span>
+                                                </div>
+                                                <!-- type -->
+                                                <div data-payout-history-table-type-column class="flex items-center pad--y--8 pad--x--12">
+                                                    <div class="flex items-center">
+                                                        <div class="w--24 h--24 bg--col--warning-300 pa1 bg--blur--20">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+                                                                <g clip-path="url(#clip0_23258_9960)">
+                                                                    <path d="M9.03912 2.46899C5.975 2.46917 3.49127 4.95366 3.49127 8.01782C3.49144 11.0818 5.9751 13.5655 9.03912 13.5657C12.1033 13.5657 14.5878 11.0819 14.588 8.01782C14.588 4.95355 12.1034 2.46899 9.03912 2.46899Z" fill="black" stroke="black" stroke-width="3.15851"/>
+                                                                    <path d="M1.5003 7.98284C1.5003 11.9193 4.69144 15.1104 8.62791 15.1104C12.5644 15.1104 15.7555 11.9193 15.7555 7.98284C15.7555 4.04636 12.5644 0.855225 8.62791 0.855225C4.69144 0.855225 1.5003 4.04636 1.5003 7.98284Z" fill="#FEC84B"/>
+                                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.62791 14.4441C5.05944 14.4441 2.16663 11.5513 2.16663 7.98284C2.16663 4.41437 5.05944 1.52155 8.62791 1.52155C12.1964 1.52155 15.0892 4.41437 15.0892 7.98284C15.0892 11.5513 12.1964 14.4441 8.62791 14.4441ZM8.62791 15.1104C4.69144 15.1104 1.5003 11.9193 1.5003 7.98284C1.5003 4.04636 4.69144 0.855225 8.62791 0.855225C12.5644 0.855225 15.7555 4.04636 15.7555 7.98284C15.7555 11.9193 12.5644 15.1104 8.62791 15.1104Z" fill="black"/>
+                                                                    <path d="M3.08369 7.98291C3.08369 11.0446 5.56569 13.5266 8.62739 13.5266C11.6891 13.5266 14.1711 11.0446 14.1711 7.98291C14.1711 4.92121 11.6891 2.43921 8.62739 2.43921C5.56569 2.43921 3.08369 4.92121 3.08369 7.98291Z" fill="#FEC84B"/>
+                                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.62739 12.8603C5.93369 12.8603 3.75001 10.6766 3.75001 7.98291C3.75001 5.28921 5.93369 3.10554 8.62739 3.10554C11.3211 3.10554 13.5048 5.28921 13.5048 7.98291C13.5048 10.6766 11.3211 12.8603 8.62739 12.8603ZM8.62739 13.5266C5.56569 13.5266 3.08369 11.0446 3.08369 7.98291C3.08369 4.92121 5.56569 2.43921 8.62739 2.43921C11.6891 2.43921 14.1711 4.92121 14.1711 7.98291C14.1711 11.0446 11.6891 13.5266 8.62739 13.5266Z" fill="black"/>
+                                                                    <path d="M10.2697 9.19106C9.97631 8.81551 10.0824 8.27109 10.3577 7.88205C10.6926 7.40875 10.8547 6.81171 10.7676 6.19223C10.5864 4.90262 9.39404 4.00411 8.10443 4.18535C6.81482 4.36659 5.91631 5.55896 6.09755 6.84857C6.18291 7.45591 6.49253 7.97651 6.93095 8.33843C7.2927 8.63707 7.53436 9.12346 7.35863 9.55839L6.89021 10.7178C6.65524 11.2993 7.13796 11.9172 7.7591 11.8299L10.4815 11.4473C11.1026 11.36 11.3963 10.633 11.0101 10.1388L10.2697 9.19106Z" fill="black"/>
+                                                                </g>
+                                                                <defs>
+                                                                    <clipPath id="clip0_23258_9960">
+                                                                        <rect width="16" height="16" fill="white" transform="translate(0.833344)"/>
+                                                                    </clipPath>
+                                                                </defs>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="h--24 bg-black pad--x--6 flex items-center bg--blur--20">
+                                                            <span class="fs--12 lh--18 fw5 poppins col--warning-300">Tokens</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- from -->
+                                                <div data-payout-history-table-from-column class="flex items-center pad--y--8 pad--x--12">
+                                                    <div class="flex items-center gap--4">
+                                                        <div class="w--20 h--20 flex justify-center items-center br--100">
+                                                            <img src="./images/Avatar.png" alt="" class="w-100 h-100 fit--cover">
+                                                        </div>
+                                                        <span data-payout-history-table-from-column-text class="fs--12 lh--18 poppins col--oxford-blue truncate mw3">@Mangoes4eva</span>
+                                                    </div>
+                                                </div>
+                                                <!-- detail -->
+                                                <div data-payout-history-table-detail-column class="flex items-center pad--y--8 pad--x--12">
+                                                    <span class="fs--12 lh--18 poppins col--shuttle-gray tracked--0-12 truncate">Private Message</span>
+                                                </div>
+                                                <!-- order -->
+                                                <div data-payout-history-table-order-column class="flex items-center pad--y--8 pad--left--12 pad--right--24">
+                                                    <span class="fs--12 lh--18 fw5 poppins col--blue-ribbon-2">-</span>
+                                                </div>
+                                                <!-- total -->
+                                                <div data-payout-history-table-total-column class="flex justify-end items-center pad--y--8 pad--left--12 pad--right--24">
+                                                    <span class="fs--12 lh--18 poppins col--ebony--variation-2 tr">USD$ 130.86</span>
+                                                </div>
+                                                <!-- commission -->
+                                                <div data-payout-history-table-commission-column class="flex justify-end items-center pad--y--8 pad--left--12 pad--right--24">
+                                                    <span class="fs--12 lh--18 poppins col--ebony--variation-2 tr">88.8%</span>
+                                                </div>
+                                                <!-- final-payout -->
+                                                <div data-payout-history-table-final-payout-column class="flex justify-end items-center pad--y--8 pad--x--12">
+                                                    <span class="fs--14 lh--20 fw6 poppins col--ebony--variation-2 tr">USD$ 23.12</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- mobile-table-wrapper -->
+                                    <div class="dn w-100 flex-column gap--4 display--flex-responsive-mobile display--flex-responsive-mobile-portrait">
+                                        <!-- row -->
+                                        <div data-table-row-mobile class="w-100 flex justify-center items-center br--2 bg-white-50 bg--blur--10 pad--8">
+                                            <div class="w-100 flex justify-between items-start">
+                                                <!-- table-row-left -->
+                                                <div data-table-row-mobile-left class="flex flex-column gap--4">
+                                                    <!-- row-header -->
+                                                    <div class="flex justify-between items-center h--24">
+                                                        <span class="fs--14 lh--20 fw5 poppins col--grey-800">31 Jan 2024</span>
+                                                        <span class="fs--12 lh--18 fw5 poppins col--blue-ribbon-2">#00123</span>
+                                                    </div>
+                                                    <!-- row-content -->
+                                                    <div class="flex flex-column gap--2">
+                                                        <!-- row-child -->
+                                                        <div class="flex justify-between items-center gap--2">
+                                                            <span class="fs--12 lh--18 fw5 poppins col--pale-sky">From</span>
+                                                            <div class="flex items-center gap--5">
+                                                                <div class="w--18 h--18 flex justify-center items-center br--100">
+                                                                    <img src="./images/Avatar.png" alt="" class="w-100 h-100 fit--cover">
+                                                                </div>
+                                                                <span data-payout-history-table-from-column-text class="fs--12 lh--18 poppins col--oxford-blue">@Mangoes4eva</span>
+                                                            </div>
+                                                        </div>
+                                                        <!-- row-child -->
+                                                        <div class="flex justify-between items-center gap--2">
+                                                            <span class="fs--12 lh--18 fw5 poppins col--pale-sky">Detail</span>
+                                                            <span class="fs--12 lh--18 poppins col--pale-sky tr">CR-Kinks</span>
+                                                        </div>
+                                                        <!-- row-child -->
+                                                        <div class="flex justify-between items-center gap--2">
+                                                            <span class="fs--12 lh--18 fw5 poppins col--pale-sky">Commission %</span>
+                                                            <span class="fs--12 lh--18 poppins col--pale-sky tr">88.8%</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- table-row-right -->
+                                                <div class="flex flex-column justify-end gap--4">
+                                                    <!-- status -->
+                                                    <div class="flex justify-end items-center">
+                                                        <div class="w--24 h--24 bg--col-brand-green pa1 bg--blur--20">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+                                                                <path d="M4.83334 10.6666C4.83334 12.1393 6.02725 13.3333 7.50001 13.3333H10.1667C11.6394 13.3333 12.8333 12.1393 12.8333 10.6666C12.8333 9.19383 11.6394 7.99992 10.1667 7.99992H7.50001C6.02725 7.99992 4.83334 6.80601 4.83334 5.33325C4.83334 3.86049 6.02725 2.66659 7.50001 2.66659H10.1667C11.6394 2.66659 12.8333 3.86049 12.8333 5.33325M8.83334 1.33325V14.6666" stroke="black" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="h--24 bg-black pad--x--6 flex items-center bg--blur--20">
+                                                            <span class="fs--12 lh--18 fw5 poppins col-brand-green">Sales</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="flex flex-column gap--2">
+                                                        <div class="flex items-center gap--4">
+                                                            <span class="fs--12 lh--18 fw5 poppins col--pale-sky">Total</span>
+                                                            <span class="fs--12 lh--18 poppins col--pale-sky">USD$ 130.86</span>
+                                                        </div>
+                                                        <div class="flex flex-column">
+                                                            <span class="fs--12 lh--18 fw5 poppins col--pale-sky tr">Final Payout</span>
+                                                            <span class="fs--18 lh--28 fw7 poppins col--blue-ribbon-2 tr nt1">USD$ 123.08</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- row -->
+                                        <div data-table-row-mobile class="w-100 flex justify-center items-center br--2 bg-white-50 bg--blur--10 pad--8">
+                                            <div class="w-100 flex justify-between items-start">
+                                                <!-- table-row-left -->
+                                                <div data-table-row-mobile-left class="flex flex-column gap--4">
+                                                    <!-- row-header -->
+                                                    <div class="flex justify-between items-center h--24">
+                                                        <span class="fs--14 lh--20 fw5 poppins col--grey-800">31 Jan 2024</span>
+                                                        <span class="fs--12 lh--18 fw5 poppins col--blue-ribbon-2">#00123</span>
+                                                    </div>
+                                                    <!-- row-content -->
+                                                    <div class="flex flex-column gap--2">
+                                                        <!-- row-child -->
+                                                        <div class="flex justify-between items-center gap--2">
+                                                            <span class="fs--12 lh--18 fw5 poppins col--pale-sky">From</span>
+                                                            <div class="flex items-center gap--5">
+                                                                <div class="w--18 h--18 flex justify-center items-center br--100">
+                                                                    <img src="./images/Avatar.png" alt="" class="w-100 h-100 fit--cover">
+                                                                </div>
+                                                                <span data-payout-history-table-from-column-text class="fs--12 lh--18 poppins col--oxford-blue">@Mangoes4eva</span>
+                                                            </div>
+                                                        </div>
+                                                        <!-- row-child -->
+                                                        <div class="flex justify-between items-center gap--2">
+                                                            <span class="fs--12 lh--18 fw5 poppins col--pale-sky">Detail</span>
+                                                            <span class="fs--12 lh--18 poppins col--pale-sky tr">CR-Clips</span>
+                                                        </div>
+                                                        <!-- row-child -->
+                                                        <div class="flex justify-between items-center gap--2">
+                                                            <span class="fs--12 lh--18 fw5 poppins col--pale-sky">Commission %</span>
+                                                            <span class="fs--12 lh--18 poppins col--pale-sky tr">88.8%</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- table-row-right -->
+                                                <div class="flex flex-column justify-end gap--4">
+                                                    <!-- status -->
+                                                    <div class="flex justify-end items-center">
+                                                        <div class="w--24 h--24 bg--col-brand-green pa1 bg--blur--20">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+                                                                <path d="M4.83334 10.6666C4.83334 12.1393 6.02725 13.3333 7.50001 13.3333H10.1667C11.6394 13.3333 12.8333 12.1393 12.8333 10.6666C12.8333 9.19383 11.6394 7.99992 10.1667 7.99992H7.50001C6.02725 7.99992 4.83334 6.80601 4.83334 5.33325C4.83334 3.86049 6.02725 2.66659 7.50001 2.66659H10.1667C11.6394 2.66659 12.8333 3.86049 12.8333 5.33325M8.83334 1.33325V14.6666" stroke="black" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="h--24 bg-black pad--x--6 flex items-center bg--blur--20">
+                                                            <span class="fs--12 lh--18 fw5 poppins col-brand-green">Sales</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="flex flex-column gap--2">
+                                                        <div class="flex items-center gap--4">
+                                                            <span class="fs--12 lh--18 fw5 poppins col--pale-sky">Total</span>
+                                                            <span class="fs--12 lh--18 poppins col--pale-sky">USD$ 130.86</span>
+                                                        </div>
+                                                        <div class="flex flex-column">
+                                                            <span class="fs--12 lh--18 fw5 poppins col--pale-sky tr">Final Payout</span>
+                                                            <span class="fs--18 lh--28 fw7 poppins col--blue-ribbon-2 tr nt1">USD$ 123.08</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- row -->
+                                        <div data-table-row-mobile class="w-100 flex justify-center items-center br--2 bg-white-50 bg--blur--10 pad--8">
+                                            <div class="w-100 flex justify-between items-start">
+                                                <!-- table-row-left -->
+                                                <div data-table-row-mobile-left class="flex flex-column gap--4">
+                                                    <!-- row-header -->
+                                                    <div class="flex justify-between items-center h--24">
+                                                        <span class="fs--14 lh--20 fw5 poppins col--grey-800">31 Jan 2024</span>
+                                                        <span class="fs--12 lh--18 fw5 poppins col--blue-ribbon-2">#00123</span>
+                                                    </div>
+                                                    <!-- row-content -->
+                                                    <div class="flex flex-column gap--2">
+                                                        <!-- row-child -->
+                                                        <div class="flex justify-between items-center gap--2">
+                                                            <span class="fs--12 lh--18 fw5 poppins col--pale-sky">From</span>
+                                                            <div class="flex items-center gap--5">
+                                                                <div class="w--18 h--18 flex justify-center items-center br--100">
+                                                                    <img src="./images/Avatar.png" alt="" class="w-100 h-100 fit--cover">
+                                                                </div>
+                                                                <span data-payout-history-table-from-column-text class="fs--12 lh--18 poppins col--oxford-blue">@Mangoes4eva</span>
+                                                            </div>
+                                                        </div>
+                                                        <!-- row-child -->
+                                                        <div class="flex justify-between items-center gap--2">
+                                                            <span class="fs--12 lh--18 fw5 poppins col--pale-sky">Detail</span>
+                                                            <span class="fs--12 lh--18 poppins col--pale-sky tr">Merch</span>
+                                                        </div>
+                                                        <!-- row-child -->
+                                                        <div class="flex justify-between items-center gap--2">
+                                                            <span class="fs--12 lh--18 fw5 poppins col--pale-sky">Commission %</span>
+                                                            <span class="fs--12 lh--18 poppins col--pale-sky tr">88.8%</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- table-row-right -->
+                                                <div class="flex flex-column justify-end gap--4">
+                                                    <!-- status -->
+                                                    <div class="flex justify-end items-center">
+                                                        <div class="w--24 h--24 bg--col-brand-green pa1 bg--blur--20">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+                                                                <path d="M4.83334 10.6666C4.83334 12.1393 6.02725 13.3333 7.50001 13.3333H10.1667C11.6394 13.3333 12.8333 12.1393 12.8333 10.6666C12.8333 9.19383 11.6394 7.99992 10.1667 7.99992H7.50001C6.02725 7.99992 4.83334 6.80601 4.83334 5.33325C4.83334 3.86049 6.02725 2.66659 7.50001 2.66659H10.1667C11.6394 2.66659 12.8333 3.86049 12.8333 5.33325M8.83334 1.33325V14.6666" stroke="black" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="h--24 bg-black pad--x--6 flex items-center bg--blur--20">
+                                                            <span class="fs--12 lh--18 fw5 poppins col-brand-green">Sales</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="flex flex-column gap--2">
+                                                        <div class="flex items-center gap--4">
+                                                            <span class="fs--12 lh--18 fw5 poppins col--pale-sky">Total</span>
+                                                            <span class="fs--12 lh--18 poppins col--pale-sky">USD$ 130.86</span>
+                                                        </div>
+                                                        <div class="flex flex-column">
+                                                            <span class="fs--12 lh--18 fw5 poppins col--pale-sky tr">Final Payout</span>
+                                                            <span class="fs--18 lh--28 fw7 poppins col--blue-ribbon-2 tr nt1">USD$ 123.08</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- row -->
+                                        <div data-table-row-mobile class="w-100 flex justify-center items-center br--2 bg-white-50 bg--blur--10 pad--8">
+                                            <div class="w-100 flex justify-between items-start">
+                                                <!-- table-row-left -->
+                                                <div data-table-row-mobile-left class="flex flex-column gap--4">
+                                                    <!-- row-header -->
+                                                    <div class="flex justify-between items-center h--24">
+                                                        <span class="fs--14 lh--20 fw5 poppins col--grey-800">31 Jan 2024</span>
+                                                        <span class="fs--12 lh--18 fw5 poppins col--blue-ribbon-2">#00123</span>
+                                                    </div>
+                                                    <!-- row-content -->
+                                                    <div class="flex flex-column gap--2">
+                                                        <!-- row-child -->
+                                                        <div class="flex justify-between items-center gap--2">
+                                                            <span class="fs--12 lh--18 fw5 poppins col--pale-sky">From</span>
+                                                            <div class="flex items-center gap--5">
+                                                                <div class="w--18 h--18 flex justify-center items-center br--100">
+                                                                    <img src="./images/Avatar.png" alt="" class="w-100 h-100 fit--cover">
+                                                                </div>
+                                                                <span data-payout-history-table-from-column-text class="fs--12 lh--18 poppins col--oxford-blue">@Mangoes4eva</span>
+                                                            </div>
+                                                        </div>
+                                                        <!-- row-child -->
+                                                        <div class="flex justify-between items-center gap--2">
+                                                            <span class="fs--12 lh--18 fw5 poppins col--pale-sky">Detail</span>
+                                                            <span class="fs--12 lh--18 poppins col--pale-sky tr">Tip</span>
+                                                        </div>
+                                                        <!-- row-child -->
+                                                        <div class="flex justify-between items-center gap--2">
+                                                            <span class="fs--12 lh--18 fw5 poppins col--pale-sky">Commission %</span>
+                                                            <span class="fs--12 lh--18 poppins col--pale-sky tr">88.8%</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- table-row-right -->
+                                                <div class="flex flex-column justify-end gap--4">
+                                                    <!-- status -->
+                                                    <div class="flex justify-end items-center">
+                                                        <div class="w--24 h--24 bg--col--warning-300 pa1 bg--blur--20">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+                                                                <g clip-path="url(#clip0_23258_9960)">
+                                                                    <path d="M9.03912 2.46899C5.975 2.46917 3.49127 4.95366 3.49127 8.01782C3.49144 11.0818 5.9751 13.5655 9.03912 13.5657C12.1033 13.5657 14.5878 11.0819 14.588 8.01782C14.588 4.95355 12.1034 2.46899 9.03912 2.46899Z" fill="black" stroke="black" stroke-width="3.15851"/>
+                                                                    <path d="M1.5003 7.98284C1.5003 11.9193 4.69144 15.1104 8.62791 15.1104C12.5644 15.1104 15.7555 11.9193 15.7555 7.98284C15.7555 4.04636 12.5644 0.855225 8.62791 0.855225C4.69144 0.855225 1.5003 4.04636 1.5003 7.98284Z" fill="#FEC84B"/>
+                                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.62791 14.4441C5.05944 14.4441 2.16663 11.5513 2.16663 7.98284C2.16663 4.41437 5.05944 1.52155 8.62791 1.52155C12.1964 1.52155 15.0892 4.41437 15.0892 7.98284C15.0892 11.5513 12.1964 14.4441 8.62791 14.4441ZM8.62791 15.1104C4.69144 15.1104 1.5003 11.9193 1.5003 7.98284C1.5003 4.04636 4.69144 0.855225 8.62791 0.855225C12.5644 0.855225 15.7555 4.04636 15.7555 7.98284C15.7555 11.9193 12.5644 15.1104 8.62791 15.1104Z" fill="black"/>
+                                                                    <path d="M3.08369 7.98291C3.08369 11.0446 5.56569 13.5266 8.62739 13.5266C11.6891 13.5266 14.1711 11.0446 14.1711 7.98291C14.1711 4.92121 11.6891 2.43921 8.62739 2.43921C5.56569 2.43921 3.08369 4.92121 3.08369 7.98291Z" fill="#FEC84B"/>
+                                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.62739 12.8603C5.93369 12.8603 3.75001 10.6766 3.75001 7.98291C3.75001 5.28921 5.93369 3.10554 8.62739 3.10554C11.3211 3.10554 13.5048 5.28921 13.5048 7.98291C13.5048 10.6766 11.3211 12.8603 8.62739 12.8603ZM8.62739 13.5266C5.56569 13.5266 3.08369 11.0446 3.08369 7.98291C3.08369 4.92121 5.56569 2.43921 8.62739 2.43921C11.6891 2.43921 14.1711 4.92121 14.1711 7.98291C14.1711 11.0446 11.6891 13.5266 8.62739 13.5266Z" fill="black"/>
+                                                                    <path d="M10.2697 9.19106C9.97631 8.81551 10.0824 8.27109 10.3577 7.88205C10.6926 7.40875 10.8547 6.81171 10.7676 6.19223C10.5864 4.90262 9.39404 4.00411 8.10443 4.18535C6.81482 4.36659 5.91631 5.55896 6.09755 6.84857C6.18291 7.45591 6.49253 7.97651 6.93095 8.33843C7.2927 8.63707 7.53436 9.12346 7.35863 9.55839L6.89021 10.7178C6.65524 11.2993 7.13796 11.9172 7.7591 11.8299L10.4815 11.4473C11.1026 11.36 11.3963 10.633 11.0101 10.1388L10.2697 9.19106Z" fill="black"/>
+                                                                </g>
+                                                                <defs>
+                                                                    <clipPath id="clip0_23258_9960">
+                                                                        <rect width="16" height="16" fill="white" transform="translate(0.833344)"/>
+                                                                    </clipPath>
+                                                                </defs>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="h--24 bg-black pad--x--6 flex items-center bg--blur--20">
+                                                            <span class="fs--12 lh--18 fw5 poppins col--warning-300">Sales</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="flex flex-column gap--2">
+                                                        <div class="flex items-center gap--4">
+                                                            <span class="fs--12 lh--18 fw5 poppins col--pale-sky">Total</span>
+                                                            <span class="fs--12 lh--18 poppins col--pale-sky">USD$ 130.86</span>
+                                                        </div>
+                                                        <div class="flex flex-column">
+                                                            <span class="fs--12 lh--18 fw5 poppins col--pale-sky tr">Final Payout</span>
+                                                            <span class="fs--18 lh--28 fw7 poppins col--blue-ribbon-2 tr nt1">USD$ 123.08</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- row -->
+                                        <div data-table-row-mobile class="w-100 flex justify-center items-center br--2 bg-white-50 bg--blur--10 pad--8">
+                                            <div class="w-100 flex justify-between items-start">
+                                                <!-- table-row-left -->
+                                                <div data-table-row-mobile-left class="flex flex-column gap--4">
+                                                    <!-- row-header -->
+                                                    <div class="flex justify-between items-center h--24">
+                                                        <span class="fs--14 lh--20 fw5 poppins col--grey-800">31 Jan 2024</span>
+                                                        <span class="fs--12 lh--18 fw5 poppins col--blue-ribbon-2">#00123</span>
+                                                    </div>
+                                                    <!-- row-content -->
+                                                    <div class="flex flex-column gap--2">
+                                                        <!-- row-child -->
+                                                        <div class="flex justify-between items-center gap--2">
+                                                            <span class="fs--12 lh--18 fw5 poppins col--pale-sky">From</span>
+                                                            <div class="flex items-center gap--5">
+                                                                <div class="w--18 h--18 flex justify-center items-center br--100">
+                                                                    <img src="./images/Avatar.png" alt="" class="w-100 h-100 fit--cover">
+                                                                </div>
+                                                                <span data-payout-history-table-from-column-text class="fs--12 lh--18 poppins col--oxford-blue">@Mangoes4eva</span>
+                                                            </div>
+                                                        </div>
+                                                        <!-- row-child -->
+                                                        <div class="flex justify-between items-center gap--2">
+                                                            <span class="fs--12 lh--18 fw5 poppins col--pale-sky">Detail</span>
+                                                            <span class="fs--12 lh--18 poppins col--pale-sky tr">Private message</span>
+                                                        </div>
+                                                        <!-- row-child -->
+                                                        <div class="flex justify-between items-center gap--2">
+                                                            <span class="fs--12 lh--18 fw5 poppins col--pale-sky">Commission %</span>
+                                                            <span class="fs--12 lh--18 poppins col--pale-sky tr">88.8%</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- table-row-right -->
+                                                <div class="flex flex-column justify-end gap--4">
+                                                    <!-- status -->
+                                                    <div class="flex justify-end items-center">
+                                                        <div class="w--24 h--24 bg--col--warning-300 pa1 bg--blur--20">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+                                                                <g clip-path="url(#clip0_23258_9960)">
+                                                                    <path d="M9.03912 2.46899C5.975 2.46917 3.49127 4.95366 3.49127 8.01782C3.49144 11.0818 5.9751 13.5655 9.03912 13.5657C12.1033 13.5657 14.5878 11.0819 14.588 8.01782C14.588 4.95355 12.1034 2.46899 9.03912 2.46899Z" fill="black" stroke="black" stroke-width="3.15851"/>
+                                                                    <path d="M1.5003 7.98284C1.5003 11.9193 4.69144 15.1104 8.62791 15.1104C12.5644 15.1104 15.7555 11.9193 15.7555 7.98284C15.7555 4.04636 12.5644 0.855225 8.62791 0.855225C4.69144 0.855225 1.5003 4.04636 1.5003 7.98284Z" fill="#FEC84B"/>
+                                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.62791 14.4441C5.05944 14.4441 2.16663 11.5513 2.16663 7.98284C2.16663 4.41437 5.05944 1.52155 8.62791 1.52155C12.1964 1.52155 15.0892 4.41437 15.0892 7.98284C15.0892 11.5513 12.1964 14.4441 8.62791 14.4441ZM8.62791 15.1104C4.69144 15.1104 1.5003 11.9193 1.5003 7.98284C1.5003 4.04636 4.69144 0.855225 8.62791 0.855225C12.5644 0.855225 15.7555 4.04636 15.7555 7.98284C15.7555 11.9193 12.5644 15.1104 8.62791 15.1104Z" fill="black"/>
+                                                                    <path d="M3.08369 7.98291C3.08369 11.0446 5.56569 13.5266 8.62739 13.5266C11.6891 13.5266 14.1711 11.0446 14.1711 7.98291C14.1711 4.92121 11.6891 2.43921 8.62739 2.43921C5.56569 2.43921 3.08369 4.92121 3.08369 7.98291Z" fill="#FEC84B"/>
+                                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.62739 12.8603C5.93369 12.8603 3.75001 10.6766 3.75001 7.98291C3.75001 5.28921 5.93369 3.10554 8.62739 3.10554C11.3211 3.10554 13.5048 5.28921 13.5048 7.98291C13.5048 10.6766 11.3211 12.8603 8.62739 12.8603ZM8.62739 13.5266C5.56569 13.5266 3.08369 11.0446 3.08369 7.98291C3.08369 4.92121 5.56569 2.43921 8.62739 2.43921C11.6891 2.43921 14.1711 4.92121 14.1711 7.98291C14.1711 11.0446 11.6891 13.5266 8.62739 13.5266Z" fill="black"/>
+                                                                    <path d="M10.2697 9.19106C9.97631 8.81551 10.0824 8.27109 10.3577 7.88205C10.6926 7.40875 10.8547 6.81171 10.7676 6.19223C10.5864 4.90262 9.39404 4.00411 8.10443 4.18535C6.81482 4.36659 5.91631 5.55896 6.09755 6.84857C6.18291 7.45591 6.49253 7.97651 6.93095 8.33843C7.2927 8.63707 7.53436 9.12346 7.35863 9.55839L6.89021 10.7178C6.65524 11.2993 7.13796 11.9172 7.7591 11.8299L10.4815 11.4473C11.1026 11.36 11.3963 10.633 11.0101 10.1388L10.2697 9.19106Z" fill="black"/>
+                                                                </g>
+                                                                <defs>
+                                                                    <clipPath id="clip0_23258_9960">
+                                                                        <rect width="16" height="16" fill="white" transform="translate(0.833344)"/>
+                                                                    </clipPath>
+                                                                </defs>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="h--24 bg-black pad--x--6 flex items-center bg--blur--20">
+                                                            <span class="fs--12 lh--18 fw5 poppins col--warning-300">Sales</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="flex flex-column gap--2">
+                                                        <div class="flex items-center gap--4">
+                                                            <span class="fs--12 lh--18 fw5 poppins col--pale-sky">Total</span>
+                                                            <span class="fs--12 lh--18 poppins col--pale-sky">USD$ 130.86</span>
+                                                        </div>
+                                                        <div class="flex flex-column">
+                                                            <span class="fs--12 lh--18 fw5 poppins col--pale-sky tr">Final Payout</span>
+                                                            <span class="fs--18 lh--28 fw7 poppins col--blue-ribbon-2 tr nt1">USD$ 123.08</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- row -->
+                                        <div data-table-row-mobile class="w-100 flex justify-center items-center br--2 bg-white-50 bg--blur--10 pad--8">
+                                            <div class="w-100 flex justify-between items-start">
+                                                <!-- table-row-left -->
+                                                <div data-table-row-mobile-left class="flex flex-column gap--4">
+                                                    <!-- row-header -->
+                                                    <div class="flex justify-between items-center h--24">
+                                                        <span class="fs--14 lh--20 fw5 poppins col--grey-800">31 Jan 2024</span>
+                                                        <span class="fs--12 lh--18 fw5 poppins col--blue-ribbon-2">#00123</span>
+                                                    </div>
+                                                    <!-- row-content -->
+                                                    <div class="flex flex-column gap--2">
+                                                        <!-- row-child -->
+                                                        <div class="flex justify-between items-center gap--2">
+                                                            <span class="fs--12 lh--18 fw5 poppins col--pale-sky">From</span>
+                                                            <div class="flex items-center gap--5">
+                                                                <div class="w--18 h--18 flex justify-center items-center br--100">
+                                                                    <img src="./images/Avatar.png" alt="" class="w-100 h-100 fit--cover">
+                                                                </div>
+                                                                <span data-payout-history-table-from-column-text class="fs--12 lh--18 poppins col--oxford-blue">@Mangoes4eva</span>
+                                                            </div>
+                                                        </div>
+                                                        <!-- row-child -->
+                                                        <div class="flex justify-between items-center gap--2">
+                                                            <span class="fs--12 lh--18 fw5 poppins col--pale-sky">Detail</span>
+                                                            <span class="fs--12 lh--18 poppins col--pale-sky tr">CR-Kinks</span>
+                                                        </div>
+                                                        <!-- row-child -->
+                                                        <div class="flex justify-between items-center gap--2">
+                                                            <span class="fs--12 lh--18 fw5 poppins col--pale-sky">Commission %</span>
+                                                            <span class="fs--12 lh--18 poppins col--pale-sky tr">88.8%</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- table-row-right -->
+                                                <div class="flex flex-column justify-end gap--4">
+                                                    <!-- status -->
+                                                    <div class="flex justify-end items-center">
+                                                        <div class="w--24 h--24 bg--col-brand-green pa1 bg--blur--20">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+                                                                <path d="M4.83334 10.6666C4.83334 12.1393 6.02725 13.3333 7.50001 13.3333H10.1667C11.6394 13.3333 12.8333 12.1393 12.8333 10.6666C12.8333 9.19383 11.6394 7.99992 10.1667 7.99992H7.50001C6.02725 7.99992 4.83334 6.80601 4.83334 5.33325C4.83334 3.86049 6.02725 2.66659 7.50001 2.66659H10.1667C11.6394 2.66659 12.8333 3.86049 12.8333 5.33325M8.83334 1.33325V14.6666" stroke="black" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="h--24 bg-black pad--x--6 flex items-center bg--blur--20">
+                                                            <span class="fs--12 lh--18 fw5 poppins col-brand-green">Sales</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="flex flex-column gap--2">
+                                                        <div class="flex items-center gap--4">
+                                                            <span class="fs--12 lh--18 fw5 poppins col--pale-sky">Total</span>
+                                                            <span class="fs--12 lh--18 poppins col--pale-sky">USD$ 130.86</span>
+                                                        </div>
+                                                        <div class="flex flex-column">
+                                                            <span class="fs--12 lh--18 fw5 poppins col--pale-sky tr">Final Payout</span>
+                                                            <span class="fs--18 lh--28 fw7 poppins col--blue-ribbon-2 tr nt1">USD$ 123.08</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- template ends here -->
+
+        </div>
+    </body>
+</html>

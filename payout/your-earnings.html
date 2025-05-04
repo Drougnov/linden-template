@@ -91,6 +91,9 @@
 
 
             /* table */
+            [data-desktop-table-header]{
+                min-height: 2.625rem;
+            }
             [data-desktop-table-wrapper]{
                 min-width: 68.125rem;
             }
@@ -345,7 +348,7 @@
                         <!-- desktop-table-wrapper -->
                         <div data-desktop-table-wrapper class="flex flex-column w-100 display--none-responsive-mobile display--none-responsive-mobile-portrait">
                             <!-- table-header -->
-                            <div class="flex items-center bb br--col--pale-sky">
+                            <div data-desktop-table-header class="flex items-center bb br--col--pale-sky">
                                 <div data-payout-table-period-column class="flex items-center pad--y--10 pad--left--24 pad--right--10">
                                     <span class="fs--14 lh--20 poppins col--pale-sky">Period</span>
                                 </div>
