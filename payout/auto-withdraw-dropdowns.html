@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="max-image-preview:large">
+        <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="dns-prefetch" href="//staging.fansocial.app">
+        <link rel="dns-prefetch" href="//fonts.googleapis.com">
+        <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+        <title>Payout settings popup</title>
+        <link rel="stylesheet" id="google-fonts-css" href="https://fonts.googleapis.com/css2?family=Poppins%3Awght%40300%3B400%3B500%3B600%3B700%3B800%3B900&amp;display=swap&amp;ver=1.0.0" media="">
+        <link rel="stylesheet" id="theme-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/theme.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="final-main-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/main.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="components-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/css/components.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="tachyonsStylesheet-css" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.11.1/tachyons.min.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="popup-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/css/dev/popup.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="pageElements-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/FINAL/css/pageElements.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="finalCustomTachyonsStylesheet-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/customTachyons.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="tachyonsV2-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/tachyons-v2.css?ver=1.0.0" media="">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css?ver=1.0.0">
+        <!-- custom styles -->
+        <style>
+            .w--320 { width: 20rem }
+
+            
+            [data-auto-withdraw-select-input]{
+                border-bottom: 2px solid #0C111D;
+            }
+
+            [data-auto-withdraw-select-option-container]{
+                box-shadow: 0px 3px 6px 0px #00000033;
+            }
+        </style>
+        <link rel="stylesheet" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-tablet.css" media="screen and (min-width: 768px) and (max-width: 1365px)">
+        <link rel="stylesheet" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-tablet-landscape.css" media="screen and (min-width: 768px) and (max-width: 1010px)">
+        <link rel="stylesheet" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-mobile.css" media="screen and (min-width: 480px) and (max-width: 767px)">
+        <link rel="stylesheet" id="dashboardStylesMobilePortrait-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-mobile-portrait.css" media="screen and (max-width: 479px)">
+    </head>
+    <body class="min-vh-100" style="background-color: #444;">
+        <div class="flex flex-column pa4 gap--40 bg--blur--100 bg--col--athens-gray--90">
+            
+            <!-- select-input-wrapper -->
+            <div data-auto-withdraw-input-wrapper class="w--320 flex flex-column gap--16">
+                <!-- select-input-field -->
+                <div class="h--40 flex flex-column items-center gap--6">
+                    <div data-auto-withdraw-select-input class="pad--x--12 br--2 br--bottom--left--right bg-white-50 relative flex items-center gap--8 w-100 h--40 pointer">
+                        <div class="flex items-center w-100">
+                            <span class="fs--16 lh--24 poppins col--black-strong">Every Month</span>
+                        </div>
+                        <div class="flex justify-center items-center pointer w1 h1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M8.86615 10.9C8.48125 11.5667 7.519 11.5667 7.1341 10.9L3.78547 5.10002C3.40057 4.43336 3.8817 3.60002 4.6515 3.60002H11.3488C12.1186 3.60002 12.5997 4.43336 12.2148 5.10002L8.86615 10.9Z" fill="#98A2B3"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="flex flex-column gap--40 w--320 ma4">
+            
+            <!-- select-field options-area -->
+            <div data-auto-withdraw-select-option-container class="w-100 flex flex-column bg-white-90 bg--blur--100">
+                <!-- option -->
+                <div class="flex flex-column gap--4 pad--16 bg--col--athens-gray bb br--col--athens-gray-2 pointer">
+                    <span class="fs--16 lh--24 fw5 poppins col--ebony--variation-2">Every Month</span>
+                    <p class="fs--12 lh--18 poppins col--pale-sky">withdraw money to selected payout method every month automatically.</p>
+                </div>
+                <!-- option -->
+                <div class="flex flex-column gap--4 pad--16 bb br--col--athens-gray-2 pointer">
+                    <span class="fs--16 lh--24 fw5 poppins col--ebony--variation-2">By Earning Target</span>
+                    <p class="fs--12 lh--18 poppins col--pale-sky">Withdraw money to selected payout method when your earning hits a specific amount.</p>
+                </div>
+            </div>
+
+        </div>
+    </body>
+</html>
