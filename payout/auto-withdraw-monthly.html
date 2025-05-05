@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="max-image-preview:large">
+        <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="dns-prefetch" href="//staging.fansocial.app">
+        <link rel="dns-prefetch" href="//fonts.googleapis.com">
+        <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+        <title>Payout settings popup</title>
+        <link rel="stylesheet" id="google-fonts-css" href="https://fonts.googleapis.com/css2?family=Poppins%3Awght%40300%3B400%3B500%3B600%3B700%3B800%3B900&amp;display=swap&amp;ver=1.0.0" media="">
+        <link rel="stylesheet" id="theme-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/theme.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="final-main-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/main.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="components-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/css/components.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="tachyonsStylesheet-css" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.11.1/tachyons.min.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="popup-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/css/dev/popup.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="pageElements-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/FINAL/css/pageElements.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="finalCustomTachyonsStylesheet-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/customTachyons.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="tachyonsV2-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/tachyons-v2.css?ver=1.0.0" media="">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css?ver=1.0.0">
+        <!-- custom styles for this template -->
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+
+            [data-payout-settings-popup].slidein-right-popup:not([data-popup-noui]) .elm_qJBugX{
+                max-width: 45rem;
+            }
+
+            [data-popup-contents-wrapper]{
+                flex: 1 1 0;
+                overflow: auto;
+                overflow-x: hidden;
+            }
+
+            /* text-input */
+            [data-payout-form-text-input]::placeholder{
+                font-family: Poppins;
+                font-weight: 400;
+                font-size: 1rem;
+                line-height: 1.5rem;
+                letter-spacing: 0;
+                color: var(--color-pale-sky, #667085);
+            }
+
+            [data-auto-withdraw-input-wrapper]{
+                width: 20rem;
+            }
+
+            @media (max-width: 1009px) and (min-width: 768px){
+                [data-payout-settings-popup].slidein-right-popup:not([data-popup-noui]) .elm_qJBugX{
+                    max-width: 29.1875rem;
+                }
+            }
+
+            @media (max-width: 767px){
+                [data-payout-settings-popup].elm_UoRWYY:not([data-popup-noui]) .elm_yNwqwJ:not(.no-height){
+                    height: 100vh;
+                }
+
+                [data-payout-settings-popup].slidein-right-popup:not([data-popup-noui]) .elm_qJBugX {
+                    max-width: unset;
+                }
+            }
+        </style>
+        <link rel="stylesheet" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-tablet.css" media="screen and (min-width: 768px) and (max-width: 1365px)">
+        <link rel="stylesheet" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-tablet-landscape.css" media="screen and (min-width: 768px) and (max-width: 1010px)">
+        <link rel="stylesheet" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-mobile.css" media="screen and (min-width: 480px) and (max-width: 767px)">
+        <link rel="stylesheet" id="dashboardStylesMobilePortrait-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-mobile-portrait.css" media="screen and (max-width: 479px)">
+    </head>
+    <body>
+        <div class="min-vh-100" style="background-color: #444;">
+
+            <!-- template starts from here -->
+            <div data-payout-settings-popup data-popup="" data-popup-type="slidein-right-popup" data-popup-overlay-color="rgba(0,0,0,0.65)" data-popup-max-width="720px" class="elm_UoRWYY items-center justify-center fixed dn top-0 left-0 w-100 h-100 z--99999 overflow-auto slidein-right-popup flex opened" style="background-color: rgba(0, 0, 0, 0.65);">
+                <!-- inner wrapper -->
+                <div data-popup-inner="" class="elm_yNwqwJ top-0 w-100 flex items-center justify-center absolute">
+                   <!-- container -->
+                   <div class="bg--blur--100 bg--col--athens-gray--90 elm_qJBugX flex flex-column w-100 sh--popup-1 no-full-width no-height">
+                        <!-- popup contents -->
+                        <div data-popup-contents-wrapper class="flex flex-column">
+                            <!-- header-section -->
+                            <div class="flex flex-column pad--top--16">
+                                <!-- navigation-section -->
+                                <a href="#" class="flex items-center gap--4 pad--x--16">
+                                    <div class="flex justify-center items-center pointer w1 h1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                            <path d="M10 12L6 8L10 4" stroke="#667085" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+
+                                    <span class="fs--12 lh--18 fw5 poppins col--pale-sky">Back</span>
+                                </a>
+
+                                <div class="pad--16">
+                                    <div class="flex items-center gap--8">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path d="M20.453 12.893C20.1752 15.5029 18.6964 17.9487 16.2494 19.3614C12.1839 21.7086 6.98539 20.3157 4.63818 16.2502L4.38818 15.8172M3.54613 11.107C3.82393 8.49711 5.30272 6.05138 7.74971 4.63862C11.8152 2.29141 17.0137 3.68434 19.3609 7.74983L19.6109 8.18285M3.49316 18.0661L4.22521 15.334L6.95727 16.0661M17.0424 7.93401L19.7744 8.66606L20.5065 5.93401" stroke="#344054" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        <h3 class="fs--14 lh--20 fw6 poppins col--oxford-blue">Auto Withdraw Settings</h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- main-section -->
+                            <div class="flex flex-column gap--24 pad--y--16 pad--x--24">
+                                <p class="fs--14 lh--20 poppins col--oxford-blue">Setup auto withdraw earnings to your selected payout method by month or by earning amounts.</p>
+                            
+                                <!-- auto-withdraw-earnings by section -->
+                                <div class="flex flex-column gap--8">
+                                    <h3 class="fs--16 lh--24 fw5 poppins col--ebony--variation-2">Auto withdraw earnings to my selected payout method :</h3>
+
+                                    <p class="fs--14 lh--20 poppins col--oxford-blue">Automatic payout requests are processed on the 1st of each month, including earnings from the past 28 days. Fund arrival depends on the payout method you choose.</p>
+                                </div>
+
+                                <!-- earning-target-section -->
+                                <div class="flex flex-column gap--8">
+                                    <section class="flex justify-between items-center">
+                                        <h3 class="fs--16 lh--24 fw5 poppins col--ebony--variation-2">Earning Targets</h3>
+                                        <span class="fs--16 lh--24 i poppins col--pale-sky">Optional</span>
+                                    </section>
+
+                                    <p class="fs--14 lh--20 poppins col--oxford-blue">We will not withdraw your money if your monthly earning does not reach your specified amount below.</p>
+                                
+                                    <div data-auto-withdraw-input-wrapper data-input-wrapper="" class="pad--x--12 br--2 br--bottom--left--right bb br--col--mischka-gray bg-white-50 sh--7 relative flex items-center w-100 h--40">
+                                        <div class="relative w-100 flex items-center gap--10">
+                                           <span data-input-label-wrapper="" class="fs--16 lh--24 col--oxford-blue poppins">USD$</span>
+                                           <input type="number" name="pay-per-view-price" placeholder="Enter Amount" class="w-100 bn flex-auto fs--16 lh--24 col--ebony--variation-2 poppins">
+                                        </div>
+                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                   </div>
+                </div>
+             </div>
+            <!-- template ends here -->
+        </div>
+    </body>
+</html>
