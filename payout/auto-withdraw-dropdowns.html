@@ -21,14 +21,53 @@
         <!-- custom styles -->
         <style>
             .w--320 { width: 20rem }
+            .min--h--56 { min-height: 3.5rem; }
 
-            
+            /* select-input-monthly-by-targets */
             [data-auto-withdraw-select-input]{
                 border-bottom: 2px solid #0C111D;
             }
 
             [data-auto-withdraw-select-option-container]{
                 box-shadow: 0px 3px 6px 0px #00000033;
+            }
+
+            /* payout-method-options */
+            [data-payout-option-container]{
+                border-width: 0.09375rem;
+            }
+
+            [data-payout-method-type]{
+                box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+            }
+
+            input[data-payout-option-radio]:focus ~ div,
+            input[data-payout-option-radio]:active ~ div{
+                border-color: var(--color-mischka-gray,#D0D5DD);
+            }
+
+            [data-payout-option-radio]:checked + [data-payout-option-container]{
+                background-color: rgba(0, 0, 0, 0.90);
+                border: 1.5px solid #FFFFFF;
+                border-left: none;
+                border-right: none;
+            }
+
+            [data-payout-option-radio]:checked + [data-payout-option-container] [data-payout-option-text]{
+                color: #FCFCFD;
+            }
+
+            @media (max-width: 768px){
+                /* inputs */
+                [data-auto-withdraw-input-wrapper]{
+                    width: 100%;
+                }
+
+                /* payout-method-options  */
+                [data-payout-option-container]{
+                    padding-top: 0.75rem;
+                    padding-bottom: 0.75rem;
+                }
             }
         </style>
         <link rel="stylesheet" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-tablet.css" media="screen and (min-width: 768px) and (max-width: 1365px)">
@@ -56,12 +95,29 @@
                 </div>
             </div>
 
+
+            <!-- payout-option-dropdown-input-wrapper -->
+            <div data-payout-option-container class="flex items-center gap--8 pad--y--16 pad--x--12 br--2 bg-white-50 bb br--col--mischka-gray pointer">
+                <div class="flex items-center gap--8 flex--max">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M10 6.66667V13.3333M6.66667 10H13.3333M6.5 17.5H13.5C14.9001 17.5 15.6002 17.5 16.135 17.2275C16.6054 16.9878 16.9878 16.6054 17.2275 16.135C17.5 15.6002 17.5 14.9001 17.5 13.5V6.5C17.5 5.09987 17.5 4.3998 17.2275 3.86502C16.9878 3.39462 16.6054 3.01217 16.135 2.77248C15.6002 2.5 14.9001 2.5 13.5 2.5H6.5C5.09987 2.5 4.3998 2.5 3.86502 2.77248C3.39462 3.01217 3.01217 3.39462 2.77248 3.86502C2.5 4.3998 2.5 5.09987 2.5 6.5V13.5C2.5 14.9001 2.5 15.6002 2.77248 16.135C3.01217 16.6054 3.39462 16.9878 3.86502 17.2275C4.3998 17.5 5.09987 17.5 6.5 17.5Z" stroke="#0C111D" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="fs--18 lh--28 fw6 poppins col--black-strong">Add New...</span>
+                </div>
+
+                <div class="flex justify-center items-center pointer w1 h1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M8.86615 10.9C8.48125 11.5667 7.519 11.5667 7.1341 10.9L3.78547 5.10002C3.40057 4.43336 3.8817 3.60002 4.6515 3.60002H11.3488C12.1186 3.60002 12.5997 4.43336 12.2148 5.10002L8.86615 10.9Z" fill="#98A2B3"/>
+                    </svg>
+                </div>
+            </div>
+
         </div>
 
-        <div class="flex flex-column gap--40 w--320 ma4">
+        <div class="flex flex-column gap--40 ma4">
             
             <!-- select-field options-area -->
-            <div data-auto-withdraw-select-option-container class="w-100 flex flex-column bg-white-90 bg--blur--100">
+            <div data-auto-withdraw-select-option-container class="w--320 flex flex-column bg-white-90 bg--blur--100">
                 <!-- option -->
                 <div class="flex flex-column gap--4 pad--16 bg--col--athens-gray bb br--col--athens-gray-2 pointer">
                     <span class="fs--16 lh--24 fw5 poppins col--ebony--variation-2">Every Month</span>
@@ -74,6 +130,145 @@
                 </div>
             </div>
 
+
+            <!-- options-wrapper -->
+            <div class="flex flex-column bg-white-90">
+                <!-- option -->
+                <label class="db relative pointer">
+                    <input type="radio" data-payout-option-radio name="payout-option" class="absolute o-0 w0 h0" disabled>
+                    <div data-payout-option-container class="flex flex-column gap--8 pad--16 br--2 bt bb br--col--mischka-gray bg--blur--10 overflow-hidden bg--col--athens-gray-2">
+                        <div class="flex items-center gap--8 flex--max min--h--56">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M10 6.66667V13.3333M6.66667 10H13.3333M6.5 17.5H13.5C14.9001 17.5 15.6002 17.5 16.135 17.2275C16.6054 16.9878 16.9878 16.6054 17.2275 16.135C17.5 15.6002 17.5 14.9001 17.5 13.5V6.5C17.5 5.09987 17.5 4.3998 17.2275 3.86502C16.9878 3.39462 16.6054 3.01217 16.135 2.77248C15.6002 2.5 14.9001 2.5 13.5 2.5H6.5C5.09987 2.5 4.3998 2.5 3.86502 2.77248C3.39462 3.01217 3.01217 3.39462 2.77248 3.86502C2.5 4.3998 2.5 5.09987 2.5 6.5V13.5C2.5 14.9001 2.5 15.6002 2.77248 16.135C3.01217 16.6054 3.39462 16.9878 3.86502 17.2275C4.3998 17.5 5.09987 17.5 6.5 17.5Z" stroke="#0C111D" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span class="fs--18 lh--28 fw6 poppins col--black-strong">Add New...</span>
+                        </div>
+                    </div>
+                </label>
+                <label class="db relative pointer">
+                    <input type="radio" data-payout-option-radio name="payout-option" class="absolute o-0 w0 h0" checked>
+                    <div data-payout-option-container class="flex flex-column gap--8 pad--16 br--2 bt bb br--col--mischka-gray bg--blur--10 overflow-hidden">
+                        <!-- option-top -->
+                        <div class="flex justify-between items-center">
+                            <span data-payout-option-text class="fs--18 lh--28 fw5 poppins col--grey-800">Bank Deposit</span>
+                            
+                            <div data-payout-method-type class="flex justify-center items-center gap--4 pad--y--2 pad--x--8 bg-white br--50">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M3.33333 6V11.3333M6.33333 6V11.3333M9.66667 6V11.3333M12.6667 6V11.3333M2 12.4L2 12.9333C2 13.3067 2 13.4934 2.07266 13.636C2.13658 13.7614 2.23856 13.8634 2.36401 13.9273C2.50661 14 2.6933 14 3.06667 14H12.9333C13.3067 14 13.4934 14 13.636 13.9273C13.7614 13.8634 13.8634 13.7614 13.9273 13.636C14 13.4934 14 13.3067 14 12.9333V12.4C14 12.0266 14 11.84 13.9273 11.6973C13.8634 11.5719 13.7614 11.4699 13.636 11.406C13.4934 11.3333 13.3067 11.3333 12.9333 11.3333H3.06667C2.6933 11.3333 2.50661 11.3333 2.36401 11.406C2.23857 11.4699 2.13658 11.5719 2.07266 11.6973C2 11.84 2 12.0266 2 12.4ZM7.76861 2.05142L2.83527 3.14772C2.53723 3.21395 2.38821 3.24707 2.27698 3.32721C2.17886 3.39789 2.10182 3.49393 2.0541 3.60505C2 3.73102 2 3.88368 2 4.18899L2 4.93334C2 5.3067 2 5.49339 2.07266 5.636C2.13658 5.76144 2.23856 5.86343 2.36401 5.92734C2.50661 6 2.6933 6 3.06667 6H12.9333C13.3067 6 13.4934 6 13.636 5.92734C13.7614 5.86343 13.8634 5.76144 13.9273 5.636C14 5.49339 14 5.3067 14 4.93334V4.18899C14 3.88368 14 3.73102 13.9459 3.60505C13.8982 3.49393 13.8211 3.39789 13.723 3.32721C13.6118 3.24707 13.4628 3.21395 13.1647 3.14772L8.23139 2.05142C8.14504 2.03223 8.10187 2.02264 8.05824 2.01881C8.01949 2.01542 7.98051 2.01542 7.94176 2.01881C7.89813 2.02264 7.85496 2.03223 7.76861 2.05142Z" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span class="fs--14 fw5 lh--20 col--grey-800 poppins">Bank</span>
+                            </div>
+                        </div>
+
+                        <!-- option-bottom -->
+                        <div class="flex justify-between items-center">
+                            <p data-payout-option-text class="fs--14 lh--20 col--grey-800 poppins">Pays in <span data-payout-option-text class="fs--14 lh--20 fw5 col--grey-800 poppins">EUR</span></p>
+                        
+                            <span data-payout-option-text class="fs--14 lh--20 col--grey-800 poppins">USD$3.45 fee</span>
+                        </div> 
+                    </div>
+                </label>
+
+                <!-- option -->
+                <label class="db relative pointer">
+                    <input type="radio" data-payout-option-radio name="payout-option" class="absolute o-0 w0 h0">
+                    <div data-payout-option-container class="flex flex-column gap--8 pad--16 br--2 bt bb br--col--mischka-gray bg--blur--10 overflow-hidden bg-white-50">
+                        <!-- option-top -->
+                        <div class="flex justify-between items-center">
+                            <span data-payout-option-text class="fs--18 lh--28 fw5 poppins col--grey-800">Bank Deposit</span>
+                            
+                            <div data-payout-method-type class="flex justify-center items-center gap--4 pad--y--2 pad--x--8 bg-white br--50">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M3.33333 6V11.3333M6.33333 6V11.3333M9.66667 6V11.3333M12.6667 6V11.3333M2 12.4L2 12.9333C2 13.3067 2 13.4934 2.07266 13.636C2.13658 13.7614 2.23856 13.8634 2.36401 13.9273C2.50661 14 2.6933 14 3.06667 14H12.9333C13.3067 14 13.4934 14 13.636 13.9273C13.7614 13.8634 13.8634 13.7614 13.9273 13.636C14 13.4934 14 13.3067 14 12.9333V12.4C14 12.0266 14 11.84 13.9273 11.6973C13.8634 11.5719 13.7614 11.4699 13.636 11.406C13.4934 11.3333 13.3067 11.3333 12.9333 11.3333H3.06667C2.6933 11.3333 2.50661 11.3333 2.36401 11.406C2.23857 11.4699 2.13658 11.5719 2.07266 11.6973C2 11.84 2 12.0266 2 12.4ZM7.76861 2.05142L2.83527 3.14772C2.53723 3.21395 2.38821 3.24707 2.27698 3.32721C2.17886 3.39789 2.10182 3.49393 2.0541 3.60505C2 3.73102 2 3.88368 2 4.18899L2 4.93334C2 5.3067 2 5.49339 2.07266 5.636C2.13658 5.76144 2.23856 5.86343 2.36401 5.92734C2.50661 6 2.6933 6 3.06667 6H12.9333C13.3067 6 13.4934 6 13.636 5.92734C13.7614 5.86343 13.8634 5.76144 13.9273 5.636C14 5.49339 14 5.3067 14 4.93334V4.18899C14 3.88368 14 3.73102 13.9459 3.60505C13.8982 3.49393 13.8211 3.39789 13.723 3.32721C13.6118 3.24707 13.4628 3.21395 13.1647 3.14772L8.23139 2.05142C8.14504 2.03223 8.10187 2.02264 8.05824 2.01881C8.01949 2.01542 7.98051 2.01542 7.94176 2.01881C7.89813 2.02264 7.85496 2.03223 7.76861 2.05142Z" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span class="fs--14 fw5 lh--20 col--grey-800 poppins">Bank</span>
+                            </div>
+                        </div>
+
+                        <!-- option-bottom -->
+                        <div class="flex justify-between items-center">
+                            <p data-payout-option-text class="fs--14 lh--20 col--grey-800 poppins">Pays in <span data-payout-option-text class="fs--14 lh--20 fw5 col--grey-800 poppins">USD</span></p>
+                        
+                            <span data-payout-option-text class="fs--14 lh--20 col--grey-800 poppins">USD$3.45 fee</span>
+                        </div> 
+                    </div>
+                </label>
+
+                <!-- option -->
+                <label class="db relative pointer">
+                    <input type="radio" data-payout-option-radio name="payout-option" class="absolute o-0 w0 h0">
+                    <div data-payout-option-container class="flex flex-column gap--8 pad--16 br--2 bt bb br--col--mischka-gray bg--blur--10 overflow-hidden bg-white-50">
+                        <!-- option-top -->
+                        <div class="flex justify-between items-center">
+                            <span data-payout-option-text class="fs--18 lh--28 fw5 poppins col--grey-800">Bank Wire</span>
+                            
+                            <div data-payout-method-type class="flex justify-center items-center gap--4 pad--y--2 pad--x--8 bg-white br--50">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M3.33333 6V11.3333M6.33333 6V11.3333M9.66667 6V11.3333M12.6667 6V11.3333M2 12.4L2 12.9333C2 13.3067 2 13.4934 2.07266 13.636C2.13658 13.7614 2.23856 13.8634 2.36401 13.9273C2.50661 14 2.6933 14 3.06667 14H12.9333C13.3067 14 13.4934 14 13.636 13.9273C13.7614 13.8634 13.8634 13.7614 13.9273 13.636C14 13.4934 14 13.3067 14 12.9333V12.4C14 12.0266 14 11.84 13.9273 11.6973C13.8634 11.5719 13.7614 11.4699 13.636 11.406C13.4934 11.3333 13.3067 11.3333 12.9333 11.3333H3.06667C2.6933 11.3333 2.50661 11.3333 2.36401 11.406C2.23857 11.4699 2.13658 11.5719 2.07266 11.6973C2 11.84 2 12.0266 2 12.4ZM7.76861 2.05142L2.83527 3.14772C2.53723 3.21395 2.38821 3.24707 2.27698 3.32721C2.17886 3.39789 2.10182 3.49393 2.0541 3.60505C2 3.73102 2 3.88368 2 4.18899L2 4.93334C2 5.3067 2 5.49339 2.07266 5.636C2.13658 5.76144 2.23856 5.86343 2.36401 5.92734C2.50661 6 2.6933 6 3.06667 6H12.9333C13.3067 6 13.4934 6 13.636 5.92734C13.7614 5.86343 13.8634 5.76144 13.9273 5.636C14 5.49339 14 5.3067 14 4.93334V4.18899C14 3.88368 14 3.73102 13.9459 3.60505C13.8982 3.49393 13.8211 3.39789 13.723 3.32721C13.6118 3.24707 13.4628 3.21395 13.1647 3.14772L8.23139 2.05142C8.14504 2.03223 8.10187 2.02264 8.05824 2.01881C8.01949 2.01542 7.98051 2.01542 7.94176 2.01881C7.89813 2.02264 7.85496 2.03223 7.76861 2.05142Z" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span class="fs--14 fw5 lh--20 col--grey-800 poppins">Bank</span>
+                            </div>
+                        </div>
+
+                        <!-- option-bottom -->
+                        <div class="flex justify-between items-center">
+                            <p data-payout-option-text class="fs--14 lh--20 col--grey-800 poppins">Pays in <span data-payout-option-text class="fs--14 lh--20 fw5 col--grey-800 poppins">USD</span></p>
+                        
+                            <span data-payout-option-text class="fs--14 lh--20 col--grey-800 poppins">USD$3.45 fee</span>
+                        </div> 
+                    </div>
+                </label>
+
+                <!-- option -->
+                <label class="db relative pointer">
+                    <input type="radio" data-payout-option-radio name="payout-option" class="absolute o-0 w0 h0">
+                    <div data-payout-option-container class="flex flex-column gap--8 pad--16 br--2 bt bb br--col--mischka-gray bg--blur--10 overflow-hidden bg-white-50">
+                        <!-- option-top -->
+                        <div class="flex justify-between items-center">
+                            <span data-payout-option-text class="fs--18 lh--28 fw5 poppins col--grey-800">Bank Wire</span>
+                            
+                            <div data-payout-method-type class="flex justify-center items-center gap--4 pad--y--2 pad--x--8 bg-white br--50">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M3.33333 6V11.3333M6.33333 6V11.3333M9.66667 6V11.3333M12.6667 6V11.3333M2 12.4L2 12.9333C2 13.3067 2 13.4934 2.07266 13.636C2.13658 13.7614 2.23856 13.8634 2.36401 13.9273C2.50661 14 2.6933 14 3.06667 14H12.9333C13.3067 14 13.4934 14 13.636 13.9273C13.7614 13.8634 13.8634 13.7614 13.9273 13.636C14 13.4934 14 13.3067 14 12.9333V12.4C14 12.0266 14 11.84 13.9273 11.6973C13.8634 11.5719 13.7614 11.4699 13.636 11.406C13.4934 11.3333 13.3067 11.3333 12.9333 11.3333H3.06667C2.6933 11.3333 2.50661 11.3333 2.36401 11.406C2.23857 11.4699 2.13658 11.5719 2.07266 11.6973C2 11.84 2 12.0266 2 12.4ZM7.76861 2.05142L2.83527 3.14772C2.53723 3.21395 2.38821 3.24707 2.27698 3.32721C2.17886 3.39789 2.10182 3.49393 2.0541 3.60505C2 3.73102 2 3.88368 2 4.18899L2 4.93334C2 5.3067 2 5.49339 2.07266 5.636C2.13658 5.76144 2.23856 5.86343 2.36401 5.92734C2.50661 6 2.6933 6 3.06667 6H12.9333C13.3067 6 13.4934 6 13.636 5.92734C13.7614 5.86343 13.8634 5.76144 13.9273 5.636C14 5.49339 14 5.3067 14 4.93334V4.18899C14 3.88368 14 3.73102 13.9459 3.60505C13.8982 3.49393 13.8211 3.39789 13.723 3.32721C13.6118 3.24707 13.4628 3.21395 13.1647 3.14772L8.23139 2.05142C8.14504 2.03223 8.10187 2.02264 8.05824 2.01881C8.01949 2.01542 7.98051 2.01542 7.94176 2.01881C7.89813 2.02264 7.85496 2.03223 7.76861 2.05142Z" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span class="fs--14 fw5 lh--20 col--grey-800 poppins">Bank</span>
+                            </div>
+                        </div>
+
+                        <!-- option-bottom -->
+                        <div class="flex justify-between items-center">
+                            <p data-payout-option-text class="fs--14 lh--20 col--grey-800 poppins">Pays in <span data-payout-option-text class="fs--14 lh--20 fw5 col--grey-800 poppins">CZK</span></p>
+                        
+                            <span data-payout-option-text class="fs--14 lh--20 col--grey-800 poppins">USD$3.45 fee</span>
+                        </div> 
+                    </div>
+                </label>
+
+                <!-- option -->
+                <label class="db relative pointer">
+                    <input type="radio" data-payout-option-radio name="payout-option" class="absolute o-0 w0 h0">
+                    <div data-payout-option-container class="flex flex-column gap--8 pad--16 br--2 bt bb br--col--mischka-gray bg--blur--10 overflow-hidden bg-white-50">
+                        <!-- option-top -->
+                        <div class="flex justify-between items-center">
+                            <span data-payout-option-text class="fs--18 lh--28 fw5 poppins col--grey-800">USDT - Ethereum(ERC20)</span>
+                            
+                            <div data-payout-method-type class="flex justify-center items-center gap--4 pad--y--2 pad--x--8 bg-white br--50">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M2.66675 7.33341L8.00008 8.66665L13.3334 7.33331M2.66675 7.33341L8.00008 1.33331M2.66675 7.33341L8.00008 6.00003M13.3334 7.33331L8.00008 1.33331M13.3334 7.33331L8.00008 6.00003M8.00008 1.33331V6.00003M3.66675 9.99998L8.00016 14.6666L12.3334 9.99998L8.00008 11L3.66675 9.99998Z" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span class="fs--14 fw5 lh--20 col--grey-800 poppins">Crypto</span>
+                            </div>
+                        </div>
+
+                        <!-- option-bottom -->
+                        <div class="flex justify-between items-center">
+                            <p data-payout-option-text class="fs--14 lh--20 col--grey-800 poppins">Pays in <span data-payout-option-text class="fs--14 lh--20 fw5 col--grey-800 poppins">USDT</span></p>
+                        
+                            <span data-payout-option-text class="fs--14 lh--20 col--grey-800 poppins">USD$3.45 fee</span>
+                        </div> 
+                    </div>
+                </label>
+            </div>
         </div>
     </body>
 </html>
