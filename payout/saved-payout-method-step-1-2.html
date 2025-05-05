@@ -89,6 +89,19 @@
                 transition: all 0s ease-in-out;
             }
 
+            [data-payout-settings-next-button]:hover,
+            [data-payout-settings-next-button]:hover::before{
+                background-color: black;
+            }
+
+            button[data-payout-settings-next-button]:not(:disabled):hover span{
+                color: #07F468;
+            }
+
+            [data-payout-settings-next-button]:hover svg path{
+                stroke: #07F468;
+            }
+
             @media (max-width: 1365px) and (min-width: 1010px){
                 .pad--bottom--16-responsive-tablet-landscape { padding-bottom: 1rem; }
             }
