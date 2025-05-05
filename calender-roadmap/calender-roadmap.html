@@ -218,6 +218,13 @@
                 border: .225rem solid #FCE40D;
             }
 
+            [data-timeline-label-show-on-mobile]{
+                display: none;
+            }
+            [data-timeline-label-hide-on-mobile]{
+                display: initial;
+            }
+
             @media (max-width: 1365px) and (min-width: 1010px){
                 [data-background-container]{
                     width: 100%;
@@ -499,6 +506,13 @@
                 [data-card-outer-wrapper-season-4] [data-card-modal] {
                     height: calc(112.8205128% + .85px);
                 }
+
+                [data-timeline-label-show-on-mobile]{
+                    display: unset;
+                }
+                [data-timeline-label-hide-on-mobile]{
+                    display: none;
+                }
             }
 
         </style>
@@ -560,27 +574,35 @@
                                         <!-- timeline-container -->
                                         <div data-timeline-container class="grid">
                                             <div data-timeline data-timeline-first class="relative flex flex-column">
-                                                <span class="fs--12 lh--18 fw5 col--brand-green">MAR 24 - MAR 31</span>
+                                                <span data-timeline-label-hide-on-mobile class="fs--12 lh--18 fw5 col--brand-green">MAR 24 - MAR 31</span>
+                                                <span data-timeline-label-show-on-mobile class="fs--12 lh--18 fw5 col--brand-green">MAR 24 - APR 31</span>
                                                 <span class="fs--12 lh--14 fw6 white">Bug Fixes<br>Internal Beta</span>
                                             </div>
                                             <div data-timeline class="relative flex flex-column">
-                                                <span class="fs--12 lh--18 fw5 col--brand-green">APR 1 - APR 4</span>
+                                                <span data-timeline-label-hide-on-mobile class="fs--12 lh--18 fw5 col--brand-green">APR 1 - APR 4</span>
+                                                <span data-timeline-label-show-on-mobile class="fs--12 lh--18 fw5 col--brand-green">MAY 1</span>
                                                 <span class="fs--12 lh--14 fw6 white">Bug Fixes<br>Public Beta</span>
                                             </div>
                                             <div data-timeline data-timeline-invisible class="relative dn">
         
                                             </div>
                                             <div data-timeline class="relative flex flex-column">
-                                                <span class="fs--12 lh--18 fw5 col--brand-green">APR</span>
-                                                <span class="fs--12 lh--14 fw6 white">Feed<br>Cache Endpoints</span>
+                                                <span data-timeline-label-hide-on-mobile class="fs--12 lh--18 fw5 col--brand-green">APR</span>
+                                                <span data-timeline-label-show-on-mobile class="fs--12 lh--18 fw5 col--brand-green">MAY</span>
+                                                <span data-timeline-label-hide-on-mobile class="fs--12 lh--14 fw6 white">Feed<br>Cache Endpoints</span>
+                                                <span data-timeline-label-show-on-mobile class="fs--12 lh--14 fw6 white">Feed<br>Speed</span>
                                             </div>
                                             <div data-timeline class="relative flex flex-column">
-                                                <span class="fs--12 lh--18 fw5 col--brand-green">MAY</span>
-                                                <span class="fs--12 lh--14 fw6 white">Private+Group Chat<br>Custom Request</span>
+                                                <span data-timeline-label-hide-on-mobile class="fs--12 lh--18 fw5 col--brand-green">MAY</span>
+                                                <span data-timeline-label-show-on-mobile class="fs--12 lh--18 fw5 col--brand-green">JUN</span>
+                                                <span data-timeline-label-hide-on-mobile class="fs--12 lh--14 fw6 white">Private+Group Chat<br>Custom Request</span>
+                                                <span data-timeline-label-show-on-mobile class="fs--12 lh--14 fw6 white">Chat<br>Custom Request</span>
                                             </div>
                                             <div data-timeline class="relative flex flex-column">
-                                                <span class="fs--12 lh--18 fw5 col--brand-green">JUN</span>
-                                                <span class="fs--12 lh--14 fw6 white">Video/Audio Call<br>Wish Tender</span>
+                                                <span data-timeline-label-hide-on-mobile class="fs--12 lh--18 fw5 col--brand-green">JUN</span>
+                                                <span data-timeline-label-show-on-mobile class="fs--12 lh--18 fw5 col--brand-green">JUL</span>
+                                                <span data-timeline-label-hide-on-mobile class="fs--12 lh--14 fw6 white">Video/Audio Call<br>Wish Tender</span>
+                                                <span data-timeline-label-show-on-mobile class="fs--12 lh--14 fw6 white">Call<br>Wish Tender</span>
                                             </div>
                                         </div>
                                     </div>
@@ -610,23 +632,28 @@
                                         <!-- timeline-container -->
                                         <div data-timeline-container class="grid">
                                             <div data-timeline data-timeline-first class="relative flex flex-column">
-                                                <span class="fs--12 lh--18 fw5 col--brand-green">JUL</span>
+                                                <span data-timeline-label-hide-on-mobile class="fs--12 lh--18 fw5 col--brand-green">JUL</span>
+                                                <span data-timeline-label-show-on-mobile class="fs--12 lh--18 fw5 col--brand-green">AUG</span>
                                                 <span class="fs--12 lh--14 fw6 white">Logistics API<br>Live Support</span>
                                             </div>
                                             <div data-timeline class="relative flex flex-column">
                                                 <span class="fs--12 lh--18 fw5 col--brand-green">AUG</span>
-                                                <span class="fs--12 lh--14 fw6 white">Camera Filter(AR)<br>Video Editing</span>
+                                                <span data-timeline-label-hide-on-mobile class="fs--12 lh--14 fw6 white">Camera Filter(AR)<br>Video Editing</span>
+                                                <span data-timeline-label-show-on-mobile class="fs--12 lh--14 fw6 white">Camera Filter<br>Video Editing</span>
                                             </div>
                                             <div data-timeline data-timeline-invisible class="relative dn">
         
                                             </div>
                                             <div data-timeline class="relative flex flex-column">
-                                                <span class="fs--12 lh--18 fw5 col--brand-green">AUG</span>
-                                                <span class="fs--12 lh--14 fw6 white">Auto Transcription<br>Captioning</span>
+                                                <span data-timeline-label-hide-on-mobile class="fs--12 lh--18 fw5 col--brand-green">AUG</span>
+                                                <span data-timeline-label-show-on-mobile class="fs--12 lh--18 fw5 col--brand-green">SEPT</span>
+                                                <span data-timeline-label-hide-on-mobile class="fs--12 lh--14 fw6 white">Auto Transcription<br>Captioning</span>
+                                                <span data-timeline-label-show-on-mobile class="fs--12 lh--14 fw6 white">Transcription<br>Captioning</span>
                                             </div>
                                             <div data-timeline class="relative flex flex-column">
                                                 <span class="fs--12 lh--18 fw5 col--brand-green">SEPT</span>
-                                                <span class="fs--12 lh--14 fw6 white">Video/Audio Call<br>with Lovense</span>
+                                                <span data-timeline-label-hide-on-mobile class="fs--12 lh--14 fw6 white">Video/Audio Call<br>with Lovense</span>
+                                                <span data-timeline-label-show-on-mobile class="fs--12 lh--14 fw6 white">Call with Lovense</span>
                                             </div>
                                             <div data-timeline class="relative flex flex-column">
                                                 <span class="fs--12 lh--18 fw5 col--brand-green">SEPT</span>
