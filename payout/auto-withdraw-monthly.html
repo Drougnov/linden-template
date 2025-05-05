@@ -35,6 +35,8 @@
                 overflow: auto;
                 overflow-x: hidden;
             }
+            /* tachyons */
+            .tw--auto { text-wrap: auto; }
 
             /* inputs */
             [data-auto-withdraw-input-wrapper]{
@@ -65,6 +67,27 @@
                 box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
             }
 
+            /* footer */
+            [data-payout-settings-save-button]::before{
+                position: absolute;
+                top: 0;
+                left: -0.625rem;
+                content: '';
+                display: block;
+                width: 2rem;
+                height: 100%;
+                background-color: black;
+                z-index: -1;
+                -webkit-transform: skew(163deg, 0) translateX(3px);
+                transform: skew(163deg, 0) translateX(3px);
+                -webkit-transition: all 0s ease-in-out;
+                transition: all 0s ease-in-out;
+            }
+
+            button[data-payout-settings-save-button]:not(:disabled):hover span{
+                color: var(--color-brand-green, #07F468);
+            }
+
             @media (max-width: 1009px) and (min-width: 768px){
                 [data-payout-settings-popup].slidein-right-popup:not([data-popup-noui]) .elm_qJBugX{
                     max-width: 29.1875rem;
@@ -78,6 +101,11 @@
 
                 [data-payout-settings-popup].slidein-right-popup:not([data-popup-noui]) .elm_qJBugX {
                     max-width: unset;
+                }
+
+                /* inputs */
+                [data-auto-withdraw-input-wrapper]{
+                    width: 100%;
                 }
 
                 /* payout-method-options  */
@@ -103,8 +131,8 @@
                    <div class="bg--blur--100 bg--col--athens-gray--90 elm_qJBugX flex flex-column w-100 sh--popup-1 no-full-width no-height">
                         <!-- popup contents -->
                         <div data-popup-contents-wrapper class="flex flex-column">
-                            <!-- header-section -->
-                            <div class="flex flex-column pad--top--16">
+                            <!-- header-section-desktop -->
+                            <div class="flex flex-column pad--top--16 display-none--responsive-mobile display-none--responsive-mobile-portrait">
                                 <!-- navigation-section -->
                                 <a href="#" class="flex items-center gap--4 pad--x--16">
                                     <div class="flex justify-center items-center pointer w1 h1">
@@ -126,13 +154,28 @@
                                 </div>
                             </div>
 
+                            <!-- header-section-mobile -->
+                            <div class="dn justify-between items-center gap--10 pad--y--8 pad--x--16 display-flex--responsive-mobile display-flex--responsive-mobile-portrait">
+                                <div class="flex items-center gap--8">
+                                    <div data-popup-header-title-icon class="flex justify-center items-center w--16 h--16">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                            <path d="M20.453 12.893C20.1752 15.5029 18.6964 17.9487 16.2494 19.3614C12.1839 21.7086 6.98539 20.3157 4.63818 16.2502L4.38818 15.8172M3.54613 11.107C3.82393 8.49711 5.30272 6.05138 7.74971 4.63862C11.8152 2.29141 17.0137 3.68434 19.3609 7.74983L19.6109 8.18285M3.49316 18.0661L4.22521 15.334L6.95727 16.0661M17.0424 7.93401L19.7744 8.66606L20.5065 5.93401" stroke="#344054" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <span class="fs--14 fw6 lh--20 col--oxford-blue poppins">Auto Withdraw Setting</span>
+                                </div>
+                                <span class="w--24 h--24 flex justify-center items-center pointer elm_UOkrrN">
+                                    <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/icons/close-btn.svg" alt="" class="w--24 h--24 filter--col--gull-gray">
+                                </span>
+                            </div>
+
                             <!-- main-section -->
-                            <div class="flex flex-column gap--24 pad--y--16 pad--x--24">
+                            <div class="flex flex-column gap--24 pad--y--16 pad--x--24 pad--x--16-responsive-tablet pad--x--8-responsive-mobile pad--x--8-responsive-mobile-portrait">
                                 <p class="fs--14 lh--20 poppins col--oxford-blue">Setup auto withdraw earnings to your selected payout method by month or by earning amounts.</p>
                             
                                 <!-- auto-withdraw-earnings by section -->
                                 <div class="flex flex-column gap--8">
-                                    <h3 class="fs--16 lh--24 fw5 poppins col--ebony--variation-2">Auto withdraw earnings to my selected payout method :</h3>
+                                    <h3 class="fs--16 lh--24 fw5 poppins col--ebony--variation-2 tw--auto">Auto withdraw earnings to my selected payout method :</h3>
                                     <!-- select-input-field -->
                                     <div data-auto-withdraw-input-wrapper class="h--40 flex items-center gap--6">
                                         <div data-auto-withdraw-select-input class="pad--x--12 br--2 br--bottom--left--right bg-white-50 relative flex items-center gap--8 w-100 h--40 pointer">
@@ -146,17 +189,17 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <p class="fs--14 lh--20 poppins col--oxford-blue">Automatic payout requests are processed on the 1st of each month, including earnings from the past 28 days. Fund arrival depends on the payout method you choose.</p>
+                                    <p class="fs--14 lh--20 poppins col--oxford-blue fs--12-responsive-mobile lh--18-responsive-mobile fs--12-responsive-mobile-portrait lh--18-responsive-mobile-portrait">Automatic payout requests are processed on the 1st of each month, including earnings from the past 28 days. Fund arrival depends on the payout method you choose.</p>
                                 </div>
 
                                 <!-- earning-target-section -->
                                 <div class="flex flex-column gap--8">
                                     <section class="flex justify-between items-center">
-                                        <h3 class="fs--16 lh--24 fw5 poppins col--ebony--variation-2">Earning Targets</h3>
-                                        <span class="fs--16 lh--24 i poppins col--pale-sky">Optional</span>
+                                        <h3 class="fs--16 lh--24 fw5 poppins col--ebony--variation-2 tw--auto">Earning Targets</h3>
+                                        <span class="fs--16 lh--24 i poppins col--pale-sky fs--12-responsive-mobile lh--18-responsive-mobile fs--12-responsive-mobile-portrait lh--18-responsive-mobile-portrait">Optional</span>
                                     </section>
 
-                                    <p class="fs--14 lh--20 poppins col--oxford-blue">We will not withdraw your money if your monthly earning does not reach your specified amount below.</p>
+                                    <p class="fs--14 lh--20 poppins col--oxford-blue fs--12-responsive-mobile lh--18-responsive-mobile fs--12-responsive-mobile-portrait lh--18-responsive-mobile-portrait">We will not withdraw your money if your monthly earning does not reach your specified amount below.</p>
                                 
                                     <div data-auto-withdraw-input-wrapper data-input-wrapper="" class="pad--x--12 br--2 br--bottom--left--right bb br--col--mischka-gray bg-white-50 sh--7 relative flex items-center w-100 h--40">
                                         <div class="relative w-100 flex items-center gap--10">
@@ -170,7 +213,7 @@
                                 <div class="flex flex-column gap--16">
                                     <span class="fs--16 lh--24 fw5 poppins col--ebony--variation-2">Payout Method</span>
 
-                                    <div data-payout-option-container class="flex items-center gap--8 pad--y--16 pad--left--16 pad--right--8 br--2 bg-white-50 bb br--col--mischka-gray">
+                                    <div data-payout-option-container class="flex items-center gap--8 pad--y--16 pad--left--16 pad--right--8 br--2 bg-white-50 bb br--col--mischka-gray pointer">
                                         <div class="flex flex-column gap--8 flex--max">
                                             <!-- option-top -->
                                             <div class="flex justify-between items-center">
@@ -210,6 +253,25 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+
+                        <!-- footer -->
+                        <div class="fixed bottom-0 right-0 w-100 flex items-center justify-between">
+                            <div class="flex items-center gap--4 pad--left--16">
+                                <span class="fs--14 lh--20 poppins col--ebony--variation-2">Next payout date:</span>
+                                <span class="fs--14 lh--20 fw5 poppins col--ebony--variation-2">Apr-03-2025</span>
+                            </div>
+
+                            <button data-payout-settings-save-button class="flex justify-center items-center gap--5 relative h--40 pad--x--8 bg-black hover--parent--child--col--brand-green">
+                                <div class="flex justify-center items-center gap--10">
+                                    <div class="w--24 h--24 flex justify-center items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                                            <path d="M21 10.0857V11.0057C20.9988 13.1621 20.3005 15.2604 19.0093 16.9875C17.7182 18.7147 15.9033 19.9782 13.8354 20.5896C11.7674 21.201 9.55726 21.1276 7.53447 20.3803C5.51168 19.633 3.78465 18.2518 2.61096 16.4428C1.43727 14.6338 0.879791 12.4938 1.02168 10.342C1.16356 8.19029 1.99721 6.14205 3.39828 4.5028C4.79935 2.86354 6.69279 1.72111 8.79619 1.24587C10.8996 0.770634 13.1003 0.988061 15.07 1.86572M21 3L11 13.01L8 10.01" stroke="#07F468" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <span class="poppins fs--18 lh--28 fw5 ttu col-brand-green">SAVE</span>
+                                </div>
+                             </button>
                         </div>
                    </div>
                 </div>
