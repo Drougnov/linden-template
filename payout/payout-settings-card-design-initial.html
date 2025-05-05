@@ -176,8 +176,20 @@
                 transition: all 0s ease-in-out;
             }
 
+            button[data-payout-settings-save-button]:hover{
+                background-color: var(--color-brand-green, #07F468);
+            }
+
+            button[data-payout-settings-save-button]:hover::before{
+                background-color: var(--color-brand-green, #07F468);
+            }
+
+            button[data-payout-settings-save-button]:not(:disabled):hover svg path{
+                stroke: black;
+            }
+
             button[data-payout-settings-save-button]:not(:disabled):hover span{
-                color: var(--color-brand-green, #07F468);
+                color: black;
             }
 
             @media (max-width: 1365px) and (min-width: 1010px){

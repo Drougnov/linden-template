@@ -197,7 +197,7 @@
                                     <div data-auto-withdraw-input-wrapper class="h--40 flex items-center gap--6">
                                         <div data-auto-withdraw-select-input class="pad--x--12 br--2 br--bottom--left--right bg-white-50 relative flex items-center gap--8 w-100 h--40 pointer">
                                             <div class="flex items-center w-100">
-                                                <span class="fs--16 lh--24 poppins col--black-strong">Every Month</span>
+                                                <span class="fs--16 lh--24 poppins col--black-strong">By earning targets</span>
                                             </div>
                                             <div class="flex justify-center items-center pointer w1 h1">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -206,22 +206,20 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <p class="fs--14 lh--20 poppins col--oxford-blue fs--12-responsive-mobile lh--18-responsive-mobile fs--12-responsive-mobile-portrait lh--18-responsive-mobile-portrait">Automatic payout requests are processed on the 1st of each month, including earnings from the past 28 days. Fund arrival depends on the payout method you choose.</p>
                                 </div>
 
                                 <!-- earning-target-section -->
                                 <div class="flex flex-column gap--8">
                                     <section class="flex justify-between items-center">
                                         <h3 class="fs--16 lh--24 fw5 poppins col--ebony--variation-2 tw--auto">Earning Targets</h3>
-                                        <span class="fs--16 lh--24 i poppins col--pale-sky fs--12-responsive-mobile lh--18-responsive-mobile fs--12-responsive-mobile-portrait lh--18-responsive-mobile-portrait">Optional</span>
                                     </section>
 
-                                    <p class="fs--14 lh--20 poppins col--oxford-blue fs--12-responsive-mobile lh--18-responsive-mobile fs--12-responsive-mobile-portrait lh--18-responsive-mobile-portrait">We will not withdraw your money if your monthly earning does not reach your specified amount below.</p>
+                                    <p class="fs--14 lh--20 poppins col--oxford-blue fs--12-responsive-mobile lh--18-responsive-mobile fs--12-responsive-mobile-portrait lh--18-responsive-mobile-portrait">Your earnings will be paid out to your selected method every time your accumulated earnings reach the specified amount.</p>
                                 
                                     <div data-auto-withdraw-input-wrapper data-input-wrapper="" class="pad--x--12 br--2 br--bottom--left--right bb br--col--mischka-gray bg-white-50 sh--7 relative flex items-center w-100 h--40">
                                         <div class="relative w-100 flex items-center gap--10">
                                            <span data-input-label-wrapper="" class="fs--16 lh--24 col--oxford-blue poppins">USD$</span>
-                                           <input type="number" name="pay-per-view-price" placeholder="Enter Amount" class="w-100 bn flex-auto fs--16 lh--24 col--ebony--variation-2 poppins">
+                                           <input type="number" name="pay-per-view-price" placeholder="Enter Amount" value="100.00" class="w-100 bn flex-auto fs--16 lh--24 col--ebony--variation-2 poppins">
                                         </div>
                                      </div>
                                 </div>
@@ -273,10 +271,11 @@
                         </div>
 
                         <!-- footer -->
-                        <div class="fixed bottom-0 right-0 w-100 flex items-center justify-between">
-                            <div class="flex items-center gap--4 pad--left--16">
-                                <span class="fs--14 lh--20 poppins col--ebony--variation-2">Next payout date:</span>
-                                <span class="fs--14 lh--20 fw5 poppins col--ebony--variation-2">Apr-03-2025</span>
+                        <div class="fixed bottom-0 right-0 w-100 flex items-center justify-between gap--16">
+                            <div class="flex items-start gap--4 pad--left--16 flex-auto">
+                                <span class="fs--14 lh--20 poppins col--ebony--variation-2 nowrap display--none-responsive-mobile-portrait">Next payout date:</span>
+                                <span class="fs--14 lh--20 fw5 poppins col--ebony--variation-2 truncate display--none-responsive-mobile display--none-responsive-mobile-portrait">When earning reaches USD$ 100.00.</span>
+                                <span class="dn fs--14 lh--20 fw5 poppins col--ebony--variation-2 truncate display-flex--responsive-mobile display--none-responsive-mobile-portrait">Apr-03-2025</span>
                             </div>
 
                             <button data-payout-settings-save-button class="flex justify-center items-center gap--5 relative h--40 pad--x--8 bg-black hover--parent--child--col--brand-green">

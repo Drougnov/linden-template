@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="max-image-preview:large">
+        <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="dns-prefetch" href="//staging.fansocial.app">
+        <link rel="dns-prefetch" href="//fonts.googleapis.com">
+        <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+        <title>Payout settings popup</title>
+        <link rel="stylesheet" id="google-fonts-css" href="https://fonts.googleapis.com/css2?family=Poppins%3Awght%40300%3B400%3B500%3B600%3B700%3B800%3B900&amp;display=swap&amp;ver=1.0.0" media="">
+        <link rel="stylesheet" id="theme-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/theme.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="final-main-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/main.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="components-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/css/components.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="tachyonsStylesheet-css" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.11.1/tachyons.min.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="popup-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/css/dev/popup.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="pageElements-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/FINAL/css/pageElements.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="finalCustomTachyonsStylesheet-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/customTachyons.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="tachyonsV2-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/tachyons-v2.css?ver=1.0.0" media="">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css?ver=1.0.0">
+        <!-- custom styles for this template -->
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+
+            [data-payout-settings-popup].slidein-right-popup:not([data-popup-noui]) .elm_qJBugX{
+                max-width: 45rem;
+            }
+
+            [data-popup-contents-wrapper]{
+                flex: 1 1 0;
+                overflow: auto;
+                overflow-x: hidden;
+            }
+            /* tachyons */
+            .tw--auto { text-wrap: auto; }
+
+            /* inputs */
+            [data-auto-withdraw-input-wrapper]{
+                width: 20rem;
+            }
+
+            /* text-input */
+            [data-payout-form-text-input]::placeholder{
+                font-family: Poppins;
+                font-weight: 400;
+                font-size: 1rem;
+                line-height: 1.5rem;
+                letter-spacing: 0;
+                color: var(--color-pale-sky, #667085);
+            }
+
+            /* select-input */
+            [data-auto-withdraw-select-input]{
+                border-bottom: 2px solid #0C111D;
+            }
+
+            /* payout-method-options */
+            [data-payout-option-container]{
+                border-width: 0.09375rem;
+            }
+
+            [data-payout-method-type]{
+                box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+            }
+
+            /* select dropdown */
+            [data-select-input]{
+                background-color: rgba(255, 255, 255, 0.75);
+                border-bottom: 1.5px solid #D0D5DD;
+            }
+
+            /* payout-method-options */
+            [data-payout-option-container]{
+                border-width: 0.09375rem;
+            }
+
+            [data-payout-method-type]{
+                box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+            }
+
+            input[data-payout-option-radio]:focus ~ div,
+            input[data-payout-option-radio]:active ~ div{
+                border-color: var(--color-mischka-gray,#D0D5DD);
+            }
+
+            [data-payout-option-radio]:checked + [data-payout-option-container]{
+                background-color: rgba(0, 0, 0, 0.90);
+                border: 1.5px solid #FFFFFF;
+            }
+
+            [data-payout-option-radio]:checked + [data-payout-option-container] [data-payout-option-text]{
+                color: #FCFCFD;
+            }
+
+            /* footer */
+            [data-payout-settings-save-button]::before{
+                position: absolute;
+                top: 0;
+                left: -0.625rem;
+                content: '';
+                display: block;
+                width: 2rem;
+                height: 100%;
+                background-color: black;
+                z-index: -1;
+                -webkit-transform: skew(163deg, 0) translateX(3px);
+                transform: skew(163deg, 0) translateX(3px);
+                -webkit-transition: all 0s ease-in-out;
+                transition: all 0s ease-in-out;
+            }
+
+            button[data-payout-settings-save-button]:hover{
+                background-color: var(--color-brand-green, #07F468);
+            }
+
+            button[data-payout-settings-save-button]:hover::before{
+                background-color: var(--color-brand-green, #07F468);
+            }
+
+            button[data-payout-settings-save-button]:not(:disabled):hover svg path{
+                stroke: black;
+            }
+
+            button[data-payout-settings-save-button]:not(:disabled):hover span{
+                color: black;
+            }
+
+            @media (max-width: 1009px) and (min-width: 768px){
+                [data-payout-settings-popup].slidein-right-popup:not([data-popup-noui]) .elm_qJBugX{
+                    max-width: 29.1875rem;
+                }
+
+                /* inputs */
+                [data-auto-withdraw-input-wrapper]{
+                    width: 100%;
+                }
+            }
+
+            @media (max-width: 767px){
+                [data-payout-settings-popup].elm_UoRWYY:not([data-popup-noui]) .elm_yNwqwJ:not(.no-height){
+                    height: 100vh;
+                }
+
+                [data-payout-settings-popup].slidein-right-popup:not([data-popup-noui]) .elm_qJBugX {
+                    max-width: unset;
+                }
+
+                /* inputs */
+                [data-auto-withdraw-input-wrapper]{
+                    width: 100%;
+                }
+
+                /* payout-method-options  */
+                [data-payout-option-container]{
+                    padding-top: 0.75rem;
+                    padding-bottom: 0.75rem;
+                }
+            }
+        </style>
+        <link rel="stylesheet" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-tablet.css" media="screen and (min-width: 768px) and (max-width: 1365px)">
+        <link rel="stylesheet" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-tablet-landscape.css" media="screen and (min-width: 768px) and (max-width: 1010px)">
+        <link rel="stylesheet" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-mobile.css" media="screen and (min-width: 480px) and (max-width: 767px)">
+        <link rel="stylesheet" id="dashboardStylesMobilePortrait-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-mobile-portrait.css" media="screen and (max-width: 479px)">
+    </head>
+    <body>
+        <div class="min-vh-100" style="background-color: #444;">
+
+            <!-- template starts from here -->
+            <div data-payout-settings-popup data-popup="" data-popup-type="slidein-right-popup" data-popup-overlay-color="rgba(0,0,0,0.65)" data-popup-max-width="720px" class="elm_UoRWYY items-center justify-center fixed dn top-0 left-0 w-100 h-100 z--99999 overflow-auto slidein-right-popup flex opened" style="background-color: rgba(0, 0, 0, 0.65);">
+                <!-- inner wrapper -->
+                <div data-popup-inner="" class="elm_yNwqwJ top-0 w-100 flex items-center justify-center absolute">
+                   <!-- container -->
+                   <div class="bg--blur--100 bg--col--athens-gray--90 elm_qJBugX flex flex-column w-100 sh--popup-1 no-full-width no-height relative">
+                        <!-- popup contents -->
+                        <div data-popup-contents-wrapper class="flex flex-column">
+                            <!-- header-section-desktop -->
+                            <div class="flex flex-column pad--top--16 display-none--responsive-mobile display-none--responsive-mobile-portrait">
+                                <!-- navigation-section -->
+                                <a href="#" class="flex items-center gap--4 pad--x--16">
+                                    <div class="flex justify-center items-center pointer w1 h1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                            <path d="M10 12L6 8L10 4" stroke="#667085" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+
+                                    <span class="fs--12 lh--18 fw5 poppins col--pale-sky">Back</span>
+                                </a>
+
+                                <div class="pad--16">
+                                    <div class="flex items-center gap--8">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path d="M20.453 12.893C20.1752 15.5029 18.6964 17.9487 16.2494 19.3614C12.1839 21.7086 6.98539 20.3157 4.63818 16.2502L4.38818 15.8172M3.54613 11.107C3.82393 8.49711 5.30272 6.05138 7.74971 4.63862C11.8152 2.29141 17.0137 3.68434 19.3609 7.74983L19.6109 8.18285M3.49316 18.0661L4.22521 15.334L6.95727 16.0661M17.0424 7.93401L19.7744 8.66606L20.5065 5.93401" stroke="#344054" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        <h3 class="fs--14 lh--20 fw6 poppins col--oxford-blue">Auto Withdraw Settings</h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- header-section-mobile -->
+                            <div class="dn justify-between items-center gap--10 pad--y--8 pad--x--16 display-flex--responsive-mobile display-flex--responsive-mobile-portrait">
+                                <div class="flex items-center gap--8">
+                                    <div data-popup-header-title-icon class="flex justify-center items-center w--16 h--16">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                            <path d="M20.453 12.893C20.1752 15.5029 18.6964 17.9487 16.2494 19.3614C12.1839 21.7086 6.98539 20.3157 4.63818 16.2502L4.38818 15.8172M3.54613 11.107C3.82393 8.49711 5.30272 6.05138 7.74971 4.63862C11.8152 2.29141 17.0137 3.68434 19.3609 7.74983L19.6109 8.18285M3.49316 18.0661L4.22521 15.334L6.95727 16.0661M17.0424 7.93401L19.7744 8.66606L20.5065 5.93401" stroke="#344054" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <span class="fs--14 fw6 lh--20 col--oxford-blue poppins">Auto Withdraw Setting</span>
+                                </div>
+                                <span class="w--24 h--24 flex justify-center items-center pointer elm_UOkrrN">
+                                    <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/icons/close-btn.svg" alt="" class="w--24 h--24 filter--col--gull-gray">
+                                </span>
+                            </div>
+
+                            <!-- main-section -->
+                            <div class="flex flex-column gap--24 pad--top--16 pad--bottom--40 pad--x--24 pad--x--16-responsive-tablet pad--x--8-responsive-mobile pad--x--8-responsive-mobile-portrait relative">
+                                <p class="fs--14 lh--20 poppins col--oxford-blue">Setup auto withdraw earnings to your selected payout method by month or by earning amounts.</p>
+                            
+                                <!-- auto-withdraw-earnings by section -->
+                                <div class="flex flex-column gap--8">
+                                    <h3 class="fs--16 lh--24 fw5 poppins col--ebony--variation-2 tw--auto">Auto withdraw earnings to my selected payout method :</h3>
+                                    <!-- select-input-field -->
+                                    <div data-auto-withdraw-input-wrapper class="h--40 flex items-center gap--6">
+                                        <div data-auto-withdraw-select-input class="pad--x--12 br--2 br--bottom--left--right bg-white-50 relative flex items-center gap--8 w-100 h--40 pointer">
+                                            <div class="flex items-center w-100">
+                                                <span class="fs--16 lh--24 poppins col--black-strong">By earning targets</span>
+                                            </div>
+                                            <div class="flex justify-center items-center pointer w1 h1">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                    <path d="M8.86615 10.9C8.48125 11.5667 7.519 11.5667 7.1341 10.9L3.78547 5.10002C3.40057 4.43336 3.8817 3.60002 4.6515 3.60002H11.3488C12.1186 3.60002 12.5997 4.43336 12.2148 5.10002L8.86615 10.9Z" fill="#98A2B3"/>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- earning-target-section -->
+                                <div class="flex flex-column gap--8">
+                                    <section class="flex justify-between items-center">
+                                        <h3 class="fs--16 lh--24 fw5 poppins col--ebony--variation-2 tw--auto">Earning Targets</h3>
+                                    </section>
+
+                                    <p class="fs--14 lh--20 poppins col--oxford-blue fs--12-responsive-mobile lh--18-responsive-mobile fs--12-responsive-mobile-portrait lh--18-responsive-mobile-portrait">Your earnings will be paid out to your selected method every time your accumulated earnings reach the specified amount.</p>
+                                
+                                    <div data-auto-withdraw-input-wrapper data-input-wrapper="" class="pad--x--12 br--2 br--bottom--left--right bb br--col--mischka-gray bg-white-50 sh--7 relative flex items-center w-100 h--40">
+                                        <div class="relative w-100 flex items-center gap--10">
+                                           <span data-input-label-wrapper="" class="fs--16 lh--24 col--oxford-blue poppins">USD$</span>
+                                           <input type="number" name="pay-per-view-price" placeholder="Enter Amount" value="100.00" class="w-100 bn flex-auto fs--16 lh--24 col--ebony--variation-2 poppins">
+                                        </div>
+                                     </div>
+                                </div>
+
+                                <!-- payout-method-section -->
+                                <div class="flex flex-column gap--16">
+                                    <span class="fs--16 lh--24 fw5 poppins col--ebony--variation-2">Payout Method</span>
+
+                                    <!-- add-new-section -->
+                                    <div data-payout-option-container class="flex items-center gap--8 pad--y--16 pad--x--12 br--2 bg-white-50 bb br--col--mischka-gray pointer">
+                                        <div class="flex items-center gap--8 flex--max">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                <path d="M10 6.66667V13.3333M6.66667 10H13.3333M6.5 17.5H13.5C14.9001 17.5 15.6002 17.5 16.135 17.2275C16.6054 16.9878 16.9878 16.6054 17.2275 16.135C17.5 15.6002 17.5 14.9001 17.5 13.5V6.5C17.5 5.09987 17.5 4.3998 17.2275 3.86502C16.9878 3.39462 16.6054 3.01217 16.135 2.77248C15.6002 2.5 14.9001 2.5 13.5 2.5H6.5C5.09987 2.5 4.3998 2.5 3.86502 2.77248C3.39462 3.01217 3.01217 3.39462 2.77248 3.86502C2.5 4.3998 2.5 5.09987 2.5 6.5V13.5C2.5 14.9001 2.5 15.6002 2.77248 16.135C3.01217 16.6054 3.39462 16.9878 3.86502 17.2275C4.3998 17.5 5.09987 17.5 6.5 17.5Z" stroke="#0C111D" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                            <span class="fs--18 lh--28 fw6 poppins col--black-strong">Add New...</span>
+                                        </div>
+
+                                        <div class="flex justify-center items-center pointer w1 h1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                <path d="M8.86615 10.9C8.48125 11.5667 7.519 11.5667 7.1341 10.9L3.78547 5.10002C3.40057 4.43336 3.8817 3.60002 4.6515 3.60002H11.3488C12.1186 3.60002 12.5997 4.43336 12.2148 5.10002L8.86615 10.9Z" fill="#98A2B3"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex flex-column gap--24">
+                                        <!-- dropdown-section -->
+                                        <div class="flex flex-column gap--16">
+                                            <p class="fs--16 fw5 lh--24 col--oxford-blue poppins">Where would you liked to send money to?</p>
+
+                                            <!-- Dummy Select wrapper -->
+                                            <div class="flex justify-between items-center gap--8 pad--16" data-select-input>
+                                                <!-- select input texts -->
+                                                <div class="flex items-center gap--8 h--24 flex-grow-1">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                        <g clip-path="url(#clip0_16665_15265)">
+                                                            <path d="M1.66663 10H18.3333M1.66663 10C1.66663 14.6024 5.39759 18.3333 9.99996 18.3333M1.66663 10C1.66663 5.39763 5.39759 1.66667 9.99996 1.66667M18.3333 10C18.3333 14.6024 14.6023 18.3333 9.99996 18.3333M18.3333 10C18.3333 5.39763 14.6023 1.66667 9.99996 1.66667M9.99996 1.66667C12.0844 3.94863 13.2689 6.91003 13.3333 10C13.2689 13.09 12.0844 16.0514 9.99996 18.3333M9.99996 1.66667C7.91556 3.94863 6.731 6.91003 6.66663 10C6.731 13.09 7.91556 16.0514 9.99996 18.3333" stroke="#98A2B3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        </g>
+                                                        <defs>
+                                                            <clipPath id="clip0_16665_15265">
+                                                                <rect width="20" height="20" fill="white"/>
+                                                            </clipPath>
+                                                        </defs>
+                                                    </svg>
+                                                    <!-- <span class="fs--16 lh--24 poppins col--pale-sky">Select country</span> -->
+                                                    <span class="fs--16 lh--24 fw5 poppins col--oxford-blue">USA</span>
+                                                </div>
+
+                                                <!-- dropdown icon -->
+                                                <div class="flex justify-center items-center w--20 h--20">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                        <path d="M5 7.5L10 12.5L15 7.5" stroke="#98A2B3" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- available-options section -->
+                                        <div class="flex flex-column gap--16">
+                                            <p class="fs--18 lh--28 fw5 poppins col--ebony--variation-2 fs--16--responsive-mobile lh--24--responsive-mobile fs--16--responsive-mobile-portrait lh--24--responsive-mobile-portrait">Options available for your selected country:</p>
+
+                                            <!-- options-wrapper -->
+                                            <div class="flex flex-column gap--8">
+                                                <!-- option -->
+                                                <label class="db relative pointer">
+                                                    <input type="radio" data-payout-option-radio name="payout-option" class="absolute o-0 w0 h0" checked>
+                                                    <div data-payout-option-container class="flex flex-column gap--8 pad--16 br--2 ba br--col--mischka-gray bg--blur--10 overflow-hidden">
+                                                        <!-- option-top -->
+                                                        <div class="flex justify-between items-center">
+                                                            <span data-payout-option-text class="fs--18 lh--28 fw5 poppins col--grey-800">Bank Deposit</span>
+                                                            
+                                                            <div data-payout-method-type class="flex justify-center items-center gap--4 pad--y--2 pad--x--8 bg-white br--50">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                                    <path d="M3.33333 6V11.3333M6.33333 6V11.3333M9.66667 6V11.3333M12.6667 6V11.3333M2 12.4L2 12.9333C2 13.3067 2 13.4934 2.07266 13.636C2.13658 13.7614 2.23856 13.8634 2.36401 13.9273C2.50661 14 2.6933 14 3.06667 14H12.9333C13.3067 14 13.4934 14 13.636 13.9273C13.7614 13.8634 13.8634 13.7614 13.9273 13.636C14 13.4934 14 13.3067 14 12.9333V12.4C14 12.0266 14 11.84 13.9273 11.6973C13.8634 11.5719 13.7614 11.4699 13.636 11.406C13.4934 11.3333 13.3067 11.3333 12.9333 11.3333H3.06667C2.6933 11.3333 2.50661 11.3333 2.36401 11.406C2.23857 11.4699 2.13658 11.5719 2.07266 11.6973C2 11.84 2 12.0266 2 12.4ZM7.76861 2.05142L2.83527 3.14772C2.53723 3.21395 2.38821 3.24707 2.27698 3.32721C2.17886 3.39789 2.10182 3.49393 2.0541 3.60505C2 3.73102 2 3.88368 2 4.18899L2 4.93334C2 5.3067 2 5.49339 2.07266 5.636C2.13658 5.76144 2.23856 5.86343 2.36401 5.92734C2.50661 6 2.6933 6 3.06667 6H12.9333C13.3067 6 13.4934 6 13.636 5.92734C13.7614 5.86343 13.8634 5.76144 13.9273 5.636C14 5.49339 14 5.3067 14 4.93334V4.18899C14 3.88368 14 3.73102 13.9459 3.60505C13.8982 3.49393 13.8211 3.39789 13.723 3.32721C13.6118 3.24707 13.4628 3.21395 13.1647 3.14772L8.23139 2.05142C8.14504 2.03223 8.10187 2.02264 8.05824 2.01881C8.01949 2.01542 7.98051 2.01542 7.94176 2.01881C7.89813 2.02264 7.85496 2.03223 7.76861 2.05142Z" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                </svg>
+                                                                <span class="fs--14 fw5 lh--20 col--grey-800 poppins">Bank</span>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- option-bottom -->
+                                                        <div class="flex justify-between items-center">
+                                                            <p data-payout-option-text class="fs--14 lh--20 col--grey-800 poppins">Pays in <span data-payout-option-text class="fs--14 lh--20 fw5 col--grey-800 poppins">EUR</span></p>
+                                                        
+                                                            <span data-payout-option-text class="fs--14 lh--20 col--grey-800 poppins">USD$3.45 fee</span>
+                                                        </div> 
+                                                    </div>
+                                                </label>
+
+                                                <!-- option -->
+                                                <label class="db relative pointer">
+                                                    <input type="radio" data-payout-option-radio name="payout-option" class="absolute o-0 w0 h0">
+                                                    <div data-payout-option-container class="flex flex-column gap--8 pad--16 br--2 ba br--col--mischka-gray bg--blur--10 overflow-hidden">
+                                                        <!-- option-top -->
+                                                        <div class="flex justify-between items-center">
+                                                            <span data-payout-option-text class="fs--18 lh--28 fw5 poppins col--grey-800">Bank Deposit</span>
+                                                            
+                                                            <div data-payout-method-type class="flex justify-center items-center gap--4 pad--y--2 pad--x--8 bg-white br--50">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                                    <path d="M3.33333 6V11.3333M6.33333 6V11.3333M9.66667 6V11.3333M12.6667 6V11.3333M2 12.4L2 12.9333C2 13.3067 2 13.4934 2.07266 13.636C2.13658 13.7614 2.23856 13.8634 2.36401 13.9273C2.50661 14 2.6933 14 3.06667 14H12.9333C13.3067 14 13.4934 14 13.636 13.9273C13.7614 13.8634 13.8634 13.7614 13.9273 13.636C14 13.4934 14 13.3067 14 12.9333V12.4C14 12.0266 14 11.84 13.9273 11.6973C13.8634 11.5719 13.7614 11.4699 13.636 11.406C13.4934 11.3333 13.3067 11.3333 12.9333 11.3333H3.06667C2.6933 11.3333 2.50661 11.3333 2.36401 11.406C2.23857 11.4699 2.13658 11.5719 2.07266 11.6973C2 11.84 2 12.0266 2 12.4ZM7.76861 2.05142L2.83527 3.14772C2.53723 3.21395 2.38821 3.24707 2.27698 3.32721C2.17886 3.39789 2.10182 3.49393 2.0541 3.60505C2 3.73102 2 3.88368 2 4.18899L2 4.93334C2 5.3067 2 5.49339 2.07266 5.636C2.13658 5.76144 2.23856 5.86343 2.36401 5.92734C2.50661 6 2.6933 6 3.06667 6H12.9333C13.3067 6 13.4934 6 13.636 5.92734C13.7614 5.86343 13.8634 5.76144 13.9273 5.636C14 5.49339 14 5.3067 14 4.93334V4.18899C14 3.88368 14 3.73102 13.9459 3.60505C13.8982 3.49393 13.8211 3.39789 13.723 3.32721C13.6118 3.24707 13.4628 3.21395 13.1647 3.14772L8.23139 2.05142C8.14504 2.03223 8.10187 2.02264 8.05824 2.01881C8.01949 2.01542 7.98051 2.01542 7.94176 2.01881C7.89813 2.02264 7.85496 2.03223 7.76861 2.05142Z" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                </svg>
+                                                                <span class="fs--14 fw5 lh--20 col--grey-800 poppins">Bank</span>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- option-bottom -->
+                                                        <div class="flex justify-between items-center">
+                                                            <p data-payout-option-text class="fs--14 lh--20 col--grey-800 poppins">Pays in <span data-payout-option-text class="fs--14 lh--20 fw5 col--grey-800 poppins">USD</span></p>
+                                                        
+                                                            <span data-payout-option-text class="fs--14 lh--20 col--grey-800 poppins">USD$3.45 fee</span>
+                                                        </div> 
+                                                    </div>
+                                                </label>
+
+                                                <!-- option -->
+                                                <label class="db relative pointer">
+                                                    <input type="radio" data-payout-option-radio name="payout-option" class="absolute o-0 w0 h0">
+                                                    <div data-payout-option-container class="flex flex-column gap--8 pad--16 br--2 ba br--col--mischka-gray bg--blur--10 overflow-hidden">
+                                                        <!-- option-top -->
+                                                        <div class="flex justify-between items-center">
+                                                            <span data-payout-option-text class="fs--18 lh--28 fw5 poppins col--grey-800">Bank Wire</span>
+                                                            
+                                                            <div data-payout-method-type class="flex justify-center items-center gap--4 pad--y--2 pad--x--8 bg-white br--50">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                                    <path d="M3.33333 6V11.3333M6.33333 6V11.3333M9.66667 6V11.3333M12.6667 6V11.3333M2 12.4L2 12.9333C2 13.3067 2 13.4934 2.07266 13.636C2.13658 13.7614 2.23856 13.8634 2.36401 13.9273C2.50661 14 2.6933 14 3.06667 14H12.9333C13.3067 14 13.4934 14 13.636 13.9273C13.7614 13.8634 13.8634 13.7614 13.9273 13.636C14 13.4934 14 13.3067 14 12.9333V12.4C14 12.0266 14 11.84 13.9273 11.6973C13.8634 11.5719 13.7614 11.4699 13.636 11.406C13.4934 11.3333 13.3067 11.3333 12.9333 11.3333H3.06667C2.6933 11.3333 2.50661 11.3333 2.36401 11.406C2.23857 11.4699 2.13658 11.5719 2.07266 11.6973C2 11.84 2 12.0266 2 12.4ZM7.76861 2.05142L2.83527 3.14772C2.53723 3.21395 2.38821 3.24707 2.27698 3.32721C2.17886 3.39789 2.10182 3.49393 2.0541 3.60505C2 3.73102 2 3.88368 2 4.18899L2 4.93334C2 5.3067 2 5.49339 2.07266 5.636C2.13658 5.76144 2.23856 5.86343 2.36401 5.92734C2.50661 6 2.6933 6 3.06667 6H12.9333C13.3067 6 13.4934 6 13.636 5.92734C13.7614 5.86343 13.8634 5.76144 13.9273 5.636C14 5.49339 14 5.3067 14 4.93334V4.18899C14 3.88368 14 3.73102 13.9459 3.60505C13.8982 3.49393 13.8211 3.39789 13.723 3.32721C13.6118 3.24707 13.4628 3.21395 13.1647 3.14772L8.23139 2.05142C8.14504 2.03223 8.10187 2.02264 8.05824 2.01881C8.01949 2.01542 7.98051 2.01542 7.94176 2.01881C7.89813 2.02264 7.85496 2.03223 7.76861 2.05142Z" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                </svg>
+                                                                <span class="fs--14 fw5 lh--20 col--grey-800 poppins">Bank</span>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- option-bottom -->
+                                                        <div class="flex justify-between items-center">
+                                                            <p data-payout-option-text class="fs--14 lh--20 col--grey-800 poppins">Pays in <span data-payout-option-text class="fs--14 lh--20 fw5 col--grey-800 poppins">USD</span></p>
+                                                        
+                                                            <span data-payout-option-text class="fs--14 lh--20 col--grey-800 poppins">USD$3.45 fee</span>
+                                                        </div> 
+                                                    </div>
+                                                </label>
+
+                                                <!-- option -->
+                                                <label class="db relative pointer">
+                                                    <input type="radio" data-payout-option-radio name="payout-option" class="absolute o-0 w0 h0">
+                                                    <div data-payout-option-container class="flex flex-column gap--8 pad--16 br--2 ba br--col--mischka-gray bg--blur--10 overflow-hidden">
+                                                        <!-- option-top -->
+                                                        <div class="flex justify-between items-center">
+                                                            <span data-payout-option-text class="fs--18 lh--28 fw5 poppins col--grey-800">Bank Wire</span>
+                                                            
+                                                            <div data-payout-method-type class="flex justify-center items-center gap--4 pad--y--2 pad--x--8 bg-white br--50">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                                    <path d="M3.33333 6V11.3333M6.33333 6V11.3333M9.66667 6V11.3333M12.6667 6V11.3333M2 12.4L2 12.9333C2 13.3067 2 13.4934 2.07266 13.636C2.13658 13.7614 2.23856 13.8634 2.36401 13.9273C2.50661 14 2.6933 14 3.06667 14H12.9333C13.3067 14 13.4934 14 13.636 13.9273C13.7614 13.8634 13.8634 13.7614 13.9273 13.636C14 13.4934 14 13.3067 14 12.9333V12.4C14 12.0266 14 11.84 13.9273 11.6973C13.8634 11.5719 13.7614 11.4699 13.636 11.406C13.4934 11.3333 13.3067 11.3333 12.9333 11.3333H3.06667C2.6933 11.3333 2.50661 11.3333 2.36401 11.406C2.23857 11.4699 2.13658 11.5719 2.07266 11.6973C2 11.84 2 12.0266 2 12.4ZM7.76861 2.05142L2.83527 3.14772C2.53723 3.21395 2.38821 3.24707 2.27698 3.32721C2.17886 3.39789 2.10182 3.49393 2.0541 3.60505C2 3.73102 2 3.88368 2 4.18899L2 4.93334C2 5.3067 2 5.49339 2.07266 5.636C2.13658 5.76144 2.23856 5.86343 2.36401 5.92734C2.50661 6 2.6933 6 3.06667 6H12.9333C13.3067 6 13.4934 6 13.636 5.92734C13.7614 5.86343 13.8634 5.76144 13.9273 5.636C14 5.49339 14 5.3067 14 4.93334V4.18899C14 3.88368 14 3.73102 13.9459 3.60505C13.8982 3.49393 13.8211 3.39789 13.723 3.32721C13.6118 3.24707 13.4628 3.21395 13.1647 3.14772L8.23139 2.05142C8.14504 2.03223 8.10187 2.02264 8.05824 2.01881C8.01949 2.01542 7.98051 2.01542 7.94176 2.01881C7.89813 2.02264 7.85496 2.03223 7.76861 2.05142Z" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                </svg>
+                                                                <span class="fs--14 fw5 lh--20 col--grey-800 poppins">Bank</span>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- option-bottom -->
+                                                        <div class="flex justify-between items-center">
+                                                            <p data-payout-option-text class="fs--14 lh--20 col--grey-800 poppins">Pays in <span data-payout-option-text class="fs--14 lh--20 fw5 col--grey-800 poppins">CZK</span></p>
+                                                        
+                                                            <span data-payout-option-text class="fs--14 lh--20 col--grey-800 poppins">USD$3.45 fee</span>
+                                                        </div> 
+                                                    </div>
+                                                </label>
+
+                                                <!-- option -->
+                                                <label class="db relative pointer">
+                                                    <input type="radio" data-payout-option-radio name="payout-option" class="absolute o-0 w0 h0">
+                                                    <div data-payout-option-container class="flex flex-column gap--8 pad--16 br--2 ba br--col--mischka-gray bg--blur--10 overflow-hidden">
+                                                        <!-- option-top -->
+                                                        <div class="flex justify-between items-center">
+                                                            <span data-payout-option-text class="fs--18 lh--28 fw5 poppins col--grey-800">USDT - Ethereum(ERC20)</span>
+                                                            
+                                                            <div data-payout-method-type class="flex justify-center items-center gap--4 pad--y--2 pad--x--8 bg-white br--50">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                                    <path d="M2.66675 7.33341L8.00008 8.66665L13.3334 7.33331M2.66675 7.33341L8.00008 1.33331M2.66675 7.33341L8.00008 6.00003M13.3334 7.33331L8.00008 1.33331M13.3334 7.33331L8.00008 6.00003M8.00008 1.33331V6.00003M3.66675 9.99998L8.00016 14.6666L12.3334 9.99998L8.00008 11L3.66675 9.99998Z" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                </svg>
+                                                                <span class="fs--14 fw5 lh--20 col--grey-800 poppins">Crypto</span>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- option-bottom -->
+                                                        <div class="flex justify-between items-center">
+                                                            <p data-payout-option-text class="fs--14 lh--20 col--grey-800 poppins">Pays in <span data-payout-option-text class="fs--14 lh--20 fw5 col--grey-800 poppins">USDT</span></p>
+                                                        
+                                                            <span data-payout-option-text class="fs--14 lh--20 col--grey-800 poppins">USD$3.45 fee</span>
+                                                        </div> 
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- payout-detail-section -->
+                                <div class="flex flex-column gap--16 mb4">
+                                    <span class="fs--16 lh--24 fw5 poppins col--ebony--variation-2">Payout Detail</span>
+                                
+                                    <!-- Bank-information-form -->
+                                    <div class="flex flex-column gap--16">
+                                        <!-- input-field -->
+                                        <div class="flex flex-column gap--6" data-form-input-type="text">
+                                            <label for="bank-code" class="fs--14 lh--20 fw5 poppins col--pale-sky">Bank Swift/BIC Code</label>
+                                            <div class="pad--x--14 h--40 flex items-center gap--8 br--2 br--bottom--left--right bb br--col--mischka-gray bg-white-50 sh--7 relative" data-input-wrapper="">
+                                                <input data-payout-form-text-input type="text" class="w-100 bn flex-auto fs--16 lh--24 col--ebony" name="bank-code" value="123456789012" placeholder="Enter BIC/SWIFT code">
+                                                <div class="w1 h1 flex justify-center items-center pointer">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                        <g clip-path="url(#clip0_23203_20947)">
+                                                            <path d="M6.05992 6.00001C6.21665 5.55446 6.52602 5.17875 6.93322 4.93943C7.34042 4.70012 7.81918 4.61264 8.2847 4.69248C8.75022 4.77233 9.17246 5.01436 9.47664 5.3757C9.78081 5.73703 9.94729 6.19436 9.94659 6.66668C9.94659 8.00001 7.94659 8.66668 7.94659 8.66668M7.99992 11.3333H8.00659M14.6666 8.00001C14.6666 11.6819 11.6818 14.6667 7.99992 14.6667C4.31802 14.6667 1.33325 11.6819 1.33325 8.00001C1.33325 4.31811 4.31802 1.33334 7.99992 1.33334C11.6818 1.33334 14.6666 4.31811 14.6666 8.00001Z" stroke="#98A2B3" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        </g>
+                                                        <defs>
+                                                            <clipPath id="clip0_23203_20947">
+                                                                <rect width="16" height="16" fill="white"/>
+                                                            </clipPath>
+                                                        </defs>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- input-field -->
+                                        <div class="flex flex-column gap--6" data-form-input-type="text">
+                                            <label for="bank-code" class="fs--14 lh--20 fw5 poppins col--pale-sky">Bank Account Number or IBAN</label>
+                                            <div class="pad--x--14 h--40 flex items-center gap--8 br--2 br--bottom--left--right bb br--col--mischka-gray bg-white-50 sh--7 relative" data-input-wrapper="">
+                                                <input data-payout-form-text-input type="text" class="w-100 bn flex-auto fs--16 lh--24 col--ebony" name="bank-code" placeholder="Enter BIC/SWIFT code">
+                                            </div>
+                                            <p class="fs--14 lh--20 poppins col--fiord-gray fs--12-responsive-mobile fs--12-responsive-mobile-portrait lh--18-responsive-mobile lh--18-responsive-mobile-portrait">If you are not sure if you need an intermediary Bank for international transfer, please contact your bank for future information.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- footer-text -->
+                                <div class="absolute bottom-0 flex items-start gap--4 pad--bottom--10 flex-auto flex--column-responsive-mobile-portrait">
+                                    <span class="fs--14 lh--20 poppins col--ebony--variation-2 nowrap">Next payout date:</span>
+                                    <span class="fs--14 lh--20 fw5 poppins col--ebony--variation-2 truncate">When earning reaches USD$ 100.00.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- footer -->
+                        <div class="fixed bottom-0 right-0 w-100 flex items-center justify-end gap--16">
+                            <button data-payout-settings-save-button class="flex justify-center items-center gap--5 relative h--40 pad--x--8 bg-black hover--parent--child--col--brand-green">
+                                <div class="flex justify-center items-center gap--10">
+                                    <div class="w--24 h--24 flex justify-center items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                                            <path d="M21 10.0857V11.0057C20.9988 13.1621 20.3005 15.2604 19.0093 16.9875C17.7182 18.7147 15.9033 19.9782 13.8354 20.5896C11.7674 21.201 9.55726 21.1276 7.53447 20.3803C5.51168 19.633 3.78465 18.2518 2.61096 16.4428C1.43727 14.6338 0.879791 12.4938 1.02168 10.342C1.16356 8.19029 1.99721 6.14205 3.39828 4.5028C4.79935 2.86354 6.69279 1.72111 8.79619 1.24587C10.8996 0.770634 13.1003 0.988061 15.07 1.86572M21 3L11 13.01L8 10.01" stroke="#07F468" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <span class="poppins fs--18 lh--28 fw5 ttu col-brand-green">SAVE</span>
+                                </div>
+                             </button>
+                        </div>
+                   </div>
+                </div>
+             </div>
+            <!-- template ends here -->
+        </div>
+    </body>
+</html>
