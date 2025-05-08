@@ -19,7 +19,7 @@
         <link rel="stylesheet" id="tachyonsV2-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/tachyons-v2.css?ver=1.0.0" media="">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css?ver=1.0.0">
         <link rel="stylesheet" id="niceSelect-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/FINAL/css/nice-select.css?ver=1.0.21" media="">
-        
+        <link rel="stylesheet" href="https://fansocial.app/wp-content/plugins/fansocial/assets/FINAL/css/nice-select.css">
         
         <script defer src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/FINAL/js/nice-select.js?ver=1.0.21" id="niceSelect-js" type="text/javascript"></script>
         <!-- custom styles for this template -->
@@ -43,10 +43,82 @@
                 overflow-x: hidden;
             }
 
-            /* select dropdown */
-            [data-select-input]{
+            /* country-select-dropdown with nice-select */
+            [data-auto-widthdraw-country-select-dropdown] .nice-select{
+                padding: 0;
                 background-color: rgba(255, 255, 255, 0.75);
+                border: none;
                 border-bottom: 1.5px solid #D0D5DD;
+                border-radius: 0;
+                position: relative;
+            }
+
+            [data-auto-widthdraw-country-select-dropdown] .nice-select::after{
+                position: absolute;
+                content: '';
+                left: 1rem;
+                top: 1rem;
+                width: 1.25rem;
+                height: 1.5rem;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cg clip-path='url(%23clip0_16665_15265)'%3E%3Cpath d='M1.66663 10H18.3333M1.66663 10C1.66663 14.6024 5.39759 18.3333 9.99996 18.3333M1.66663 10C1.66663 5.39763 5.39759 1.66667 9.99996 1.66667M18.3333 10C18.3333 14.6024 14.6023 18.3333 9.99996 18.3333M18.3333 10C18.3333 5.39763 14.6023 1.66667 9.99996 1.66667M9.99996 1.66667C12.0844 3.94863 13.2689 6.91003 13.3333 10C13.2689 13.09 12.0844 16.0514 9.99996 18.3333M9.99996 1.66667C7.91556 3.94863 6.731 6.91003 6.66663 10C6.731 13.09 7.91556 16.0514 9.99996 18.3333' stroke='%2398A2B3' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3C/path%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_16665_15265'%3E%3Crect width='20' height='20' fill='white'%3E%3C/rect%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+                background-position: center center;
+                background-repeat: no-repeat;
+                border-bottom: none;
+                border-right: none;
+                transform: rotate(0);
+                margin-top: 0;
+            }
+
+            [data-auto-widthdraw-country-select-dropdown] .nice-select.v1:active, .nice-select.v1.open,
+            [data-auto-widthdraw-country-select-dropdown] .nice-select.v1.keep-open, .nice-select.v1:focus {
+                background: rgba(255, 255, 255, 0.75);
+                border-color: transparent;
+            }
+
+            [data-auto-widthdraw-country-select-dropdown] .nice-select.v1 .current{
+                height: 3.5rem;
+                padding: 1rem;
+                padding-left: 2.75rem;
+            }
+
+            [data-auto-widthdraw-country-select-dropdown] .nice-select.v1.filter:not(.has-tags) .multiple-options.active, 
+            [data-auto-widthdraw-country-select-dropdown] .nice-select.v1.filter:not(.has-tags) .current.active {
+                background-color: unset;
+                border: none;
+            }
+
+            [data-auto-widthdraw-country-select-dropdown] .nice-select.v1:not(.has-tags) .current [data-option-label]{
+                color: var(--color-oxford-blue, #344054);
+                font-size: 1rem;
+                font-weight: 400;
+                line-height: 1.5rem;
+            }
+
+            [data-auto-widthdraw-country-select-dropdown] .mlc-ns.v1:not(.has-tags) .current.active [data-option-label]{
+                font-weight: 500;
+            }
+
+            [data-auto-widthdraw-country-select-dropdown] .nice-select.filter .multiple-options [data-dropdown-arrow] svg, 
+            [data-auto-widthdraw-country-select-dropdown] .nice-select.filter .current [data-dropdown-arrow] svg{
+                width: 1.25rem !important;
+                height: 1.25rem !important;
+            }
+
+            [data-auto-widthdraw-country-select-dropdown] .nice-select.v1.filter .multiple-options:not(.active) [data-dropdown-arrow] path, 
+            [data-auto-widthdraw-country-select-dropdown] .nice-select.v1.filter .current:not(.active) [data-dropdown-arrow] path{
+                fill: none;
+            } 
+
+            [data-auto-widthdraw-country-select-dropdown] .nice-select-dropdown{
+                border-radius: 0;
+            }
+
+            [data-auto-widthdraw-country-select-dropdown] .mlc-ns.v1:not(.has-tags) .option.disabled [data-option-label]{
+                font-weight: 400;
+            }
+
+            [data-auto-widthdraw-country-select-dropdown] .mlc-ns.v1:not(.has-tags) .option.selected [data-option-label] {
+                color: var(--color-oxford-blue, #344054);
             }
 
             /* options */
@@ -170,30 +242,15 @@
                             <div class="flex flex-column gap--16">
                                 <p class="fs--16 fw5 lh--24 col--oxford-blue poppins">Where would you liked to send money to?</p>
 
-                                <!-- Dummy Select wrapper -->
-                                <div class="flex justify-between items-center gap--8 pad--16" data-select-input>
-                                    <!-- select input texts -->
-                                    <div class="flex items-center gap--8 h--24 flex-grow-1">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                            <g clip-path="url(#clip0_16665_15265)">
-                                                <path d="M1.66663 10H18.3333M1.66663 10C1.66663 14.6024 5.39759 18.3333 9.99996 18.3333M1.66663 10C1.66663 5.39763 5.39759 1.66667 9.99996 1.66667M18.3333 10C18.3333 14.6024 14.6023 18.3333 9.99996 18.3333M18.3333 10C18.3333 5.39763 14.6023 1.66667 9.99996 1.66667M9.99996 1.66667C12.0844 3.94863 13.2689 6.91003 13.3333 10C13.2689 13.09 12.0844 16.0514 9.99996 18.3333M9.99996 1.66667C7.91556 3.94863 6.731 6.91003 6.66663 10C6.731 13.09 7.91556 16.0514 9.99996 18.3333" stroke="#98A2B3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_16665_15265">
-                                                    <rect width="20" height="20" fill="white"/>
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        <span class="fs--16 lh--24 poppins col--pale-sky">Select country</span>
-                                        <!-- <span class="fs--16 lh--24 fw5 poppins col--oxford-blue">USA</span> -->
-                                    </div>
-
-                                    <!-- dropdown icon -->
-                                    <div class="flex justify-center items-center w--20 h--20">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                            <path d="M5 7.5L10 12.5L15 7.5" stroke="#98A2B3" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </div>
+                                <!-- select-dropdown-field -->
+                                <div data-auto-widthdraw-country-select-dropdown>
+                                    <select data-nice-select=""
+                                        data-dropdown-icon-down="select_arrow_down_2" data-dropdown-icon-up="select_arrow_up_2"
+                                        data-copy-attributes="data-id">
+                                        <option value="select" data-option-disabled disabled selected>Select country</option>
+                                        <option value="usa">USA</option>
+                                        <option value="singapore">Singapore</option>
+                                    </select>
                                 </div>
                             </div>
 
@@ -348,5 +405,33 @@
                 </div>
             </div>
         </div>
+
+        <script>
+            window.svgIcons = {
+                // Dropdown arrow (caret-down)
+                "select_arrow_down": `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                        <path d="M8.86615 10.9C8.48125 11.5667 7.519 11.5667 7.1341 10.9L3.78547 5.10002C3.40057 4.43336 3.8817 3.60002 4.6515 3.60002H11.3488C12.1186 3.60002 12.5997 4.43336 12.2148 5.10002L8.86615 10.9Z" fill="#98A2B3"/>
+                                    </svg>`,
+                // Dropdown arrow (caret-down)
+                "select_arrow_up": `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" style="transform: rotate(180deg)">
+                                        <path d="M8.86615 10.9C8.48125 11.5667 7.519 11.5667 7.1341 10.9L3.78547 5.10002C3.40057 4.43336 3.8817 3.60002 4.6515 3.60002H11.3488C12.1186 3.60002 12.5997 4.43336 12.2148 5.10002L8.86615 10.9Z" fill="#98A2B3"/>
+                                    </svg>`,
+                // Dropdown arrow (caret-down)
+                "select_arrow_down_2": `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                            <path d="M5 7.5L10 12.5L15 7.5" stroke="#98A2B3" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>`,
+                // Dropdown arrow (caret-down)
+                "select_arrow_up_2": `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" style="transform: rotate(180deg)">
+                                            <path d="M5 7.5L10 12.5L15 7.5" stroke="#98A2B3" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>`
+            };
+            
+            // Then load your nice-select.js script
+            </script>
+        <script defer>
+            var siteData = { "appVersion": "1.0.15", "siteUrl": "https:\/\/fansocial.app", "pluginUrl": "https:\/\/fansocial.app\/wp-content\/plugins\/fansocial", "preloadDependencies": { "update_description": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/edit-profile", "\/wp-json\/api\/templates\/profile\/{username}\/hero-info"], "tags": ["#dashboard-edit-profile-uid-{uid}", "#profile-section-hero-info-uid-{uid}"] }, "update_profile_gallery": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/edit-profile", "\/wp-json\/api\/templates\/dashboard\/sidebar-submenu\/profile", "\/wp-json\/api\/templates\/profile\/{username}\/hero-slider", "\/wp-json\/api\/templates\/profile\/{username}\/hero-gallery", "\/wp-json\/api\/templates\/profile\/{username}\/hero-info"], "tags": ["#dashboard-edit-profile-uid-{uid}", "#dashboard-sidebar-submenu-profile-uid-{uid}", "#profile-section-hero-slider-uid-{uid}", "#profile-section-hero-gallery-uid-{uid}", "#profile-section-hero-info-uid-{uid}"] }, "update_avatar": { "endpoints": ["\/wp-json\/api\/templates\/user-data", "\/wp-json\/api\/templates\/dashboard\/edit-profile", "\/wp-json\/api\/templates\/dashboard\/sidebar-submenu\/profile", "\/wp-json\/api\/templates\/profile\/{username}\/header-sticky", "\/wp-json\/api\/templates\/profile\/{username}\/hero-stats", "\/wp-json\/api\/templates\/profile\/{username}\/header", "\/wp-json\/api\/templates\/dashboard\/settings"], "tags": ["#user-avatar-{uid}", "#dashboard-edit-profile-uid-{uid}", "#dashboard-sidebar-submenu-profile-uid-{uid}", "#profile-section-header-sticky-uid-{uid}", "#profile-section-hero-stats-uid-{uid}", "#profile-section-header-uid-{uid}", "#dashboard-settings-uid-{uid}"] }, "update_user_data": { "endpoints": ["\/wp-json\/api\/templates\/user-data", "\/wp-json\/api\/templates\/dashboard\/sidebar-submenu\/profile", "\/wp-json\/api\/templates\/dashboard\/edit-profile", "\/wp-json\/api\/templates\/dashboard\/settings"], "tags": ["#user-avatar-{uid}", "#dashboard-sidebar-submenu-profile-uid-{uid}", "#dashboard-edit-profile-uid-{uid}", "#dashboard-settings-uid-{uid}"] }, "update_social_media_links": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/edit-profile", "\/wp-json\/api\/templates\/profile\/{username}\/hero-info"], "tags": ["#dashboard-edit-profile-uid-{uid}", "#profile-section-hero-info-uid-{uid}"] }, "update_username": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/settings", "\/wp-json\/api\/templates\/dashboard\/settings\/information", "\/wp-json\/api\/templates\/dashboard\/sidebar-submenu\/profile", "\/wp-json\/api\/templates\/profile\/{username}\/hero-stats", "\/wp-json\/api\/templates\/profile\/{username}\/header-sticky", "\/wp-json\/api\/templates\/profile\/{username}\/popups", "\/wp-json\/api\/templates\/dashboard\/referrals"], "tags": ["#dashboard-settings-uid-{uid}", "#dashboard-settings-information-uid-{uid}", "#dashboard-sidebar-submenu-profile-uid-{uid}", "#profile-section-hero-stats-uid-{uid}", "#profile-section-header-sticky-uid-{uid}", "#profile-section-popups-uid-{uid}", "#dashboard-referrals-uid-{uid}"] }, "update_email": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/settings", "\/wp-json\/api\/templates\/dashboard\/settings\/information", "\/wp-json\/api\/templates\/profile\/{username}\/popups"], "tags": ["#dashboard-settings-uid-{uid}", "#dashboard-settings-information-uid-{uid}", "#profile-section-popups-uid-{uid}"] }, "payout_settings": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/settings", "\/wp-json\/api\/templates\/dashboard\/settings\/payout-details"], "tags": ["#dashboard-settings-uid-{uid}", "#dashboard-settings-payout-details-uid-{uid}"] }, "shipping_settings": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/settings", "\/wp-json\/api\/templates\/dashboard\/settings\/shipping"], "tags": ["#dashboard-settings-uid-{uid}", "#dashboard-settings-shipping-uid-{uid}"] }, "update_notification": { "endpoints": ["\/wp-json\/api\/notification\/get-notifications?flag={flag}", "\/wp-json\/api\/notification\/get-notifications?data-header-notifications=1&flag={flag}", "\/wp-json\/api\/templates\/dashboard\/sidebar"], "tags": ["#notifications-get-notifications-uid-{uid}", "#notifications-get-notifications-uid-{uid}", "#dashboard-sidebar-uid-{uid}"] }, "update_x_tweet_setting": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/sidebar-submenu\/profile"], "tags": ["#dashboard-sidebar-submenu-profile-uid-{uid}"] }, "unlink_x_account": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/edit-profile", "\/wp-json\/api\/templates\/dashboard\/sidebar-submenu\/profile", "\/wp-json\/api\/templates\/dashboard\/subscription-settings", "\/wp-json\/api\/dashboard\/fetch-data\/media-creator-template\/media-uploader-popup"], "tags": ["#dashboard-edit-profile-uid-{uid}", "#dashboard-sidebar-submenu-profile-uid-{uid}", "#dashboard-subscription-settings-uid-{uid}", "#creator-medias-uid-{uid}"] }, "link_x_unlink_button": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/edit-profile", "\/wp-json\/api\/templates\/dashboard\/sidebar-submenu\/profile", "\/wp-json\/api\/templates\/dashboard\/subscription-settings", "\/wp-json\/api\/dashboard\/fetch-data\/media-creator-template\/media-uploader-popup"], "tags": ["#dashboard-edit-profile-uid-{uid}", "#dashboard-sidebar-submenu-profile-uid-{uid}", "#dashboard-subscription-settings-uid-{uid}", "#creator-medias-uid-{uid}"] }, "plan_update": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/subscription-settings", "\/wp-json\/api\/templates\/profile\/{username}\/popups"], "tags": ["#dashboard-subscription-settings-uid-{uid}", "#profile-section-popups-uid-{uid}"] }, "save_draft_media": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/my-media", "\/wp-json\/api\/dashboard\/fetch-data\/media-creator-template\/creator-media-items"], "tags": ["#dashboard-my-media-uid-{uid}", "#creator-medias-uid-{uid}"] }, "submit_media": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/my-media", "\/wp-json\/api\/dashboard\/fetch-data\/media-creator-template\/creator-media-items"], "tags": ["#dashboard-my-media-uid-{uid}", "#creator-medias-uid-{uid}"] }, "update_media": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/my-media", "\/wp-json\/api\/dashboard\/fetch-data\/media-creator-template\/creator-media-items", "\/wp-json\/api\/templates\/profile\/{username}\/bottom", "\/wp-json\/api\/templates\/profile\/{username}\/header-sticky", "\/wp-json\/api\/media\/category\/watch-now?creator_id={user_id}&splide", "\/wp-json\/api\/media\/category\/latest-upload?creator_id={user_id}&splide", "\/wp-json\/api\/media\/category\/most-popular?creator_id={user_id}&splide", "\/wp-json\/api\/media\/category\/featured?creator_id={user_id}&splide", "\/wp-json\/api\/media\/category\/ppv-only?creator_id={user_id}&splide", "\/wp-json\/api\/media\/category\/sub-only?creator_id={user_id}&splide", "\/wp-json\/api\/media\/category\/random?creator_id={user_id}&splide", "\/wp-json\/api\/media\/category\/membership-media?creator_id={user_id}&splide&template=membership"], "tags": ["#dashboard-my-media-uid-{uid}", "#creator-medias-uid-{uid}", "#profile-medias-cruid-{uid}", "#profile-section-bottom-uid-{uid}", "#profile-section-header-sticky-uid-{uid}"] }, "delete_media": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/my-media", "\/wp-json\/api\/dashboard\/fetch-data\/media-creator-template\/creator-media-items", "\/wp-json\/api\/templates\/profile\/{username}\/bottom"], "tags": ["#dashboard-my-media-uid-{uid}", "#creator-medias-uid-{uid}", "#profile-section-bottom-uid-{uid}", "#profile-medias-cruid-{uid}"] }, "watch_media": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/fan-overview\/continue-watching"], "tags": ["#dashboard-fan-overview-continue-watching-uid-{uid}"] } } };
+        </script>
+        <script src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/js/dashboard-ui.js"></script>
+        <script src="https://fansocial.app/wp-content/plugins/fansocial/assets/FINAL/js/nice-select.js"></script>
     </body>
 </html>

@@ -103,7 +103,7 @@
 
 
             /* select-inputs with nice-select */
-            [data-auto-widthdraw-time] .nice-select.v1{
+            [data-auto-widthdraw-time-select-dropdown] .nice-select.v1{
                 background: #FFFFFF80;
                 border-bottom: 2px solid #0C111D;
                 border-top-left-radius: 2px;
@@ -112,7 +112,7 @@
                 border-bottom-right-radius: 0;
             }
 
-            [data-auto-widthdraw-time] .nice-select.v1 .current{
+            [data-auto-widthdraw-time-select-dropdown] .nice-select.v1 .current{
                 gap: .5rem;
                 padding-top: .5rem;
                 padding-right: .75rem;
@@ -120,31 +120,31 @@
                 padding-left: .75rem;
             }
 
-            [data-auto-widthdraw-time] .nice-select.v1.filter:not(.has-tags) .multiple-options.active, 
-            [data-auto-widthdraw-time] .nice-select.v1.filter:not(.has-tags) .current.active {
+            [data-auto-widthdraw-time-select-dropdown] .nice-select.v1.filter:not(.has-tags) .multiple-options.active, 
+            [data-auto-widthdraw-time-select-dropdown] .nice-select.v1.filter:not(.has-tags) .current.active {
                 background-color: unset;
                 border: none;
             }
 
-            [data-auto-widthdraw-time] .mlc-ns.v1:not(.has-tags) [data-option-label]{
+            [data-auto-widthdraw-time-select-dropdown] .mlc-ns.v1:not(.has-tags) [data-option-label]{
                 color: #101828;
                 font-size: 1rem;
                 font-weight: 400;
                 line-height: 1.5rem;
             }
 
-            [data-auto-widthdraw-time] .nice-select.v1.filter .multiple-options:not(.active) [data-dropdown-arrow], 
-            [data-auto-widthdraw-time] .nice-select.v1.filter .current:not(.active) [data-dropdown-arrow]{
+            [data-auto-widthdraw-time-select-dropdown] .nice-select.v1.filter .multiple-options:not(.active) [data-dropdown-arrow], 
+            [data-auto-widthdraw-time-select-dropdown] .nice-select.v1.filter .current:not(.active) [data-dropdown-arrow]{
                 width: 1rem;
                 height: 1rem;
             }
 
-            [data-auto-widthdraw-time] .nice-select.v1.filter .multiple-options:not(.active) [data-dropdown-arrow] path, 
-            [data-auto-widthdraw-time] .nice-select.v1.filter .current:not(.active) [data-dropdown-arrow] path {
+            [data-auto-widthdraw-time-select-dropdown] .nice-select.v1.filter .multiple-options:not(.active) [data-dropdown-arrow] path, 
+            [data-auto-widthdraw-time-select-dropdown] .nice-select.v1.filter .current:not(.active) [data-dropdown-arrow] path {
                 fill: #98A2B3;
             }
 
-            [data-auto-widthdraw-time] .nice-select-dropdown.v1{
+            [data-auto-widthdraw-time-select-dropdown] .nice-select-dropdown.v1{
                 background: #00000033;
                 box-shadow: 0px 3px 6px 0px #00000033;
                 backdrop-filter: blur(100px);
@@ -152,7 +152,7 @@
                 border-radius: 0;
             }
 
-            [data-auto-widthdraw-time] .mlc-ns.v1:not(.has-tags) .option{
+            [data-auto-widthdraw-time-select-dropdown] .mlc-ns.v1:not(.has-tags) .option{
                 min-height: 2.8125rem;
                 padding: 1rem;
                 background: #ececec;
@@ -160,16 +160,16 @@
                 border-bottom: 1px solid #EAECF0;
             }
 
-            [data-auto-widthdraw-time] .mlc-ns.v1 .option:last-child {
+            [data-auto-widthdraw-time-select-dropdown] .mlc-ns.v1 .option:last-child {
                 border-bottom: none;
             }
 
-            [data-auto-widthdraw-time] .mlc-ns.v1:not(.has-tags) .option:not(.disabled):hover, 
-            [data-auto-widthdraw-time] .mlc-ns.v1:not(.has-tags) .option.selected {
+            [data-auto-widthdraw-time-select-dropdown] .mlc-ns.v1:not(.has-tags) .option:not(.disabled):hover, 
+            [data-auto-widthdraw-time-select-dropdown] .mlc-ns.v1:not(.has-tags) .option.selected {
                 background: #f9fafb;
             }
 
-            [data-auto-widthdraw-time] .mlc-ns.v1 [data-option-description] {
+            [data-auto-widthdraw-time-select-dropdown] .mlc-ns.v1 [data-option-description] {
                 color: #667085;
                 font-family: Poppins;
                 font-size: 0.75rem;
@@ -177,12 +177,12 @@
                 white-space: normal;
             }
 
-            [data-auto-widthdraw-time] .mlc-ns.v1 [data-option-description-container]{
+            [data-auto-widthdraw-time-select-dropdown] .mlc-ns.v1 [data-option-description-container]{
                 gap: 0.25rem;
             }
 
-            [data-auto-widthdraw-time] .mlc-ns.nice-select-dropdown.v1:not(.has-tags) .option [data-option-label],
-            [data-auto-widthdraw-time] .mlc-ns.v1:not(.has-tags) .option.selected [data-option-label]{
+            [data-auto-widthdraw-time-select-dropdown] .mlc-ns.nice-select-dropdown.v1:not(.has-tags) .option [data-option-label],
+            [data-auto-widthdraw-time-select-dropdown] .mlc-ns.v1:not(.has-tags) .option.selected [data-option-label]{
                 color: #0C111D;
                 font-size: 1rem;
                 font-weight: 500;
@@ -222,14 +222,14 @@
             }
 
             @media screen and (min-width: 480px) and (max-width: 767px) {
-                [data-auto-widthdraw-time] .nice-select.v1.filter .multiple-options:not(.active) [data-dropdown-arrow] path, 
-                [data-auto-widthdraw-time] .nice-select.v1.filter .current:not(.active) [data-dropdown-arrow] path {
+                [data-auto-widthdraw-time-select-dropdown] .nice-select.v1.filter .multiple-options:not(.active) [data-dropdown-arrow] path, 
+                [data-auto-widthdraw-time-select-dropdown] .nice-select.v1.filter .current:not(.active) [data-dropdown-arrow] path {
                     fill: #98A2B3 !important;
                 }
             }
             @media screen and (max-width: 479px) {
-                [data-auto-widthdraw-time] .nice-select.v1.filter .multiple-options:not(.active) [data-dropdown-arrow] path, 
-                [data-auto-widthdraw-time] .nice-select.v1.filter .current:not(.active) [data-dropdown-arrow] path {
+                [data-auto-widthdraw-time-select-dropdown] .nice-select.v1.filter .multiple-options:not(.active) [data-dropdown-arrow] path, 
+                [data-auto-widthdraw-time-select-dropdown] .nice-select.v1.filter .current:not(.active) [data-dropdown-arrow] path {
                     fill: #98A2B3 !important;
                 }
             }
@@ -297,7 +297,7 @@
                                     <h3 class="fs--16 lh--24 fw5 poppins col--ebony--variation-2 tw--auto">Auto withdraw earnings to my selected payout method :</h3>
 
                                     <!-- select-input-field -->
-                                    <div data-auto-widthdraw-time data-auto-withdraw-input-wrapper>
+                                    <div data-auto-widthdraw-time-select-dropdown data-auto-withdraw-input-wrapper>
                                         <select data-profile-visibility="" data-nice-select=""
                                             data-dropdown-icon-down="select_arrow_down" data-dropdown-icon-up="select_arrow_up"
                                             data-copy-attributes="data-id">
