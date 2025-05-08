@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Better Select</title>
+    <link rel='stylesheet' id='final-main-css'
+        href='https://fansocial.app/wp-content/plugins/fansocial/assets/new-profile/main.css?ver=1.0.15' media='' />
+    <link rel='stylesheet' id='tachyonsStylesheet-css'
+        href='https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.11.1/tachyons.min.css?ver=1.0.15' media='' />
+    <link rel='stylesheet' id='finalCustomTachyonsStylesheet-css'
+        href='https://fansocial.app/wp-content/plugins/fansocial/assets/new-profile/customTachyons.css?ver=1.0.15'
+        media='' />
+    <link rel='stylesheet' id='tachyonsV2-css'
+        href='https://fansocial.app/wp-content/plugins/fansocial/assets/new-profile/tachyons-v2.css?ver=1.0.15'
+        media='' />
+    <link rel='stylesheet' id='frontPageTabletLandscapeStyle-css'
+        href='https://fansocial.app/wp-content/plugins/fansocial/assets/new-profile/tachyons-tablet-landscape.css?ver=1.0.15'
+        media='screen and (min-width: 1010px) and (max-width: 1365px)' />
+    <link rel='stylesheet' id='frontPageTabletStyle-css'
+        href='https://fansocial.app/wp-content/plugins/fansocial/assets/new-profile/tachyons-tablet.css?ver=1.0.15'
+        media='screen and (min-width: 768px) and (max-width: 1009px)' />
+    <link rel='stylesheet' id='frontPageMobileStyle-css'
+        href='https://fansocial.app/wp-content/plugins/fansocial/assets/new-profile/tachyons-mobile.css?ver=1.0.15'
+        media='screen and (min-width: 480px) and (max-width: 767px)' />
+    <link rel='stylesheet' id='frontPageMobilePortraitStyle-css'
+        href='https://fansocial.app/wp-content/plugins/fansocial/assets/new-profile/tachyons-mobile-portrait.css?ver=1.0.15'
+        media='screen and (max-width: 479px)' />
+
+    <style>
+        body {
+            background-color: black;
+        }
+    </style>
+    <link rel="stylesheet" href="https://fansocial.app/wp-content/plugins/fansocial/assets/FINAL/css/better-select.css">
+
+    <script>
+        var siteData = { "appVersion": "1.0.15", "siteUrl": "https:\/\/fansocial.app", "pluginUrl": "https:\/\/fansocial.app\/wp-content\/plugins\/fansocial", "preloadDependencies": { "update_description": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/edit-profile", "\/wp-json\/api\/templates\/profile\/{username}\/hero-info"], "tags": ["#dashboard-edit-profile-uid-{uid}", "#profile-section-hero-info-uid-{uid}"] }, "update_profile_gallery": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/edit-profile", "\/wp-json\/api\/templates\/dashboard\/sidebar-submenu\/profile", "\/wp-json\/api\/templates\/profile\/{username}\/hero-slider", "\/wp-json\/api\/templates\/profile\/{username}\/hero-gallery", "\/wp-json\/api\/templates\/profile\/{username}\/hero-info"], "tags": ["#dashboard-edit-profile-uid-{uid}", "#dashboard-sidebar-submenu-profile-uid-{uid}", "#profile-section-hero-slider-uid-{uid}", "#profile-section-hero-gallery-uid-{uid}", "#profile-section-hero-info-uid-{uid}"] }, "update_avatar": { "endpoints": ["\/wp-json\/api\/templates\/user-data", "\/wp-json\/api\/templates\/dashboard\/edit-profile", "\/wp-json\/api\/templates\/dashboard\/sidebar-submenu\/profile", "\/wp-json\/api\/templates\/profile\/{username}\/header-sticky", "\/wp-json\/api\/templates\/profile\/{username}\/hero-stats", "\/wp-json\/api\/templates\/profile\/{username}\/header", "\/wp-json\/api\/templates\/dashboard\/settings"], "tags": ["#user-avatar-{uid}", "#dashboard-edit-profile-uid-{uid}", "#dashboard-sidebar-submenu-profile-uid-{uid}", "#profile-section-header-sticky-uid-{uid}", "#profile-section-hero-stats-uid-{uid}", "#profile-section-header-uid-{uid}", "#dashboard-settings-uid-{uid}"] }, "update_user_data": { "endpoints": ["\/wp-json\/api\/templates\/user-data", "\/wp-json\/api\/templates\/dashboard\/sidebar-submenu\/profile", "\/wp-json\/api\/templates\/dashboard\/edit-profile", "\/wp-json\/api\/templates\/dashboard\/settings"], "tags": ["#user-avatar-{uid}", "#dashboard-sidebar-submenu-profile-uid-{uid}", "#dashboard-edit-profile-uid-{uid}", "#dashboard-settings-uid-{uid}"] }, "update_social_media_links": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/edit-profile", "\/wp-json\/api\/templates\/profile\/{username}\/hero-info"], "tags": ["#dashboard-edit-profile-uid-{uid}", "#profile-section-hero-info-uid-{uid}"] }, "update_username": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/settings", "\/wp-json\/api\/templates\/dashboard\/settings\/information", "\/wp-json\/api\/templates\/dashboard\/sidebar-submenu\/profile", "\/wp-json\/api\/templates\/profile\/{username}\/hero-stats", "\/wp-json\/api\/templates\/profile\/{username}\/header-sticky", "\/wp-json\/api\/templates\/profile\/{username}\/popups", "\/wp-json\/api\/templates\/dashboard\/referrals"], "tags": ["#dashboard-settings-uid-{uid}", "#dashboard-settings-information-uid-{uid}", "#dashboard-sidebar-submenu-profile-uid-{uid}", "#profile-section-hero-stats-uid-{uid}", "#profile-section-header-sticky-uid-{uid}", "#profile-section-popups-uid-{uid}", "#dashboard-referrals-uid-{uid}"] }, "update_email": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/settings", "\/wp-json\/api\/templates\/dashboard\/settings\/information", "\/wp-json\/api\/templates\/profile\/{username}\/popups"], "tags": ["#dashboard-settings-uid-{uid}", "#dashboard-settings-information-uid-{uid}", "#profile-section-popups-uid-{uid}"] }, "payout_settings": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/settings", "\/wp-json\/api\/templates\/dashboard\/settings\/payout-details"], "tags": ["#dashboard-settings-uid-{uid}", "#dashboard-settings-payout-details-uid-{uid}"] }, "shipping_settings": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/settings", "\/wp-json\/api\/templates\/dashboard\/settings\/shipping"], "tags": ["#dashboard-settings-uid-{uid}", "#dashboard-settings-shipping-uid-{uid}"] }, "update_notification": { "endpoints": ["\/wp-json\/api\/notification\/get-notifications?flag={flag}", "\/wp-json\/api\/notification\/get-notifications?data-header-notifications=1&flag={flag}", "\/wp-json\/api\/templates\/dashboard\/sidebar"], "tags": ["#notifications-get-notifications-uid-{uid}", "#notifications-get-notifications-uid-{uid}", "#dashboard-sidebar-uid-{uid}"] }, "update_x_tweet_setting": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/sidebar-submenu\/profile"], "tags": ["#dashboard-sidebar-submenu-profile-uid-{uid}"] }, "unlink_x_account": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/edit-profile", "\/wp-json\/api\/templates\/dashboard\/sidebar-submenu\/profile", "\/wp-json\/api\/templates\/dashboard\/subscription-settings", "\/wp-json\/api\/dashboard\/fetch-data\/media-creator-template\/media-uploader-popup"], "tags": ["#dashboard-edit-profile-uid-{uid}", "#dashboard-sidebar-submenu-profile-uid-{uid}", "#dashboard-subscription-settings-uid-{uid}", "#creator-medias-uid-{uid}"] }, "link_x_unlink_button": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/edit-profile", "\/wp-json\/api\/templates\/dashboard\/sidebar-submenu\/profile", "\/wp-json\/api\/templates\/dashboard\/subscription-settings", "\/wp-json\/api\/dashboard\/fetch-data\/media-creator-template\/media-uploader-popup"], "tags": ["#dashboard-edit-profile-uid-{uid}", "#dashboard-sidebar-submenu-profile-uid-{uid}", "#dashboard-subscription-settings-uid-{uid}", "#creator-medias-uid-{uid}"] }, "plan_update": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/subscription-settings", "\/wp-json\/api\/templates\/profile\/{username}\/popups"], "tags": ["#dashboard-subscription-settings-uid-{uid}", "#profile-section-popups-uid-{uid}"] }, "save_draft_media": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/my-media", "\/wp-json\/api\/dashboard\/fetch-data\/media-creator-template\/creator-media-items"], "tags": ["#dashboard-my-media-uid-{uid}", "#creator-medias-uid-{uid}"] }, "submit_media": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/my-media", "\/wp-json\/api\/dashboard\/fetch-data\/media-creator-template\/creator-media-items"], "tags": ["#dashboard-my-media-uid-{uid}", "#creator-medias-uid-{uid}"] }, "update_media": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/my-media", "\/wp-json\/api\/dashboard\/fetch-data\/media-creator-template\/creator-media-items", "\/wp-json\/api\/templates\/profile\/{username}\/bottom", "\/wp-json\/api\/templates\/profile\/{username}\/header-sticky", "\/wp-json\/api\/media\/category\/watch-now?creator_id={user_id}&splide", "\/wp-json\/api\/media\/category\/latest-upload?creator_id={user_id}&splide", "\/wp-json\/api\/media\/category\/most-popular?creator_id={user_id}&splide", "\/wp-json\/api\/media\/category\/featured?creator_id={user_id}&splide", "\/wp-json\/api\/media\/category\/ppv-only?creator_id={user_id}&splide", "\/wp-json\/api\/media\/category\/sub-only?creator_id={user_id}&splide", "\/wp-json\/api\/media\/category\/random?creator_id={user_id}&splide", "\/wp-json\/api\/media\/category\/membership-media?creator_id={user_id}&splide&template=membership"], "tags": ["#dashboard-my-media-uid-{uid}", "#creator-medias-uid-{uid}", "#profile-medias-cruid-{uid}", "#profile-section-bottom-uid-{uid}", "#profile-section-header-sticky-uid-{uid}"] }, "delete_media": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/my-media", "\/wp-json\/api\/dashboard\/fetch-data\/media-creator-template\/creator-media-items", "\/wp-json\/api\/templates\/profile\/{username}\/bottom"], "tags": ["#dashboard-my-media-uid-{uid}", "#creator-medias-uid-{uid}", "#profile-section-bottom-uid-{uid}", "#profile-medias-cruid-{uid}"] }, "watch_media": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/fan-overview\/continue-watching"], "tags": ["#dashboard-fan-overview-continue-watching-uid-{uid}"] } } };
+    </script>
+
+    <script src="https://fansocial.app/wp-content/plugins/fansocial/assets/FINAL/js/better-select.js"></script>
+</head>
+
+<body>
+    <div id="my-div"></div>
+    <script>
+        const options = [
+            {
+                "id": "1",
+                "value": "Nay address, Thailand"
+            },
+            {
+                "id": "2",
+                "value": "Yogesh address, India"
+            }
+        ];
+
+        const addressSelect = new BetterSelect({
+            name: "shipping_address_dropdown",
+            theme: "jet-black",
+            placeholder: "Change Address",
+            classNames: {
+                container: "",
+                trigger: "flex gap--10 items-center",
+                triggerLabel: "white fs--14 fw5 lh--20",
+                triggerArrow: "filter--col--gull-gray",
+                dropdown: "w--464",
+                optionsContainer: "overflow-y-auto max-h--240",
+                option: "pa3 flex gap--8 items-center",
+                addContainer: "pa3 flex gap--16 items-center self-stretch",
+            },
+            attributes: {
+                addContainer: {
+                    "data-new-address": "yes",
+                },
+            },
+            options: options.map(token => ({
+                label: token.value,
+                value: token.id,
+                content: ({ option, element, actions }) => {
+                    return `
+                        <span class="db white fs--16 lh--24 fw5 flex--max" data-line-clamp>${token.value}</span>
+                        ${actions.edit.render()}
+                    `;
+                },
+                actions: {
+                    edit: {
+                        attributes: {
+                            "data-edit-card": token.id,
+                            "data-address-edit": token.id,
+                        },
+                        className: "w--18 h--18",
+                        icon: "pencil-01.svg",
+                        iconClassName: "filter--col--white",
+                        run: ({ option, element }) => {
+                            alert("Edit address clicked");
+                        },
+                    },
+                },
+            })),
+            addable: true,
+            onAddClick: (event, instance) => {
+                alert("Add new address clicked");
+            },
+            addHtml: () => {
+                return `
+                    <img class="w--24 h--24" src="${siteData.pluginUrl}/assets/icons/svg/plus-circle.svg" />
+                    <span class="db col-brand-green fs--16 fw5 lh--24">Use New Address</span>
+                `;
+            },
+        });
+
+        document.querySelector('#my-div').appendChild(addressSelect.container);
+    </script>
+</body>
+
+</html>
