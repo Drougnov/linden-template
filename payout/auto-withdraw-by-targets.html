@@ -38,6 +38,8 @@
             }
             /* tachyons */
             .tw--auto { text-wrap: auto; }
+            .col--grey-800 { color: var(--Gray-800, #182230); }
+            .min--h--56{ min-height: 3.5rem; }
 
             /* inputs */
             [data-auto-withdraw-input-wrapper]{
@@ -59,13 +61,148 @@
                 border-bottom: 2px solid #0C111D;
             }
 
-            /* payout-method-options */
-            [data-payout-option-container]{
-                border-width: 0.09375rem;
+            /* payout-method-select-custom-dropdown */
+            [data-dropdown] p:not(.db):empty,
+            [data-dropdown] span:not(.db):empty,
+            [data-dropdown] div:not(.db):empty {
+                display: initial;
+            }
+            
+            /* Dropdown trigger/button */
+            [data-dropdown-trigger] {
+                width: 100%;
+                cursor: pointer;
+                border-bottom: 2px solid #0C111D;
             }
 
-            [data-payout-method-type]{
+            [data-dropdown-trigger].has-selection{
+                border-bottom: 2px solid #D0D5DD;
+                padding-top: 1rem;
+                padding-right: .5rem;
+                padding-bottom: 1rem;
+                padding-left: 1rem;
+                border-radius: 2px;
+                border-bottom-width: 1.5px;
+            }
+            
+            [data-trigger-content] {
+                flex-grow: 1;
+                min-width: 0;
+            }
+            
+            [data-dropdown-icon] {
+                width: 1rem;
+                height: 1rem;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M8.86615 10.9C8.48125 11.5667 7.519 11.5667 7.1341 10.9L3.78547 5.10002C3.40057 4.43336 3.8817 3.60002 4.6515 3.60002H11.3488C12.1186 3.60002 12.5997 4.43336 12.2148 5.10002L8.86615 10.9Z' fill='%2398A2B3'/%3E%3C/svg%3E");
+                flex-shrink: 0;
+                margin-top: 0.25rem;
+            }
+            
+            [data-dropdown-trigger].open [data-dropdown-icon] {
+                transform: rotate(180deg);
+            }
+            
+            /* Default "Add new" state */
+            [data-default-trigger] {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                min-height: 3.45rem;
+            }
+            
+            [data-add-icon] {
+                width: 1.25rem;
+                height: 1.25rem;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M10 6.66667V13.3333M6.66667 10H13.3333M6.5 17.5H13.5C14.9001 17.5 15.6002 17.5 16.135 17.2275C16.6054 16.9878 16.9878 16.6054 17.2275 16.135C17.5 15.6002 17.5 14.9001 17.5 13.5V6.5C17.5 5.09987 17.5 4.3998 17.2275 3.86502C16.9878 3.39462 16.6054 3.01217 16.135 2.77248C15.6002 2.5 14.9001 2.5 13.5 2.5H6.5C5.09987 2.5 4.3998 2.5 3.86502 2.77248C3.39462 3.01217 3.01217 3.39462 2.77248 3.86502C2.5 4.3998 2.5 5.09987 2.5 6.5V13.5C2.5 14.9001 2.5 15.6002 2.77248 16.135C3.01217 16.6054 3.39462 16.9878 3.86502 17.2275C4.3998 17.5 5.09987 17.5 6.5 17.5Z' stroke='%230C111D' stroke-width='1.66667' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            }
+            
+            /* Dropdown options */
+            [data-dropdown-options] {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                margin-top: 4px;
+                background-color: #FFFFFFE5;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(8px);
+                transition: opacity 0.2s, visibility 0.2s, transform 0.2s;
+                z-index: 10;
+                box-shadow: 0px 3px 6px 0px #00000033;
+            }
+            
+            [data-dropdown-options].open {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+            
+            /* Option styles */
+            [data-dropdown-option] {
+                padding: 16px;
+                cursor: pointer;
+                background-color: #f6f6f6;
+                backdrop-filter: none;
+            }
+            
+            /* Your custom option style */
+            [data-method-type] {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 4px;
+                padding: 2px 8px;
+                background-color: white;
+                border-radius: 50px;
                 box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+            }
+
+            [data-dropdown-option].selected{
+                background-color: rgba(0, 0, 0, 0.90);
+                border: 1px solid white;
+                border-left: none;
+                border-right: none;
+            }
+
+            [data-dropdown-option]:last-child.selected{
+                border: 1px solid rgba(0, 0, 0, 0.90);
+            }
+
+            [data-dropdown-option].selected [data-payout-option-text]{
+                color: #FCFCFD;
+            }
+            
+            [data-method-icon] {
+                width: 1rem;
+                height: 1.25rem;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M3.33333 6V11.3333M6.33333 6V11.3333M9.66667 6V11.3333M12.6667 6V11.3333M2 12.4L2 12.9333C2 13.3067 2 13.4934 2.07266 13.636C2.13658 13.7614 2.23856 13.8634 2.36401 13.9273C2.50661 14 2.6933 14 3.06667 14H12.9333C13.3067 14 13.4934 14 13.636 13.9273C13.7614 13.8634 13.8634 13.7614 13.9273 13.636C14 13.4934 14 13.3067 14 12.9333V12.4C14 12.0266 14 11.84 13.9273 11.6973C13.8634 11.5719 13.7614 11.4699 13.636 11.406C13.4934 11.3333 13.3067 11.3333 12.9333 11.3333H3.06667C2.6933 11.3333 2.50661 11.3333 2.36401 11.406C2.23857 11.4699 2.13658 11.5719 2.07266 11.6973C2 11.84 2 12.0266 2 12.4ZM7.76861 2.05142L2.83527 3.14772C2.53723 3.21395 2.38821 3.24707 2.27698 3.32721C2.17886 3.39789 2.10182 3.49393 2.0541 3.60505C2 3.73102 2 3.88368 2 4.18899L2 4.93334C2 5.3067 2 5.49339 2.07266 5.636C2.13658 5.76144 2.23856 5.86343 2.36401 5.92734C2.50661 6 2.6933 6 3.06667 6H12.9333C13.3067 6 13.4934 6 13.636 5.92734C13.7614 5.86343 13.8634 5.76144 13.9273 5.636C14 5.49339 14 5.3067 14 4.93334V4.18899C14 3.88368 14 3.73102 13.9459 3.60505C13.8982 3.49393 13.8211 3.39789 13.723 3.32721C13.6118 3.24707 13.4628 3.21395 13.1647 3.14772L8.23139 2.05142C8.14504 2.03223 8.10187 2.02264 8.05824 2.01881C8.01949 2.01542 7.98051 2.01542 7.94176 2.01881C7.89813 2.02264 7.85496 2.03223 7.76861 2.05142Z' stroke='black' stroke-width='1.33333' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+                background-position: center;
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+            }
+
+            [data-option-detail] strong{
+                font-size: 0.875rem;
+                font-weight: 500;
+                line-height: 1.25rem;
+                color: var(--Gray-800, #182230);
+                font-family: 'Poppins', sans-serif;
+            }
+
+            [data-dropdown-option].selected [data-option-detail] strong{
+                color: #FCFCFD;
+            }
+
+            /* Selected option styles in trigger */
+            [data-selected-option] {
+                display: none;
+                width: 100%;
+            }
+            
+            [data-selected-option] [data-option-top],
+            [data-selected-option] [data-option-bottom] {
+                padding: 0;
             }
 
             
@@ -322,46 +459,163 @@
                                      </div>
                                 </div>
 
-                                <!-- payout-method-section -->
-                                <div class="flex flex-column gap--16">
-                                    <span class="fs--16 lh--24 fw5 poppins col--ebony--variation-2">Payout Method</span>
-
-                                    <div data-payout-option-container class="flex items-center gap--8 pad--y--16 pad--left--16 pad--right--8 br--2 bg-white-50 bb br--col--mischka-gray pointer">
-                                        <div class="flex flex-column gap--8 flex--max">
-                                            <!-- option-top -->
-                                            <div class="flex justify-between items-center">
-                                                <span data-payout-option-text class="fs--18 lh--28 fw5 poppins col--grey-800">Bank Deposit</span>
-                                                
-                                                <div data-payout-method-type class="flex justify-center items-center gap--4 pad--y--2 pad--x--8 bg-white br--50">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                                        <g clip-path="url(#clip0_16665_15171)">
-                                                            <path d="M1.3335 8.00001H14.6668M1.3335 8.00001C1.3335 11.6819 4.31826 14.6667 8.00016 14.6667M1.3335 8.00001C1.3335 4.31811 4.31826 1.33334 8.00016 1.33334M14.6668 8.00001C14.6668 11.6819 11.6821 14.6667 8.00016 14.6667M14.6668 8.00001C14.6668 4.31811 11.6821 1.33334 8.00016 1.33334M8.00016 1.33334C9.66768 3.15891 10.6153 5.52803 10.6668 8.00001C10.6153 10.472 9.66768 12.8411 8.00016 14.6667M8.00016 1.33334C6.33264 3.15891 5.38499 5.52803 5.3335 8.00001C5.38499 10.472 6.33264 12.8411 8.00016 14.6667" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
-                                                        </g>
-                                                        <defs>
-                                                            <clipPath id="clip0_16665_15171">
-                                                                <rect width="16" height="16" fill="white"/>
-                                                            </clipPath>
-                                                        </defs>
-                                                    </svg>
-                                                    <div class="flex items-center gap--4 h--20">
-                                                        <span class="fs--14 lh--16 fw5 poppins col--grey-800">USA - </span>
-                                                        <span class="fs--14 lh--16 fw5 poppins col--grey-800">Bank</span>
+                                <!-- payout-method-custom-select-dropdown -->
+                                <div data-dropdown class="relative">
+                                    <button data-dropdown-trigger aria-haspopup="listbox" aria-expanded="false" class="flex items-center gap--16 pad--y--16 pad--x--12 br--2 bg-white-50 pointer">
+                                        <div data-trigger-content>
+                                            <div data-default-trigger>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                                    <path d="M12 8V16M8 12H16M7.8 21H16.2C17.8802 21 18.7202 21 19.362 20.673C19.9265 20.3854 20.3854 19.9265 20.673 19.362C21 18.7202 21 17.8802 21 16.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                                <span class="fs--18 lh--28 fw6 poppins col--black-strong">Add new...</span>
+                                            </div>
+                                            
+                                            <div data-selected-option data-payout-option class="flex flex-column gap--8">
+                                                <div data-option-top class="flex justify-between items-center">
+                                                    <span data-payout-option-text data-option-text class="fs--18 lh--28 fw5 poppins col--grey-800 truncate"></span>
+                                                    <div data-method-type class="flex justify-center items-center gap--4 pad--y--2 pad--x--8 bg-white br--50">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                            <g clip-path="url(#clip0_16665_15567)">
+                                                                <path d="M1.33325 7.99992H14.6666M1.33325 7.99992C1.33325 11.6818 4.31802 14.6666 7.99992 14.6666M1.33325 7.99992C1.33325 4.31802 4.31802 1.33325 7.99992 1.33325M14.6666 7.99992C14.6666 11.6818 11.6818 14.6666 7.99992 14.6666M14.6666 7.99992C14.6666 4.31802 11.6818 1.33325 7.99992 1.33325M7.99992 1.33325C9.66744 3.15882 10.6151 5.52794 10.6666 7.99992C10.6151 10.4719 9.66744 12.841 7.99992 14.6666M7.99992 1.33325C6.3324 3.15882 5.38475 5.52794 5.33325 7.99992C5.38475 10.4719 6.3324 12.841 7.99992 14.6666" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                                            </g>
+                                                            <defs>
+                                                                <clipPath id="clip0_16665_15567">
+                                                                    <rect width="16" height="16" fill="white"/>
+                                                                </clipPath>
+                                                            </defs>
+                                                        </svg>
+                                                        <span class="fs--14 fw5 lh--20 col--grey-800 poppins nowrap">USA - </span>
+                                                        <span data-method-text class="fs--14 fw5 lh--20 col--grey-800 poppins nowrap"></span>
                                                     </div>
                                                 </div>
+                                                <div data-option-bottom class="flex justify-between items-center">
+                                                    <p data-payout-option-text data-option-detail class="fs--14 lh--20 col--grey-800 poppins"></p>
+                                                    <span data-payout-option-text data-option-detail class="fs--14 lh--20 col--grey-800 poppins"></span>
+                                                </div>
                                             </div>
-
+                                        </div>
+                                        <span data-dropdown-icon></span>
+                                    </button>
+                                    
+                                    <div data-dropdown-options role="listbox">
+                                        <!-- "Add new" option -->
+                                        <div data-add-new-option class="flex flex-column gap--8 pad--16 bt br--col--mischka-gray bg--col--athens-gray overflow-hidden">
+                                            <div class="flex items-center gap--8 flex--max min--h--56">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                    <path d="M12 8V16M8 12H16M7.8 21H16.2C17.8802 21 18.7202 21 19.362 20.673C19.9265 20.3854 20.3854 19.9265 20.673 19.362C21 18.7202 21 17.8802 21 16.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                                <span class="fs--18 lh--28 fw6 poppins col--black-strong">Add New...</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Option -->
+                                        <div data-dropdown-option data-payout-option role="option" data-value="bank_deposit" class="flex flex-column gap--8 pad--16 bt bb br--col--mischka-gray bg--blur--10 overflow-hidden bg-white-50">
+                                            <!-- option-top -->
+                                            <div data-option-top class="flex justify-between items-center">
+                                                <span data-payout-option-text data-option-text class="fs--18 lh--28 fw5 poppins col--grey-800">Bank Deposit</span>
+                                                
+                                                <div data-method-type class="flex justify-center items-center gap--4 pad--y--2 pad--x--8 bg-white br--50">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                        <path d="M3.33333 6.00009V11.3334M6.33333 6.00009V11.3334M9.66667 6.00009V11.3334M12.6667 6.00009V11.3334M2 12.4001L2 12.9334C2 13.3068 2 13.4935 2.07266 13.6361C2.13658 13.7615 2.23856 13.8635 2.36401 13.9274C2.50661 14.0001 2.6933 14.0001 3.06667 14.0001H12.9333C13.3067 14.0001 13.4934 14.0001 13.636 13.9274C13.7614 13.8635 13.8634 13.7615 13.9273 13.6361C14 13.4935 14 13.3068 14 12.9334V12.4001C14 12.0267 14 11.84 13.9273 11.6974C13.8634 11.572 13.7614 11.47 13.636 11.4061C13.4934 11.3334 13.3067 11.3334 12.9333 11.3334H3.06667C2.6933 11.3334 2.50661 11.3334 2.36401 11.4061C2.23857 11.47 2.13658 11.572 2.07266 11.6974C2 11.84 2 12.0267 2 12.4001ZM7.76861 2.05152L2.83527 3.14781C2.53723 3.21404 2.38821 3.24716 2.27698 3.3273C2.17886 3.39798 2.10182 3.49403 2.0541 3.60514C2 3.73111 2 3.88377 2 4.18908L2 4.93343C2 5.3068 2 5.49348 2.07266 5.63609C2.13658 5.76153 2.23856 5.86352 2.36401 5.92743C2.50661 6.00009 2.6933 6.00009 3.06667 6.00009H12.9333C13.3067 6.00009 13.4934 6.00009 13.636 5.92743C13.7614 5.86352 13.8634 5.76153 13.9273 5.63609C14 5.49348 14 5.3068 14 4.93343V4.18908C14 3.88377 14 3.73111 13.9459 3.60514C13.8982 3.49403 13.8211 3.39798 13.723 3.3273C13.6118 3.24716 13.4628 3.21404 13.1647 3.14781L8.23139 2.05152C8.14504 2.03233 8.10187 2.02273 8.05824 2.01891C8.01949 2.01551 7.98051 2.01551 7.94176 2.01891C7.89813 2.02273 7.85496 2.03233 7.76861 2.05152Z" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                    <span data-method-text class="fs--14 fw5 lh--20 col--grey-800 poppins">Bank</span>
+                                                </div>
+                                            </div>
+                            
                                             <!-- option-bottom -->
-                                            <div class="flex justify-between items-center">
-                                                <p data-payout-option-text class="fs--14 lh--20 col--grey-800 poppins">Pays in <span data-payout-option-text class="fs--14 lh--20 fw5 col--grey-800 poppins">USD</span></p>
+                                            <div data-option-bottom class="flex justify-between items-center">
+                                                <p data-payout-option-text data-option-detail class="fs--14 lh--20 col--grey-800 poppins">Pays in <strong data-payout-option-text class="fs--14 lh--20 fw5 col--grey-800 poppins">EUR</strong></p>
                                             
-                                                <span data-payout-option-text class="fs--14 lh--20 col--grey-800 poppins">USD$3.45 fee</span>
+                                                <span data-payout-option-text data-option-detail class="fs--14 lh--20 col--grey-800 poppins">USD$3.45 fee</span>
                                             </div> 
                                         </div>
-
-                                        <div class="flex justify-center items-center pointer w1 h1">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                                <path d="M8.86615 10.9C8.48125 11.5667 7.519 11.5667 7.1341 10.9L3.78547 5.10002C3.40057 4.43336 3.8817 3.60002 4.6515 3.60002H11.3488C12.1186 3.60002 12.5997 4.43336 12.2148 5.10002L8.86615 10.9Z" fill="#98A2B3"/>
-                                            </svg>
+                            
+                                        <!-- Option -->
+                                        <div data-dropdown-option data-payout-option role="option" data-value="bank_deposit" class="flex flex-column gap--8 pad--16 bt bb br--col--mischka-gray bg--blur--10 overflow-hidden bg-white-50">
+                                            <!-- option-top -->
+                                            <div data-option-top class="flex justify-between items-center">
+                                                <span data-payout-option-text data-option-text class="fs--18 lh--28 fw5 poppins col--grey-800">Bank Deposit</span>
+                                                
+                                                <div data-method-type class="flex justify-center items-center gap--4 pad--y--2 pad--x--8 bg-white br--50">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                        <path d="M3.33333 6.00009V11.3334M6.33333 6.00009V11.3334M9.66667 6.00009V11.3334M12.6667 6.00009V11.3334M2 12.4001L2 12.9334C2 13.3068 2 13.4935 2.07266 13.6361C2.13658 13.7615 2.23856 13.8635 2.36401 13.9274C2.50661 14.0001 2.6933 14.0001 3.06667 14.0001H12.9333C13.3067 14.0001 13.4934 14.0001 13.636 13.9274C13.7614 13.8635 13.8634 13.7615 13.9273 13.6361C14 13.4935 14 13.3068 14 12.9334V12.4001C14 12.0267 14 11.84 13.9273 11.6974C13.8634 11.572 13.7614 11.47 13.636 11.4061C13.4934 11.3334 13.3067 11.3334 12.9333 11.3334H3.06667C2.6933 11.3334 2.50661 11.3334 2.36401 11.4061C2.23857 11.47 2.13658 11.572 2.07266 11.6974C2 11.84 2 12.0267 2 12.4001ZM7.76861 2.05152L2.83527 3.14781C2.53723 3.21404 2.38821 3.24716 2.27698 3.3273C2.17886 3.39798 2.10182 3.49403 2.0541 3.60514C2 3.73111 2 3.88377 2 4.18908L2 4.93343C2 5.3068 2 5.49348 2.07266 5.63609C2.13658 5.76153 2.23856 5.86352 2.36401 5.92743C2.50661 6.00009 2.6933 6.00009 3.06667 6.00009H12.9333C13.3067 6.00009 13.4934 6.00009 13.636 5.92743C13.7614 5.86352 13.8634 5.76153 13.9273 5.63609C14 5.49348 14 5.3068 14 4.93343V4.18908C14 3.88377 14 3.73111 13.9459 3.60514C13.8982 3.49403 13.8211 3.39798 13.723 3.3273C13.6118 3.24716 13.4628 3.21404 13.1647 3.14781L8.23139 2.05152C8.14504 2.03233 8.10187 2.02273 8.05824 2.01891C8.01949 2.01551 7.98051 2.01551 7.94176 2.01891C7.89813 2.02273 7.85496 2.03233 7.76861 2.05152Z" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                    <span data-method-text class="fs--14 fw5 lh--20 col--grey-800 poppins">Bank</span>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- option-bottom -->
+                                            <div data-option-bottom class="flex justify-between items-center">
+                                                <p data-payout-option-text data-option-detail class="fs--14 lh--20 col--grey-800 poppins">Pays in <strong data-payout-option-text class="fs--14 lh--20 fw5 col--grey-800 poppins">USD</strong></p>
+                                            
+                                                <span data-payout-option-text data-option-detail class="fs--14 lh--20 col--grey-800 poppins">USD$3.45 fee</span>
+                                            </div> 
+                                        </div>
+                            
+                                        <!-- Option -->
+                                        <div data-dropdown-option data-payout-option role="option" data-value="bank_deposit" class="flex flex-column gap--8 pad--16 bt bb br--col--mischka-gray bg--blur--10 overflow-hidden bg-white-50">
+                                            <!-- option-top -->
+                                            <div data-option-top class="flex justify-between items-center">
+                                                <span data-payout-option-text data-option-text class="fs--18 lh--28 fw5 poppins col--grey-800">Bank Deposit</span>
+                                                
+                                                <div data-method-type class="flex justify-center items-center gap--4 pad--y--2 pad--x--8 bg-white br--50">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                        <path d="M3.33333 6.00009V11.3334M6.33333 6.00009V11.3334M9.66667 6.00009V11.3334M12.6667 6.00009V11.3334M2 12.4001L2 12.9334C2 13.3068 2 13.4935 2.07266 13.6361C2.13658 13.7615 2.23856 13.8635 2.36401 13.9274C2.50661 14.0001 2.6933 14.0001 3.06667 14.0001H12.9333C13.3067 14.0001 13.4934 14.0001 13.636 13.9274C13.7614 13.8635 13.8634 13.7615 13.9273 13.6361C14 13.4935 14 13.3068 14 12.9334V12.4001C14 12.0267 14 11.84 13.9273 11.6974C13.8634 11.572 13.7614 11.47 13.636 11.4061C13.4934 11.3334 13.3067 11.3334 12.9333 11.3334H3.06667C2.6933 11.3334 2.50661 11.3334 2.36401 11.4061C2.23857 11.47 2.13658 11.572 2.07266 11.6974C2 11.84 2 12.0267 2 12.4001ZM7.76861 2.05152L2.83527 3.14781C2.53723 3.21404 2.38821 3.24716 2.27698 3.3273C2.17886 3.39798 2.10182 3.49403 2.0541 3.60514C2 3.73111 2 3.88377 2 4.18908L2 4.93343C2 5.3068 2 5.49348 2.07266 5.63609C2.13658 5.76153 2.23856 5.86352 2.36401 5.92743C2.50661 6.00009 2.6933 6.00009 3.06667 6.00009H12.9333C13.3067 6.00009 13.4934 6.00009 13.636 5.92743C13.7614 5.86352 13.8634 5.76153 13.9273 5.63609C14 5.49348 14 5.3068 14 4.93343V4.18908C14 3.88377 14 3.73111 13.9459 3.60514C13.8982 3.49403 13.8211 3.39798 13.723 3.3273C13.6118 3.24716 13.4628 3.21404 13.1647 3.14781L8.23139 2.05152C8.14504 2.03233 8.10187 2.02273 8.05824 2.01891C8.01949 2.01551 7.98051 2.01551 7.94176 2.01891C7.89813 2.02273 7.85496 2.03233 7.76861 2.05152Z" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                    <span data-method-text class="fs--14 fw5 lh--20 col--grey-800 poppins">Bank</span>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- option-bottom -->
+                                            <div data-option-bottom class="flex justify-between items-center">
+                                                <p data-payout-option-text data-option-detail class="fs--14 lh--20 col--grey-800 poppins">Pays in <strong data-payout-option-text class="fs--14 lh--20 fw5 col--grey-800 poppins">USD</strong></p>
+                                            
+                                                <span data-payout-option-text data-option-detail class="fs--14 lh--20 col--grey-800 poppins">USD$3.45 fee</span>
+                                            </div> 
+                                        </div>
+                            
+                                        <!-- Option -->
+                                        <div data-dropdown-option data-payout-option role="option" data-value="bank_deposit" class="flex flex-column gap--8 pad--16 bt bb br--col--mischka-gray bg--blur--10 overflow-hidden bg-white-50">
+                                            <!-- option-top -->
+                                            <div data-option-top class="flex justify-between items-center">
+                                                <span data-payout-option-text data-option-text class="fs--18 lh--28 fw5 poppins col--grey-800">Bank Deposit</span>
+                                                
+                                                <div data-method-type class="flex justify-center items-center gap--4 pad--y--2 pad--x--8 bg-white br--50">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                        <path d="M3.33333 6.00009V11.3334M6.33333 6.00009V11.3334M9.66667 6.00009V11.3334M12.6667 6.00009V11.3334M2 12.4001L2 12.9334C2 13.3068 2 13.4935 2.07266 13.6361C2.13658 13.7615 2.23856 13.8635 2.36401 13.9274C2.50661 14.0001 2.6933 14.0001 3.06667 14.0001H12.9333C13.3067 14.0001 13.4934 14.0001 13.636 13.9274C13.7614 13.8635 13.8634 13.7615 13.9273 13.6361C14 13.4935 14 13.3068 14 12.9334V12.4001C14 12.0267 14 11.84 13.9273 11.6974C13.8634 11.572 13.7614 11.47 13.636 11.4061C13.4934 11.3334 13.3067 11.3334 12.9333 11.3334H3.06667C2.6933 11.3334 2.50661 11.3334 2.36401 11.4061C2.23857 11.47 2.13658 11.572 2.07266 11.6974C2 11.84 2 12.0267 2 12.4001ZM7.76861 2.05152L2.83527 3.14781C2.53723 3.21404 2.38821 3.24716 2.27698 3.3273C2.17886 3.39798 2.10182 3.49403 2.0541 3.60514C2 3.73111 2 3.88377 2 4.18908L2 4.93343C2 5.3068 2 5.49348 2.07266 5.63609C2.13658 5.76153 2.23856 5.86352 2.36401 5.92743C2.50661 6.00009 2.6933 6.00009 3.06667 6.00009H12.9333C13.3067 6.00009 13.4934 6.00009 13.636 5.92743C13.7614 5.86352 13.8634 5.76153 13.9273 5.63609C14 5.49348 14 5.3068 14 4.93343V4.18908C14 3.88377 14 3.73111 13.9459 3.60514C13.8982 3.49403 13.8211 3.39798 13.723 3.3273C13.6118 3.24716 13.4628 3.21404 13.1647 3.14781L8.23139 2.05152C8.14504 2.03233 8.10187 2.02273 8.05824 2.01891C8.01949 2.01551 7.98051 2.01551 7.94176 2.01891C7.89813 2.02273 7.85496 2.03233 7.76861 2.05152Z" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                    <span data-method-text class="fs--14 fw5 lh--20 col--grey-800 poppins">Bank</span>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- option-bottom -->
+                                            <div data-option-bottom class="flex justify-between items-center">
+                                                <p data-payout-option-text data-option-detail class="fs--14 lh--20 col--grey-800 poppins">Pays in <strong data-payout-option-text class="fs--14 lh--20 fw5 col--grey-800 poppins">CZK</strong></p>
+                                            
+                                                <span data-payout-option-text data-option-detail class="fs--14 lh--20 col--grey-800 poppins">USD$3.45 fee</span>
+                                            </div> 
+                                        </div>
+                            
+                                        <!-- Option -->
+                                        <div data-dropdown-option data-payout-option role="option" data-value="bank_deposit" class="flex flex-column gap--8 pad--16 bt bb br--col--mischka-gray bg--blur--10 overflow-hidden bg-white-50">
+                                            <!-- option-top -->
+                                            <div data-option-top class="flex justify-between items-center">
+                                                <span data-payout-option-text data-option-text class="fs--18 lh--28 fw5 poppins col--grey-800">USDT - Ethereum(ERC20)</span>
+                                                
+                                                <div data-method-type class="flex justify-center items-center gap--4 pad--y--2 pad--x--8 bg-white br--50">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                        <path d="M2.66675 7.33335L8.00008 8.66659L13.3334 7.33325M2.66675 7.33335L8.00008 1.33325M2.66675 7.33335L8.00008 5.99997M13.3334 7.33325L8.00008 1.33325M13.3334 7.33325L8.00008 5.99997M8.00008 1.33325V5.99997M3.66675 9.99992L8.00016 14.6666L12.3334 9.99992L8.00008 10.9999L3.66675 9.99992Z" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                    <span data-method-text class="fs--14 fw5 lh--20 col--grey-800 poppins">Crypto</span>
+                                                </div>
+                                            </div>
+                            
+                                            <!-- option-bottom -->
+                                            <div data-option-bottom class="flex justify-between items-center">
+                                                <p data-payout-option-text data-option-detail class="fs--14 lh--20 col--grey-800 poppins">Pays in <strong data-payout-option-text class="fs--14 lh--20 fw5 col--grey-800 poppins">USD</strong></p>
+                                            
+                                                <span data-payout-option-text data-option-detail class="fs--14 lh--20 col--grey-800 poppins">USD$3.45 fee</span>
+                                            </div> 
                                         </div>
                                     </div>
                                 </div>
@@ -408,6 +662,114 @@
             </script>
         <script defer>
             var siteData = { "appVersion": "1.0.15", "siteUrl": "https:\/\/fansocial.app", "pluginUrl": "https:\/\/fansocial.app\/wp-content\/plugins\/fansocial", "preloadDependencies": { "update_description": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/edit-profile", "\/wp-json\/api\/templates\/profile\/{username}\/hero-info"], "tags": ["#dashboard-edit-profile-uid-{uid}", "#profile-section-hero-info-uid-{uid}"] }, "update_profile_gallery": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/edit-profile", "\/wp-json\/api\/templates\/dashboard\/sidebar-submenu\/profile", "\/wp-json\/api\/templates\/profile\/{username}\/hero-slider", "\/wp-json\/api\/templates\/profile\/{username}\/hero-gallery", "\/wp-json\/api\/templates\/profile\/{username}\/hero-info"], "tags": ["#dashboard-edit-profile-uid-{uid}", "#dashboard-sidebar-submenu-profile-uid-{uid}", "#profile-section-hero-slider-uid-{uid}", "#profile-section-hero-gallery-uid-{uid}", "#profile-section-hero-info-uid-{uid}"] }, "update_avatar": { "endpoints": ["\/wp-json\/api\/templates\/user-data", "\/wp-json\/api\/templates\/dashboard\/edit-profile", "\/wp-json\/api\/templates\/dashboard\/sidebar-submenu\/profile", "\/wp-json\/api\/templates\/profile\/{username}\/header-sticky", "\/wp-json\/api\/templates\/profile\/{username}\/hero-stats", "\/wp-json\/api\/templates\/profile\/{username}\/header", "\/wp-json\/api\/templates\/dashboard\/settings"], "tags": ["#user-avatar-{uid}", "#dashboard-edit-profile-uid-{uid}", "#dashboard-sidebar-submenu-profile-uid-{uid}", "#profile-section-header-sticky-uid-{uid}", "#profile-section-hero-stats-uid-{uid}", "#profile-section-header-uid-{uid}", "#dashboard-settings-uid-{uid}"] }, "update_user_data": { "endpoints": ["\/wp-json\/api\/templates\/user-data", "\/wp-json\/api\/templates\/dashboard\/sidebar-submenu\/profile", "\/wp-json\/api\/templates\/dashboard\/edit-profile", "\/wp-json\/api\/templates\/dashboard\/settings"], "tags": ["#user-avatar-{uid}", "#dashboard-sidebar-submenu-profile-uid-{uid}", "#dashboard-edit-profile-uid-{uid}", "#dashboard-settings-uid-{uid}"] }, "update_social_media_links": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/edit-profile", "\/wp-json\/api\/templates\/profile\/{username}\/hero-info"], "tags": ["#dashboard-edit-profile-uid-{uid}", "#profile-section-hero-info-uid-{uid}"] }, "update_username": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/settings", "\/wp-json\/api\/templates\/dashboard\/settings\/information", "\/wp-json\/api\/templates\/dashboard\/sidebar-submenu\/profile", "\/wp-json\/api\/templates\/profile\/{username}\/hero-stats", "\/wp-json\/api\/templates\/profile\/{username}\/header-sticky", "\/wp-json\/api\/templates\/profile\/{username}\/popups", "\/wp-json\/api\/templates\/dashboard\/referrals"], "tags": ["#dashboard-settings-uid-{uid}", "#dashboard-settings-information-uid-{uid}", "#dashboard-sidebar-submenu-profile-uid-{uid}", "#profile-section-hero-stats-uid-{uid}", "#profile-section-header-sticky-uid-{uid}", "#profile-section-popups-uid-{uid}", "#dashboard-referrals-uid-{uid}"] }, "update_email": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/settings", "\/wp-json\/api\/templates\/dashboard\/settings\/information", "\/wp-json\/api\/templates\/profile\/{username}\/popups"], "tags": ["#dashboard-settings-uid-{uid}", "#dashboard-settings-information-uid-{uid}", "#profile-section-popups-uid-{uid}"] }, "payout_settings": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/settings", "\/wp-json\/api\/templates\/dashboard\/settings\/payout-details"], "tags": ["#dashboard-settings-uid-{uid}", "#dashboard-settings-payout-details-uid-{uid}"] }, "shipping_settings": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/settings", "\/wp-json\/api\/templates\/dashboard\/settings\/shipping"], "tags": ["#dashboard-settings-uid-{uid}", "#dashboard-settings-shipping-uid-{uid}"] }, "update_notification": { "endpoints": ["\/wp-json\/api\/notification\/get-notifications?flag={flag}", "\/wp-json\/api\/notification\/get-notifications?data-header-notifications=1&flag={flag}", "\/wp-json\/api\/templates\/dashboard\/sidebar"], "tags": ["#notifications-get-notifications-uid-{uid}", "#notifications-get-notifications-uid-{uid}", "#dashboard-sidebar-uid-{uid}"] }, "update_x_tweet_setting": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/sidebar-submenu\/profile"], "tags": ["#dashboard-sidebar-submenu-profile-uid-{uid}"] }, "unlink_x_account": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/edit-profile", "\/wp-json\/api\/templates\/dashboard\/sidebar-submenu\/profile", "\/wp-json\/api\/templates\/dashboard\/subscription-settings", "\/wp-json\/api\/dashboard\/fetch-data\/media-creator-template\/media-uploader-popup"], "tags": ["#dashboard-edit-profile-uid-{uid}", "#dashboard-sidebar-submenu-profile-uid-{uid}", "#dashboard-subscription-settings-uid-{uid}", "#creator-medias-uid-{uid}"] }, "link_x_unlink_button": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/edit-profile", "\/wp-json\/api\/templates\/dashboard\/sidebar-submenu\/profile", "\/wp-json\/api\/templates\/dashboard\/subscription-settings", "\/wp-json\/api\/dashboard\/fetch-data\/media-creator-template\/media-uploader-popup"], "tags": ["#dashboard-edit-profile-uid-{uid}", "#dashboard-sidebar-submenu-profile-uid-{uid}", "#dashboard-subscription-settings-uid-{uid}", "#creator-medias-uid-{uid}"] }, "plan_update": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/subscription-settings", "\/wp-json\/api\/templates\/profile\/{username}\/popups"], "tags": ["#dashboard-subscription-settings-uid-{uid}", "#profile-section-popups-uid-{uid}"] }, "save_draft_media": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/my-media", "\/wp-json\/api\/dashboard\/fetch-data\/media-creator-template\/creator-media-items"], "tags": ["#dashboard-my-media-uid-{uid}", "#creator-medias-uid-{uid}"] }, "submit_media": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/my-media", "\/wp-json\/api\/dashboard\/fetch-data\/media-creator-template\/creator-media-items"], "tags": ["#dashboard-my-media-uid-{uid}", "#creator-medias-uid-{uid}"] }, "update_media": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/my-media", "\/wp-json\/api\/dashboard\/fetch-data\/media-creator-template\/creator-media-items", "\/wp-json\/api\/templates\/profile\/{username}\/bottom", "\/wp-json\/api\/templates\/profile\/{username}\/header-sticky", "\/wp-json\/api\/media\/category\/watch-now?creator_id={user_id}&splide", "\/wp-json\/api\/media\/category\/latest-upload?creator_id={user_id}&splide", "\/wp-json\/api\/media\/category\/most-popular?creator_id={user_id}&splide", "\/wp-json\/api\/media\/category\/featured?creator_id={user_id}&splide", "\/wp-json\/api\/media\/category\/ppv-only?creator_id={user_id}&splide", "\/wp-json\/api\/media\/category\/sub-only?creator_id={user_id}&splide", "\/wp-json\/api\/media\/category\/random?creator_id={user_id}&splide", "\/wp-json\/api\/media\/category\/membership-media?creator_id={user_id}&splide&template=membership"], "tags": ["#dashboard-my-media-uid-{uid}", "#creator-medias-uid-{uid}", "#profile-medias-cruid-{uid}", "#profile-section-bottom-uid-{uid}", "#profile-section-header-sticky-uid-{uid}"] }, "delete_media": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/my-media", "\/wp-json\/api\/dashboard\/fetch-data\/media-creator-template\/creator-media-items", "\/wp-json\/api\/templates\/profile\/{username}\/bottom"], "tags": ["#dashboard-my-media-uid-{uid}", "#creator-medias-uid-{uid}", "#profile-section-bottom-uid-{uid}", "#profile-medias-cruid-{uid}"] }, "watch_media": { "endpoints": ["\/wp-json\/api\/templates\/dashboard\/fan-overview\/continue-watching"], "tags": ["#dashboard-fan-overview-continue-watching-uid-{uid}"] } } };
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const dropdowns = document.querySelectorAll('[data-dropdown]');
+                
+                dropdowns.forEach(dropdown => {
+                    const trigger = dropdown.querySelector('[data-dropdown-trigger]');
+                    const options = dropdown.querySelector('[data-dropdown-options]');
+                    const optionItems = dropdown.querySelectorAll('[data-dropdown-option]');
+                    const addNewOptions = dropdown.querySelectorAll('[data-add-new-option]');
+                    const defaultTrigger = dropdown.querySelector('[data-default-trigger]');
+                    const selectedOption = dropdown.querySelector('[data-selected-option]');
+                    
+                    // Toggle dropdown
+                    trigger.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const isOpen = this.classList.contains('open');
+                        
+                        // Close all other dropdowns first
+                        document.querySelectorAll('[data-dropdown-trigger].open').forEach(openTrigger => {
+                            if (openTrigger !== this) {
+                                openTrigger.classList.remove('open');
+                                openTrigger.nextElementSibling.classList.remove('open');
+                            }
+                        });
+                        
+                        // Toggle this dropdown
+                        this.classList.toggle('open');
+                        options.classList.toggle('open');
+                        
+                        // Update aria-expanded
+                        const expanded = this.getAttribute('aria-expanded') === 'true';
+                        this.setAttribute('aria-expanded', !expanded);
+                    });
+                    
+                    // Handle option selection
+                    optionItems.forEach(option => {
+                        option.addEventListener('click', function() {
+                            // Remove selected class from all options
+                            optionItems.forEach(opt => opt.classList.remove('selected'));
+                            
+                            // Add selected class to clicked option
+                            this.classList.add('selected');
+                            
+                            // Get all the option data
+                            const optionText = this.querySelector('[data-option-text]').textContent;
+                            const methodText = this.querySelector('[data-method-text]').textContent;
+                            const optionDetails = this.querySelectorAll('[data-option-detail]');
+                            
+                            // Update trigger with selected option
+                            defaultTrigger.style.display = 'none';
+                            selectedOption.style.display = 'flex';
+                            
+                            // Populate the selected option in trigger
+                            selectedOption.querySelector('[data-option-text]').textContent = optionText;
+                            selectedOption.querySelector('[data-method-text]').textContent = methodText;
+                            
+                            // Update the details (assuming first is "Pays in", second is fee)
+                            const details = selectedOption.querySelectorAll('[data-option-detail]');
+                            details[0].innerHTML = optionDetails[0].innerHTML;
+                            details[1].textContent = optionDetails[1].textContent;
+                            
+                            // Get the value if needed
+                            const value = this.getAttribute('data-value');
+                            console.log('Selected value:', value);
+                            
+                            // Add class/data-attribute to trigger when a real option is selected
+                            trigger.classList.add('has-selection');
+                            trigger.setAttribute('data-has-selection', 'true');
+                            
+                            // Close dropdown
+                            trigger.classList.remove('open');
+                            options.classList.remove('open');
+                            trigger.setAttribute('aria-expanded', 'false');
+                        });
+                    });
+                    
+                    // Handle "Add new" option
+                    addNewOptions.forEach(addNewOption => {
+                        addNewOption.addEventListener('click', function(e) {
+                            e.stopPropagation();
+                            
+                            // Reset to default state
+                            optionItems.forEach(opt => opt.classList.remove('selected'));
+                            selectedOption.style.display = 'none';
+                            defaultTrigger.style.display = 'flex';
+                            
+                            // Remove class/data-attribute when "Add new" is selected
+                            trigger.classList.remove('has-selection');
+                            trigger.removeAttribute('data-has-selection');
+                            
+                            // Close dropdown
+                            trigger.classList.remove('open');
+                            options.classList.remove('open');
+                            trigger.setAttribute('aria-expanded', 'false');
+                        });
+                    });
+                });
+                
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function() {
+                    document.querySelectorAll('[data-dropdown-trigger].open').forEach(trigger => {
+                        trigger.classList.remove('open');
+                        trigger.nextElementSibling.classList.remove('open');
+                        trigger.setAttribute('aria-expanded', 'false');
+                    });
+                });
+            });
         </script>
         <script src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/js/dashboard-ui.js"></script>
         <script src="https://fansocial.app/wp-content/plugins/fansocial/assets/FINAL/js/nice-select.js"></script>
