@@ -199,6 +199,11 @@
                 border-color: transparent #2C313D transparent transparent;
             }
 
+            /* add-message-input */
+            [token-add-message-input]::-webkit-input-placeholder{
+                line-height: 2.5rem !important;
+            }
+
             @media (max-width: 1010px){
                 /* responsive */
                 .flex--column-responsive-tablet-landscape {
@@ -456,7 +461,7 @@
                                                 <path d="M17.8431 7.8913V11.3334C17.8431 11.8001 17.8431 12.0335 17.9339 12.2117C18.0138 12.3685 18.1413 12.496 18.2981 12.5759C18.4764 12.6667 18.7097 12.6667 19.1764 12.6667H22.6185M19.5098 16.8334H12.8431M19.5098 20.1667H12.8431M14.5098 13.5H12.8431M17.8431 7.66669H13.5098C12.1096 7.66669 11.4096 7.66669 10.8748 7.93917C10.4044 8.17885 10.0219 8.56131 9.78225 9.03171C9.50977 9.56649 9.50977 10.2666 9.50977 11.6667V20.3334C9.50977 21.7335 9.50977 22.4336 9.78225 22.9683C10.0219 23.4387 10.4044 23.8212 10.8748 24.0609C11.4096 24.3334 12.1096 24.3334 13.5098 24.3334H18.8431C20.2432 24.3334 20.9433 24.3334 21.4781 24.0609C21.9485 23.8212 22.3309 23.4387 22.5706 22.9683C22.8431 22.4336 22.8431 21.7335 22.8431 20.3334V12.6667L17.8431 7.66669Z" stroke="#0C111D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                             </svg>
 
-                                            <input type="text" placeholder="Add Message...(Optional)">
+                                            <textarea token-add-message-input name="" id="" rows="2" placeholder="Add Message...(Optional)" class="fs--14 lh--20 fw5 poppins col--ebony--variation-2 "></textarea>
                                         </div>
                                     </div>
                                 </div>

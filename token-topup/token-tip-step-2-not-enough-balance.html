@@ -7,7 +7,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="dns-prefetch" href="//staging.fansocial.app">
         <link rel="dns-prefetch" href="//fonts.googleapis.com">
         <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
-        <title>Token popup - tip - step 2</title>
+        <title>Token popup - tip - step 2 - not enough balance</title>
         <link rel="stylesheet" id="google-fonts-css" href="https://fonts.googleapis.com/css2?family=Poppins%3Awght%40300%3B400%3B500%3B600%3B700%3B800%3B900&amp;display=swap&amp;ver=1.0.0" media="">
         <link rel="stylesheet" id="theme-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/theme.css?ver=1.0.0" media="">
         <link rel="stylesheet" id="final-main-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/main.css?ver=1.0.0" media="">
@@ -210,13 +210,18 @@
                 background: linear-gradient(90deg, #FF58B2 0%, #4C57FF 100%);
             }
 
+            /* not-enought-balance-error-container */
+            [data-not-enought-balance-error-container]{
+                background: #FB5BA240;
+            }
+
             /* footer tip-button */
-            [data-token-tip-button-container]{
+            [data-token-topup-button-container]{
                 height: 3.5rem;
                 box-shadow: 0px 0px 16px 0px #FFFFFF80;
             }
 
-            [data-token-tip-button]::before{
+            [data-token-topup-button]::before{
                 position: absolute;
                 top: 0;
                 left: -0.75rem;
@@ -224,7 +229,7 @@
                 display: block;
                 width: 2rem;
                 height: 100%;
-                background-color: #07F468;
+                background-color: #FF0066;
                 z-index: -1;
                 -webkit-transform: skew(163deg, 0) translateX(3px);
                 transform: skew(163deg, 0) translateX(3px);
@@ -235,20 +240,20 @@
                 box-shadow: -12px 0px 16px 0px #ffffff40;
             }
 
-            button[data-token-tip-button]:hover{
-                background-color: black;
+            button[data-token-topup-button]:hover{
+                background-color: white;
             }
 
-            button[data-token-tip-button]:hover::before{
-                background-color: black;
+            button[data-token-topup-button]:hover::before{
+                background-color: white;
             }
 
-            button[data-token-tip-button]:not(:disabled):hover svg path{
-                stroke: #07F468;
+            button[data-token-topup-button]:not(:disabled):hover svg path{
+                stroke: #FF0066;
             }
 
-            button[data-token-tip-button]:not(:disabled):hover span{
-                color: #07F468;
+            button[data-token-topup-button]:not(:disabled):hover span{
+                color: #FF0066;
             }
 
             @media (max-width: 1010px){
@@ -328,11 +333,11 @@
                 }
 
                 /* tip button */
-                [data-token-tip-button-container]{
+                [data-token-topup-button-container]{
                     height: 2.75rem;
                 }
 
-                [data-token-tip-button]{
+                [data-token-topup-button]{
                     height: 2.75rem;
                     position: absolute;
                     bottom: 0;
@@ -352,11 +357,11 @@
                     left: 1.75rem;
                 }
 
-                [data-token-tip-button-wrapper-desktop]{
+                [data-token-topup-button-wrapper-desktop]{
                     display: none;
                 }
 
-                [data-token-tip-button-wrapper-mobile]{
+                [data-token-topup-button-wrapper-mobile]{
                     position: fixed !important;
                     display: flex;
                     z-index: 100000;
@@ -458,35 +463,47 @@
                                     </div>
 
                                     <div class="flex flex-column gap--16 pad--x--24 pad--x--8-responsive-mobile pad--x--8-responsive-mobile-portrait">
-                                        <!-- from-container -->
-                                        <div class="flex items-center gap--8 pad--8 br--5 bg-white-50">
-                                            <span class="fs--12 lh--18 fw6 poppins col--ebony--variation-2">From</span>
-
-                                            <div class="flex items-center gap--8 flex--max">
-                                                <img src="./images/user-vector-2.png" alt="" class="w--40 h--36">
-                                                <div class="flex flex-column gap--4">
-                                                    <span class="fs--12 lh--18 fw6 poppins col--ebony--variation-2">Anonymous User</span>
-                                                    <span class="fs--12 lh--18 fw5 poppins col--pale-sky">You will tip anonymously</span>
+                                        <!-- from-wrapper -->
+                                        <div class="flex flex-column">
+                                            <!-- error-container -->
+                                            <div data-not-enought-balance-error-container class="pad--y--4 pad--x--8">
+                                                <div class="flex items-center gap--4 pad--2 br--8">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+                                                        <path d="M8.11768 10.6667V8M8.11768 5.33333H8.12434M5.31768 14H10.9177C12.0378 14 12.5978 14 13.0257 13.782C13.402 13.5903 13.7079 13.2843 13.8997 12.908C14.1177 12.4802 14.1177 11.9201 14.1177 10.8V5.2C14.1177 4.0799 14.1177 3.51984 13.8997 3.09202C13.7079 2.71569 13.402 2.40973 13.0257 2.21799C12.5978 2 12.0378 2 10.9177 2H5.31768C4.19757 2 3.63752 2 3.20969 2.21799C2.83337 2.40973 2.52741 2.71569 2.33566 3.09202C2.11768 3.51984 2.11768 4.0799 2.11768 5.2V10.8C2.11768 11.9201 2.11768 12.4802 2.33566 12.908C2.52741 13.2843 2.83337 13.5903 3.20969 13.782C3.63752 14 4.19757 14 5.31768 14Z" stroke="#FF0066" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                    <span class="fs--12 lh--18 fw6 poppins col--led-pink">You need 200 more token</span>
                                                 </div>
                                             </div>
 
-                                            <div class="flex flex-column">
-                                                <span class="fs--10 lh--18 poppins col--ebony--variation-2 tr">Token Balance</span>
-                                                <div class="flex items-center gap--10">
-                                                    <div data-tip-amount-tag class="display-none--responsive-mobile display-none--responsive-mobile-portrait">
-                                                        <div class="flex items-center gap--3 pad--y--2 pad--x--4">
-                                                            <span class="fs--16 lh--24 fw6 poppins white">-</span>
+                                            <!-- from-container -->
+                                            <div class="flex items-center gap--8 pad--8 bg-white-50 br--5 br--top-left br--top-right">
+                                                <span class="fs--12 lh--18 fw6 poppins col--ebony--variation-2">From</span>
 
-                                                            <div class="flex items-center gap--01">
-                                                                <img src="./images/token-tip-svg.png" alt="" class="w--14 h--14">
-                                                                <span class="fs--16 lh--24 fw6 poppins white">600</span>
+                                                <div class="flex items-center gap--8 flex--max">
+                                                    <img src="./images/user-vector.png" alt="" class="w--40 h--36">
+                                                    <div class="flex flex-column gap--4">
+                                                        <span class="fs--12 lh--18 fw6 poppins col--ebony--variation-2">Fun Guy</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="flex flex-column">
+                                                    <span class="fs--10 lh--18 poppins col--led-pink tr">Token Balance</span>
+                                                    <div class="flex items-center gap--10">
+                                                        <div data-tip-amount-tag class="">
+                                                            <div class="flex items-center gap--3 pad--y--2 pad--x--4">
+                                                                <span class="fs--12 lh--18 fw5 poppins white">-</span>
+
+                                                                <div class="flex items-center gap--01">
+                                                                    <img src="./images/token-tip-svg.png" alt="" class="w--14 h--14">
+                                                                    <span class="fs--12 lh--18 fw5 poppins white">600</span>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
 
-                                                    <div class="flex justify-end items-center gap--4">
-                                                        <img src="./images/token-tip-svg.png" alt="" class="w--24 h--24">
-                                                        <span class="fs--16 lh--24 fw6 poppins col--ebony--variation-2">1,834</span>
+                                                        <div class="flex justify-end items-center gap--4">
+                                                            <img src="./images/token-tip-svg.png" alt="" class="w--24 h--24">
+                                                            <span class="fs--16 lh--24 fw6 poppins col--led-pink">400</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -496,7 +513,7 @@
                                         <div class="flex items-center gap--8">
                                             <!-- switch -->
                                             <label class="switch">
-                                                <input type="checkbox" checked>
+                                                <input type="checkbox">
                                                 <span class="slider"></span>
                                             </label>
 
@@ -533,7 +550,7 @@
 
                                             <!-- status -->
                                             <div data-status-pending class="flex items-center">
-                                                <div data-status-tip-tag-container class="flex items-center gap--3 pad--y--2 pad--x--4 display-none--responsive-mobile display-none--responsive-mobile-portrait">
+                                                <div data-status-tip-tag-container class="flex items-center gap--3 pad--y--2 pad--x--4">
                                                     <span class="fs--16 lh--24 fw6 poppins col--grey-800">+</span>
 
                                                     <div class="flex items-center gap--01">
@@ -553,26 +570,19 @@
                                                 <path d="M17.8431 7.8913V11.3334C17.8431 11.8001 17.8431 12.0335 17.9339 12.2117C18.0138 12.3685 18.1413 12.496 18.2981 12.5759C18.4764 12.6667 18.7097 12.6667 19.1764 12.6667H22.6185M19.5098 16.8334H12.8431M19.5098 20.1667H12.8431M14.5098 13.5H12.8431M17.8431 7.66669H13.5098C12.1096 7.66669 11.4096 7.66669 10.8748 7.93917C10.4044 8.17885 10.0219 8.56131 9.78225 9.03171C9.50977 9.56649 9.50977 10.2666 9.50977 11.6667V20.3334C9.50977 21.7335 9.50977 22.4336 9.78225 22.9683C10.0219 23.4387 10.4044 23.8212 10.8748 24.0609C11.4096 24.3334 12.1096 24.3334 13.5098 24.3334H18.8431C20.2432 24.3334 20.9433 24.3334 21.4781 24.0609C21.9485 23.8212 22.3309 23.4387 22.5706 22.9683C22.8431 22.4336 22.8431 21.7335 22.8431 20.3334V12.6667L17.8431 7.66669Z" stroke="#0C111D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                             </svg>
 
-                                            <textarea token-add-message-input name="" id="" rows="2" placeholder="Add Message...(Optional)" class="fs--14 lh--20 fw5 poppins col--ebony--variation-2 "></textarea>
+                                            <textarea token-add-message-input name="" id="" rows="2" placeholder="Add Message...(Optional)" class="fs--14 lh--20 fw5 poppins col--ebony--variation-2 ">I would love to send you some tips everyday...xoxo I would love to send you some tips everyday...xoxoI would love to send you some tips everyday...xoxo</textarea>
                                         </div>
                                     </div>
                                 </div>
 
                                 <!-- button-wrapper -->
-                                <div data-token-tip-button-wrapper-desktop class="flex justify-end items-end pad--top--24 display-none--responsive-mobile-portrait">
-                                    <div data-token-tip-button-container>
-                                        <button data-token-tip-button class="flex justify-center items-center gap--8 relative w--160 h--56 pad--x--16 bg--col--brand-green bg--blur--100">
-                                            <div class="flex items-center gap--8">
-                                                <span class="fs--16 lh--24 fw5 poppins black">TIP</span>
-
-                                                <div class="flex items-center">
-                                                    <img src="./images/token-tip-svg.png" alt="" class="w--24 h--24">
-                                                    <span class="fs--20 lh--30 fw6 poppins black tracked--0-12">600</span>
-                                                </div>
-                                            </div>
+                                <div data-token-topup-button-wrapper-desktop class="flex justify-end items-end pad--top--24 display-none--responsive-mobile-portrait">
+                                    <div data-token-topup-button-container>
+                                        <button data-token-topup-button class="flex justify-center items-center gap--8 relative w--188 h--56 pad--x--16 bg--col--led-pink bg--blur--100">
+                                            <span class="fs--16 lh--24 fw5 poppins white">TOP UP AND TIP</span>
 
                                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
-                                                <path d="M5.17627 12H19.1763M19.1763 12L12.1763 5M19.1763 12L12.1763 19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M5.17627 12H19.1763M19.1763 12L12.1763 5M19.1763 12L12.1763 19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                             </svg>
                                         </button>
                                     </div>
@@ -585,20 +595,13 @@
             <!-- popup-end -->
 
             <!-- mobile fixed button -->
-            <div data-token-tip-button-wrapper-mobile class="dn fixed right-0 bottom-0 display-flex--responsive-mobile-responsive">
-                <div data-token-tip-button-container>
-                    <button data-token-tip-button class="flex justify-center items-center gap--8 relative w--160 h--56 pad--x--16 bg--col--brand-green bg--blur--100">
-                        <div class="flex items-center gap--8">
-                            <span class="fs--16 lh--24 fw5 poppins black">TIP</span>
-
-                            <div class="flex items-center">
-                                <img src="./images/token-tip-svg.png" alt="" class="w--24 h--24">
-                                <span class="fs--20 lh--30 fw6 poppins black tracked--0-12">600</span>
-                            </div>
-                        </div>
+            <div data-token-topup-button-wrapper-mobile class="dn fixed right-0 bottom-0 display-flex--responsive-mobile-responsive">
+                <div data-token-topup-button-container>
+                    <button data-token-topup-button class="flex justify-center items-center gap--8 relative w--188 h--56 pad--x--16 bg--col--led-pink bg--blur--100">
+                        <span class="fs--16 lh--24 fw5 poppins white nowrap">TOP UP AND TIP</span>
 
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
-                            <path d="M5.17627 12H19.1763M19.1763 12L12.1763 5M19.1763 12L12.1763 19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M5.17627 12H19.1763M19.1763 12L12.1763 5M19.1763 12L12.1763 19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </button>
                 </div>
