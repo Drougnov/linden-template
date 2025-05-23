@@ -136,7 +136,7 @@
                 appearance: none;
                 width: 44px;
                 height: 44px;
-                background: url("./images/slider-icon.png");
+                background: url("./images/slider-icon-active.png");
                 background-position: center;
                 background-size: 120%;
                 cursor: pointer;
@@ -170,6 +170,18 @@
             }
             [data-tip-range-slider-track-fill]:not(.db):empty {
                 display: unset;
+            }
+
+            [data-tip-range-slider-amount-container] {
+                position: absolute;
+                top: -64px;
+                left: 0;
+                pointer-events: none;
+            }
+
+            [data-tip-range-slider-amount]{
+                background: black;
+                box-shadow: 0px 0px 8px 0px #FFFFFF8C, 0px 4px 12px 0px #FC2C9C80;
             }
 
             /* discount (% off) tag */
@@ -463,7 +475,7 @@
                                             <div class="flex items-center gap--8">
                                                 <img src="./images/token-tip-svg.png" alt="" class="w--48 h--48">
 
-                                                <input data-tip-amount-input type="number" value="200" class="w-100 fs--40 lh--60 fw6 black tracked--0-2">
+                                                <input data-tip-amount-input type="number" value="672" class="w-100 fs--40 lh--60 fw6 black tracked--0-2">
                                             </div>
 
                                             <span class="fs--18 lh--36 fw6 poppins black pad--bottom--5">tokens</span>
@@ -471,11 +483,19 @@
                                     </div>
 
                                     <!-- enter-top-up-amount-section--bottom -->
-                                    <div class="flex flex-column gap--16 pad--top--28 pad--bottom--16">
+                                    <div class="flex flex-column gap--16 pad--top--32 pad--bottom--16">
                                         <div class="w-100 relative">
                                             <div data-slider-track-base></div>
                                             <div data-tip-range-slider-track-fill></div>
-                                            <input data-tip-range-slider type="range" min="100" max="14000" value="1200" step="1">
+                                            <input data-tip-range-slider type="range" min="100" max="14000" value="5550" step="1">
+                                            <div data-tip-range-slider-amount-container class="flex flex-column items-center w--max-content">
+                                                <div data-token-tip-discount-tag class="flex justify-center items-center pad--y--2 pad--x--4 w--max-content z-1">
+                                                    <span class="fs--10 lh--14 fw6 poppins black">30% OFF</span>
+                                                </div>
+                                                <div data-tip-range-slider-amount class="flex justify-center items-center pad--y--4 pad--x--10 w--max-content nt1">
+                                                    <span class="fs--18 lh--28 fw6 poppins col--brand-green">672</span>
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <div class="flex justify-between items-center">
@@ -625,6 +645,41 @@
             
             // Check initial state
             handleScroll();
+
+            // Get the slider amount container element
+            const sliderAmountContainer = document.querySelector("[data-tip-range-slider-amount-container]");
+            const sliderAmountValue = sliderAmountContainer.querySelector("[data-tip-range-slider-amount] span");
+
+            // Function to update slider amount position and value
+            function updateSliderAmount() {
+                // Calculate thumb position percentage (0-1)
+                const percent = (slider.value - slider.min) / (slider.max - slider.min);
+                
+                // Calculate the thumb position in pixels
+                const sliderWidth = slider.offsetWidth;
+                const thumbWidth = 44; // Width of slider thumb
+                const thumbPosition = percent * (sliderWidth - thumbWidth) + (thumbWidth / 2);
+                
+                // Position the amount container above the thumb
+                sliderAmountContainer.style.left = `${thumbPosition}px`;
+                sliderAmountContainer.style.transform = 'translateX(-50%)';
+            }
+
+            // Add event listeners
+            slider.addEventListener("input", () => {
+                updateTrackFill();
+                updateSliderAmount();
+            });
+
+            // Update on window resize
+            window.addEventListener("resize", () => {
+                updateTrackFill();
+                updateSliderAmount();
+            });
+
+            // Initial updates
+            updateTrackFill();
+            updateSliderAmount();
         </script>
     </body>
 </html>
