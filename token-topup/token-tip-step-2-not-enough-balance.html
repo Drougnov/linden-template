@@ -265,6 +265,11 @@
                     flex-direction: column
                 }
 
+                .pad--x--16-responsive-tablet-landscape{
+                    padding-left: 1rem;
+                    padding-right: 1rem;
+                }
+
                 /* popup */
                 [data-token-popup] .elm_yNwqwJ{
                     align-items: start;
@@ -346,6 +351,10 @@
             }
 
             @media (max-width: 480px){
+                [data-token-popup-left-column]{
+                    min-height: 23.4375rem;
+                }
+                
                 [data-token-popup-right-column]{
                     min-height: unset;
                     padding-bottom: 4.25rem;
@@ -397,11 +406,11 @@
                         <!-- column-container -->
                         <div class="flex flex--column-responsive-tablet-landscape">
                             <!-- left-column -->
-                            <div class="w--323 mh--538 h-100 flex" data-token-popup-left-column>
+                            <div class="w--323 mh--538 flex" data-token-popup-left-column>
                                 <!-- overlay-container -->
                                 <div class="bg--gd-black flex items-end w-100" data-left-column-overlay-container>
                                     <!-- text-container -->
-                                    <div class="flex flex-column gap--10 pad--16 drop--sh--1">
+                                    <div class="flex flex-column gap--10 pad--16 drop--sh--1 pad--x--8-responsive-mobile pad--x--8-responsive-mobile-portrait">
                                         <p class="fs--20 lh--30 fw5 poppins white">I would love to get some tip if you appreciate my content. :) **** 123</p>
                                     
                                         <div class="flex flex-column">
@@ -446,7 +455,7 @@
                                 <!-- tabs-content-container -->
                                 <div class="flex flex-column">
                                     <!-- token-input-container -->
-                                    <div class="pad--24 pad--x--8-responsive-mobile pad--x--8-responsive-mobile-portrait pad--top--16-responsive-mobile pad--top--16-responsive-mobile-portrait pad--bottom--24-responsive-mobile pad--bottom--24-responsive-mobile-portrait">
+                                    <div class="pad--24 pad--x--16-responsive-tablet-landscape pad--x--8-responsive-mobile pad--x--8-responsive-mobile-portrait pad--top--16-responsive-mobile pad--top--16-responsive-mobile-portrait pad--bottom--24-responsive-mobile pad--bottom--24-responsive-mobile-portrait">
                                         <div class="flex flex-column flex--max gap--24">
                                             <p class="fs--18 lh--28 fw6 poppins col--ebony--variation-2 fs--16--responsive-mobile fs--16--responsive-mobile-portrait lh--24--responsive-mobile lh--24--responsive-mobile-portrait">How many tokens would you like to tip?</p>
 
@@ -462,7 +471,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="flex flex-column gap--16 pad--x--24 pad--x--8-responsive-mobile pad--x--8-responsive-mobile-portrait">
+                                    <div class="flex flex-column gap--16 pad--x--24 pad--x--16-responsive-tablet-landscape pad--x--8-responsive-mobile pad--x--8-responsive-mobile-portrait">
                                         <!-- from-wrapper -->
                                         <div class="flex flex-column">
                                             <!-- error-container -->
