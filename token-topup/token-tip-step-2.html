@@ -7,7 +7,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="dns-prefetch" href="//staging.fansocial.app">
         <link rel="dns-prefetch" href="//fonts.googleapis.com">
         <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
-        <title>Token popup - tip - step 1</title>
+        <title>Token popup - tip - step 2</title>
         <link rel="stylesheet" id="google-fonts-css" href="https://fonts.googleapis.com/css2?family=Poppins%3Awght%40300%3B400%3B500%3B600%3B700%3B800%3B900&amp;display=swap&amp;ver=1.0.0" media="">
         <link rel="stylesheet" id="theme-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/theme.css?ver=1.0.0" media="">
         <link rel="stylesheet" id="final-main-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/main.css?ver=1.0.0" media="">
@@ -32,6 +32,7 @@
             .sh--22 { box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25); }
             .w--521 { width: 32.5625rem; }
             .mh--538 { min-height: 33.625rem; }
+            .col--grey-800 { color: var(--Gray-800, #182230); }
             .col--white--brand--25 { color: #FCFAFF; }
             .br--col--ebony--variation-2 { border-color: var(--color-ebony-2, #0C111D); }
 
@@ -197,6 +198,11 @@
                 border-width: 5px;
                 border-style: solid;
                 border-color: transparent #2C313D transparent transparent;
+            }
+
+            /* tip amount tag (inside from container) */
+            [data-tip-amount-tag]{
+                background: linear-gradient(90deg, #FF58B2 0%, #4C57FF 100%);
             }
 
             @media (max-width: 1010px){
@@ -374,7 +380,7 @@
                                                 <div class="flex items-center gap--8">
                                                     <img src="./images/token-tip-svg.png" alt="" class="w--48 h--48">
 
-                                                    <input data-tip-amount-input type="number" value="" class="w-100 fs--40 lh--60 fw6 black tracked--0-2">
+                                                    <input data-tip-amount-input type="number" value="600" class="w-100 fs--40 lh--60 fw6 black tracked--0-2">
                                                 </div>
 
                                                 <span class="fs--18 lh--36 fw6 poppins black pad--bottom--5">tokens</span>
@@ -388,17 +394,31 @@
                                             <span class="fs--12 lh--18 fw6 poppins col--ebony--variation-2">From</span>
 
                                             <div class="flex items-center gap--8 flex--max">
-                                                <img src="./images/user-vector.png" alt="" class="w--40 h--36">
+                                                <img src="./images/user-vector-2.png" alt="" class="w--40 h--36">
                                                 <div class="flex flex-column gap--4">
-                                                    <span class="fs--12 lh--18 fw6 poppins col--ebony--variation-2">Fun Guy</span>
+                                                    <span class="fs--12 lh--18 fw6 poppins col--ebony--variation-2">Anonymous User</span>
+                                                    <span class="fs--12 lh--18 fw5 poppins col--pale-sky">You will tip anonymously</span>
                                                 </div>
                                             </div>
 
                                             <div class="flex flex-column">
                                                 <span class="fs--10 lh--18 poppins col--ebony--variation-2 tr">Token Balance</span>
-                                                <div class="flex justify-end items-center gap--4">
-                                                    <img src="./images/token-tip-svg.png" alt="" class="w--24 h--24">
-                                                    <span class="fs--16 lh--24 fw6 poppins col--ebony--variation-2">1,834</span>
+                                                <div class="flex items-center gap--10">
+                                                    <div data-tip-amount-tag>
+                                                        <div class="flex items-center gap--3 pad--y--2 pad--x--4">
+                                                            <span class="fs--16 lh--24 fw6 poppins white">-</span>
+
+                                                            <div class="flex items-center gap--01">
+                                                                <img src="./images/token-tip-svg.png" alt="" class="w--14 h--14">
+                                                                <span class="fs--16 lh--24 fw6 poppins white">600</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="flex justify-end items-center gap--4">
+                                                        <img src="./images/token-tip-svg.png" alt="" class="w--24 h--24">
+                                                        <span class="fs--16 lh--24 fw6 poppins col--ebony--variation-2">1,834</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -407,7 +427,7 @@
                                         <div class="flex items-center gap--8">
                                             <!-- switch -->
                                             <label class="switch">
-                                                <input type="checkbox">
+                                                <input type="checkbox" checked>
                                                 <span class="slider"></span>
                                             </label>
 
@@ -443,7 +463,15 @@
                                             </div>
 
                                             <!-- status -->
-                                            <div data-status-pending>
+                                            <div data-status-pending class="flex items-center">
+                                                <div class="flex items-center gap--3 pad--y--2 pad--x--4">
+                                                    <span class="fs--16 lh--24 fw6 poppins col--grey-800">+</span>
+
+                                                    <div class="flex items-center gap--01">
+                                                        <img src="./images/token-tip-svg.png" alt="" class="w--14 h--14">
+                                                        <span class="fs--16 lh--24 fw6 poppins col--grey-800">600</span>
+                                                    </div>
+                                                </div>
                                                 <div data-status-pending-inner-container class="flex justify-center items-center pad--4">
                                                     <span data-status-pending-text class="fs--14 lh--20 fw5 poppins">Pending</span>
                                                 </div>
@@ -457,6 +485,13 @@
                                             </svg>
 
                                             <input type="text" placeholder="Add Message...(Optional)">
+                                        </div>
+
+                                        <!-- button-container -->
+                                        <div class="flex justify-end items-end pad--top--24">
+                                            <div class="">
+
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
