@@ -7,7 +7,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="dns-prefetch" href="//staging.fansocial.app">
         <link rel="dns-prefetch" href="//fonts.googleapis.com">
         <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
-        <title>Token popup - tip - step 2 - not enough balance</title>
+        <title>Token popup - tip - step 2c - payment</title>
         <link rel="stylesheet" id="google-fonts-css" href="https://fonts.googleapis.com/css2?family=Poppins%3Awght%40300%3B400%3B500%3B600%3B700%3B800%3B900&amp;display=swap&amp;ver=1.0.0" media="">
         <link rel="stylesheet" id="theme-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/theme.css?ver=1.0.0" media="">
         <link rel="stylesheet" id="final-main-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/main.css?ver=1.0.0" media="">
@@ -62,114 +62,18 @@
             }
 
             /* popup - right-column */
-
-            /* token-amount-input */
-            input[type="number"][data-tip-amount-input]{
-                color: black !important;
-                font-size: 2.5rem !important;
-                font-weight: 600 !important;
-                line-height: 3.75rem !important;
-                -moz-appearance: textfield;
+            [data-token-popup-right-column]{
+                min-height: 35.75rem;
             }
 
-            input[type="number"][data-tip-amount-input]::-webkit-outer-spin-button,
-            input[type="number"][data-tip-amount-input]::-webkit-inner-spin-button {
-                -webkit-appearance: none;
-                margin: 0;
+            [data-payment-information-wrapper]{
+                background: #FFFFFF59;
+                border: 1px solid #EAECF080;
             }
 
-            /* tooltip */
-            [data-token-popup-tooltip] {
-                position: relative;
-                display: inline-block;
-            }
-
-            /* Tooltip text */
-            [data-token-popup-tooltip] [data-token-popup-tooltip-text] {
-                top: -1.6875rem;
-                left: 1.5rem;
-                background-color: #2C313D;
-                border-radius: .5rem;
-                padding: .5rem .75rem;
-                min-width: 14.8125rem;
-                visibility: hidden;
-                position: absolute;
-                z-index: 1;
-            }
-
-            /* Show the tooltip text when you mouse over the tooltip container */
-            [data-token-popup-tooltip]:hover [data-token-popup-tooltip-text] {
-                visibility: visible;
-            }
-
-            [data-token-popup-tooltip] [data-token-popup-tooltip-text]::after {
-                content: " ";
-                position: absolute;
-                top: 50%;
-                right: 100%; /* To the left of the tooltip */
-                margin-top: -5px;
-                border-width: 5px;
-                border-style: solid;
-                border-color: transparent #2C313D transparent transparent;
-            }
-
-            /* add-message-input */
-            [token-add-message-input]::-webkit-input-placeholder{
-                line-height: 2.5rem !important;
-            }
-
-            /* range-slider */
-            [data-tip-range-slider] {
-                -webkit-appearance: none;
-                width: 100%;
-                height: 13px;
-                border-radius: 100px;
-                background: transparent;
-                position: relative;
-                outline: none;
-                border: none;
-                z-index: 2;
-            }
-
-            [data-tip-range-slider]::-webkit-slider-thumb {
-                -webkit-appearance: none;
-                appearance: none;
-                width: 44px;
-                height: 44px;
-                background: url("./images/slider-icon.png");
-                background-position: center;
-                background-size: 120%;
-                cursor: pointer;
-                border: none;
-                margin-top: -4px;
-                position: relative;
-                z-index: 3;
-                overflow: visible;
-            }
-
-            [data-slider-track-base]:not(.db):empty {
-                position: absolute;
-                top: 0;
-                left: 0;
-                height: 13px;
-                width: 100%;
-                background: #34405480;
-                display: unset;
-                border-radius: 100px;
-                z-index: 1;
-            }
-
-            [data-tip-range-slider-track-fill] {
-                position: absolute;
-                top: 0;
-                left: 0;
-                height: 13px;
-                background: linear-gradient(90deg, #9198FF 0%, #FF8DDF 122.28%, #FF0066 244.56%);
-                border-radius: 100px;
-                z-index: 2;
-            }
-            [data-tip-range-slider-track-fill]:not(.db):empty {
-                display: unset;
+            /* topup amount table section */
+            [data-topup-amount-table-section]{
+                margin-top: auto;
             }
 
             /* discount (% off) tag */
@@ -259,11 +163,6 @@
                 [data-token-popup-right-column]{
                     min-height: 32.375rem;
                 }
-
-                /* enter topup amount section */
-                [data-enter-topup-amount-section]{
-                    padding-top: 16px;
-                }
             }
 
             @media (max-width: 767px){
@@ -309,11 +208,6 @@
                     min-height: 36.875rem;
                 }
 
-                /* topup amount table section */
-                [data-topup-amount-table-section]{
-                    margin-top: auto;
-                }
-
                 /* tip button */
                 [data-token-topup-button-container]{
                     height: 2.75rem;
@@ -336,12 +230,6 @@
 
                 [data-token-popup-right-column]{
                     min-height: unset;
-                }
-
-                [data-token-popup-tooltip] [data-token-popup-tooltip-text]{
-                    min-width: 10.8125rem;
-                    top: -2.75rem;
-                    left: 1.75rem;
                 }
 
                 [data-topup-amount-table-section]{
@@ -384,8 +272,8 @@
         <link rel="stylesheet" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-mobile.css" media="screen and (min-width: 480px) and (max-width: 767px)">
         <link rel="stylesheet" id="dashboardStylesMobilePortrait-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-mobile-portrait.css" media="screen and (max-width: 479px)">
     </head>
-    <body style="background-color: #44444480">
-        <div style="background: #8E8E8E;" class="w-100 h-100 min-vh-100 flex justify-center items-center">
+    <body style="background-color: #949494">
+        <div style="background: #44444480;" class="w-100 h-100 min-vh-100 flex justify-center items-center">
 
             <!-- popup-start -->
             <div data-token-popup class="elm_UoRWYY items-center justify-center fixed dn top-0 left-0 w-100 h-100 z-max overflow-auto flex opened">
@@ -444,47 +332,124 @@
 
                             <!-- righ-column -->
                             <div class="w--521 mh--538 h-100 flex flex-column bg--col--white--25" data-token-popup-right-column>
-                                <!-- enter-top-up-amount-section -->
-                                <div data-enter-topup-amount-section class="flex flex-column gap--16 pad--24 pad--x--16-responsive-tablet-landscape sh--1 pad--x--8-responsive-mobile pad--y--16-responsive-mobile pad--x--8-responsive-mobile-portrait pad--y--16-responsive-mobile-portrait">
-                                    <!-- enter-top-up-amount-section--top -->
-                                    <div class="flex flex-column gap--24">
-                                        <!-- back-button -->
-                                        <div class="flex items-center gap--2 pointer h--18 display-none--responsive-mobile display-none--responsive-mobile-portrait">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
-                                                <path d="M10.1763 12L6.17627 8L10.1763 4" stroke="#475467" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-                                            </svg>
-                                            <span class="fs--12 lh--16 fw5 poppins col--fiord">Back</span>
-                                        </div>
-
-                                        <h3 class="fs--18 lh--28 fw6 poppins col--ebony--variation-2 ma0 fs--16--responsive-mobile fs--16--responsive-mobile-portrait lh--24--responsive-mobile lh--24--responsive-mobile-portrait">Enter Top Up Amount</h3>
-                                    
-                                        <!-- input-container -->
-                                        <div class="bb br--col--ebony--variation-2 flex justify-between items-end gap--8">
-                                            <div class="flex items-center gap--8">
-                                                <img src="./images/token-tip-svg.png" alt="" class="w--48 h--48">
-
-                                                <input data-tip-amount-input type="number" value="200" class="w-100 fs--40 lh--60 fw6 black tracked--0-2">
-                                            </div>
-
-                                            <span class="fs--18 lh--36 fw6 poppins black pad--bottom--5">tokens</span>
-                                        </div>
+                                <!-- enter-payment-info-section -->
+                                <div class="flex flex-column gap--16 pad--x--24 pad--y--16 pad--x--16-responsive-tablet-landscape pad--x--8-responsive-mobile pad--x--8-responsive-mobile-portrait">
+                                    <!-- back-button -->
+                                    <div class="flex items-center gap--2 pointer h--18 display-none--responsive-mobile display-none--responsive-mobile-portrait">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+                                            <path d="M10.1763 12L6.17627 8L10.1763 4" stroke="#475467" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        <span class="fs--12 lh--16 fw5 poppins col--fiord">Back</span>
                                     </div>
 
-                                    <!-- enter-top-up-amount-section--bottom -->
-                                    <div class="flex flex-column gap--16 pad--top--28 pad--bottom--16">
-                                        <div class="w-100 relative">
-                                            <div data-slider-track-base></div>
-                                            <div data-tip-range-slider-track-fill></div>
-                                            <input data-tip-range-slider type="range" min="100" max="14000" value="1200" step="1">
+                                    <div class="flex flex-column gap--24">
+                                        <!-- payment-method-section -->
+                                        <div class="flex flex-column gap--16">
+                                            <!-- title-section -->
+                                            <div class="flex items-center gap--8">
+                                                <!-- left-side -->
+                                                <div class="flex items-center gap--8 flex--max">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+                                                        <path d="M18.4508 8.33317H1.78418M1.78418 6.83317L1.78418 13.1665C1.78418 14.0999 1.78418 14.5666 1.96584 14.9232C2.12562 15.2368 2.38059 15.4917 2.6942 15.6515C3.05071 15.8332 3.51743 15.8332 4.45085 15.8332L15.7842 15.8332C16.7176 15.8332 17.1843 15.8332 17.5408 15.6515C17.8544 15.4917 18.1094 15.2368 18.2692 14.9232C18.4508 14.5666 18.4508 14.0999 18.4508 13.1665V6.83317C18.4508 5.89975 18.4508 5.43304 18.2692 5.07652C18.1094 4.76292 17.8544 4.50795 17.5408 4.34816C17.1843 4.16651 16.7176 4.16651 15.7842 4.1665L4.45085 4.1665C3.51743 4.1665 3.05072 4.1665 2.6942 4.34816C2.38059 4.50795 2.12562 4.76292 1.96584 5.07652C1.78418 5.43304 1.78418 5.89975 1.78418 6.83317Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+
+                                                    <span class="fs--16 lh--24 fw6 poppins col--oxford-blue">PAYMENT METHOD</span>
+                                                </div>
+
+                                                <!-- right-side -->
+                                                <div class="flex items-center gap--10">
+                                                    <span class="fs--14 lh--20 fw5 poppins col--oxford-blue">Change card</span>
+                                                    
+                                                    <div class="flex justify-center items-center pointer w--24 h--24">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+                                                            <path d="M6.17578 9L12.1758 15L18.1758 9" stroke="#344054" stroke-width="1.77778" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- info-section -->
+                                            <div data-payment-information-wrapper class="pad--y--8 pad--x--16 br--6">
+                                                <div class="flex items-center gap--8 bb b--transparent pad--y--8">
+                                                    <div class="flex justify-between items-center gap--8 flex--max">
+                                                        <div class="flex items-center gap--8 w--280 w--auto-responsive-mobile-portrait">
+                                                            <div class="flex--max">
+                                                                <span class="fs--16 lh--24 fw5 poppins col--oxford-blue nowrap">Jane Carter</span>
+                                                            </div>
+
+                                                            <div class="flex--max">
+                                                                <span class="fs--16 lh--24 fw5 poppins col--oxford-blue nowrap">****3746</span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="flex items-center gap--8">
+                                                            <span class="fs--12 lh--18 poppins col--oxford-blue nowrap">EXP 02/30</span>
+                                                        
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="42" height="12" viewBox="0 0 42 12" fill="none">
+                                                                <path d="M15.0718 11.8729L17.1169 0.233577H20.3868L18.3411 11.8729H15.0718ZM30.1402 0.488918C29.2018 0.159139 28.2105 -0.00634029 27.2125 0.000185756C23.9854 0.000185756 21.712 1.57686 21.6924 3.83703C21.6747 5.50751 23.3158 6.43923 24.5547 6.99507C25.826 7.56516 26.2533 7.9286 26.2472 8.43752C26.2392 9.21664 25.2317 9.57235 24.2933 9.57235C22.9858 9.57235 22.2917 9.39422 21.2186 8.9625L20.7981 8.77779L20.3397 11.38C21.1024 11.7043 22.5133 11.9857 23.9775 12C27.4108 12 29.6395 10.4417 29.6652 8.02835C29.6775 6.70586 28.8083 5.6993 26.923 4.8697C25.7814 4.33524 25.0823 3.973 25.0897 3.42844C25.0897 2.94565 25.6816 2.42903 26.9603 2.42903C27.7981 2.41083 28.6306 2.56253 29.4045 2.87441L29.6971 3.00861L30.1402 0.488918ZM38.5409 0.233577H36.0251C35.2459 0.233577 34.6625 0.440245 34.3203 1.19443L29.4846 11.8135H32.9266C32.9266 11.8135 33.4775 10.4014 33.6042 10.0914L37.728 10.0961C37.8241 10.4976 38.1198 11.8135 38.1198 11.8135H41.1754L38.5409 0.233577ZM34.5407 7.716C34.8106 7.04615 35.8421 4.46648 35.8421 4.46648C35.8225 4.49736 36.1102 3.79307 36.2748 3.35659L36.4958 4.35902C36.4958 4.35902 37.1214 7.13404 37.2518 7.716H34.5407ZM12.2971 0.233577L9.10676 8.14297L8.76702 6.53545C8.17327 4.68266 6.32285 2.67547 4.25391 1.67069L7.17125 11.8135L10.6187 11.81L15.7488 0.233577H12.2812" fill="url(#paint0_linear_21857_56347)"/>
+                                                                <path d="M5.98543 0.233457H0.741451L0.699219 0.475141C4.79671 1.43776 7.50774 3.76326 8.63342 6.5567L7.48816 1.21211C7.29044 0.476338 6.71753 0.256614 6.00808 0.231079" fill="url(#paint1_linear_21857_56347)"/>
+                                                                <defs>
+                                                                    <linearGradient id="paint0_linear_21857_56347" x1="22.7147" y1="0" x2="22.7147" y2="12" gradientUnits="userSpaceOnUse">
+                                                                        <stop stop-color="white"/>
+                                                                        <stop offset="1" stop-color="white" stop-opacity="0.75"/>
+                                                                    </linearGradient>
+                                                                    <linearGradient id="paint1_linear_21857_56347" x1="4.66632" y1="0.231079" x2="4.66632" y2="6.5567" gradientUnits="userSpaceOnUse">
+                                                                        <stop stop-color="white"/>
+                                                                        <stop offset="1" stop-color="white" stop-opacity="0.75"/>
+                                                                    </linearGradient>
+                                                                </defs>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="flex justify-center items-center w--18 h--18 pointer">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18" fill="none">
+                                                            <path d="M15.9258 13.4999L15.1757 14.3205C14.7779 14.7555 14.2384 14.9999 13.6759 14.9999C13.1134 14.9999 12.5739 14.7555 12.1761 14.3205C11.7777 13.8863 11.2383 13.6425 10.6759 13.6425C10.1136 13.6425 9.57413 13.8863 9.17576 14.3205M2.42578 14.9999H3.68169C4.04857 14.9999 4.23202 14.9999 4.40465 14.9585C4.5577 14.9217 4.70402 14.8611 4.83823 14.7789C4.9896 14.6861 5.11932 14.5564 5.37875 14.297L14.8008 4.87493C15.4221 4.25361 15.4221 3.24625 14.8008 2.62493C14.1795 2.00361 13.1721 2.00361 12.5508 2.62493L3.12873 12.047C2.8693 12.3064 2.73958 12.4361 2.64682 12.5875C2.56458 12.7217 2.50397 12.868 2.46723 13.0211C2.42578 13.1937 2.42578 13.3772 2.42578 13.744V14.9999Z" stroke="#667085" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
 
-                                        <div class="flex justify-between items-center">
-                                            <span class="fs--14 lh--20 poppins white">100</span>
-                                            <span class="fs--14 lh--20 poppins white">300</span>
-                                            <span class="fs--14 lh--20 poppins white">600</span>
-                                            <span class="fs--14 lh--20 poppins white">1,500</span>
-                                            <span class="fs--14 lh--20 poppins white">4,500</span>
-                                            <span class="fs--14 lh--20 poppins white">14,000</span>
+                                        <!-- billing-address-section -->
+                                        <div class="flex flex-column gap--16">
+                                            <!-- title-section -->
+                                            <div class="flex items-center gap--8">
+                                                <!-- left-side -->
+                                                <div class="flex items-center gap--8 flex--max">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+                                                        <path d="M18.4508 8.33317H1.78418M1.78418 6.83317L1.78418 13.1665C1.78418 14.0999 1.78418 14.5666 1.96584 14.9232C2.12562 15.2368 2.38059 15.4917 2.6942 15.6515C3.05071 15.8332 3.51743 15.8332 4.45085 15.8332L15.7842 15.8332C16.7176 15.8332 17.1843 15.8332 17.5408 15.6515C17.8544 15.4917 18.1094 15.2368 18.2692 14.9232C18.4508 14.5666 18.4508 14.0999 18.4508 13.1665V6.83317C18.4508 5.89975 18.4508 5.43304 18.2692 5.07652C18.1094 4.76292 17.8544 4.50795 17.5408 4.34816C17.1843 4.16651 16.7176 4.16651 15.7842 4.1665L4.45085 4.1665C3.51743 4.1665 3.05072 4.1665 2.6942 4.34816C2.38059 4.50795 2.12562 4.76292 1.96584 5.07652C1.78418 5.43304 1.78418 5.89975 1.78418 6.83317Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+
+                                                    <span class="fs--16 lh--24 fw6 poppins col--oxford-blue">PAYMENT METHOD</span>
+                                                </div>
+
+                                                <!-- right-side -->
+                                                <div class="flex items-center gap--10">
+                                                    <span class="fs--14 lh--20 fw5 poppins col--oxford-blue">Change card</span>
+                                                    
+                                                    <div class="flex justify-center items-center pointer w--24 h--24">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+                                                            <path d="M6.17578 9L12.1758 15L18.1758 9" stroke="#344054" stroke-width="1.77778" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- info-section -->
+                                            <div data-payment-information-wrapper class="pad--y--8 pad--x--16 br--6">
+                                                <div class="flex items-center gap--8 bb b--transparent pad--y--8">
+                                                    <div class="flex items-center gap--8 flex--max">
+                                                        <p class="fs--16 lh--24 fw5 poppins col--oxford-blue">Chan Tai Man,10/F Block5,Fook Yip Bldg,12345,Kwai Chung,Hong Kong</p>
+                                                    </div>
+
+                                                    <div class="flex justify-center items-center w--18 h--18 pointer">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18" fill="none">
+                                                            <path d="M15.9258 13.4999L15.1757 14.3205C14.7779 14.7555 14.2384 14.9999 13.6759 14.9999C13.1134 14.9999 12.5739 14.7555 12.1761 14.3205C11.7777 13.8863 11.2383 13.6425 10.6759 13.6425C10.1136 13.6425 9.57413 13.8863 9.17576 14.3205M2.42578 14.9999H3.68169C4.04857 14.9999 4.23202 14.9999 4.40465 14.9585C4.5577 14.9217 4.70402 14.8611 4.83823 14.7789C4.9896 14.6861 5.11932 14.5564 5.37875 14.297L14.8008 4.87493C15.4221 4.25361 15.4221 3.24625 14.8008 2.62493C14.1795 2.00361 13.1721 2.00361 12.5508 2.62493L3.12873 12.047C2.8693 12.3064 2.73958 12.4361 2.64682 12.5875C2.56458 12.7217 2.50397 12.868 2.46723 13.0211C2.42578 13.1937 2.42578 13.3772 2.42578 13.744V14.9999Z" stroke="#667085" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

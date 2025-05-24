@@ -7,7 +7,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="dns-prefetch" href="//staging.fansocial.app">
         <link rel="dns-prefetch" href="//fonts.googleapis.com">
         <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
-        <title>Token popup - tip - step 2 - not enough balance</title>
+        <title>Token popup - tip - step 2 - top up</title>
         <link rel="stylesheet" id="google-fonts-css" href="https://fonts.googleapis.com/css2?family=Poppins%3Awght%40300%3B400%3B500%3B600%3B700%3B800%3B900&amp;display=swap&amp;ver=1.0.0" media="">
         <link rel="stylesheet" id="theme-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/theme.css?ver=1.0.0" media="">
         <link rel="stylesheet" id="final-main-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/main.css?ver=1.0.0" media="">
@@ -63,17 +63,47 @@
 
             /* popup - right-column */
 
+            /* tip-alert-wrapper */
+            [data-tip-alert-wrapper]{
+                background-color: #242424;
+                border-bottom: 0.5px solid #344054;
+            }
+
+            [data-tip-alert-container]{
+                border-left: 3px solid #FF4405;
+                background: linear-gradient(0deg, rgba(255, 68, 5, 0.3), rgba(255, 68, 5, 0.3)), linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 100%);
+            }
+
+            [data-tip-alert-container]::after {
+                position: absolute;
+                content: '';
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 100%);
+                z-index: 1;
+            }
+
             /* token-amount-input */
-            input[type="number"][data-tip-amount-input]{
+            input[type="number"][data-tip-amount-input],
+            input[type="text"][data-tip-amount-input]{
                 color: black !important;
                 font-size: 2.5rem !important;
                 font-weight: 600 !important;
                 line-height: 3.75rem !important;
                 -moz-appearance: textfield;
             }
+            
+            input[type="number"][data-tip-amount-input-alert],
+            input[type="text"][data-tip-amount-input-alert]{
+                color: var(--color-led-pink, #FF0066) !important;
+            }
 
             input[type="number"][data-tip-amount-input]::-webkit-outer-spin-button,
-            input[type="number"][data-tip-amount-input]::-webkit-inner-spin-button {
+            input[type="number"][data-tip-amount-input]::-webkit-inner-spin-button,
+            input[type="text"][data-tip-amount-input]::-webkit-outer-spin-button,
+            input[type="text"][data-tip-amount-input]::-webkit-inner-spin-button {
                 -webkit-appearance: none;
                 margin: 0;
             }
@@ -202,6 +232,14 @@
                 box-shadow: -12px 0px 16px 0px #ffffff40;
             }
 
+            [data-token-topup-button]:disabled{
+                background-color: #98A2B3;
+            }
+
+            [data-token-topup-button]:disabled::before{
+                background-color: #98A2B3;
+            }
+
             button[data-token-topup-button]:hover{
                 background-color: white;
             }
@@ -218,8 +256,18 @@
                 color: #FF0066;
             }
 
+            button[data-token-topup-button]:disabled:hover svg path,
+            button[data-token-topup-button]:disabled:hover span{
+                stroke: #98A2B3;
+                color: #98A2B3;
+            }
+
             @media (max-width: 1010px){
                 /* responsive */
+                .display-none--responsive-tablet-landscape{
+                    display: none;
+                }
+
                 .flex--column-responsive-tablet-landscape {
                     -webkit-box-orient: vertical;
                     -webkit-box-direction: normal;
@@ -449,24 +497,51 @@
                                     <!-- enter-top-up-amount-section--top -->
                                     <div class="flex flex-column gap--24">
                                         <!-- back-button -->
-                                        <div class="flex items-center gap--2 pointer h--18 display-none--responsive-mobile display-none--responsive-mobile-portrait">
+                                        <div class="flex items-center gap--2 pointer h--18 display-none--responsive-tablet-landscape display-none--responsive-mobile display-none--responsive-mobile-portrait">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
                                                 <path d="M10.1763 12L6.17627 8L10.1763 4" stroke="#475467" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
                                             </svg>
                                             <span class="fs--12 lh--16 fw5 poppins col--fiord">Back</span>
                                         </div>
 
-                                        <h3 class="fs--18 lh--28 fw6 poppins col--ebony--variation-2 ma0 fs--16--responsive-mobile fs--16--responsive-mobile-portrait lh--24--responsive-mobile lh--24--responsive-mobile-portrait">Enter Top Up Amount</h3>
+                                        <div class="flex flex-column gap--8">
+                                            <h3 class="fs--18 lh--28 fw6 poppins col--ebony--variation-2 ma0 fs--16--responsive-mobile fs--16--responsive-mobile-portrait lh--24--responsive-mobile lh--24--responsive-mobile-portrait">Enter Top Up Amount</h3>
                                     
-                                        <!-- input-container -->
-                                        <div class="bb br--col--ebony--variation-2 flex justify-between items-end gap--8">
-                                            <div class="flex items-center gap--8">
-                                                <img src="./images/token-tip-svg.png" alt="" class="w--48 h--48">
+                                            <!-- tip-alert-container -->
+                                            <div data-tip-alert-wrapper>
+                                                <div data-tip-alert-container class="pad--y--12 pad--x--8 relative z-1">
+                                                    <div class="flex gap--16 relative z-2">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="41" height="40" viewBox="0 0 41 40" fill="none">
+                                                            <rect x="0.117676" width="40" height="40" rx="8" fill="#FF4405" fill-opacity="0.1"/>
+                                                            <path d="M20.1176 16.5V21.1667M20.1176 25.8334H20.1292M18.5021 10.5404L8.90639 27.1148C8.37415 28.0341 8.10803 28.4937 8.14736 28.871C8.18167 29.2001 8.35407 29.4991 8.62165 29.6936C8.92844 29.9167 9.45958 29.9167 10.5219 29.9167H29.7133C30.7755 29.9167 31.3067 29.9167 31.6135 29.6936C31.881 29.4991 32.0534 29.2001 32.0877 28.871C32.1271 28.4937 31.861 28.0341 31.3287 27.1148L21.733 10.5404C21.2027 9.62434 20.9375 9.16633 20.5916 9.0125C20.2898 8.87832 19.9453 8.87832 19.6435 9.0125C19.2976 9.16633 19.0324 9.62434 18.5021 10.5404Z" stroke="#FF4405" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        </svg>
 
-                                                <input data-tip-amount-input type="number" value="200" class="w-100 fs--40 lh--60 fw6 black tracked--0-2">
+                                                        <div class="flex flex-column w-100">
+                                                            <p class="fs--14 lh--20 fw6 poppins col--vermilion">Input value exceeds maximum allowance (14,000 tokens)</p>
+                                                        
+                                                            <div class="flex justify-end items-end">
+                                                                <a href="#" class="flex items-center gap--2 pointer">
+                                                                    <span class="fs--12 lh--18 fw5 poppins col--vermilion">Set to Max</span>
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+                                                                        <path d="M6.11719 12L10.1172 8L6.11719 4" stroke="white" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                    </svg>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
 
-                                            <span class="fs--18 lh--36 fw6 poppins black pad--bottom--5">tokens</span>
+                                            <!-- input-container -->
+                                            <div class="bb br--col--ebony--variation-2 flex justify-between items-end gap--8">
+                                                <div class="flex items-center gap--8">
+                                                    <img src="./images/token-tip-svg.png" alt="" class="w--48 h--48">
+
+                                                    <input data-tip-amount-input data-tip-amount-input-alert type="text" value="16,200" class="w-100 fs--40 lh--60 fw6 black tracked--0-2">
+                                                </div>
+
+                                                <span class="fs--18 lh--36 fw6 poppins black pad--bottom--5">tokens</span>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -475,7 +550,7 @@
                                         <div class="w-100 relative">
                                             <div data-slider-track-base></div>
                                             <div data-tip-range-slider-track-fill></div>
-                                            <input data-tip-range-slider type="range" min="100" max="14000" value="1200" step="1">
+                                            <input data-tip-range-slider type="range" min="100" max="14000" value="14000" step="1">
                                         </div>
 
                                         <div class="flex justify-between items-center">
@@ -539,7 +614,7 @@
                                 <!-- button-wrapper -->
                                 <div data-token-topup-button-wrapper-desktop class="flex justify-end items-end display-none--responsive-mobile-portrait bg-white-50">
                                     <div data-token-topup-button-container>
-                                        <button data-token-topup-button class="flex justify-center items-center gap--8 relative w--188 h--56 pad--x--16 bg--col--led-pink bg--blur--100">
+                                        <button data-token-topup-button disabled class="flex justify-center items-center gap--8 relative w--188 h--56 pad--x--16 bg--col--led-pink bg--blur--100">
                                             <span class="fs--16 lh--24 fw5 poppins white nowrap">Pay USD$ 123.45</span>
 
                                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
@@ -579,7 +654,7 @@
             <!-- mobile fixed button -->
             <div data-token-topup-button-wrapper-mobile class="dn fixed right-0 bottom-0 display-flex--responsive-mobile-responsive">
                 <div data-token-topup-button-container>
-                    <button data-token-topup-button class="flex justify-center items-center gap--8 relative w--188 h--56 pad--x--16 bg--col--led-pink bg--blur--100">
+                    <button data-token-topup-button disabled class="flex justify-center items-center gap--8 relative w--188 h--56 pad--x--16 bg--col--led-pink bg--blur--100">
                         <span class="fs--16 lh--24 fw5 poppins white nowrap">Pay USD$ 123.45</span>
 
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
