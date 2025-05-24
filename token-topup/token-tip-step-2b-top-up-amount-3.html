@@ -232,14 +232,6 @@
                 box-shadow: -12px 0px 16px 0px #ffffff40;
             }
 
-            [data-token-topup-button]:disabled{
-                background-color: #98A2B3;
-            }
-
-            [data-token-topup-button]:disabled::before{
-                background-color: #98A2B3;
-            }
-
             button[data-token-topup-button]:hover{
                 background-color: white;
             }
@@ -256,6 +248,15 @@
                 color: #FF0066;
             }
 
+            /* button-disabled */
+            [data-token-topup-button]:disabled{
+                background-color: #98A2B3;
+            }
+
+            [data-token-topup-button]:disabled::before{
+                background-color: #98A2B3;
+            }
+            
             button[data-token-topup-button]:disabled:hover svg path,
             button[data-token-topup-button]:disabled:hover span{
                 stroke: #98A2B3;

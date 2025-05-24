@@ -19,6 +19,7 @@
         <link rel="stylesheet" id="tachyonsV2-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/tachyons-v2.css?ver=1.0.0" media="">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css?ver=1.0.0">
         <link rel="stylesheet" id="niceSelect-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/FINAL/css/nice-select.css?ver=1.0.21" media="">
+        <script defer src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/FINAL/js/nice-select.js?ver=1.0.0" type="text/javascript"></script>
         
         <!-- custom styles for this template -->
         <style>
@@ -31,6 +32,7 @@
             /* tachyons */
             .sh--22 { box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25); }
             .w--521 { width: 32.5625rem; }
+            .max--w--172 { max-width: 10.75rem; }
             .mh--538 { min-height: 33.625rem; }
             .col--grey-800 { color: var(--Gray-800, #182230); }
             .col--white--brand--25 { color: #FCFAFF; }
@@ -63,12 +65,101 @@
 
             /* popup - right-column */
             [data-token-popup-right-column]{
-                min-height: 35.75rem;
+                max-height: 35.5rem;
+                overflow: auto;
             }
 
-            [data-payment-information-wrapper]{
-                background: #FFFFFF59;
-                border: 1px solid #EAECF080;
+            /* payout-biling-form elements */
+            [data-checkout-payment-card]{
+                min-height: 277px;
+                background: url("./images/card-bg.png"), #1D1D1D;
+                background-size: cover;
+                border: 1px solid rgba(251, 251, 251, 0.37);
+            }
+
+            /* checkbox-styles copied from dashboard page */
+            [data-form-input-type=checkbox] input[type=checkbox] {
+                width: 1rem;
+                height: 1rem;
+                margin-right: 4px;
+            }
+
+            [data-form-input-type=checkbox][data-form-accent-color=green] input[type=checkbox] {
+                background: transparent;
+                border: solid 1px var(--color-Mischka, #d0d5dd);
+                border-radius: 4px;
+            }
+
+            [data-form-input-type=checkbox][data-form-accent-color=green] input[type=checkbox]:checked {
+                accent-color: var(--color-brand-green, #07f468);
+                background-color: var(--color-brand-green, #07f468);
+                border-color: var(--color-brand-green, #07f468);
+            }
+
+            input[type="checkbox"]:checked::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 2px;
+                margin-inline: auto;
+                width: 0.27rem;
+                height: 0.55rem;
+                border: solid black;
+                border-width: 0 2px 2px 0;
+                transform: rotate(45deg);
+            }
+
+            [data-checkout-payment-card] input:not([type="submit"]):not([type="radio"]):not([type="checkbox"]):not( [type="file"] ):not([type="color"]),
+            [data-checkout-payment-card] input[type="text"]{
+                font-size: 1rem;
+                font-weight: 400;
+                font-family: 'Poppins', sans-serif;
+                line-height: 1.5rem;
+                color: #F9FAFB;
+            }
+
+            [data-billing-address-container] input:not([type="submit"]):not([type="radio"]):not([type="checkbox"]):not( [type="file"] ):not([type="color"]),
+            [data-billing-address-container] input[type="text"]{
+                font-size: 1rem;
+                line-height: 1.5rem;
+                color: #0C111D;
+                background-color: #FFFFFF59;
+                box-shadow: 0px 1px 2px 0px #1018280D;
+                border-radius: 0 !important;
+            }
+            [data-billing-address-container] input:not([type="submit"]):not([type="radio"]):not([type="checkbox"]):not( [type="file"] ):not([type="color"])::placeholder,
+            [data-billing-address-container] input[type="text"]::placeholder{
+                font-size: 1rem;
+                font-weight: 400;
+                font-family: 'Poppins', sans-serif;
+                line-height: 1.5rem;
+                color: #667085;
+            }
+
+            /* nice-select style override */
+            [token-topup-select-dropdown] .nice-select.v1{
+                display: flex;
+                align-items: center;
+                font-size: 1rem;
+                line-height: 1.5rem;
+                color: #0C111D;
+                background-color: #FFFFFF59;
+                width: 100%;
+                height: 100%;
+                border: none;
+                border-radius: 0;
+                box-shadow: 0px 1px 2px 0px #1018280D;
+            }
+
+            [token-topup-select-dropdown] .nice-select.v1 .multiple-options{
+                flex: 1 0 0;
+                height: 100%;
+            }
+
+            [token-topup-select-dropdown] .nice-select.v1 .current{
+                height: 100%;
+                padding: 0 .75rem;
             }
 
             /* topup amount table section */
@@ -122,6 +213,21 @@
                 color: #FF0066;
             }
 
+            /* button-disabled */
+            [data-token-topup-button]:disabled{
+                background-color: #98A2B3;
+            }
+
+            [data-token-topup-button]:disabled::before{
+                background-color: #98A2B3;
+            }
+
+            button[data-token-topup-button]:disabled:hover svg path,
+            button[data-token-topup-button]:disabled:hover span{
+                stroke: #98A2B3;
+                color: #98A2B3;
+            }
+
             @media (max-width: 1010px){
                 /* responsive */
                 .flex--column-responsive-tablet-landscape {
@@ -162,6 +268,11 @@
 
                 [data-token-popup-right-column]{
                     min-height: 32.375rem;
+                }
+
+                [data-token-popup-right-column] {
+                    max-height: unset;
+                    overflow: unset;
                 }
             }
 
@@ -208,6 +319,12 @@
                     min-height: 36.875rem;
                 }
 
+                [data-checkout-payment-card]{
+                    width: 100%;
+                    max-width: 29.6875rem;
+                    margin: 0 auto;
+                }
+
                 /* tip button */
                 [data-token-topup-button-container]{
                     height: 2.75rem;
@@ -230,6 +347,19 @@
 
                 [data-token-popup-right-column]{
                     min-height: unset;
+                }
+
+                [data-checkout-payment-card] {
+                    width: 100%;
+                    min-height: 13.0625rem;
+                }
+
+                [data-checkout-payment-card-inner-wrapper]{
+                    padding: 1.25rem 1rem;
+                }
+
+                [data-checkout-payment-card] [data-input-wrapper]{
+                    height: 2.25rem;
                 }
 
                 [data-topup-amount-table-section]{
@@ -342,113 +472,208 @@
                                         <span class="fs--12 lh--16 fw5 poppins col--fiord">Back</span>
                                     </div>
 
+                                    <!-- payment-billing-form-section -->
                                     <div class="flex flex-column gap--24">
-                                        <!-- payment-method-section -->
+                                        <!-- payment-method-container -->
                                         <div class="flex flex-column gap--16">
-                                            <!-- title-section -->
-                                            <div class="flex items-center gap--8">
-                                                <!-- left-side -->
-                                                <div class="flex items-center gap--8 flex--max">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
-                                                        <path d="M18.4508 8.33317H1.78418M1.78418 6.83317L1.78418 13.1665C1.78418 14.0999 1.78418 14.5666 1.96584 14.9232C2.12562 15.2368 2.38059 15.4917 2.6942 15.6515C3.05071 15.8332 3.51743 15.8332 4.45085 15.8332L15.7842 15.8332C16.7176 15.8332 17.1843 15.8332 17.5408 15.6515C17.8544 15.4917 18.1094 15.2368 18.2692 14.9232C18.4508 14.5666 18.4508 14.0999 18.4508 13.1665V6.83317C18.4508 5.89975 18.4508 5.43304 18.2692 5.07652C18.1094 4.76292 17.8544 4.50795 17.5408 4.34816C17.1843 4.16651 16.7176 4.16651 15.7842 4.1665L4.45085 4.1665C3.51743 4.1665 3.05072 4.1665 2.6942 4.34816C2.38059 4.50795 2.12562 4.76292 1.96584 5.07652C1.78418 5.43304 1.78418 5.89975 1.78418 6.83317Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    </svg>
-
-                                                    <span class="fs--16 lh--24 fw6 poppins col--oxford-blue">PAYMENT METHOD</span>
-                                                </div>
-
-                                                <!-- right-side -->
-                                                <div class="flex items-center gap--10">
-                                                    <span class="fs--14 lh--20 fw5 poppins col--oxford-blue">Change card</span>
-                                                    
-                                                    <div class="flex justify-center items-center pointer w--24 h--24">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
-                                                            <path d="M6.17578 9L12.1758 15L18.1758 9" stroke="#344054" stroke-width="1.77778" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <!-- section-title-container -->
+                                            <div class="flex justify-between items-center gap--8 h--24">
+                                                <!-- section-title -->
+                                                <div class="flex items-center gap--8">
+                                                    <div class="w--20 h--20 flex justify-center items-center">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                            <path d="M18.3337 8.33317H1.66699M1.66699 6.83317L1.66699 13.1665C1.66699 14.0999 1.66699 14.5666 1.84865 14.9232C2.00844 15.2368 2.2634 15.4917 2.57701 15.6515C2.93353 15.8332 3.40024 15.8332 4.33366 15.8332L15.667 15.8332C16.6004 15.8332 17.0671 15.8332 17.4236 15.6515C17.7372 15.4917 17.9922 15.2368 18.152 14.9232C18.3337 14.5666 18.3337 14.0999 18.3337 13.1665V6.83317C18.3337 5.89975 18.3337 5.43304 18.152 5.07652C17.9922 4.76292 17.7372 4.50795 17.4236 4.34816C17.0671 4.16651 16.6004 4.16651 15.667 4.1665L4.33366 4.1665C3.40024 4.1665 2.93353 4.1665 2.57701 4.34816C2.2634 4.50795 2.00844 4.76292 1.84865 5.07652C1.66699 5.43304 1.66699 5.89975 1.66699 6.83317Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
                                                     </div>
+                                                    <span class="fs--16 lh--24 fw6 ttu poppins col--oxford-blue">PAYMENT METHOD</span>
                                                 </div>
                                             </div>
 
-                                            <!-- info-section -->
-                                            <div data-payment-information-wrapper class="pad--y--8 pad--x--16 br--6">
-                                                <div class="flex items-center gap--8 bb b--transparent pad--y--8">
-                                                    <div class="flex justify-between items-center gap--8 flex--max">
-                                                        <div class="flex items-center gap--8 w--280 w--auto-responsive-mobile-portrait">
-                                                            <div class="flex--max">
-                                                                <span class="fs--16 lh--24 fw5 poppins col--oxford-blue nowrap">Jane Carter</span>
-                                                            </div>
+                                            <!-- payment-card-wrapper -->
+                                            <div class="flex gap--16">
+                                                <!-- payment-card-container-->
+                                                <div data-checkout-payment-card class="w-100 br--12">
+                                                    <div data-checkout-payment-card-inner-wrapper class="w-100 h-100 flex flex-column justify-between pad--24 br--12">
+                                                        <!-- checbox-container -->
+                                                        <div class="flex justify-between items-center gap--10">
+                                                            <label class="flex items-center gap--8" data-form-input-type="checkbox" data-form-accent-color="green">
+                                                                <input type="checkbox" name="save" data-required="0" value="save" class="w--16 h--16 pointer" checked>
+                                                                <p class="ma0 fs--14 fw4 lh--20 poppins col--gull-gray fs--12-responsive-mobile-portrait lh--18-responsive-mobile-portrait">Save this card for faster checkout.</p>
+                                                            </label>
 
-                                                            <div class="flex--max">
-                                                                <span class="fs--16 lh--24 fw5 poppins col--oxford-blue nowrap">****3746</span>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="flex items-center gap--8">
-                                                            <span class="fs--12 lh--18 poppins col--oxford-blue nowrap">EXP 02/30</span>
-                                                        
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="42" height="12" viewBox="0 0 42 12" fill="none">
-                                                                <path d="M15.0718 11.8729L17.1169 0.233577H20.3868L18.3411 11.8729H15.0718ZM30.1402 0.488918C29.2018 0.159139 28.2105 -0.00634029 27.2125 0.000185756C23.9854 0.000185756 21.712 1.57686 21.6924 3.83703C21.6747 5.50751 23.3158 6.43923 24.5547 6.99507C25.826 7.56516 26.2533 7.9286 26.2472 8.43752C26.2392 9.21664 25.2317 9.57235 24.2933 9.57235C22.9858 9.57235 22.2917 9.39422 21.2186 8.9625L20.7981 8.77779L20.3397 11.38C21.1024 11.7043 22.5133 11.9857 23.9775 12C27.4108 12 29.6395 10.4417 29.6652 8.02835C29.6775 6.70586 28.8083 5.6993 26.923 4.8697C25.7814 4.33524 25.0823 3.973 25.0897 3.42844C25.0897 2.94565 25.6816 2.42903 26.9603 2.42903C27.7981 2.41083 28.6306 2.56253 29.4045 2.87441L29.6971 3.00861L30.1402 0.488918ZM38.5409 0.233577H36.0251C35.2459 0.233577 34.6625 0.440245 34.3203 1.19443L29.4846 11.8135H32.9266C32.9266 11.8135 33.4775 10.4014 33.6042 10.0914L37.728 10.0961C37.8241 10.4976 38.1198 11.8135 38.1198 11.8135H41.1754L38.5409 0.233577ZM34.5407 7.716C34.8106 7.04615 35.8421 4.46648 35.8421 4.46648C35.8225 4.49736 36.1102 3.79307 36.2748 3.35659L36.4958 4.35902C36.4958 4.35902 37.1214 7.13404 37.2518 7.716H34.5407ZM12.2971 0.233577L9.10676 8.14297L8.76702 6.53545C8.17327 4.68266 6.32285 2.67547 4.25391 1.67069L7.17125 11.8135L10.6187 11.81L15.7488 0.233577H12.2812" fill="url(#paint0_linear_21857_56347)"/>
-                                                                <path d="M5.98543 0.233457H0.741451L0.699219 0.475141C4.79671 1.43776 7.50774 3.76326 8.63342 6.5567L7.48816 1.21211C7.29044 0.476338 6.71753 0.256614 6.00808 0.231079" fill="url(#paint1_linear_21857_56347)"/>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="57" height="17" viewBox="0 0 57 17" fill="none">
+                                                                <path d="M19.9563 15.8589L22.7939 0.311993H27.331L24.4925 15.8589H19.9563ZM40.864 0.653057C39.562 0.212565 38.1865 -0.00846885 36.8017 0.000248118C32.3241 0.000248118 29.1697 2.10624 29.1426 5.12519C29.1179 7.35649 31.3949 8.60101 33.114 9.34345C34.878 10.1049 35.4708 10.5904 35.4624 11.2702C35.4513 12.3108 34.0533 12.786 32.7513 12.786C30.9372 12.786 29.974 12.548 28.4852 11.9714L27.9017 11.7247L27.2656 15.2005C28.3238 15.6336 30.2815 16.0096 32.3131 16.0286C37.0769 16.0286 40.1693 13.9472 40.2049 10.7236C40.2219 8.95715 39.0159 7.61267 36.4 6.50456C34.816 5.79067 33.8461 5.30681 33.8563 4.57944C33.8563 3.93456 34.6776 3.2445 36.4518 3.2445C37.6143 3.2202 38.7694 3.42282 39.8432 3.83941L40.2491 4.01865L40.864 0.653057ZM52.5201 0.311993H49.0294C47.9482 0.311993 47.1388 0.588043 46.664 1.59542L39.9544 15.7796H44.7301C44.7301 15.7796 45.4945 13.8933 45.6703 13.4792L51.3922 13.4856C51.5255 14.0218 51.9358 15.7796 51.9358 15.7796H56.1755L52.5201 0.311993ZM46.9698 10.3064C47.3443 9.41168 48.7754 5.96596 48.7754 5.96596C48.7483 6.00721 49.1474 5.06647 49.3759 4.48346L49.6825 5.82243C49.6825 5.82243 50.5505 9.52907 50.7314 10.3064H46.9698ZM16.1063 0.311993L11.6797 10.8767L11.2083 8.72953C10.3845 6.25472 7.81699 3.57368 4.94629 2.23157L8.99416 15.7796L13.7775 15.7748L20.8957 0.311993H16.0843" fill="url(#paint0_linear_24930_29630)"/>
+                                                                <path d="M7.34936 0.311892H0.0732465L0.0146484 0.634714C5.69999 1.9205 9.46159 5.02672 11.0235 8.75797L9.43442 1.6191C9.16009 0.636312 8.36515 0.342824 7.38079 0.308716" fill="url(#paint1_linear_24930_29630)"/>
                                                                 <defs>
-                                                                    <linearGradient id="paint0_linear_21857_56347" x1="22.7147" y1="0" x2="22.7147" y2="12" gradientUnits="userSpaceOnUse">
+                                                                    <linearGradient id="paint0_linear_24930_29630" x1="30.5609" y1="0" x2="30.5609" y2="16.0286" gradientUnits="userSpaceOnUse">
                                                                         <stop stop-color="white"/>
                                                                         <stop offset="1" stop-color="white" stop-opacity="0.75"/>
                                                                     </linearGradient>
-                                                                    <linearGradient id="paint1_linear_21857_56347" x1="4.66632" y1="0.231079" x2="4.66632" y2="6.5567" gradientUnits="userSpaceOnUse">
+                                                                    <linearGradient id="paint1_linear_24930_29630" x1="5.51907" y1="0.308716" x2="5.51907" y2="8.75797" gradientUnits="userSpaceOnUse">
                                                                         <stop stop-color="white"/>
                                                                         <stop offset="1" stop-color="white" stop-opacity="0.75"/>
                                                                     </linearGradient>
                                                                 </defs>
                                                             </svg>
                                                         </div>
-                                                    </div>
+                                                        <!-- inputs-fields-->
+                                                        <div class="flex gap--8">
+                                                            <div class="w-100 flex flex-column gap--8">
+                                                                <!-- field-group -->
+                                                                <div class="flex w-100 gap--16">
+                                                                    <!-- input-field -->
+                                                                    <div class="w-100 flex flex-column gap--6 flex--max gap--2-responsive-mobile-portrait" data-form-input-type="text" data-form-input-label-position="" data-input-label-type="">
+                                                                        <label class="fs--14 fw5 lh--20 col--athens-gray-2 relative fs--12-responsive-mobile-portrait lh--18-responsive-mobile-portrait">Card Number</label>
+                                                                        <div class="h--40 flex gap--8 items-center br--2 br--bottom br--left bb br--col--mischka bg-white-10 sh--7" data-input-wrapper="">
+                                                                            <input data-display-name="" name="card-number" placeholder="Card Number" value="" type="text" class="w-100 bn flex-auto fs--16 lh--24 col--pale-sky pad--y--8 pad--x--12 ttc">
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- input-field -->
+                                                                    <div class="w-100 flex flex-column gap--6 flex--max max--w--172 gap--2-responsive-mobile-portrait" data-form-input-type="date" data-form-input-label-position="" data-input-label-type="">
+                                                                        <label class="fs--14 fw5 lh--20 col--athens-gray-2 relative fs--12-responsive-mobile-portrait lh--18-responsive-mobile-portrait">Expiration Date</label>
+                                                                        <div class="h--40 flex gap--8 items-center br--2 br--bottom br--left bb br--col--mischka bg-white-10 sh--7" data-input-wrapper="">
+                                                                            <input data-display-name="" name="date" placeholder="MM/YY" value="" type="text" class="w-100 bn flex-auto fs--16 lh--24 col--pale-sky pad--y--8 pad--x--12 ttc">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
 
-                                                    <div class="flex justify-center items-center w--18 h--18 pointer">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18" fill="none">
-                                                            <path d="M15.9258 13.4999L15.1757 14.3205C14.7779 14.7555 14.2384 14.9999 13.6759 14.9999C13.1134 14.9999 12.5739 14.7555 12.1761 14.3205C11.7777 13.8863 11.2383 13.6425 10.6759 13.6425C10.1136 13.6425 9.57413 13.8863 9.17576 14.3205M2.42578 14.9999H3.68169C4.04857 14.9999 4.23202 14.9999 4.40465 14.9585C4.5577 14.9217 4.70402 14.8611 4.83823 14.7789C4.9896 14.6861 5.11932 14.5564 5.37875 14.297L14.8008 4.87493C15.4221 4.25361 15.4221 3.24625 14.8008 2.62493C14.1795 2.00361 13.1721 2.00361 12.5508 2.62493L3.12873 12.047C2.8693 12.3064 2.73958 12.4361 2.64682 12.5875C2.56458 12.7217 2.50397 12.868 2.46723 13.0211C2.42578 13.1937 2.42578 13.3772 2.42578 13.744V14.9999Z" stroke="#667085" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                        </svg>
+                                                                <!-- field-group -->
+                                                                <div class="flex w-100 gap--16">
+                                                                    <!-- input-field -->
+                                                                    <div class="w-100 flex flex-column gap--6 flex--max gap--2-responsive-mobile-portrait" data-form-input-type="text" data-form-input-label-position="" data-input-label-type="">
+                                                                        <label class="fs--14 fw5 lh--20 col--athens-gray-2 relative fs--12-responsive-mobile-portrait lh--18-responsive-mobile-portrait">Cardholder Name</label>
+                                                                        <div class="h--40 flex gap--8 items-center br--2 br--bottom br--left bb br--col--mischka bg-white-10 sh--7" data-input-wrapper="">
+                                                                            <input data-display-name="" name="Cardholder name" placeholder="Cardholder Name" value="" type="text" class="w-100 bn flex-auto fs--16 lh--24 col--pale-sky pad--y--8 pad--x--12 ttc">
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- input-field -->
+                                                                    <div class="w-100 flex flex-column gap--6 flex--max max--w--172 gap--2-responsive-mobile-portrait" data-form-input-type="text" data-form-input-label-position="" data-input-label-type="">
+                                                                        <label class="fs--14 fw5 lh--20 col--athens-gray-2 relative fs--12-responsive-mobile-portrait lh--18-responsive-mobile-portrait">CVV</label>
+                                                                        <div class="h--40 flex gap--8 items-center br--2 br--bottom br--left bb br--col--mischka bg-white-10 sh--7" data-input-wrapper="">
+                                                                            <input data-display-name="" name="card-number" placeholder="CVV" type="text" value="" class="w-100 bn flex-auto fs--16 lh--24 col--pale-sky pad--y--8 pad--x--12 ttc">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <!-- billing-address-section -->
-                                        <div class="flex flex-column gap--16">
-                                            <!-- title-section -->
-                                            <div class="flex items-center gap--8">
-                                                <!-- left-side -->
-                                                <div class="flex items-center gap--8 flex--max">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
-                                                        <path d="M18.4508 8.33317H1.78418M1.78418 6.83317L1.78418 13.1665C1.78418 14.0999 1.78418 14.5666 1.96584 14.9232C2.12562 15.2368 2.38059 15.4917 2.6942 15.6515C3.05071 15.8332 3.51743 15.8332 4.45085 15.8332L15.7842 15.8332C16.7176 15.8332 17.1843 15.8332 17.5408 15.6515C17.8544 15.4917 18.1094 15.2368 18.2692 14.9232C18.4508 14.5666 18.4508 14.0999 18.4508 13.1665V6.83317C18.4508 5.89975 18.4508 5.43304 18.2692 5.07652C18.1094 4.76292 17.8544 4.50795 17.5408 4.34816C17.1843 4.16651 16.7176 4.16651 15.7842 4.1665L4.45085 4.1665C3.51743 4.1665 3.05072 4.1665 2.6942 4.34816C2.38059 4.50795 2.12562 4.76292 1.96584 5.07652C1.78418 5.43304 1.78418 5.89975 1.78418 6.83317Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    </svg>
-
-                                                    <span class="fs--16 lh--24 fw6 poppins col--oxford-blue">PAYMENT METHOD</span>
-                                                </div>
-
-                                                <!-- right-side -->
-                                                <div class="flex items-center gap--10">
-                                                    <span class="fs--14 lh--20 fw5 poppins col--oxford-blue">Change card</span>
-                                                    
-                                                    <div class="flex justify-center items-center pointer w--24 h--24">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
-                                                            <path d="M6.17578 9L12.1758 15L18.1758 9" stroke="#344054" stroke-width="1.77778" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <!-- billing-address-container -->
+                                        <div data-billing-address-container class="flex flex-column gap--16">
+                                            <!-- section-title-container -->
+                                            <div class="flex justify-between items-center gap--8 h--24">
+                                                <!-- section-title -->
+                                                <div class="flex items-center gap--8">
+                                                    <div class="w--20 h--20 flex justify-center items-center">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                            <path d="M10.0002 10.8334C11.3809 10.8334 12.5002 9.71413 12.5002 8.33342C12.5002 6.9527 11.3809 5.83341 10.0002 5.83341C8.61945 5.83341 7.50016 6.9527 7.50016 8.33342C7.50016 9.71413 8.61945 10.8334 10.0002 10.8334Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                            <path d="M10.0002 18.3334C13.3335 15.0001 16.6668 12.0153 16.6668 8.33342C16.6668 4.65152 13.6821 1.66675 10.0002 1.66675C6.31826 1.66675 3.3335 4.65152 3.3335 8.33342C3.3335 12.0153 6.66683 15.0001 10.0002 18.3334Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
                                                     </div>
+                                                    <span class="fs--16 lh--24 fw6 ttu poppins col--oxford-blue">BILLING ADDRESS</span>
                                                 </div>
                                             </div>
 
-                                            <!-- info-section -->
-                                            <div data-payment-information-wrapper class="pad--y--8 pad--x--16 br--6">
-                                                <div class="flex items-center gap--8 bb b--transparent pad--y--8">
-                                                    <div class="flex items-center gap--8 flex--max">
-                                                        <p class="fs--16 lh--24 fw5 poppins col--oxford-blue">Chan Tai Man,10/F Block5,Fook Yip Bldg,12345,Kwai Chung,Hong Kong</p>
+                                            <!-- inputs-fields-->
+                                            <div class="flex flex-column gap--16">
+                                                <div class="w-100 flex flex-column gap--12">
+                                                    <!-- field-group -->
+                                                    <div class="flex w-100 gap--16 gap--8-responsive-mobile-portrait">
+                                                        <!-- input-field -->
+                                                        <div class="w-100 flex flex-column gap--6 flex--max" data-form-input-type="text" data-form-input-label-position="" data-input-label-type="">
+                                                            <label class="fs--14 fw5 lh--20 col--pale-sky relative">Last Name</label>
+                                                            <div class="h--40 flex gap--8 items-center br--2 br--bottom br--left bb br--col--mischka bg-white-10 sh--7" data-input-wrapper="">
+                                                                <input data-display-name="" name="Last Name" placeholder="Last Name" value="" type="text" class="w-100 bn flex-auto fs--16 lh--24 col--pale-sky pad--y--8 pad--x--12 ttc">
+                                                            </div>
+                                                        </div>
+                                                        <!-- input-field -->
+                                                        <div class="w-100 flex flex-column gap--6 flex--max" data-form-input-type="text" data-form-input-label-position="" data-input-label-type="">
+                                                            <label class="fs--14 fw5 lh--20 col--pale-sky relative">First Name</label>
+                                                            <div class="h--40 flex gap--8 items-center br--2 br--bottom br--left bb br--col--mischka bg-white-10 sh--7" data-input-wrapper="">
+                                                                <input data-display-name="" name="First Name" placeholder="First Name" value="" type="text" class="w-100 bn flex-auto fs--16 lh--24 col--pale-sky pad--y--8 pad--x--12 ttc">
+                                                            </div>
+                                                        </div>
                                                     </div>
 
-                                                    <div class="flex justify-center items-center w--18 h--18 pointer">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18" fill="none">
-                                                            <path d="M15.9258 13.4999L15.1757 14.3205C14.7779 14.7555 14.2384 14.9999 13.6759 14.9999C13.1134 14.9999 12.5739 14.7555 12.1761 14.3205C11.7777 13.8863 11.2383 13.6425 10.6759 13.6425C10.1136 13.6425 9.57413 13.8863 9.17576 14.3205M2.42578 14.9999H3.68169C4.04857 14.9999 4.23202 14.9999 4.40465 14.9585C4.5577 14.9217 4.70402 14.8611 4.83823 14.7789C4.9896 14.6861 5.11932 14.5564 5.37875 14.297L14.8008 4.87493C15.4221 4.25361 15.4221 3.24625 14.8008 2.62493C14.1795 2.00361 13.1721 2.00361 12.5508 2.62493L3.12873 12.047C2.8693 12.3064 2.73958 12.4361 2.64682 12.5875C2.56458 12.7217 2.50397 12.868 2.46723 13.0211C2.42578 13.1937 2.42578 13.3772 2.42578 13.744V14.9999Z" stroke="#667085" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                        </svg>
+                                                    <!-- field-group -->
+                                                    <div class="flex flex-column flex-row-ns w-100 gap--16">
+                                                        <!-- input-field -->
+                                                        <div class="w-100 flex flex-column gap--6 flex--max" data-form-input-type="text" data-form-input-label-position="" data-input-label-type="">
+                                                            <label class="fs--14 fw5 lh--20 col--pale-sky relative">Address Line 1</label>
+                                                            <div class="h--40 flex gap--8 items-center br--2 br--bottom br--left bb br--col--mischka bg-white-10 sh--7" data-input-wrapper="">
+                                                                <input data-display-name="" name="Address Line 1" placeholder="Address Line 1" value="" type="text" class="w-100 bn flex-auto fs--16 lh--24 col--pale-sky pad--y--8 pad--x--12 ttc">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- field-group -->
+                                                    <div class="flex flex-column flex-row-ns w-100 gap--16">
+                                                        <!-- input-field -->
+                                                        <div class="w-100 flex flex-column gap--6 flex--max" data-form-input-type="text" data-form-input-label-position="" data-input-label-type="">
+                                                            <label class="fs--14 fw5 lh--20 col--pale-sky relative">Address Line 2</label>
+                                                            <div class="h--40 flex gap--8 items-center br--2 br--bottom br--left bb br--col--mischka bg-white-10 sh--7" data-input-wrapper="">
+                                                                <input data-display-name="" name="Address Line 2" placeholder="Address Line 2" value="" type="text" class="w-100 bn flex-auto fs--16 lh--24 col--pale-sky pad--y--8 pad--x--12 ttc">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- field-group -->
+                                                    <div class="flex w-100 gap--16 gap--8-responsive-mobile-portrait">
+                                                        <!-- input-field -->
+                                                        <div class="w-100 flex flex-column gap--6 flex--max" data-form-input-type="text" data-form-input-label-position="" data-input-label-type="">
+                                                            <label class="fs--14 fw5 lh--20 col--pale-sky relative">Postal Code</label>
+                                                            <div class="h--40 flex gap--8 items-center br--2 br--bottom br--left bb br--col--mischka bg-white-10 sh--7" data-input-wrapper="">
+                                                                <input data-display-name="" name="Postal Code" placeholder="Postal Code" value="12345" type="text" class="w-100 bn flex-auto fs--16 lh--24 col--pale-sky pad--y--8 pad--x--12 ttc">
+                                                            </div>
+                                                        </div>
+                                                        <!-- input-field -->
+                                                        <div class="w-100 flex flex-column gap--6 flex--max" data-form-input-type="text" data-form-input-label-position="" data-input-label-type="">
+                                                            <label class="fs--14 fw5 lh--20 col--pale-sky relative">City</label>
+                                                            <div class="h--40 flex gap--8 items-center br--2 br--bottom br--left bb br--col--mischka bg-white-10 sh--7" data-input-wrapper="">
+                                                                <input data-display-name="" name="City" placeholder="City" value="Kwai Chung" type="text" class="w-100 bn flex-auto fs--16 lh--24 col--pale-sky pad--y--8 pad--x--12 ttc">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- field-group -->
+                                                    <div class="flex w-100 gap--16 gap--8-responsive-mobile-portrait">
+                                                        <!-- input-field -->
+                                                        <div token-topup-select-dropdown class="w-100 flex flex-column gap--6 flex--max" data-form-input-type="text" data-form-input-label-position="" data-input-label-type="">
+                                                            <label class="fs--14 fw5 lh--20 col--pale-sky relative">Country</label>
+                                                            <div class="h--40 flex gap--8 items-center br--2 br--bottom br--left bb br--col--mischka bg-white-10 sh--7" data-input-wrapper="">
+                                                                <select data-nice-select>
+                                                                    <option value="">Hong Kong</option>
+                                                                    <option value="">Bangladesh</option>
+                                                                    <option value="">Australia</option>
+                                                                    <option value="">India</option>
+                                                                    <option value="">Pakistan</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <!-- input-field -->
+                                                        <div token-topup-select-dropdown class="w-100 flex flex-column gap--6 flex--max" data-form-input-type="text" data-form-input-label-position="" data-input-label-type="">
+                                                            <label class="fs--14 fw5 lh--20 col--pale-sky relative">State</label>
+                                                            <div class="h--40 flex gap--8 items-center br--2 br--bottom br--left bb br--col--mischka bg-white-10 sh--7" data-input-wrapper="">
+                                                                <select data-nice-select>
+                                                                    <option value=""></option>
+                                                                    <option value="">Kowloon</option>
+                                                                    <option value="">Chittagong</option>
+                                                                    <option value="">Mumbai</option>
+                                                                    <option value="">Kerala</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
+
+                                                <!-- checbox-container -->
+                                                <label class="flex items-center gap--8" data-form-input-type="checkbox" data-form-accent-color="green">
+                                                    <input type="checkbox" name="save" data-required="0" value="save" class="w--16 h--16 pointer" checked>
+                                                    <p class="ma0 fs--14 fw4 lh--20 poppins col--ebony--variation-2">Save address for future use.</p>
+                                                </label>
                                             </div>
                                         </div>
                                     </div>
@@ -504,7 +729,7 @@
                                 <!-- button-wrapper -->
                                 <div data-token-topup-button-wrapper-desktop class="flex justify-end items-end display-none--responsive-mobile-portrait bg-white-50">
                                     <div data-token-topup-button-container>
-                                        <button data-token-topup-button class="flex justify-center items-center gap--8 relative h--56 pad--x--16 bg--col--led-pink bg--blur--100">
+                                        <button data-token-topup-button disabled class="flex justify-center items-center gap--8 relative h--56 pad--x--16 bg--col--led-pink bg--blur--100">
                                             <span class="fs--16 lh--24 fw5 poppins white nowrap">PROCESS PAYMENT</span>
 
                                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
@@ -544,7 +769,7 @@
             <!-- mobile fixed button -->
             <div data-token-topup-button-wrapper-mobile class="dn fixed right-0 bottom-0 display-flex--responsive-mobile-responsive">
                 <div data-token-topup-button-container>
-                    <button data-token-topup-button class="flex justify-center items-center gap--8 relative h--56 pad--x--16 bg--col--led-pink bg--blur--100">
+                    <button data-token-topup-button disabled class="flex justify-center items-center gap--8 relative h--56 pad--x--16 bg--col--led-pink bg--blur--100">
                         <span class="fs--16 lh--24 fw5 poppins white nowrap">PROCESS PAYMENT</span>
 
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
@@ -557,18 +782,6 @@
         </div>
 
         <script>
-            // range slider
-            const slider = document.querySelector("[data-tip-range-slider]");
-            const trackFill = document.querySelector("[data-tip-range-slider-track-fill]");
-
-            function updateTrackFill() {
-                const percent = (slider.value / slider.max) * 100;
-                trackFill.style.width = `${percent}%`;
-            }
-
-            slider.addEventListener("input", updateTrackFill);
-            updateTrackFill();
-
             // Scroll detection code
             const navbar = document.querySelector("[data-portrait-mobile-responsive-navbar]");
             const popupContainer = document.querySelector("[data-token-popup-container]");
