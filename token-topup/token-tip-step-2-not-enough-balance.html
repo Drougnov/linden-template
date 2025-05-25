@@ -297,6 +297,11 @@
                 [data-token-popup-right-column]{
                     min-height: 32.375rem;
                 }
+
+                [data-tab-buttons-container],
+                [data-token-input-container]{
+                    padding-top: 1rem;
+                }
             }
 
             @media (max-width: 767px){
@@ -440,7 +445,7 @@
                             <!-- righ-column -->
                             <div class="w--521 mh--538 h-100 flex flex-column bg--col--white--25" data-token-popup-right-column>
                                 <!-- tabs-button-container -->
-                                <div class="flex pad--top--24 w-100 h-100 pad--y-0-responsive-mobile pad--y-0-responsive-mobile-portrait">
+                                <div data-tab-buttons-container class="flex pad--top--24 w-100 h-100 pad--y-0-responsive-mobile pad--y-0-responsive-mobile-portrait">
                                     <!-- tab -->
                                     <div data-tab-button data-tab-button-active class="mw--120 w-100 pad--y--8 pad--x--16 flex justify-center items-center pointer">
                                         <div data-tab-button-text-container class="h2 flex justify-center items-center">
@@ -457,7 +462,7 @@
                                 <!-- tabs-content-container -->
                                 <div class="flex flex-column">
                                     <!-- token-input-container -->
-                                    <div class="pad--24 pad--x--16-responsive-tablet-landscape pad--x--8-responsive-mobile pad--x--8-responsive-mobile-portrait pad--top--16-responsive-mobile pad--top--16-responsive-mobile-portrait pad--bottom--24-responsive-mobile pad--bottom--24-responsive-mobile-portrait">
+                                    <div data-token-input-container class="pad--24 pad--x--16-responsive-tablet-landscape pad--x--8-responsive-mobile pad--x--8-responsive-mobile-portrait pad--top--16-responsive-mobile pad--top--16-responsive-mobile-portrait pad--bottom--24-responsive-mobile pad--bottom--24-responsive-mobile-portrait">
                                         <div class="flex flex-column flex--max gap--24">
                                             <p class="fs--18 lh--28 fw6 poppins col--ebony--variation-2 fs--16--responsive-mobile fs--16--responsive-mobile-portrait lh--24--responsive-mobile lh--24--responsive-mobile-portrait">How many tokens would you like to tip?</p>
 
