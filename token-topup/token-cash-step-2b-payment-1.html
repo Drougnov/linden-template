@@ -63,30 +63,7 @@
 
             /* popup - right-column */
             [data-token-popup-right-column]{
-                max-height: 35.75rem;
-                overflow: auto;
-            }
-
-            /* tip-alert-wrapper */
-            [data-tip-alert-wrapper]{
-                background-color: #242424;
-                border-bottom: 0.5px solid #344054;
-            }
-
-            [data-tip-alert-container]{
-                border-left: 3px solid #FF4405;
-                background: linear-gradient(0deg, rgba(255, 68, 5, 0.3), rgba(255, 68, 5, 0.3)), linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 100%);
-            }
-
-            [data-tip-alert-container]::after {
-                position: absolute;
-                content: '';
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 100%);
-                z-index: 1;
+                min-height: 35.75rem;
             }
 
             [data-payment-information-wrapper]{
@@ -118,7 +95,7 @@
                 display: block;
                 width: 2rem;
                 height: 100%;
-                background-color: #FF0066;
+                background-color: #07F468;
                 z-index: -1;
                 -webkit-transform: skew(163deg, 0) translateX(3px);
                 transform: skew(163deg, 0) translateX(3px);
@@ -130,19 +107,19 @@
             }
 
             button[data-token-topup-button]:hover{
-                background-color: white;
+                background-color: black;
             }
 
             button[data-token-topup-button]:hover::before{
-                background-color: white;
+                background-color: black;
             }
 
             button[data-token-topup-button]:not(:disabled):hover svg path{
-                stroke: #FF0066;
+                stroke: #07F468;
             }
 
             button[data-token-topup-button]:not(:disabled):hover span{
-                color: #FF0066;
+                color: #07F468;
             }
 
             @media (max-width: 1010px){
@@ -185,13 +162,6 @@
 
                 [data-token-popup-right-column]{
                     min-height: 32.375rem;
-                }
-
-                [data-tip-alert-wrapper]{
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
                 }
             }
 
@@ -236,13 +206,6 @@
 
                 [data-token-popup-right-column]{
                     min-height: 36.875rem;
-                }
-
-                /* alert-container-mobile */
-                [data-tip-alert-wrapper-mobile]{
-                    width: calc(100% - 1rem);
-                    top: .5rem;
-                    left: .5rem;
                 }
 
                 /* tip button */
@@ -320,7 +283,7 @@
                     <div data-token-popup-container class="elm_qJBugX no-height flex flex-column bg--blur--50 sh--22 relative overflow-visible">
 
                         <!-- close-icon -->
-                        <div data-token-popup-close-icon class="elm_UOkrrN pointer flex items-center justify-center absolute w--48 h--48 bg-black-30 bg--blur--20 br-100 display-none--responsive-mobile-portrait z-max">
+                        <div data-token-popup-close-icon class="elm_UOkrrN pointer flex items-center justify-center absolute w--48 h--48 bg-black-30 bg--blur--20 br-100 display-none--responsive-mobile-portrait">
                             <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" fill="none">
                                 <g filter="url(#filter0_d_24679_14978)">
                                     <path d="M25.1763 9L9.17627 25M9.17627 9L25.1763 25" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -369,25 +332,6 @@
 
                             <!-- righ-column -->
                             <div class="w--521 mh--538 h-100 flex flex-column bg--col--white--25" data-token-popup-right-column>
-                                <!-- tip-alert-container -->
-                                <div data-tip-alert-wrapper class="display-none--responsive-mobile display-none--responsive-mobile-portrait">
-                                    <div data-tip-alert-container class="pad--y--12 pad--x--8 relative z-1">
-                                        <div class="flex gap--16 relative z-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="41" height="40" viewBox="0 0 41 40" fill="none">
-                                                <rect x="0.117676" width="40" height="40" rx="8" fill="#FF4405" fill-opacity="0.1"/>
-                                                <path d="M20.1176 16.5V21.1667M20.1176 25.8334H20.1292M18.5021 10.5404L8.90639 27.1148C8.37415 28.0341 8.10803 28.4937 8.14736 28.871C8.18167 29.2001 8.35407 29.4991 8.62165 29.6936C8.92844 29.9167 9.45958 29.9167 10.5219 29.9167H29.7133C30.7755 29.9167 31.3067 29.9167 31.6135 29.6936C31.881 29.4991 32.0534 29.2001 32.0877 28.871C32.1271 28.4937 31.861 28.0341 31.3287 27.1148L21.733 10.5404C21.2027 9.62434 20.9375 9.16633 20.5916 9.0125C20.2898 8.87832 19.9453 8.87832 19.6435 9.0125C19.2976 9.16633 19.0324 9.62434 18.5021 10.5404Z" stroke="#FF4405" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                            </svg>
-
-                                            <div class="flex flex-column w-100">
-                                                <div class="pad--top--4 pad--right--4">
-                                                    <h3 class="fs--14 lh--20 fw6 poppins col--vermilion">Payment Unsuccessful</h3>
-                                                </div>
-                                                <p class="fs--14 lh--20 poppins col--led-grey">Payment was unsuccessful due to a poor network connection. Please try again later</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
                                 <!-- enter-payment-info-section -->
                                 <div class="flex flex-column gap--16 pad--x--24 pad--y--16 pad--x--16-responsive-tablet-landscape pad--x--8-responsive-mobile pad--x--8-responsive-mobile-portrait">
                                     <!-- back-button -->
@@ -514,45 +458,25 @@
                                 <div data-topup-amount-table-section class="flex flex-column gap--12 pad--y--8 pad--x--24 pad--x--16-responsive-tablet-landscape bg-white-50 pad--x--8-responsive-mobile pad--x--8-responsive-mobile-portrait">
                                     <!-- row -->
                                     <div class="flex justify-between items-center pad--top--8 bt b--transparent">
-                                        <span class="fs--12 lh--18 poppins col--ebony--variation-2">Your Balance</span>
+                                        <span class="fs--12 lh--18 poppins col--ebony--variation-2">Tip Amount</span>
                                         <div class="flex items-center gap--4">
-                                            <img src="./images/token-tip-svg.png" alt="" class="w--24 h--24">
-                                            <span class="fs--14 lh--20 poppins col--ebony--variation-2">100</span>
+                                            <span class="fs--14 lh--20 poppins col--ebony--variation-2">USD$ 600</span>
                                         </div>
                                     </div>
 
                                     <!-- row -->
                                     <div class="flex justify-between items-center bt b--transparent">
-                                        <span class="fs--12 lh--18 poppins col--ebony--variation-2">Top Up Amount</span>
+                                        <span class="fs--12 lh--18 poppins col--ebony--variation-2">Service Charge (10%)</span>
                                         <div class="flex items-center gap--4">
-                                            <span class="fs--14 lh--20 poppins col--ebony--variation-2">+</span>
-                                            <img src="./images/token-tip-svg.png" alt="" class="w--24 h--24">
-                                            <span class="fs--14 lh--20 poppins col--ebony--variation-2">500</span>
-                                        </div>
-                                    </div>
-
-                                    <!-- row (total) -->
-                                    <div class="flex justify-between items-center pad--top--8 bt br--col--athens-gray-2">
-                                        <span class="fs--12 lh--18 fw6 poppins col--ebony--variation-2">Total After Top Up</span>
-                                        <div class="flex items-center gap--4">
-                                            <img src="./images/token-tip-svg.png" alt="" class="w--24 h--24">
-                                            <span class="fs--18 lh--28 fw6 poppins col--ebony--variation-2">600</span>
+                                            <span class="fs--14 lh--20 poppins col--ebony--variation-2">USD$ 60</span>
                                         </div>
                                     </div>
 
                                     <!-- row (final) -->
-                                    <div class="flex justify-between items-center pad--top--8 bt br--col--athens-gray-2">
-                                        <span class="fs--12 lh--18 fw6 poppins col--ebony--variation-2">Final Payment</span>
+                                    <div class="flex justify-between pad--top--8 bt br--col--athens-gray-2">
+                                        <span class="fs--12 lh--18 poppins col--ebony--variation-2">Final Payment</span>
                                         <div class="flex flex-column items-end gap--4">
-                                            <div class="flex items-center gap--4">
-                                                <div data-token-tip-discount-tag class="flex justify-center items-center pad--y--2 pad--x--4">
-                                                    <span class="fs--10 lh--14 fw6 poppins black">30% OFF</span>
-                                                </div>
-
-                                                <span class="fs--16 lh--24 fw6 poppins col--ebony--variation-2">USD$ 123.45</span>
-                                            </div>
-
-                                            <span class="fs--10 lh--18 poppins col--ebony--variation-2 strike">USD$ 123.45</span>
+                                            <span class="fs--16 lh--24 fw6 poppins col--ebony--variation-2">USD$ 660</span>
                                         </div>
                                     </div>
                                 </div>
@@ -560,11 +484,11 @@
                                 <!-- button-wrapper -->
                                 <div data-token-topup-button-wrapper-desktop class="flex justify-end items-end display-none--responsive-mobile-portrait bg-white-50">
                                     <div data-token-topup-button-container>
-                                        <button data-token-topup-button class="flex justify-center items-center gap--8 relative h--56 pad--x--16 bg--col--led-pink bg--blur--100">
-                                            <span class="fs--16 lh--24 fw5 poppins white nowrap">PROCESS PAYMENT</span>
+                                        <button data-token-topup-button class="flex justify-center items-center gap--8 relative h--56 pad--x--16 bg--col-brand-green bg--blur--100">
+                                            <span class="fs--16 lh--24 fw5 poppins black nowrap">PROCESS PAYMENT</span>
 
                                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
-                                                <path d="M5.17627 12H19.1763M19.1763 12L12.1763 5M19.1763 12L12.1763 19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M5.17627 12H19.1763M19.1763 12L12.1763 5M19.1763 12L12.1763 19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                             </svg>
                                         </button>
                                     </div>
@@ -576,21 +500,23 @@
             </div> 
             <!-- popup-end -->
 
-            <!-- tip-alert-container -->
-            <div data-tip-alert-wrapper data-tip-alert-wrapper-mobile class="dn fixed display-flex--responsive-mobile display-flex--responsive-mobile-portrait z-max">
-                <div data-tip-alert-container class="pad--y--12 pad--x--8 relative z-1 w-100">
-                    <div class="flex gap--16 relative z-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="41" height="40" viewBox="0 0 41 40" fill="none">
-                            <rect x="0.117676" width="40" height="40" rx="8" fill="#FF4405" fill-opacity="0.1"/>
-                            <path d="M20.1176 16.5V21.1667M20.1176 25.8334H20.1292M18.5021 10.5404L8.90639 27.1148C8.37415 28.0341 8.10803 28.4937 8.14736 28.871C8.18167 29.2001 8.35407 29.4991 8.62165 29.6936C8.92844 29.9167 9.45958 29.9167 10.5219 29.9167H29.7133C30.7755 29.9167 31.3067 29.9167 31.6135 29.6936C31.881 29.4991 32.0534 29.2001 32.0877 28.871C32.1271 28.4937 31.861 28.0341 31.3287 27.1148L21.733 10.5404C21.2027 9.62434 20.9375 9.16633 20.5916 9.0125C20.2898 8.87832 19.9453 8.87832 19.6435 9.0125C19.2976 9.16633 19.0324 9.62434 18.5021 10.5404Z" stroke="#FF4405" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- portrait mobile responsive fixed nav -->
+            <div data-portrait-mobile-responsive-navbar class="fixed dn display-flex--responsive-mobile-portrait z-max">
+                <div class="flex justify-between items-center gap--8 pad--8 w-100">
+                    <!-- mobile-back-button -->
+                    <div class="pointer flex items-center justify-center w--40 h--40 br-100">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M15 18L9 12L15 6" stroke="#EAECF0" stroke-width="1.77778" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
+                    </div>
 
-                        <div class="flex flex-column w-100">
-                            <div class="pad--top--4 pad--right--4">
-                                <h3 class="fs--14 lh--20 fw6 poppins col--vermilion">Payment Unsuccessful</h3>
-                            </div>
-                            <p class="fs--14 lh--20 poppins col--led-grey pad--right--4">Payment was unsuccessful due to a poor network connection. Please try again later</p>
-                        </div>
+                    <!-- close-icon -->
+                    <div class="elm_UOkrrN pointer flex items-center justify-center w--40 h--40 br-100">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 34 34" fill="none">
+                            <g filter="url(#filter0_d_24679_14978)">
+                                <path d="M25.1763 9L9.17627 25M9.17627 9L25.1763 25" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                        </svg>		
                     </div>
                 </div>
             </div>
@@ -598,11 +524,11 @@
             <!-- mobile fixed button -->
             <div data-token-topup-button-wrapper-mobile class="dn fixed right-0 bottom-0 display-flex--responsive-mobile-responsive">
                 <div data-token-topup-button-container>
-                    <button data-token-topup-button class="flex justify-center items-center gap--8 relative h--56 pad--x--16 bg--col--led-pink bg--blur--100">
-                        <span class="fs--16 lh--24 fw5 poppins white nowrap">PROCESS PAYMENT</span>
+                    <button data-token-topup-button class="flex justify-center items-center gap--8 relative h--56 pad--x--16 bg--col-brand-green bg--blur--100">
+                        <span class="fs--16 lh--24 fw5 poppins black nowrap">PROCESS PAYMENT</span>
 
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
-                            <path d="M5.17627 12H19.1763M19.1763 12L12.1763 5M19.1763 12L12.1763 19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M5.17627 12H19.1763M19.1763 12L12.1763 5M19.1763 12L12.1763 19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </button>
                 </div>
@@ -611,18 +537,6 @@
         </div>
 
         <script>
-            // range slider
-            const slider = document.querySelector("[data-tip-range-slider]");
-            const trackFill = document.querySelector("[data-tip-range-slider-track-fill]");
-
-            function updateTrackFill() {
-                const percent = (slider.value / slider.max) * 100;
-                trackFill.style.width = `${percent}%`;
-            }
-
-            slider.addEventListener("input", updateTrackFill);
-            updateTrackFill();
-
             // Scroll detection code
             const navbar = document.querySelector("[data-portrait-mobile-responsive-navbar]");
             const popupContainer = document.querySelector("[data-token-popup-container]");
