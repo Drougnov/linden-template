@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="max-image-preview:large">
+        <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="dns-prefetch" href="//staging.fansocial.app">
+        <link rel="dns-prefetch" href="//fonts.googleapis.com">
+        <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+        <title>Token popup - cash - step 2</title>
+        <link rel="stylesheet" id="google-fonts-css" href="https://fonts.googleapis.com/css2?family=Poppins%3Awght%40300%3B400%3B500%3B600%3B700%3B800%3B900&amp;display=swap&amp;ver=1.0.0" media="">
+        <link rel="stylesheet" id="theme-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/theme.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="final-main-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/main.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="components-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/css/components.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="tachyonsStylesheet-css" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.11.1/tachyons.min.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="popup-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/css/dev/popup.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="pageElements-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/FINAL/css/pageElements.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="finalCustomTachyonsStylesheet-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/customTachyons.css?ver=1.0.0" media="">
+        <link rel="stylesheet" id="tachyonsV2-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/new-profile/tachyons-v2.css?ver=1.0.0" media="">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css?ver=1.0.0">
+        <link rel="stylesheet" id="niceSelect-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/FINAL/css/nice-select.css?ver=1.0.21" media="">
+        
+        <!-- custom styles for this template -->
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+
+            /* tachyons */
+            .sh--22 { box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25); }
+            .w--521 { width: 32.5625rem; }
+            .mw--0 { min-width: 0; }
+            .mh--538 { min-height: 33.625rem; }
+            .col--grey-800 { color: var(--Gray-800, #182230); }
+            .col--white--brand--25 { color: #FCFAFF; }
+            .br--col--ebony--variation-2 { border-color: var(--color-ebony-2, #0C111D); }
+
+            /* popup-container */
+            .elm_qJBugX[data-token-popup-container]{
+                overflow: visible;
+            }
+
+            /* popup-close-icon */
+            [data-token-popup-close-icon]{
+                top: -1.5rem;
+                right: -1.5rem;
+            }
+
+            [data-token-popup-close-icon] svg path{
+                filter: drop-shadow(0px 0px 8px #00000080);
+            }
+
+            /* popup - left-column */
+            [data-token-popup-left-column]{
+                background-image: url("./images/popup-bg.png");
+                background-position: -195px 0;
+            }
+
+            [data-left-column-overlay-container]{
+                background: linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.9) 100%); 
+            }
+
+            [data-alert-user-container]{
+                background-size: 400%;
+                background-position: -2rem 0;
+            }
+
+            [data-alert-user-token-icon]{
+                bottom: -0.5rem;
+                right: -0.5rem;
+            }
+
+            /* popup - right-column */
+            [data-token-popup-right-column]{
+                min-height: 34.375rem;
+            }
+
+            /* alert-section */
+            [data-token-alert-wrapper]{
+                min-height: 4rem;
+                border-left: 3px solid #07F468;
+                border-bottom: 0.5px solid #EAECF0;
+            }
+
+            [data-token-alert-container]{
+                background: linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255));
+            }
+
+            [data-token-alert-container]::before{
+                position: absolute;
+                content: '';
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, rgba(46, 211, 183, 0.15), rgba(255, 255, 255, 0.9));
+                z-index: 0;
+            }
+
+            /* token-amount-input */
+            input[type="number"][data-tip-amount-input]{
+                color: black !important;
+                font-size: 2.5rem !important;
+                font-weight: 600 !important;
+                line-height: 3.75rem !important;
+                -moz-appearance: textfield;
+            }
+
+            input[type="number"][data-tip-amount-input]::-webkit-outer-spin-button,
+            input[type="number"][data-tip-amount-input]::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+
+            /* switch */
+            .switch {
+                position: relative;
+                display: inline-block;
+                width: 36px;
+                height: 20px;
+            }
+
+            /* Hide default HTML checkbox */
+            .switch input {
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+
+            /* The slider */
+            .slider {
+                position: absolute;
+                cursor: pointer;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                display: inline !important;
+                background-color: #98A2B380;
+                border-radius: 12px;
+                padding: 2px;
+                -webkit-transition: .4s;
+                transition: .4s;
+            }
+
+            .slider:before {
+                position: absolute;
+                content: "";
+                height: 16px;
+                width: 16px;
+                left: 2px;
+                bottom: 2px;
+                background-color: white;
+                border-radius: 50%;
+                -webkit-transition: .4s;
+                transition: .4s;
+                box-shadow: 0px 1px 2px 0px #1018280F, 
+                0px 1px 3px 0px #1018281A;
+            }
+
+            input:checked + .slider {
+                background-color: #0C111D;
+            }
+
+            input:checked + .slider:before {
+                -webkit-transform: translateX(16px);
+                -ms-transform: translateX(16px);
+                transform: translateX(16px);
+            }
+
+            /* status: pending */
+            [data-status-pending]{
+                background: linear-gradient(90deg, #37FFD7 0%, #07F468 100%);
+                box-shadow: -1px 1px 8px 0px #35FFD340, 1px -1px 8px 0px #1CF89940;
+            }
+
+            [data-status-pending-inner-container]{
+                background: #000000D9;
+            }
+
+            [data-status-pending-text]{
+                background: linear-gradient(90deg, #37FFD7 0%, #07F468 100%), linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+                color: transparent;
+                background-clip: text;
+            }
+
+            /* tooltip */
+            [data-token-popup-tooltip] {
+                position: relative;
+                display: inline-block;
+            }
+
+            /* Tooltip text */
+            [data-token-popup-tooltip] [data-token-popup-tooltip-text] {
+                top: -1.6875rem;
+                left: 1.5rem;
+                background-color: #2C313D;
+                border-radius: .5rem;
+                padding: .5rem .75rem;
+                min-width: 14.8125rem;
+                visibility: hidden;
+                position: absolute;
+                z-index: 1;
+            }
+
+            /* Show the tooltip text when you mouse over the tooltip container */
+            [data-token-popup-tooltip]:hover [data-token-popup-tooltip-text] {
+                visibility: visible;
+            }
+
+            [data-token-popup-tooltip] [data-token-popup-tooltip-text]::after {
+                content: " ";
+                position: absolute;
+                top: 50%;
+                right: 100%; /* To the left of the tooltip */
+                margin-top: -5px;
+                border-width: 5px;
+                border-style: solid;
+                border-color: transparent #2C313D transparent transparent;
+            }
+
+            /* cash amount tag (inside from container) */
+            [data-cash-amount-tag]{
+                background: linear-gradient(90deg, #FF58B2 0%, #4C57FF 100%);
+                box-shadow: -1px 1px 8px 0px #4C57FF40, 1px -1px 8px 0px #FF58B240;
+            }
+
+            /* status inside from container */
+            [data-cash-amount-tag] [data-status-pending]{
+                background: transparent;
+                box-shadow: none;
+            }
+
+            [data-cash-amount-tag] [data-status-pending-text] {
+                background: linear-gradient(90deg, rgba(255, 88, 178, 0.7) 0%, rgba(76, 87, 255, 0.7) 100%),
+linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+                color: transparent;
+                background-clip: text;
+            }
+
+            /* footer tip-button */
+            [data-token-tip-button-wrapper-desktop]{
+                margin-top: auto;
+            }
+
+            [data-token-tip-button-container]{
+                height: 3.5rem;
+                box-shadow: 0px 0px 16px 0px #FFFFFF80;
+            }
+
+            [data-token-tip-button]::before{
+                position: absolute;
+                top: 0;
+                left: -0.75rem;
+                content: '';
+                display: block;
+                width: 2rem;
+                height: 100%;
+                background-color: #07F468;
+                z-index: -1;
+                -webkit-transform: skew(163deg, 0) translateX(3px);
+                transform: skew(163deg, 0) translateX(3px);
+                -webkit-backdrop-filter: blur(100px); 
+                backdrop-filter: blur(100px);
+                -webkit-transition: all 0s ease-in-out;
+                transition: all 0s ease-in-out;
+                box-shadow: -12px 0px 16px 0px #ffffff40;
+            }
+
+            button[data-token-tip-button]:hover{
+                background-color: black;
+            }
+
+            button[data-token-tip-button]:hover::before{
+                background-color: black;
+            }
+
+            button[data-token-tip-button]:not(:disabled):hover svg path{
+                stroke: #07F468;
+            }
+
+            button[data-token-tip-button]:not(:disabled):hover span{
+                color: #07F468;
+            }
+
+            @media (max-width: 1010px){
+                /* responsive */
+                .flex--column-responsive-tablet-landscape {
+                    -webkit-box-orient: vertical;
+                    -webkit-box-direction: normal;
+                    -ms-flex-direction: column;
+                    flex-direction: column
+                }
+
+                .pad--x--16-responsive-tablet-landscape{
+                    padding-left: 1rem;
+                    padding-right: 1rem;
+                }
+
+                /* popup */
+                [data-token-popup] .elm_yNwqwJ{
+                    align-items: start;
+                }
+
+                /* popup-columns */
+                [data-token-popup-left-column]{
+                    width: 100%;
+                }
+
+                [data-token-popup-left-column]{
+                    background-size: 140%;
+                    background-repeat: no-repeat;
+                    background-position: left top;
+                    height: 20rem;
+                    min-height: 20rem;
+                }
+
+                [data-left-column-overlay-container]{
+                    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.45) 100%);
+                }
+
+                [data-token-popup-right-column]{
+                    width: 100%;
+                }
+
+                [data-token-alert-wrapper]{
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                }
+
+                [data-token-input-container]{
+                    padding-top: 1rem;
+                }
+            }
+
+            @media (max-width: 767px){
+                /* responsive */
+                .lh--20--responsive-mobile{
+                    line-height: 1.25rem;
+                }
+
+                /* popup */
+                .elm_UoRWYY[data-token-popup]:not([data-popup-noui]) .elm_yNwqwJ:not(.no-height){
+                    height: 100vh;
+                    margin-top: 0;
+                }
+
+                /* close-icon */
+                [data-token-popup-close-icon]{
+                    width: 2.5rem;
+                    height: 2.5rem;
+                    top: .5rem;
+                    right: .5rem;
+                    background-color: transparent;
+                    -webkit-backdrop-filter: blur(0px);
+                    backdrop-filter: blur(0px);
+                    filter: drop-shadow(0px 0px 20px #FFFFFF);
+                }
+
+                [data-token-popup-close-icon] svg path{
+                    backdrop-filter: unset;
+                }
+
+                /* popup-columns */
+                [data-token-popup-left-column],
+                [data-token-popup-right-column]{
+                    max-width: 100%;
+                }
+
+                [data-token-popup-right-column]{
+                    min-height: 36.875rem;
+                }
+
+                [data-token-alert-wrapper-mobile]{
+                    width: calc(100% - 1rem);
+                    top: .5rem;
+                    left: .5rem;
+                    border-left: none;
+                }
+
+                [data-alert-user-token-icon] {
+                    width: 1rem;
+                    height: 1rem;
+                    bottom: -0.25rem;
+                    right: -0.25rem;
+                }
+
+                /* tip button */
+                [data-token-tip-button-container]{
+                    height: 2.75rem;
+                }
+
+                [data-token-tip-button]{
+                    height: 2.75rem;
+                }
+            }
+
+            @media (max-width: 480px){
+                [data-token-popup-left-column] {
+                    min-height: 23.4375rem;
+                    background-size: 250%;
+                    background-position-x: -95px;
+                }
+                
+                [data-token-popup-right-column]{
+                    min-height: unset;
+                    padding-bottom: 4.25rem;
+                }
+
+                [data-token-popup-tooltip] [data-token-popup-tooltip-text]{
+                    min-width: 10.8125rem;
+                    top: -2.75rem;
+                    left: 1.75rem;
+                }
+
+                [data-token-tip-button-wrapper-desktop]{
+                    display: none;
+                }
+
+                [data-token-tip-button-wrapper-mobile]{
+                    position: fixed !important;
+                    display: flex;
+                    z-index: 100000;
+                }
+            }
+
+        </style>
+
+        <link rel="stylesheet" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-tablet.css" media="screen and (min-width: 768px) and (max-width: 1365px)">
+        <link rel="stylesheet" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-tablet-landscape.css" media="screen and (min-width: 768px) and (max-width: 1010px)">
+        <link rel="stylesheet" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-mobile.css" media="screen and (min-width: 480px) and (max-width: 767px)">
+        <link rel="stylesheet" id="dashboardStylesMobilePortrait-css" href="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/css/dashboard-styles-mobile-portrait.css" media="screen and (max-width: 479px)">
+    </head>
+    <body style="background-color: #949494;">
+        <div style="background-color: #44444480;" class="w-100 h-100 min-vh-100 flex justify-center items-center">
+
+            <!-- popup-start -->
+            <div data-token-popup class="elm_UoRWYY items-center justify-center fixed dn top-0 left-0 w-100 h-100 z-max overflow-auto flex opened">
+                <!-- inner wrapper -->
+                <div class="elm_yNwqwJ top-0 w-100 h-100 flex items-center justify-center absolute">
+                    <!-- container -->
+                    <div data-token-popup-container class="elm_qJBugX no-height flex flex-column bg--blur--50 sh--22 relative overflow-visible">
+
+                        <!-- close-icon -->
+                        <div data-token-popup-close-icon class="elm_UOkrrN pointer flex items-center justify-center absolute w--48 h--48 bg-black-30 bg--blur--20 br-100 z-max">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" fill="none">
+                                <g filter="url(#filter0_d_24679_14978)">
+                                    <path d="M25.1763 9L9.17627 25M9.17627 9L25.1763 25" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </g>
+                            </svg>		
+                        </div>
+                        
+                        <!-- column-container -->
+                        <div class="flex flex--column-responsive-tablet-landscape">
+                            <!-- left-column -->
+                            <div class="w--323 mh--538 flex" data-token-popup-left-column>
+                                <!-- overlay-container -->
+                                <div class="bg--gd-black flex items-end w-100" data-left-column-overlay-container>
+                                    <!-- text-container -->
+                                    <div class="flex flex-column gap--10 pad--16 drop--sh--1 pad--x--8-responsive-mobile pad--x--8-responsive-mobile-portrait">
+                                        <p class="fs--20 lh--30 fw5 poppins white">Thank you for your tip 💋 don’t forget to see my live stream every wednesday 8pm ❤️‍🔥 ❤️‍🔥 ❤️‍🔥 </p>
+                                    
+                                        <div class="flex flex-column">
+                                            <div class="flex gap--4">
+                                                <span class="fs--14 lh--20 fw5 poppins col--white--brand--25">Princess Carrot Pop</span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="10" viewBox="0 0 11 10" fill="none">
+                                                    <g clip-path="url(#clip0_24621_8256)">
+                                                        <path d="M7.7812 1.77098C7.87618 2.00068 8.05848 2.18326 8.28804 2.27858L9.09297 2.61199C9.32268 2.70714 9.50519 2.88965 9.60034 3.11936C9.69549 3.34908 9.69549 3.60718 9.60034 3.83689L9.26716 4.64125C9.17197 4.87106 9.17184 5.12943 9.26746 5.35913L9.60006 6.16325C9.64723 6.27702 9.67152 6.39897 9.67154 6.52214C9.67156 6.6453 9.64731 6.76726 9.60018 6.88105C9.55304 6.99484 9.48395 7.09823 9.39684 7.18531C9.30974 7.27238 9.20633 7.34144 9.09253 7.38854L8.28817 7.72171C8.05848 7.81669 7.8759 7.99899 7.78058 8.22855L7.44717 9.03348C7.35202 9.26319 7.16951 9.4457 6.9398 9.54085C6.71008 9.636 6.45198 9.636 6.22226 9.54085L5.41791 9.20767C5.18819 9.11276 4.93018 9.11295 4.7006 9.20821L3.89567 9.54115C3.66609 9.63608 3.40821 9.636 3.17868 9.54092C2.94915 9.44585 2.76675 9.26356 2.67153 9.03409L2.33802 8.22892C2.24305 7.99923 2.06074 7.81665 1.83119 7.72133L1.02626 7.38792C0.796645 7.29281 0.614193 7.11041 0.519007 6.88083C0.423821 6.65125 0.423692 6.39327 0.518648 6.16359L0.851822 5.35924C0.946738 5.12952 0.946545 4.87151 0.851283 4.64193L0.518587 3.83642C0.471418 3.72265 0.447129 3.60069 0.44711 3.47753C0.44709 3.35436 0.471339 3.2324 0.518472 3.11861C0.565605 3.00482 0.634698 2.90144 0.721803 2.81436C0.808908 2.72728 0.912317 2.65822 1.02612 2.61113L1.83047 2.27795C2.05997 2.18306 2.24244 2.00099 2.33783 1.7717L2.67124 0.966768C2.76639 0.737054 2.9489 0.554547 3.17861 0.459397C3.40833 0.364246 3.66643 0.364246 3.89615 0.459397L4.7005 0.792571C4.93022 0.887487 5.18823 0.887293 5.41781 0.792031L6.22307 0.459913C6.45276 0.364816 6.71081 0.364836 6.94047 0.459968C7.17014 0.555099 7.35263 0.737554 7.44779 0.967208L7.7813 1.77238L7.7812 1.77098Z" fill="#0788F5"/>
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M7.01688 3.68932C7.08368 3.58439 7.10607 3.45723 7.07911 3.3358C7.05215 3.21437 6.97806 3.10862 6.87313 3.04182C6.76821 2.97502 6.64104 2.95264 6.51961 2.97959C6.39818 3.00655 6.29243 3.08064 6.22563 3.18557L4.39001 6.06995L3.55001 5.01995C3.47235 4.92281 3.35928 4.8605 3.23569 4.84673C3.11209 4.83296 2.98808 4.86885 2.89094 4.94651C2.79381 5.02417 2.7315 5.13723 2.71773 5.26083C2.70396 5.38443 2.73985 5.50843 2.81751 5.60557L4.06751 7.16807C4.11409 7.22638 4.17392 7.27271 4.24203 7.30323C4.31013 7.33375 4.38454 7.34757 4.45906 7.34353C4.53358 7.3395 4.60606 7.31773 4.67047 7.28004C4.73488 7.24234 4.78936 7.18981 4.82938 7.12682L7.01688 3.68932Z" fill="white"/>
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_24621_8256">
+                                                            <rect width="10" height="10" fill="white" transform="translate(0.0585938)"/>
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg>
+                                            </div>
+
+                                            <span class="fs--12 lh--18 fw5 poppins col--led-grey">@sammisjelly187</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- righ-column -->
+                            <div class="w--521 mh--538 h-100 flex flex-column bg--col--white--25" data-token-popup-right-column>
+                                <!-- alert-section -->
+                                <div data-token-alert-wrapper class="relative display-none--responsive-mobile display-none--responsive-mobile-portrait">
+                                    <div data-token-alert-container class="pad--y--12 pad--x--8 relative">
+                                        <div data-token-alert-content class="flex items-center gap--16 relative z-1">
+                                            <div data-alert-user-container class="w--40 h--40 br-100 no-repeat relative" style="background-image: url('./images/popup-bg.png');">
+                                                <div data-alert-user-token-icon class="flex justify-center items-center absolute w--22 h--22">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                                                        <rect width="22" height="22" rx="8" fill="#2ED3B7"/>
+                                                        <path d="M7 13.6673C7 15.1401 8.19391 16.334 9.66667 16.334H12.3333C13.8061 16.334 15 15.1401 15 13.6673C15 12.1946 13.8061 11.0007 12.3333 11.0007H9.66667C8.19391 11.0007 7 9.80674 7 8.33398C7 6.86123 8.19391 5.66732 9.66667 5.66732H12.3333C13.8061 5.66732 15 6.86123 15 8.33398M11 4.33398V17.6673" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                </div>
+                                            </div>
+
+                                            <div class="pad--top--4 pad--bottom--8 pad--right--4">
+                                                <p class="fs--14 lh--20 fw6 poppins col--genoa">You have sent 600 tokens to Jenny.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- tabs-content-container -->
+                                <div class="flex flex-column">
+                                    <!-- token-input-container -->
+                                    <div data-token-input-container class="pad--24 pad--x--16-responsive-tablet-landscape pad--x--8-responsive-mobile pad--x--8-responsive-mobile-portrait pad--top--16-responsive-mobile pad--top--16-responsive-mobile-portrait pad--bottom--24-responsive-mobile pad--bottom--24-responsive-mobile-portrait">
+                                        <div class="flex flex-column flex--max gap--16 gap--24-responsive-mobile gap--24-responsive-mobile-portrait">
+                                            <p class="fs--18 lh--28 fw6 poppins col--ebony--variation-2 fs--16--responsive-mobile fs--16--responsive-mobile-portrait lh--24--responsive-mobile lh--24--responsive-mobile-portrait">Tip Again?</p>
+
+                                            <div class="flex flex-column gap--8">
+                                                <div class="bb br--col--ebony--variation-2 flex justify-between items-end gap--8">
+                                                    <div class="flex items-baseline gap--8">
+                                                        <span class="fs--18 lh--36 fw6 poppins col--ebony--variation-2 h-100">USD$</span>
+
+                                                        <input data-tip-amount-input type="number" value="600" class="w-100 fs--40 lh--60 fw6 black tracked--0-2">
+                                                    </div>
+                                                </div>
+
+                                                <p class="fs--12 lh--18 poppins col--ebony--variation-2">*10% service charge apply</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex flex-column gap--16 pad--x--24 pad--x--16-responsive-tablet-landscape pad--x--8-responsive-mobile pad--x--8-responsive-mobile-portrait">
+                                        <!-- from-container -->
+                                        <div class="flex items-center gap--8 pad--8 br--5 bg-white-50">
+                                            <span class="fs--12 lh--18 fw6 poppins col--ebony--variation-2">From</span>
+
+                                            <div class="flex items-center gap--8 flex-auto">
+                                                <img src="./images/user-vector-2.png" alt="" class="w--40 h--36 mw--40">
+                                                <div class="flex flex-column mw--0">
+                                                    <span class="fs--12 lh--18 fw6 poppins col--ebony--variation-2 truncate">Anonymous User</span>
+                                                    <span class="fs--12 lh--18 fw5 poppins col--pale-sky truncate">You will tip anonymously</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="flex items-center">
+                                                <div data-cash-amount-tag class="flex items-center">
+                                                    <div class="flex items-center gap--3 pad--y--2 pad--x--4">
+                                                        <span class="fs--16 lh--24 fw6 poppins white nowrap">-USD$ 660</span>
+                                                    </div>
+
+                                                    <!-- status -->
+                                                    <div data-status-pending class="flex items-center">
+                                                        <div data-status-pending-inner-container class="flex justify-center items-center pad--4">
+                                                            <span data-status-pending-text class="fs--14 lh--20 fw5 poppins nowrap">Pending</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- anonymous toggle container -->
+                                        <div class="flex items-center gap--8">
+                                            <!-- switch -->
+                                            <label class="switch">
+                                                <input type="checkbox" checked>
+                                                <span class="slider"></span>
+                                            </label>
+
+                                            <!-- switch label -->
+                                            <div class="flex items-center gap--4">
+                                                <span class="fs--12 lh--18 poppins col--ebony--variation-2">Tip Anonymously</span>
+                                                <div class="w1 h1 flex justify-center items-center pointer relative" data-token-popup-tooltip>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+                                                        <g clip-path="url(#clip0_24621_20699)">
+                                                            <path d="M6.23643 5.99998C6.39317 5.55442 6.70253 5.17872 7.10974 4.9394C7.51694 4.70009 7.9957 4.61261 8.46122 4.69245C8.92674 4.7723 9.34898 5.01433 9.65315 5.37567C9.95732 5.737 10.1238 6.19433 10.1231 6.66665C10.1231 7.99998 8.1231 8.66665 8.1231 8.66665M8.17643 11.3333H8.1831M14.8431 7.99998C14.8431 11.6819 11.8583 14.6666 8.17643 14.6666C4.49453 14.6666 1.50977 11.6819 1.50977 7.99998C1.50977 4.31808 4.49453 1.33331 8.17643 1.33331C11.8583 1.33331 14.8431 4.31808 14.8431 7.99998Z" stroke="#667085" stroke-opacity="0.5" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        </g>
+                                                        <defs>
+                                                            <clipPath id="clip0_24621_20699">
+                                                                <rect width="16" height="16" fill="white" transform="translate(0.17627)"/>
+                                                            </clipPath>
+                                                        </defs>
+                                                    </svg>
+
+                                                    <span data-token-popup-tooltip-text class="fs--12 lh--18 fw5 poppins white">When this toggle is on, your username and identity will be hidden from @princesscarrotpop.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- to-container -->
+                                        <div class="flex items-center gap--8 pad--8 br--5 bg-white-50">
+                                            <span class="fs--12 lh--18 fw6 poppins col--ebony--variation-2 w2">To</span>
+
+                                            <div class="flex items-center gap--8 flex-auto">
+                                                <img src="./images/user-vector-1.png" alt="" class="w--40 h--36">
+                                                <div class="flex flex-column gap--4 mw--0">
+                                                    <span class="fs--12 lh--18 fw6 poppins col--ebony--variation-2 truncate">Princess Carrot Pop</span>
+                                                </div>
+                                            </div>
+
+                                            <!-- status -->
+                                            <div data-status-pending class="flex items-center w--max-content ml-auto">
+                                                <div data-status-tip-tag-container class="flex items-center gap--3 pad--y--2 pad--x--4">
+                                                    <span class="fs--16 lh--24 fw6 poppins col--grey-800 nowrap">+USD$ 600</span>
+                                                </div>
+                                                <div data-status-pending-inner-container class="flex justify-center items-center pad--4">
+                                                    <span data-status-pending-text class="fs--14 lh--20 fw5 poppins nowrap">Pending</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- message-container -->
+                                        <div class="flex items-center gap--8 pad--8 br--5 bg-white-50">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+                                                <path d="M17.8431 7.8913V11.3334C17.8431 11.8001 17.8431 12.0335 17.9339 12.2117C18.0138 12.3685 18.1413 12.496 18.2981 12.5759C18.4764 12.6667 18.7097 12.6667 19.1764 12.6667H22.6185M19.5098 16.8334H12.8431M19.5098 20.1667H12.8431M14.5098 13.5H12.8431M17.8431 7.66669H13.5098C12.1096 7.66669 11.4096 7.66669 10.8748 7.93917C10.4044 8.17885 10.0219 8.56131 9.78225 9.03171C9.50977 9.56649 9.50977 10.2666 9.50977 11.6667V20.3334C9.50977 21.7335 9.50977 22.4336 9.78225 22.9683C10.0219 23.4387 10.4044 23.8212 10.8748 24.0609C11.4096 24.3334 12.1096 24.3334 13.5098 24.3334H18.8431C20.2432 24.3334 20.9433 24.3334 21.4781 24.0609C21.9485 23.8212 22.3309 23.4387 22.5706 22.9683C22.8431 22.4336 22.8431 21.7335 22.8431 20.3334V12.6667L17.8431 7.66669Z" stroke="#0C111D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+
+                                            <textarea token-add-message-input name="" id="" rows="1" placeholder="Add Message...(Optional)" class="fs--14 lh--20 fw5 poppins col--ebony--variation-2 "></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- button-wrapper -->
+                                <div data-token-tip-button-wrapper-desktop class="flex justify-end items-end pad--top--24 display-none--responsive-mobile-portrait">
+                                    <div data-token-tip-button-container>
+                                        <button data-token-tip-button class="flex justify-center items-center gap--8 relative h--56 pad--x--16 bg--col--brand-green bg--blur--100">
+                                            <div class="flex items-center gap--8">
+                                                <span class="fs--16 lh--24 fw5 poppins black nowrap">Pay USD$ 660</span>
+                                            </div>
+
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+                                                <path d="M5.17627 12H19.1763M19.1763 12L12.1763 5M19.1763 12L12.1763 19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            <!-- popup-end -->
+
+            <!-- alert-section mobile -->
+            <div data-token-alert-wrapper data-token-alert-wrapper-mobile class="relative dn display-flex--responsive-mobile display-flex--responsive-mobile-portrait z-max">
+                <div data-token-alert-container class="pad--y--12 pad--x--8 relative w-100">
+                    <div data-token-alert-content class="flex items-center gap--16 relative z-1">
+                        <div data-alert-user-container class="w--40 h--40 br-100 no-repeat relative" style="background-image: url('./images/popup-bg.png');">
+                            <div data-alert-user-token-icon class="flex justify-center items-center absolute w--22 h--22">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                                    <rect width="22" height="22" rx="8" fill="#2ED3B7"/>
+                                    <path d="M7 13.6673C7 15.1401 8.19391 16.334 9.66667 16.334H12.3333C13.8061 16.334 15 15.1401 15 13.6673C15 12.1946 13.8061 11.0007 12.3333 11.0007H9.66667C8.19391 11.0007 7 9.80674 7 8.33398C7 6.86123 8.19391 5.66732 9.66667 5.66732H12.3333C13.8061 5.66732 15 6.86123 15 8.33398M11 4.33398V17.6673" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="pad--top--4 pad--bottom--8 pad--right--4">
+                            <p class="fs--14 lh--20 fw6 poppins col--genoa">You have sent 600 tokens to Jenny.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- mobile fixed button -->
+            <div data-token-tip-button-wrapper-mobile class="dn fixed right-0 bottom-0 display-flex--responsive-mobile-responsive">
+                <div data-token-tip-button-container>
+                    <button data-token-tip-button class="flex justify-center items-center gap--8 relative w--160 h--56 pad--x--16 bg--col--brand-green bg--blur--100">
+                        <div class="flex items-center gap--8">
+                            <span class="fs--16 lh--24 fw5 poppins black">TIP</span>
+
+                            <div class="flex items-center">
+                                <img src="./images/token-tip-svg.png" alt="" class="w--24 h--24">
+                                <span class="fs--20 lh--30 fw6 poppins black tracked--0-12">600</span>
+                            </div>
+                        </div>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+                            <path d="M5.17627 12H19.1763M19.1763 12L12.1763 5M19.1763 12L12.1763 19" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </body>
+</html>
