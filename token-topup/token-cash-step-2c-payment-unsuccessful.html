@@ -66,6 +66,28 @@
                 min-height: 35.75rem;
             }
 
+            /* tip-alert-wrapper */
+            [data-tip-alert-wrapper]{
+                background-color: #242424;
+                border-bottom: 0.5px solid #344054;
+            }
+
+            [data-tip-alert-container]{
+                border-left: 3px solid #FF4405;
+                background: linear-gradient(0deg, rgba(255, 68, 5, 0.3), rgba(255, 68, 5, 0.3)), linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 100%);
+            }
+
+            [data-tip-alert-container]::after {
+                position: absolute;
+                content: '';
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 100%);
+                z-index: 1;
+            }
+
             [data-payment-information-wrapper]{
                 background: #FFFFFF59;
                 border: 1px solid #EAECF080;
@@ -163,6 +185,13 @@
                 [data-token-popup-right-column]{
                     min-height: 32.375rem;
                 }
+
+                [data-tip-alert-wrapper]{
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                }
             }
 
             @media (max-width: 767px){
@@ -206,6 +235,13 @@
 
                 [data-token-popup-right-column]{
                     min-height: 36.875rem;
+                }
+
+                /* alert-container-mobile */
+                [data-tip-alert-wrapper-mobile]{
+                    width: calc(100% - 1rem);
+                    top: .5rem;
+                    left: .5rem;
                 }
 
                 /* tip button */
@@ -283,7 +319,7 @@
                     <div data-token-popup-container class="elm_qJBugX no-height flex flex-column bg--blur--50 sh--22 relative overflow-visible">
 
                         <!-- close-icon -->
-                        <div data-token-popup-close-icon class="elm_UOkrrN pointer flex items-center justify-center absolute w--48 h--48 bg-black-30 bg--blur--20 br-100 display-none--responsive-mobile-portrait">
+                        <div data-token-popup-close-icon class="elm_UOkrrN pointer flex items-center justify-center absolute w--48 h--48 bg-black-30 bg--blur--20 br-100 display-none--responsive-mobile-portrait z-max">
                             <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" fill="none">
                                 <g filter="url(#filter0_d_24679_14978)">
                                     <path d="M25.1763 9L9.17627 25M9.17627 9L25.1763 25" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -332,6 +368,25 @@
 
                             <!-- righ-column -->
                             <div class="w--521 mh--538 h-100 flex flex-column bg--col--white--25" data-token-popup-right-column>
+                                <!-- tip-alert-container -->
+                                <div data-tip-alert-wrapper class="display-none--responsive-mobile display-none--responsive-mobile-portrait">
+                                    <div data-tip-alert-container class="pad--y--12 pad--x--8 relative z-1">
+                                        <div class="flex gap--16 relative z-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="41" height="40" viewBox="0 0 41 40" fill="none">
+                                                <rect x="0.117676" width="40" height="40" rx="8" fill="#FF4405" fill-opacity="0.1"/>
+                                                <path d="M20.1176 16.5V21.1667M20.1176 25.8334H20.1292M18.5021 10.5404L8.90639 27.1148C8.37415 28.0341 8.10803 28.4937 8.14736 28.871C8.18167 29.2001 8.35407 29.4991 8.62165 29.6936C8.92844 29.9167 9.45958 29.9167 10.5219 29.9167H29.7133C30.7755 29.9167 31.3067 29.9167 31.6135 29.6936C31.881 29.4991 32.0534 29.2001 32.0877 28.871C32.1271 28.4937 31.861 28.0341 31.3287 27.1148L21.733 10.5404C21.2027 9.62434 20.9375 9.16633 20.5916 9.0125C20.2898 8.87832 19.9453 8.87832 19.6435 9.0125C19.2976 9.16633 19.0324 9.62434 18.5021 10.5404Z" stroke="#FF4405" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+
+                                            <div class="flex flex-column w-100">
+                                                <div class="pad--top--4 pad--right--4">
+                                                    <h3 class="fs--14 lh--20 fw6 poppins col--vermilion">Payment Unsuccessful</h3>
+                                                </div>
+                                                <p class="fs--14 lh--20 poppins col--led-grey">Payment was unsuccessful due to a poor network connection. Please try again later</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
                                 <!-- enter-payment-info-section -->
                                 <div class="flex flex-column gap--16 pad--x--24 pad--y--16 pad--x--16-responsive-tablet-landscape pad--x--8-responsive-mobile pad--x--8-responsive-mobile-portrait">
                                     <!-- back-button -->
@@ -500,23 +555,21 @@
             </div> 
             <!-- popup-end -->
 
-            <!-- portrait mobile responsive fixed nav -->
-            <div data-portrait-mobile-responsive-navbar class="fixed dn display-flex--responsive-mobile-portrait z-max">
-                <div class="flex justify-between items-center gap--8 pad--8 w-100">
-                    <!-- mobile-back-button -->
-                    <div class="pointer flex items-center justify-center w--40 h--40 br-100">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M15 18L9 12L15 6" stroke="#EAECF0" stroke-width="1.77778" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- tip-alert-container -->
+            <div data-tip-alert-wrapper data-tip-alert-wrapper-mobile class="dn fixed display-flex--responsive-mobile display-flex--responsive-mobile-portrait z-max">
+                <div data-tip-alert-container class="pad--y--12 pad--x--8 relative z-1 w-100">
+                    <div class="flex gap--16 relative z-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="41" height="40" viewBox="0 0 41 40" fill="none">
+                            <rect x="0.117676" width="40" height="40" rx="8" fill="#FF4405" fill-opacity="0.1"/>
+                            <path d="M20.1176 16.5V21.1667M20.1176 25.8334H20.1292M18.5021 10.5404L8.90639 27.1148C8.37415 28.0341 8.10803 28.4937 8.14736 28.871C8.18167 29.2001 8.35407 29.4991 8.62165 29.6936C8.92844 29.9167 9.45958 29.9167 10.5219 29.9167H29.7133C30.7755 29.9167 31.3067 29.9167 31.6135 29.6936C31.881 29.4991 32.0534 29.2001 32.0877 28.871C32.1271 28.4937 31.861 28.0341 31.3287 27.1148L21.733 10.5404C21.2027 9.62434 20.9375 9.16633 20.5916 9.0125C20.2898 8.87832 19.9453 8.87832 19.6435 9.0125C19.2976 9.16633 19.0324 9.62434 18.5021 10.5404Z" stroke="#FF4405" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
-                    </div>
 
-                    <!-- close-icon -->
-                    <div class="elm_UOkrrN pointer flex items-center justify-center w--40 h--40 br-100">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 34 34" fill="none">
-                            <g filter="url(#filter0_d_24679_14978)">
-                                <path d="M25.1763 9L9.17627 25M9.17627 9L25.1763 25" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </g>
-                        </svg>		
+                        <div class="flex flex-column w-100">
+                            <div class="pad--top--4 pad--right--4">
+                                <h3 class="fs--14 lh--20 fw6 poppins col--vermilion">Payment Unsuccessful</h3>
+                            </div>
+                            <p class="fs--14 lh--20 poppins col--led-grey pad--right--4">Payment was unsuccessful due to a poor network connection. Please try again later</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -535,29 +588,5 @@
             </div>
 
         </div>
-
-        <script>
-            // Scroll detection code
-            const navbar = document.querySelector("[data-portrait-mobile-responsive-navbar]");
-            const popupContainer = document.querySelector("[data-token-popup-container]");
-            const scrollThreshold = 10; // pixels scrolled before effects are applied
-
-            function handleScroll() {
-                console.log("scrolled", popupContainer.scrollTop);
-                if (popupContainer.scrollTop > scrollThreshold) {
-                    console.log("threshold scrolled");
-                    navbar.setAttribute('data-page-scrolling', 'true');
-                    popupContainer.setAttribute('data-page-scrolling', 'true');
-                } else {
-                    navbar.removeAttribute('data-page-scrolling');
-                    popupContainer.removeAttribute('data-page-scrolling');
-                }
-            }
-
-            popupContainer.addEventListener('scroll', handleScroll);
-            
-            // Check initial state
-            handleScroll();
-        </script>
     </body>
 </html>
