@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Payout Flow Popup</title>
+  <style>
+    /* ─────────────────────────────────────────────────────────────
+       BASIC STYLES FOR THE POPUP & STEPS
+    ───────────────────────────────────────────────────────────── */
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .payout-option.selected {
+  background-color: #007bff; /* Bootstrap blue */
+  color: #fff;
+  border-radius: 4px;
+}
+
+
+    /* “Start” button on the main page */
+    #startPayoutButton {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 40px;
+    }
+    /* Overlay covering the entire viewport */
+    #payoutPopupOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.5);
+      display: none; /* Hidden by default */
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    /* The popup container */
+    #payoutPopup {
+      background: white;
+      width: 90%;
+      max-width: 420px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      position: relative;
+    }
+    /* Close icon in top-right corner */
+    #payoutPopup .close-popup {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+    }
+    #payoutPopup .close-popup:before,
+    #payoutPopup .close-popup:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 2px;
+      background: #666;
+      transform-origin: center;
+    }
+    #payoutPopup .close-popup:before {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+    #payoutPopup .close-popup:after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    /* Hide elements with .hidden */
+    .hidden {
+      display: none !important;
+    }
+
+    /* STEP CONTAINER styling */
+    .step-container {
+      padding: 24px;
+    }
+    .progress-wrapper {
+      margin-bottom: 16px;
+    }
+    progress {
+      width: 100%;
+      height: 16px;
+    }
+    .step-content {
+      display: none; /* Each step is hidden by default; JS shows the current one */
+    }
+    .step-content.active {
+      display: block;
+    }
+    .loader {
+      text-align: center;
+      font-size: 18px;
+      padding: 40px 0;
+    }
+    .input-group {
+      margin-bottom: 12px;
+    }
+    .input-group label {
+      display: block;
+      margin-bottom: 4px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    .input-group input,
+    .input-group select {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+    .button {
+      padding: 8px 16px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .button:disabled {
+      background: #aaa;
+      cursor: not-allowed;
+    }
+    .back-button {
+      background: #6c757d;
+      margin-right: 8px;
+    }
+    .step-footer {
+      margin-top: 16px;
+      text-align: right;
+    }
+    .payout-option {
+      padding: 12px;
+      margin: 8px 0;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .payout-option.active {
+      border-color: #007bff;
+      background: #e7f1ff;
+    }
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      margin: 8px 0;
+      font-size: 14px;
+    }
+    .summary-title {
+      font-weight: bold;
+    }
+    .success-text {
+      text-align: center;
+      font-size: 18px;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- START BUTTON ON MAIN PAGE -->
+  <button id="startPayoutButton">Start Payout Flow</button>
+
+  <!-- POPUP OVERLAY; initially hidden. 
+       When visible, contains the entire step-container. -->
+  <div id="payoutPopupOverlay">
+    <div id="payoutPopup">
+      <!-- CLOSE ICON -->
+      <div class="close-popup" id="closePayoutPopup"></div>
+
+      <!-- STEP CONTAINER (identical to previous code, but each step gets class "step-content") -->
+      <div class="step-container"
+           data-attribute-steps-id="payout-steps"
+           data-steps='[
+             {"name":"payoutLoader"},
+             {"name":"payoutOptions"},
+             {"name":"payoutSelectMethod"},
+             {"name":"payoutDetail"},
+             {"name":"payoutSummary"},
+             {"name":"payoutSuccess"}
+           ]'
+           data-current-step="payoutLoader">
+
+        <!-- PROGRESS BAR -->
+        <div class="progress-wrapper" data-attribute-progress-bar>
+          <progress class="payout-progress-bar" value="0" max="100"></progress>
+        </div>
+
+<!-- STEP 0: LOADER -->
+<div data-step-name="payoutLoader" class="step-content">
+    <div class="loader">
+      <strong>LOADER</strong><br />
+      <small>Please wait…</small>
+    </div>
+  </div>
+
+        <!-- STEP 1: SELECT COUNTRY & AMOUNT -->
+        <div data-step-name="payoutOptions" class="step-content">
+          <h2>Step 1: Where would you like to send money?</h2>
+
+          <!-- COUNTRY SELECT -->
+          <div class="input-group">
+            <label for="countrySelect">Country<span style="color:red;">*</span></label>
+            <select id="countrySelect"
+                    data-attribute-country-select
+                    data-attribute-steps-required>
+              <option value="">-- Select country --</option>
+              <!-- JS will populate available countries here -->
+            </select>
+          </div>
+
+          <!-- AMOUNT INPUT -->
+          <div class="input-group">
+            <label for="amountInput">Payout Amount<span style="color:red;">*</span></label>
+            <input type="number"
+                   id="amountInput"
+                   placeholder="0.00"
+                   data-attribute-amount-input
+                   data-attribute-steps-required
+                   min="0"
+                   step="0.01" />
+          </div>
+
+          <!-- AVAILABLE BALANCE DISPLAY -->
+          <div class="input-group">
+            <label>Available Balance</label>
+            <div data-attribute-available-balance>USD 0.00</div>
+          </div>
+
+          <!-- FOOTER: Next Button -->
+          <div class="step-footer">
+            <button class="button"
+                    data-attribute-next-step-button>Next →</button>
+          </div>
+        </div>
+
+        <!-- STEP 2: SELECT PAYOUT METHOD -->
+        <div data-step-name="payoutSelectMethod" class="step-content">
+          <h2>Step 2: Payout options in your chosen country</h2>
+
+          <!-- Payout options container -->
+          <div data-attribute-payout-options-wrapper>
+            <div class="payout-option"
+                 data-attribute-payout-option-id="bank-wire"
+                 data-attribute-payout-currency="CZK"
+                 data-attribute-payout-fee="1.75">
+              <div><strong>Bank Wire</strong> (Pays in CZK)</div>
+              <div>Fee: CZK Kč1.75</div>
+            </div>
+          
+            <div class="payout-option"
+                 data-attribute-payout-option-id="paypal"
+                 data-attribute-payout-currency="USD"
+                 data-attribute-payout-fee="2.50">
+              <div><strong>PayPal</strong> (Pays in USD)</div>
+              <div>Fee: USD $2.50</div>
+            </div>
+          
+            <!-- Add as many pre-defined methods as needed -->
+          </div>
+
+          <!-- FOOTER: shows “Your Final Payout” & “Service Charge” -->
+            <!-- Initially shown: Available Balance -->
+            <div class="input-group" data-step2-footer-available>
+                <label>Available Balance</label>
+                <div data-attribute-available-balance>USD 0.00</div>
+            </div>
+            
+            <!-- Hidden by default: Final Payout & Service Charge -->
+            <div class="step2-final-footer hidden" data-step2-footer-final>
+                <div class="input-group">
+                <label>Your Final Payout</label>
+                <div data-attribute-footer-final-payout> </div>
+                </div>
+                <div class="input-group">
+                <label>Service Charge</label>
+                <div data-attribute-footer-service-charge> </div>
+                </div>
+            </div>
+
+          <!-- BACK + NEXT buttons -->
+          <div class="step-footer">
+            <button class="button back-button"
+                    data-attribute-back-step-button>← Back</button>
+            <button class="button"
+                    data-attribute-next-step-button>Next →</button>
+          </div>
+        </div>
+
+<!-- STEP 3: ENTER PAYOUT DETAILS -->
+<div data-step-name="payoutDetail" class="step-content">
+    <h2>Step 3: Payout Details</h2>
+  
+    <!-- Alert -->
+    <div data-attribute-alert-invalid style="color:red; display:none;">
+      Something isn't right with the information you provided. Please double-check.
+    </div>
+  
+    <!-- ✅ Add this wrapper so JS can inject the form -->
+    <div data-attribute-payout-details-wrapper></div>
+  
+    <!-- FOOTER: Re-show “Your Final Payout” & “Service Charge” -->
+    <div class="input-group">
+      <label>Your Final Payout</label>
+      <div data-attribute-footer-final-payout> </div>
+    </div>
+    <div class="input-group">
+      <label>Service Charge</label>
+      <div data-attribute-footer-service-charge> </div>
+    </div>
+  
+    <!-- BACK + NEXT buttons -->
+    <div class="step-footer">
+      <button class="button back-button" data-attribute-back-step-button>← Back</button>
+      <button class="button" data-attribute-next-step-button>Next →</button>
+    </div>
+  </div>
+  
+
+        <!-- STEP 4: SUMMARY & CONFIRMATION -->
+        <div data-step-name="payoutSummary" class="step-content">
+          <h2>Step 4: Summary</h2>
+
+          <div class="summary-row">
+            <div class="summary-title">Country</div>
+            <div data-attribute-summary-country> </div>
+          </div>
+          <div class="summary-row">
+            <div class="summary-title">Payout Method</div>
+            <div data-attribute-summary-method> </div>
+          </div>
+          <div class="summary-row">
+            <div class="summary-title">Payout Details</div>
+            <div data-attribute-summary-details> </div>
+          </div>
+          <div class="summary-row">
+            <div class="summary-title">Withdraw Amount</div>
+            <div data-attribute-summary-amount> </div>
+          </div>
+          <div class="summary-row">
+            <div class="summary-title">Balance After Payout</div>
+            <div data-attribute-summary-balance-after> </div>
+          </div>
+
+          <!-- FOOTER: AGAIN show “Your Final Payout” & “Service Charge” -->
+          <div class="input-group">
+            <label>Your Final Payout</label>
+            <div data-attribute-footer-final-payout> </div>
+          </div>
+          <div class="input-group">
+            <label>Service Charge</label>
+            <div data-attribute-footer-service-charge> </div>
+          </div>
+
+          <!-- BACK + SUBMIT buttons -->
+          <div class="step-footer">
+            <button class="button back-button"
+                    data-attribute-back-step-button>← Back</button>
+            <button class="button"
+                    data-attribute-next-step-button>Submit</button>
+          </div>
+        </div>
+
+        <!-- STEP 5: SUCCESS -->
+        <div data-step-name="payoutSuccess" class="step-content">
+          <h2>Success!</h2>
+          <div class="success-text">
+            <div>
+              <span data-attribute-success-amount> </span><br />
+              will be deposited into your account within
+            </div>
+            <div>
+              <strong><span data-attribute-success-business-days> </span> business days</strong>
+            </div>
+          </div>
+          <div class="summary-row">
+            <div>Remaining Balance</div>
+            <div><strong><span data-attribute-success-remaining-balance> </span></strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ──────────────────────────────────────────────────────────────────────
+     JAVASCRIPT: PayoutHandler class + Popup Logic
+     ────────────────────────────────────────────────────────────────────── -->
+  <script>
+    // ──────────────────────────────────────────────────────────────────────
+    // STEP 1: The payoutSettings object holds all runtime data
+    // ──────────────────────────────────────────────────────────────────────
+    const payoutSettings = {
+      payoutCountry: "",
+      availableCountries: [],
+      payoutAmount: 0,
+      availableBalance: 0,
+      payoutCurrency: "",
+      finalPayoutAmount: 0,
+      payoutServiceCharge: 0,
+      payoutSavedMethods: [],
+      payoutMethod: {},
+      payoutDetails: {
+        swiftCode: "",
+        iban: ""
+      },
+      businessDays: 0
+    };
+
+    // ──────────────────────────────────────────────────────────────────────
+    // STEP 2: Build the PayoutHandler class
+    // ──────────────────────────────────────────────────────────────────────
+    class PayoutHandler {
+      constructor() {
+        // 1. Grab the container and parse steps
+        this.container = document.querySelector('[data-attribute-steps-id="payout-steps"]');
+        this.steps = [];
+        this.currentStepIndex = 0;
+        this.stepElements = {};
+        this.progressBar = document.querySelector('.payout-progress-bar');
+
+        this.initSteps();
+        this.cacheStepElements();
+        this.bindNavigationButtons();
+        this.bindInputListeners();
+
+        // 2. Show loader, fetch data, then Step 1
+        this.jumpToStep('payoutLoader');
+        this.initLoader();
+      }
+
+      // ───────────────────────────────────────────────────────────────────
+      // Parse JSON in data-steps → this.steps = [ {name:…}, … ]
+      // ───────────────────────────────────────────────────────────────────
+      initSteps() {
+        if (!this.container) return;
+        try {
+          const raw = this.container.getAttribute('data-steps');
+          this.steps = JSON.parse(raw) || [];
+        } catch (err) {
+          console.error('Failed to parse data-steps JSON:', err);
+          this.steps = [];
+        }
+      }
+
+      // ───────────────────────────────────────────────────────────────────
+      // Cache each step’s <div data-step-name="…"> in this.stepElements
+      // ───────────────────────────────────────────────────────────────────
+      cacheStepElements() {
+        this.steps.forEach(stepObj => {
+          const el = document.querySelector(`[data-step-name="${stepObj.name}"]`);
+          if (el) {
+            this.stepElements[stepObj.name] = el;
+          }
+        });
+      }
+
+      // ───────────────────────────────────────────────────────────────────
+      // Attach click listeners to “Next” & “Back” buttons everywhere
+      // ───────────────────────────────────────────────────────────────────
+      bindNavigationButtons() {
+        document.querySelectorAll('[data-attribute-next-step-button]').forEach(btn => {
+          btn.addEventListener('click', () => this.nextStep());
+        });
+        document.querySelectorAll('[data-attribute-back-step-button]').forEach(btn => {
+          btn.addEventListener('click', () => this.prevStep());
+        });
+      }
+
+      // ───────────────────────────────────────────────────────────────────
+      // Attach listeners for:
+      //   • Country select change
+      //   • Amount input
+      //   • Payout-option clicks (Step 2)
+      //   • SWIFT/IBAN inputs (Step 3)
+      // ───────────────────────────────────────────────────────────────────
+      bindInputListeners() {
+        // COUNTRY SELECT
+        const countrySelect = document.querySelector('[data-attribute-country-select]');
+        if (countrySelect) {
+          countrySelect.addEventListener('change', e => {
+            payoutSettings.payoutCountry = e.target.value;
+            this.dispatchSettingChanged();
+          });
+        }
+
+        // AMOUNT INPUT
+        const amountInput = document.querySelector('[data-attribute-amount-input]');
+        if (amountInput) {
+          ['input', 'change', 'keyup'].forEach(evt => {
+            amountInput.addEventListener(evt, e => {
+              const val = parseFloat(e.target.value);
+              payoutSettings.payoutAmount = isNaN(val) ? 0 : val;
+              this.dispatchSettingChanged();
+            });
+          });
+        }
+
+        // Payout-option clicks (Step 2)
+        document.addEventListener('click', e => {
+          const opt = e.target.closest('.payout-option');
+          if (opt && this.isCurrentStep('payoutSelectMethod')) {
+            this.selectPayoutMethod(opt);
+          }
+        });
+
+        // SWIFT INPUT (Step 3)
+        const swiftInput = document.querySelector('[data-attribute-swift-input]');
+        if (swiftInput) {
+          swiftInput.addEventListener('input', e => {
+            payoutSettings.payoutDetails.swiftCode = e.target.value.trim();
+            this.dispatchSettingChanged();
+          });
+        }
+
+        // IBAN INPUT (Step 3)
+        const ibanInput = document.querySelector('[data-attribute-iban-input]');
+        if (ibanInput) {
+          ibanInput.addEventListener('input', e => {
+            payoutSettings.payoutDetails.iban = e.target.value.trim();
+            this.dispatchSettingChanged();
+          });
+        }
+      }
+
+      // ───────────────────────────────────────────────────────────────────
+      // Return true if the named step is the one currently visible
+      // ───────────────────────────────────────────────────────────────────
+      isCurrentStep(stepName) {
+        return this.steps[this.currentStepIndex]?.name === stepName;
+      }
+
+      // ───────────────────────────────────────────────────────────────────
+      // Show only the step with data-step-name=stepName
+      // Hide all others, update progress bar, fire events
+      // ───────────────────────────────────────────────────────────────────
+      jumpToStep(stepName) {
+  // Always hide all step contents
+  Object.values(this.stepElements).forEach(el => {
+    el.classList.remove('active');
+  });
+
+  // Show the requested step
+  const stepEl = this.stepElements[stepName];
+  if (stepEl) {
+    stepEl.classList.add('active');
+  }
+
+  // Global loader logic: only show progress + loader content
+  const isLoader = stepName === 'payoutLoader';
+  Array.from(this.container.children).forEach(child => {
+    const isProgress = child.matches('.progress-wrapper');
+    const isLoaderStep = child.matches('[data-step-name="payoutLoader"]');
+    child.style.display = (isLoader && (isProgress || isLoaderStep)) || !isLoader ? '' : 'none';
+  });
+
+  // Update index, progress bar, and balance
+  const idx = this.steps.findIndex(s => s.name === stepName);
+  this.currentStepIndex = idx >= 0 ? idx : 0;
+  this.updateProgressBar();
+  if (!isLoader) this.updateAvailableBalanceDisplay();
+  this.dispatchStepChanged();
+  this.updatePayoutSummaryUI();
+
+
+
+  // Step-specific logic
+  if (stepName === 'payoutSelectMethod') {
+    const hasSelectedMethod = payoutSettings.payoutMethod && payoutSettings.payoutMethod.id;
+    const footerAvailable = document.querySelector('[data-step2-footer-available]');
+    const footerFinal = document.querySelector('[data-step2-footer-final]');
+
+    if (footerAvailable) footerAvailable.classList.toggle('hidden', !!hasSelectedMethod);
+    if (footerFinal) footerFinal.classList.toggle('hidden', !hasSelectedMethod);
+  }
+
+  if (stepName === 'payoutSummary') this.populateSummary();
+  if (stepName === 'payoutSuccess') this.populateSuccess();
+
+
+
+
+}
+
+
+
+nextStep() {
+  const currentStep = this.steps[this.currentStepIndex]?.name;
+  const nextIdx = this.currentStepIndex + 1;
+  const nextStepName = this.steps[nextIdx]?.name;
+
+  console.log(`[nextStep] Current: ${currentStep}, Next: ${nextStepName}`);
+
+  // Validate before doing anything
+  const isValid = this.validateCurrentStep();
+  console.log(`[nextStep] Validation result for ${currentStep}: ${isValid}`);
+  if (!isValid) {
+    console.warn(`[nextStep] Validation failed, stopping.`);
+    return;
+  }
+
+  if (nextIdx >= this.steps.length) {
+    console.warn(`[nextStep] No next step, at end of flow.`);
+    return;
+  }
+
+  // Step 1 → Step 2: Load payout methods
+  if (currentStep === 'payoutOptions' && nextStepName === 'payoutSelectMethod') {
+    console.log('[nextStep] Loading payout methods...');
+    this.loadPayoutMethods();
+    return;
+  }
+
+  // Step 2 → Step 3: Load payout detail form
+  if (currentStep === 'payoutSelectMethod' && nextStepName === 'payoutDetail') {
+    console.log('[nextStep] Fetching payout details form...');
+    this.fetchPayoutDetailsForm();
+    return;
+  }
+
+  // All other cases: normal step jump
+  console.log(`[nextStep] Jumping to step: ${nextStepName}`);
+  this.jumpToStep(nextStepName);
+}
+
+
+
+
+      // ───────────────────────────────────────────────────────────────────
+      // “Back” button logic: go to previous step if possible
+      // ───────────────────────────────────────────────────────────────────
+      prevStep() {
+        const prevIdx = this.currentStepIndex - 1;
+        if (prevIdx >= 0) {
+          const prevName = this.steps[prevIdx].name;
+          this.jumpToStep(prevName);
+        }
+      }
+
+      // ───────────────────────────────────────────────────────────────────
+      // Update <progress> bar based on current step index
+      // ───────────────────────────────────────────────────────────────────
+      updateProgressBar() {
+        if (!this.progressBar || this.steps.length < 2) return;
+        const percent = (this.currentStepIndex / (this.steps.length - 1)) * 100;
+        this.progressBar.value = Math.round(percent * 100) / 100;
+      }
+
+      // ───────────────────────────────────────────────────────────────────
+      // Dispatch a “payoutStepChanged” event whenever visible step changes
+      // ───────────────────────────────────────────────────────────────────
+      dispatchStepChanged() {
+        const event = new CustomEvent('payoutStepChanged', {
+          detail: { currentStep: this.steps[this.currentStepIndex].name }
+        });
+        document.dispatchEvent(event);
+      }
+
+      // ───────────────────────────────────────────────────────────────────
+      // Dispatch a “payoutSettingsChanged” event whenever payoutSettings updates
+      // Also recalculates totals if on Step 2/3
+      // ───────────────────────────────────────────────────────────────────
+      dispatchSettingChanged() {
+        const event = new CustomEvent('payoutSettingsChanged', {
+          detail: { settings: payoutSettings }
+        });
+        document.dispatchEvent(event);
+
+        this.recalculateFeeAndTotal();
+      }
+
+      // ───────────────────────────────────────────────────────────────────
+      // Validate current step’s required fields; return true if OK
+      // ───────────────────────────────────────────────────────────────────
+      validateCurrentStep() {
+        const stepName = this.steps[this.currentStepIndex].name;
+
+        // Step 1: payoutOptions → require country & amount ≤ availableBalance
+        if (stepName === 'payoutOptions') {
+          if (!payoutSettings.payoutCountry) {
+            alert('Please select a country.');
+            return false;
+          }
+          if (!(payoutSettings.payoutAmount > 0)) {
+            alert('Please enter a valid payout amount.');
+            return false;
+          }
+          if (payoutSettings.payoutAmount > payoutSettings.availableBalance) {
+            alert('Payout amount exceeds available balance.');
+            return false;
+          }
+        }
+
+        // Step 2: payoutSelectMethod → require payoutMethod chosen
+        if (stepName === 'payoutSelectMethod') {
+          if (!payoutSettings.payoutMethod.id) {
+            alert('Please select a payout method.');
+            return false;
+          }
+        }
+
+        // // Step 3: payoutDetail → require swiftCode & iban nonempty
+        // if (stepName === 'payoutDetail') {
+        //   const details = payoutSettings.payoutDetails;
+        //   if (!details.swiftCode || details.swiftCode.length < 8) {
+        //     alert('Please enter a valid SWIFT/BIC code.');
+        //     return false;
+        //   }
+        //   if (!details.iban || details.iban.length < 8) {
+        //     alert('Please enter a valid IBAN or account number.');
+        //     return false;
+        //   }
+        // }
+
+        // Step 4: payoutSummary → no further validation
+        return true;
+      }
+
+      // ───────────────────────────────────────────────────────────────────
+      // INITIAL LOADER: fetch countries & balance, populate, then go to Step 1
+      // ───────────────────────────────────────────────────────────────────
+      initLoader() {
+        this.fetchCountries()
+          .then(countryArray => {
+            payoutSettings.availableCountries = countryArray;
+            this.populateCountries();
+            return this.fetchAvailableBalance();
+          })
+          .then(balance => {
+            payoutSettings.availableBalance = balance;
+            payoutSettings.payoutCurrency = 'USD';
+            this.updateAvailableBalanceDisplay();
+            // Move to Step 1 (index 1 in steps array)
+            const firstStepName = this.steps[1]?.name;
+            if (firstStepName) {
+              this.jumpToStep(firstStepName);
+            }
+          })
+          .catch(err => {
+            console.error('Error in loader:', err);
+            alert('Failed to load initial data. Please refresh.');
+          });
+      }
+
+      // ───────────────────────────────────────────────────────────────────
+      // Fill the <select id="countrySelect"> with availableCountries
+      // ───────────────────────────────────────────────────────────────────
+      populateCountries() {
+        const select = document.querySelector('[data-attribute-country-select]');
+        if (!select) return;
+        select.innerHTML = '<option value="">-- Select country --</option>';
+        payoutSettings.availableCountries.forEach(ctry => {
+          const opt = document.createElement('option');
+          opt.value = ctry;
+          opt.textContent = ctry;
+          select.appendChild(opt);
+        });
+      }
+
+      // ───────────────────────────────────────────────────────────────────
+      // Update Step 1’s “Available Balance” display
+      // ───────────────────────────────────────────────────────────────────
+      updateAvailableBalanceDisplay() {
+  document.querySelectorAll('[data-attribute-available-balance]').forEach(el => {
+    el.textContent = this.formatCurrency(
+      payoutSettings.availableBalance,
+      payoutSettings.payoutCurrency
+    );
+  });
+}
+
+      // ───────────────────────────────────────────────────────────────────
+      // STEP 2: Fetch payout methods → render into [data-attribute-payout-options-wrapper]
+      // ───────────────────────────────────────────────────────────────────
+// STEP 2: Fetch payout methods → render into [data-attribute-payout-options-wrapper]
+loadPayoutMethods() {
+  // Reset selection and calculation state
+  payoutSettings.payoutMethod = {};
+  payoutSettings.payoutServiceCharge = 0;
+  payoutSettings.finalPayoutAmount = 0;
+
+  this.jumpToStep('payoutLoader');
+
+  this.fetchPayoutMethods()
+    .then(methods => {
+      this.jumpToStep('payoutSelectMethod');
+
+      // Extract allowed payout method IDs from simulated API response
+      const allowedIds = methods.map(m => m.id);
+
+      // Show/hide preloaded options based on allowed IDs
+      const allOptions = document.querySelectorAll('[data-attribute-payout-option-id]');
+      allOptions.forEach(option => {
+        const id = option.getAttribute('data-attribute-payout-option-id');
+        option.style.display = allowedIds.includes(id) ? '' : 'none';
+        option.classList.remove('selected'); // clear previous selection if any
+      });
+
+      // Update footers correctly based on no selection
+      const footerAvailable = document.querySelector('[data-step2-footer-available]');
+      const footerFinal = document.querySelector('[data-step2-footer-final]');
+      if (footerAvailable) footerAvailable.classList.remove('hidden');
+      if (footerFinal) footerFinal.classList.add('hidden');
+
+      this.updatePayoutSummaryUI();
+    })
+    .catch(err => {
+      this.jumpToStep('payoutSelectMethod');
+      console.error('Error fetching payout methods:', err);
+
+      const wrapper = document.querySelector('[data-attribute-payout-options-wrapper]');
+      if (wrapper) {
+        wrapper.innerHTML = '<p style="color:red;">Failed to load payout methods.</p>';
+      }
+    });
+}
+
+
+
+
+selectPayoutMethod(optEl) {
+  // Unselect all
+  const allOptions = document.querySelectorAll('[data-attribute-payout-option-id]');
+  allOptions.forEach(el => el.classList.remove('selected'));
+
+  // Select this one
+  optEl.classList.add('selected');
+
+  // Update settings
+  payoutSettings.payoutMethod = {
+    id: optEl.getAttribute('data-attribute-payout-option-id'),
+    currency: optEl.getAttribute('data-attribute-payout-currency'),
+    fee: parseFloat(optEl.getAttribute('data-attribute-payout-fee')) || 0
+  };
+
+  this.updatePayoutSummaryUI();
+  this.dispatchSettingChanged();
+
+  // Show Final Payout footer
+  const footerAvailable = document.querySelector('[data-step2-footer-available]');
+  const footerFinal = document.querySelector('[data-step2-footer-final]');
+
+  if (footerAvailable) footerAvailable.classList.add('hidden');
+  if (footerFinal) footerFinal.classList.remove('hidden');
+
+  
+}
+
+
+
+
+
+
+
+
+
+updatePayoutSummaryUI() {
+  const method = payoutSettings.payoutMethod || {};
+  const methodCurrency = method.currency || payoutSettings.payoutCurrency;
+  const fee = method.fee || 0;
+  const amount = payoutSettings.payoutAmount || 0;
+  const finalAmount = Math.max(amount - fee, 0);
+
+  payoutSettings.payoutServiceCharge = fee;
+  payoutSettings.finalPayoutAmount = finalAmount;
+
+  // Update all matching elements
+  document.querySelectorAll('[data-attribute-footer-service-charge]').forEach(el => {
+    el.textContent = this.formatCurrency(fee, methodCurrency);
+  });
+
+  document.querySelectorAll('[data-attribute-footer-final-payout]').forEach(el => {
+    el.textContent = this.formatCurrency(finalAmount, methodCurrency);
+  });
+
+  document.querySelectorAll('[data-attribute-available-balance]').forEach(el => {
+    el.textContent = this.formatCurrency(
+      payoutSettings.availableBalance || 0,
+      payoutSettings.payoutCurrency
+    );
+  });
+}
+
+
+
+
+      // ───────────────────────────────────────────────────────────────────
+      // STEP 2 & 3: Recalculate service‐fee & final‐payout displays
+      // Called whenever settings change during Step 2 or Step 3
+      // ───────────────────────────────────────────────────────────────────
+      recalculateFeeAndTotal() {
+  const fee = payoutSettings.payoutMethod?.fee || 0;
+  const amount = payoutSettings.payoutAmount || 0;
+  const methodCurrency = payoutSettings.payoutMethod?.currency || payoutSettings.payoutCurrency;
+
+  const finalAmount = Math.max(amount - fee, 0);
+
+  payoutSettings.payoutServiceCharge = fee;
+  payoutSettings.finalPayoutAmount = finalAmount;
+
+  // Update DOM
+  const feeEl = document.querySelector('[data-attribute-footer-service-charge]');
+  const finalEl = document.querySelector('[data-attribute-footer-final-payout]');
+
+  if (feeEl) {
+    feeEl.textContent = this.formatCurrency(fee, methodCurrency);
+  }
+
+  if (finalEl) {
+    finalEl.textContent = this.formatCurrency(finalAmount, methodCurrency);
+  }
+}
+
+
+      // ───────────────────────────────────────────────────────────────────
+      // STEP 4: Populate the summary fields from payoutSettings
+      // ───────────────────────────────────────────────────────────────────
+      populateSummary() {
+        const countryEl = document.querySelector('[data-attribute-summary-country]');
+        if (countryEl) countryEl.textContent = payoutSettings.payoutCountry;
+
+        const methodEl = document.querySelector('[data-attribute-summary-method]');
+        if (methodEl) {
+          methodEl.textContent = `Method ID: ${payoutSettings.payoutMethod.id} (${payoutSettings.payoutCurrency})`;
+        }
+
+        const detailsEl = document.querySelector('[data-attribute-summary-details]');
+if (detailsEl) {
+  const detailsArray = [];
+
+  // Add method ID
+  if (payoutSettings.payoutMethod?.id) {
+    detailsArray.push({ field: 'Method', value: payoutSettings.payoutMethod.id });
+  }
+
+  // Add all inputs inside Step 3
+  const detailStep = this.stepElements['payoutDetail'];
+  if (detailStep) {
+    const inputs = detailStep.querySelectorAll('input');
+    inputs.forEach(input => {
+      const label = input.closest('.input-group')?.querySelector('label')?.textContent?.trim() || 'Unknown';
+      const value = input.value?.trim() || '';
+      if (label && value) {
+        detailsArray.push({ field: label, value });
+      }
+    });
+  }
+
+  detailsEl.textContent = JSON.stringify(detailsArray, null, 2);
+}
+
+
+        const amountEl = document.querySelector('[data-attribute-summary-amount]');
+        if (amountEl) {
+          amountEl.textContent = this.formatCurrency(
+            payoutSettings.payoutAmount,
+            payoutSettings.payoutCurrency
+          );
+        }
+
+        const balanceAfterEl = document.querySelector('[data-attribute-summary-balance-after]');
+        if (balanceAfterEl) {
+          const after = payoutSettings.availableBalance - payoutSettings.payoutAmount;
+          balanceAfterEl.textContent = this.formatCurrency(after, payoutSettings.payoutCurrency);
+        }
+
+        document.querySelectorAll('[data-attribute-footer-final-payout]').forEach(el => {
+          el.textContent = this.formatCurrency(payoutSettings.finalPayoutAmount, payoutSettings.payoutCurrency);
+        });
+        document.querySelectorAll('[data-attribute-footer-service-charge]').forEach(el => {
+          el.textContent = this.formatCurrency(payoutSettings.payoutServiceCharge, payoutSettings.payoutCurrency);
+        });
+      }
+
+      // ───────────────────────────────────────────────────────────────────
+      // STEP 5: Populate success texts (amount, business days, remaining balance)
+      // ───────────────────────────────────────────────────────────────────
+      populateSuccess() {
+        const amtEl = document.querySelector('[data-attribute-success-amount]');
+        if (amtEl) {
+          amtEl.textContent = this.formatCurrency(
+            payoutSettings.finalPayoutAmount,
+            payoutSettings.payoutCurrency
+          );
+        }
+
+        this.fetchBusinessDays().then(days => {
+          payoutSettings.businessDays = days;
+          const bdEl = document.querySelector('[data-attribute-success-business-days]');
+          if (bdEl) bdEl.textContent = days;
+        });
+
+        const remEl = document.querySelector('[data-attribute-success-remaining-balance]');
+        if (remEl) {
+          const rem = payoutSettings.availableBalance - payoutSettings.payoutAmount;
+          remEl.textContent = this.formatCurrency(rem, payoutSettings.payoutCurrency);
+        }
+      }
+
+      // ───────────────────────────────────────────────────────────────────
+      // UTIL: Format number as “CUR$X,XXX.XX”
+      // ───────────────────────────────────────────────────────────────────
+      formatCurrency(amount, currency) {
+        const symbol = this.getCurrencySymbol(currency);
+        return `${currency}${symbol}${amount.toFixed(2)}`;
+      }
+
+      // ───────────────────────────────────────────────────────────────────
+      // UTIL: Return symbol for a currency code
+      // ───────────────────────────────────────────────────────────────────
+      getCurrencySymbol(currency) {
+        const map = { USD: '$', EUR: '€', CZK: 'Kč', USDT: '₮', GBP: '£' };
+        return map[currency] || '';
+      }
+
+
+
+
+      fetchPayoutDetailsForm() {
+  const wrapper = document.querySelector('[data-attribute-payout-details-wrapper]');
+  console.log('[fetchPayoutDetailsForm] wrapper:', wrapper);
+
+  if (!wrapper) {
+    console.error('[fetchPayoutDetailsForm] wrapper not found!');
+    return;
+  }
+
+  this.jumpToStep('payoutLoader');
+
+  setTimeout(() => {
+    console.log('[fetchPayoutDetailsForm] injecting HTML...');
+    wrapper.innerHTML = `
+      <div class="input-group">
+        <label>Bank SWIFT/BIC Code</label>
+        <input type="text" data-attribute-swift-input placeholder="e.g. ABCDUS33XXX" />
+      </div>
+      <div class="input-group">
+        <label>IBAN or Account Number</label>
+        <input type="text" data-attribute-iban-input placeholder="e.g. DE89..." />
+      </div>
+    `;
+
+    this.jumpToStep('payoutDetail');
+  }, 1000);
+}
+
+
+
+
+
+      // ───────────────────────────────────────────────────────────────────
+      // DUMMY ENDPOINT: Fetch list of available countries (Promise<string[]>)
+      // ───────────────────────────────────────────────────────────────────
+      fetchCountries() {
+
+        return new Promise(resolve => {
+          setTimeout(() => {
+            resolve([
+              'USA',
+              'UK',
+              'Afghanistan',
+              'Albania',
+              'Australia',
+              'Austria',
+              'Belgium',
+              'Brazil',
+              'Canada',
+              'China',
+              'France',
+              'Germany',
+              'India',
+              'Italy',
+              'Japan',
+              'Mexico'
+            ]);
+          }, 2000);
+        });
+      }
+
+      // ───────────────────────────────────────────────────────────────────
+      // DUMMY ENDPOINT: Fetch user’s available balance (Promise<number>)
+      // ───────────────────────────────────────────────────────────────────
+      fetchAvailableBalance() {
+
+        return new Promise(resolve => {
+          setTimeout(() => {
+            resolve(30054.40);
+          }, 2000);
+        });
+      }
+
+      // ───────────────────────────────────────────────────────────────────
+      // DUMMY ENDPOINT: Fetch payout methods (Promise<[]>)
+      // ───────────────────────────────────────────────────────────────────
+fetchPayoutMethods() {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      // Simulated list of available payout methods
+      resolve([
+        {
+          id: 'paypal',
+          currency: 'USD',
+          fee: 2.50
+        },
+        {
+          id: 'bank-wire',
+          currency: 'CZK',
+          fee: 1.75
+        }
+      ]);
+    }, 800); // simulate delay
+  });
+}
+
+
+      // ───────────────────────────────────────────────────────────────────
+      // DUMMY ENDPOINT: Given methodId & amount, return fee (Promise<number>)
+      // ───────────────────────────────────────────────────────────────────
+      fetchServiceFee(methodId, amount) {
+
+        return new Promise(resolve => {
+          setTimeout(() => {
+            this.fetchPayoutMethods().then(methods => {
+              const m = methods.find(x => x.id === methodId);
+              resolve(m ? m.fee : 0);
+            });
+          }, 2000);
+        });
+      }
+
+      // ───────────────────────────────────────────────────────────────────
+      // DUMMY ENDPOINT: Return estimated business days (Promise<number>)
+      // ───────────────────────────────────────────────────────────────────
+      fetchBusinessDays() {
+
+        return new Promise(resolve => {
+          setTimeout(() => {
+            resolve(3);
+          }, 2000);
+        });
+      }
+    }
+
+    // ──────────────────────────────────────────────────────────────────────
+    // STEP 3: Popup logic and instantiation
+    // ──────────────────────────────────────────────────────────────────────
+    document.addEventListener('DOMContentLoaded', () => {
+      const startBtn = document.getElementById('startPayoutButton');
+      const overlay = document.getElementById('payoutPopupOverlay');
+      const closeBtn = document.getElementById('closePayoutPopup');
+      let handlerInstance = null;
+
+      // When “Start” is clicked, show popup and instantiate PayoutHandler
+      startBtn.addEventListener('click', () => {
+        overlay.style.display = 'flex'; 
+        // Only instantiate once
+        if (!handlerInstance) {
+          handlerInstance = new PayoutHandler();
+        }
+      });
+
+      // When the close icon is clicked, hide the popup (and optionally reset)
+      closeBtn.addEventListener('click', () => {
+        overlay.style.display = 'none';
+        // If you want to allow restarting, you could:
+        // overlay.style.display = 'none';
+        // handlerInstance = null;
+        // and also reset any data in payoutSettings or step markup.
+      });
+    });
+  </script>
+</body>
+</html>
