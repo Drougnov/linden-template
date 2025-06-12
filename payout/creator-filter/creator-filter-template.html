@@ -193,12 +193,13 @@
                 pointer-events: none;
             }
 
-            .choices[data-type*=select-one] [data-choice-selectable]{
+            .choices[data-type*=select-one] [data-choice-selectable],
+            .has-no-results{
                 min-height: 3rem;
                 display: flex;
                 align-items: center;
                 padding-left: .75rem;
-                border-bottom: 1px solid #EAECF0
+                border-bottom: 1px solid #EAECF0;
             }
 
             .choices[data-type*=select-one] [data-choice-selectable].dn{
@@ -1497,6 +1498,7 @@
                 itemSelectText: '',             // Remove default select text
                 placeholderValue: null,         // No placeholder by default
                 searchPlaceholderValue: "Search by username...",  // Search box placeholder
+                noResultsText: 'No result',     // Empty search text
 
                 // Custom templates for rendering items and choices
                 callbackOnCreateTemplates: function(template) {
