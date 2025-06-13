@@ -34,6 +34,97 @@
 
 
             /* starting here */
+            [data-slidein-left-popup] .elm_yNwqwJ {
+                justify-content: flex-start;
+            }
+
+            [data-slidein-left-popup]:not([data-popup-noui]) .elm_qJBugX{
+                max-width: 42.375rem;
+                overflow: hidden;
+            }
+
+            [data-tab-content-container]{
+                overflow-y: auto;
+                max-height: calc(100vh - 3.5rem - 3.55rem);
+            }
+
+            /* tab-button */
+            [data-tab-button-container]{
+                width: 40rem;
+                overflow-x: auto;
+            }
+
+            [data-tab-button-active]{
+                opacity: 1;
+                border-bottom: 1.5px solid #0C111D;
+            }
+
+            [data-tab-button-active] [data-tab-button-text]{
+                color: var(--color-ebony-2, #0C111D);
+                font-weight: 600;
+            }
+
+            /* notifications */
+            [data-notification-container]{
+                min-height: 4rem;
+                border-left: 3px solid;
+                padding-top: 0.875rem;
+                padding-bottom: 0.875rem;
+            }
+
+            [data-notification-container-success]{
+                background: linear-gradient(90deg, rgba(46, 211, 183, 0.15) 0%, rgba(46, 211, 183, 0) 75%),
+                linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
+                border-color: #2ED3B7;
+                box-shadow: 0px 0px 8px 0px #2ED3B714;
+            }
+
+            [data-notification-container-warning]{
+                background: linear-gradient(90deg, rgba(254, 223, 137, 0.15) 0%, rgba(254, 223, 137, 0) 75%),
+                linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
+                border-color: #FDB022;
+                box-shadow: 0px 0px 8px 0px #FDB02214;
+            }
+
+            [data-notification-container-error]{
+                background: linear-gradient(90deg, rgba(255, 68, 5, 0.15) 0%, rgba(255, 68, 5, 0) 75%),
+                linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
+                border-color: #FF4405;
+                box-shadow: 0px 0px 8px 0px #FF44051A;
+            }
+
+            [data-notification-container-success] [data-notification-icon-container]{
+                filter: drop-shadow(0px 0px 10.67px #2FD0B580);
+            }
+
+            [data-notification-container-warning] [data-notification-icon-container]{
+                filter: drop-shadow(0px 0px 10.67px #FEC84B80);
+            }
+
+            [data-notification-container-error] [data-notification-icon-container]{
+                filter: drop-shadow(0px 0px 10.67px #F0443880);
+            }
+
+            [data-notification-container-success] [data-notification-header]{
+                color: #15B79E;
+            }
+
+
+            @media only screen and (max-width: 767px) {
+                [data-slidein-left-popup].elm_UoRWYY:not([data-popup-noui]) .elm_yNwqwJ:not(.no-height){
+                    height: 100vh;
+                }
+
+                [data-tab-button-container]{
+                    width: max-content;
+                }
+            }
+
+
+
+
+
+            /* background-template */
             .bg--col--athens-gray-2 { background-color: var(--color-athens-gray2, #EAECF0); }
             .col--grey-800 { color: var(--Gray-800, #182230); }
             .col--brand-teal { color: #0E9384; }
@@ -128,17 +219,11 @@
                 border-color: transparent transparent #2C313D transparent;
             }
 
-            /* progress-section */
-            [data-payout-method-type]{
-                box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
-            }
-            
-            [data-progress-bar] {
-                height: 0.375rem;
-            }
 
-            div[data-progress-meter]:not(.db):empty {
-                display: block;
+            [data-payout-withdraw-button][data-button-style="skew-right bottom"]:hover::before,
+            [data-payout-withdraw-button][data-button-style="skew-right bottom"]:hover::after{
+                -webkit-box-shadow: 4px 4px 0 0 var(--color-brand-green, #07F468);
+                box-shadow: 4px 4px 0 0 var(--color-brand-green, #07F468);
             }
 
 
@@ -207,32 +292,6 @@
 
             @media (max-width: 1010px) and (min-width: 768px){
                 .pad--top--16-responsive-tablet-landscape { padding-top: 1rem; }
-
-                /* progress-section */
-                [data-card-section]{
-                    align-items: start;
-                    flex-direction: column;
-                }
-
-                [data-progress-section]{
-                    width: 100%;
-                    gap: 1.5rem;
-                    padding: 0;
-                }
-
-                [data-progress-section] > div{
-                    gap: 1rem;
-                }
-
-                [data-progress-title]{
-                    font-size: 1.875rem;
-                    line-height: 2.375rem;
-                }
-
-                [data-progress-bar-wrapper]{
-                    width: 100%;
-                    max-width: 100%;
-                }
             }
 
             @media (max-width: 767px){
@@ -297,15 +356,6 @@
                     left: 64%;
                 }
 
-                /* progress-section */
-                [data-card-section]{
-                    flex-wrap: wrap;
-                }
-
-                [data-progress-section]{
-                    min-width: 18.75rem;
-                }
-
                 /* table */
                 [data-table-row-mobile]{
                     border: 1.5px solid #D0D5DD;
@@ -352,8 +402,421 @@
     </head>
     <body>
         <div class="min-vh-100">
+            <!-- notification popup starts from here -->
+            <div data-payout-settings-popup data-popup="" data-popup-type="slidein-right-popup" data-slidein-left-popup data-popup-overlay-color="rgba(0,0,0,0.65)" data-popup-max-width="720px" class="elm_UoRWYY items-center justify-center fixed dn top-0 left-0 w-100 h-100 z--99999 overflow-auto slidein-right-popup flex opened z-max" style="background-color: rgba(0, 0, 0, 0.65);">
+                <!-- inner wrapper -->
+                <div data-popup-inner="" class="elm_yNwqwJ top-0 w-100 flex items-center justify-center absolute">
+                   <!-- container -->
+                   <div class="bg--blur--50 bg--col--athens-gray--70--variation-2 elm_qJBugX flex flex-column w-100 sh--popup-1 no-full-width no-height">
+                        <!-- popup header-->
+                        <div class="w-100 pad--left--8 pad--right--24 pad--top--16 pad--bottom--8 flex items-center justify-between">
+                            <div class="flex items-center gap--8">
+                                <div data-popup-header-title-icon class="flex justify-center items-center w--20 h--20">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                        <path d="M12.5003 15.8333C12.5003 17.214 11.381 18.3333 10.0003 18.3333C8.61954 18.3333 7.50026 17.214 7.50026 15.8333M11.4973 5.19876C11.8603 4.82383 12.0836 4.31297 12.0836 3.74996C12.0836 2.59937 11.1508 1.66663 10.0003 1.66663C8.84966 1.66663 7.91692 2.59937 7.91692 3.74996C7.91692 4.31297 8.14026 4.82383 8.50317 5.19876M15.0003 9.33329C15.0003 8.18402 14.4735 7.08182 13.5358 6.26916C12.5981 5.45651 11.3263 4.99996 10.0003 4.99996C8.67417 4.99996 7.4024 5.45651 6.46472 6.26916C5.52704 7.08182 5.00026 8.18402 5.00026 9.33329C5.00026 11.2348 4.5287 12.6254 3.94031 13.6205C3.2697 14.7546 2.9344 15.3217 2.94764 15.4572C2.96279 15.6121 2.99069 15.661 3.11637 15.753C3.22623 15.8333 3.77818 15.8333 4.88208 15.8333H15.1184C16.2223 15.8333 16.7743 15.8333 16.8841 15.753C17.0098 15.661 17.0377 15.6121 17.0529 15.4572C17.0661 15.3217 16.7308 14.7546 16.0602 13.6205C15.4718 12.6254 15.0003 11.2348 15.0003 9.33329Z" stroke="#667085" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <span class="fs--14 fw6 lh--20 col--oxford-blue poppins">Notifications</span>
+                            </div>
+                            <span class="w--32 h--32 flex justify-center items-center pointer elm_UOkrrN">
+                                <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/dashboard-v2/icons/close-btn.svg" alt="" class="w--24 h--24 filter--col--gull-gray">
+                            </span>
+                        </div>
 
-            <!-- template starts from here -->
+                        <!-- popup contents -->
+                        <div data-popup-contents-wrapper class="flex flex-column">
+                            <!-- tab-button-section -->
+                            <div class="pad--top--8 pad--x--8 nowrap overflow-x-scroll overflow-y-auto">
+                                <div data-tab-button-container class="flex items-center gap--4 bb br--col--mischka">
+                                    <button data-tab-button data-tab-button-active class="flex justify-center items-center mw--80 h--48 pad--y--8 pad--x--16 o-70">
+                                        <div class="flex justify-center items-center gap--2 h--32">
+                                            <span data-tab-button-text class="fs--14 lh--20 fw5 poppins col--oxford-blue ttu">ALL</span>
+                                            <div class="h--32 flex justify-start items-start">
+                                                <span class="fs--10 lh--15 tracked--0-25 poppins col--pale-sky">120</span>
+                                            </div>
+                                        </div>
+                                    </button>
+
+                                    <button data-tab-button class="flex justify-center items-center mw--80 h--48 pad--y--8 pad--x--16 o-70">
+                                        <div class="flex justify-center items-center gap--2 h--32">
+                                            <span data-tab-button-text class="fs--14 lh--20 fw5 poppins col--oxford-blue ttu">UNREAD</span>
+                                            <div class="h--32 flex justify-start items-start">
+                                                <span class="fs--10 lh--15 tracked--0-25 poppins col--pale-sky">5</span>
+                                            </div>
+                                        </div>
+                                    </button>
+
+                                    <button data-tab-button class="flex justify-center items-center mw--80 h--48 pad--y--8 pad--x--16 o-70">
+                                        <div class="flex justify-center items-center gap--2 h--32">
+                                            <span data-tab-button-text class="fs--14 lh--20 fw5 poppins col--oxford-blue ttu">CUSTOM REQUEST</span>
+                                            <div class="h--32 flex justify-start items-start">
+                                                <span class="fs--10 lh--15 tracked--0-25 poppins col--pale-sky">2</span>
+                                            </div>
+                                        </div>
+                                    </button>
+
+                                    <button data-tab-button class="flex justify-center items-center mw--80 h--48 pad--y--8 pad--x--16 o-70">
+                                        <div class="flex justify-center items-center gap--2 h--32">
+                                            <span data-tab-button-text class="fs--14 lh--20 fw5 poppins col--oxford-blue ttu">ACCOUNT</span>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div data-tab-content-container>
+                                <div data-tab-content class="flex flex-column">
+                                    <!-- success -->
+                                    <div data-notification-container-success data-notification-container class="flex items-center gap--10 pad--x--16">
+                                        <!-- icon -->
+                                        <div data-notification-icon-container class="flex justify-center items-center pointer w--24 h--24">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                                                <path d="M7.5 13.6667C7.5 14.9553 8.54467 16 9.83333 16H12C13.3807 16 14.5 14.8807 14.5 13.5C14.5 12.1193 13.3807 11 12 11H10C8.61929 11 7.5 9.88071 7.5 8.5C7.5 7.11929 8.61929 6 10 6H12.1667C13.4553 6 14.5 7.04467 14.5 8.33333M11 4.5V6M11 16V17.5M21 11C21 16.5228 16.5228 21 11 21C5.47715 21 1 16.5228 1 11C1 5.47715 5.47715 1 11 1C16.5228 1 21 5.47715 21 11Z" stroke="#2ED3B7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </div>
+
+                                        <!-- text-container -->
+                                        <div class="flex flex-column gap--4 w-100">
+                                            <!-- text-container--top -->
+                                            <div class="flex flex-column gap--8">
+                                                <h4 data-notification-header class="fs--14 lh--20 fw6 poppins">Your April payout is ready!</h4>
+                                                
+                                                <p class="fs--14 lh--20 poppins black">You have made USD$234,56 in the past month, look at you! Withdraw from your available balance anytime in payout settings. </p>
+                                            </div>
+
+                                            <!-- text-container--bottom -->
+                                            <div class="flex justify-between items-center">
+                                                <span class="fs--12 lh--18 poppins col--pale-sky">Just now</span>
+
+                                                <!-- link -->
+                                                <a class="flex items-center gap--2 pointer">
+                                                    <span class="fs--12 lh--18 fw5 poppins col--oxford-blue">Withdraw Now</span>
+
+                                                    <div class="flex justify-center items-center w--16 h--16">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                            <path d="M4.66699 11.3334L11.3337 4.66669M11.3337 4.66669H4.66699M11.3337 4.66669V11.3334" stroke="#344054" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        </svg>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- warning -->
+                                    <div data-notification-container-warning data-notification-container class="flex items-center gap--10 pad--x--16 o-50">
+                                        <!-- icon -->
+                                        <div data-notification-icon-container class="flex justify-center items-center pointer w--24 h--24">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="22" viewBox="0 0 20 22" fill="none">
+                                                <path d="M10 6.99984V10.9998M10 14.9998H10.01M1 6.94129V15.0584C1 15.401 1 15.5724 1.05048 15.7252C1.09515 15.8603 1.16816 15.9844 1.26463 16.0891C1.37369 16.2074 1.52345 16.2906 1.82297 16.457L9.22297 20.5682C9.50658 20.7257 9.64838 20.8045 9.79855 20.8354C9.93146 20.8627 10.0685 20.8627 10.2015 20.8354C10.3516 20.8045 10.4934 20.7257 10.777 20.5682L18.177 16.457C18.4766 16.2906 18.6263 16.2074 18.7354 16.0891C18.8318 15.9844 18.9049 15.8603 18.9495 15.7252C19 15.5724 19 15.401 19 15.0584V6.94129C19 6.59864 19 6.42732 18.9495 6.27452C18.9049 6.13935 18.8318 6.01526 18.7354 5.91057C18.6263 5.79224 18.4766 5.70904 18.177 5.54263L10.777 1.43152C10.4934 1.27396 10.3516 1.19519 10.2015 1.1643C10.0685 1.13697 9.93146 1.13697 9.79855 1.1643C9.64838 1.19519 9.50658 1.27396 9.22297 1.43152L1.82297 5.54263C1.52345 5.70904 1.37369 5.79224 1.26463 5.91057C1.16816 6.01526 1.09515 6.13935 1.05048 6.27452C1 6.42732 1 6.59864 1 6.94129Z" stroke="#F79009" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </div>
+
+                                        <!-- text-container -->
+                                        <div class="flex flex-column gap--4 w-100">
+                                            <!-- text-container--top -->
+                                            <div class="flex flex-column gap--8">
+                                                <p class="fs--14 lh--20 poppins black">Please complete your bank details.</p>
+                                            </div>
+
+                                            <!-- text-container--bottom -->
+                                            <div class="flex justify-between items-center">
+                                                <span class="fs--12 lh--18 poppins col--pale-sky">1w</span>
+
+                                                <!-- link -->
+                                                <a class="flex items-center gap--2 pointer">
+                                                    <span class="fs--12 lh--18 fw5 poppins col--oxford-blue">Detail</span>
+
+                                                    <div class="flex justify-center items-center w--16 h--16">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                            <path d="M4.66699 11.3334L11.3337 4.66669M11.3337 4.66669H4.66699M11.3337 4.66669V11.3334" stroke="#344054" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        </svg>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- warning -->
+                                    <div data-notification-container-warning data-notification-container class="flex items-center gap--10 pad--x--16 o-50">
+                                        <!-- icon -->
+                                        <div data-notification-icon-container class="flex justify-center items-center pointer w--24 h--24">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="22" viewBox="0 0 20 22" fill="none">
+                                                <path d="M10 6.99984V10.9998M10 14.9998H10.01M1 6.94129V15.0584C1 15.401 1 15.5724 1.05048 15.7252C1.09515 15.8603 1.16816 15.9844 1.26463 16.0891C1.37369 16.2074 1.52345 16.2906 1.82297 16.457L9.22297 20.5682C9.50658 20.7257 9.64838 20.8045 9.79855 20.8354C9.93146 20.8627 10.0685 20.8627 10.2015 20.8354C10.3516 20.8045 10.4934 20.7257 10.777 20.5682L18.177 16.457C18.4766 16.2906 18.6263 16.2074 18.7354 16.0891C18.8318 15.9844 18.9049 15.8603 18.9495 15.7252C19 15.5724 19 15.401 19 15.0584V6.94129C19 6.59864 19 6.42732 18.9495 6.27452C18.9049 6.13935 18.8318 6.01526 18.7354 5.91057C18.6263 5.79224 18.4766 5.70904 18.177 5.54263L10.777 1.43152C10.4934 1.27396 10.3516 1.19519 10.2015 1.1643C10.0685 1.13697 9.93146 1.13697 9.79855 1.1643C9.64838 1.19519 9.50658 1.27396 9.22297 1.43152L1.82297 5.54263C1.52345 5.70904 1.37369 5.79224 1.26463 5.91057C1.16816 6.01526 1.09515 6.13935 1.05048 6.27452C1 6.42732 1 6.59864 1 6.94129Z" stroke="#F79009" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </div>
+
+                                        <!-- text-container -->
+                                        <div class="flex flex-column gap--4 w-100">
+                                            <!-- text-container--top -->
+                                            <div class="flex flex-column gap--8">
+                                                <p class="fs--14 lh--20 poppins black">Email Validation is not finished yet. </p>
+                                            </div>
+
+                                            <!-- text-container--bottom -->
+                                            <div class="flex justify-between items-center">
+                                                <span class="fs--12 lh--18 poppins col--pale-sky">1w</span>
+
+                                                <!-- link -->
+                                                <a class="flex items-center gap--2 pointer">
+                                                    <span class="fs--12 lh--18 fw5 poppins col--oxford-blue">Detail</span>
+
+                                                    <div class="flex justify-center items-center w--16 h--16">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                            <path d="M4.66699 11.3334L11.3337 4.66669M11.3337 4.66669H4.66699M11.3337 4.66669V11.3334" stroke="#344054" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        </svg>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- success -->
+                                    <div data-notification-container-success data-notification-container class="flex items-center gap--10 pad--x--16 o-50">
+                                        <!-- icon -->
+                                        <div data-notification-icon-container class="flex justify-center items-center pointer w--24 h--24">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                <path d="M10.7809 5.31787C11.2521 5.17096 11.647 4.9186 11.9656 4.56078C12.3474 4.13315 12.8514 4.0328 13.4012 4.0328C15.3998 4.02989 17.3059 4.42044 19.1198 5.20444C19.1537 5.21871 19.184 5.24046 19.2082 5.26806C19.2324 5.29567 19.2499 5.32839 19.2594 5.3637C19.3307 5.62698 19.351 5.89752 19.3205 6.17533C19.1954 7.29533 19.0187 8.43498 18.7903 9.59425C18.7423 9.83862 18.5939 9.96297 18.3452 9.96734L16.5779 10.0001C16.4819 10.0015 16.4339 10.0502 16.4339 10.1462L16.4296 19.5084C16.4297 19.5759 16.4068 19.6415 16.3644 19.6945C16.322 19.7476 16.2627 19.785 16.1961 19.8008C15.9969 19.8473 15.783 19.8706 15.5547 19.8706C11.719 19.8662 7.85722 19.8619 3.96922 19.8575C3.80049 19.8575 3.69286 19.7761 3.64631 19.6131C3.61431 19.5011 3.59758 19.3899 3.59613 19.2793C3.58449 16.5055 3.58377 13.4735 3.59395 10.1833C3.59395 10.0684 3.53649 10.0095 3.42158 10.0066L1.34231 9.95205C1.25213 9.94914 1.20049 9.90262 1.1874 9.81244C1.02158 8.65462 0.862312 7.5666 0.709584 6.54842C0.658675 6.21096 0.651403 5.86551 0.687766 5.51205C0.722676 5.15205 0.938675 5.1586 1.20049 5.05169C2.82668 4.38842 4.61286 4.05388 6.55904 4.04806C7.13722 4.04588 7.73504 4.1528 8.12995 4.62843C8.39758 4.95134 8.72268 5.17752 9.10522 5.30698C9.12839 5.31482 9.1532 5.31653 9.17723 5.31196C9.20126 5.30738 9.22369 5.29666 9.24236 5.28085C9.26103 5.26504 9.27528 5.24467 9.28375 5.22172C9.29222 5.19877 9.2946 5.17404 9.29068 5.14989C9.09431 3.8648 9.74668 3.17316 10.3881 2.20007C10.4234 2.14726 10.4438 2.08593 10.4472 2.0225C10.4506 1.95908 10.4368 1.8959 10.4074 1.83964C10.3779 1.78337 10.3338 1.7361 10.2797 1.70277C10.2257 1.66944 10.1636 1.6513 10.1001 1.65025C10.0347 1.64879 9.96631 1.65825 9.89504 1.67861C9.79613 1.7077 9.72049 1.76587 9.66813 1.85314L9.21213 2.61678C9.16483 2.69633 9.09506 2.76013 9.01159 2.80012C8.92811 2.84011 8.83468 2.85451 8.74304 2.84151C8.01868 2.73678 7.98813 1.85969 8.21722 1.33605C8.82158 -0.0515862 10.6194 -0.285028 11.5576 0.858245C12.0769 1.48879 12.1074 2.5666 11.5379 3.21896C11.0318 3.80151 10.6652 4.42552 10.6478 5.2197C10.6477 5.2358 10.6515 5.25171 10.6587 5.26609C10.6659 5.28048 10.6765 5.29294 10.6894 5.3025C10.7024 5.31206 10.7174 5.31845 10.7333 5.32112C10.7492 5.32379 10.7655 5.32267 10.7809 5.31787ZM15.1423 8.63206C15.7736 8.49097 16.4405 8.44734 17.143 8.50116C17.3903 8.51861 17.5372 8.40588 17.5838 8.16297C17.6987 7.55206 17.751 6.9506 17.7409 6.3586C17.7404 6.32166 17.7283 6.2858 17.7064 6.25606C17.6845 6.22632 17.6538 6.20418 17.6187 6.19278C16.2558 5.74769 14.8761 5.53097 13.4798 5.5426C12.8405 5.54915 12.3954 6.30407 11.8259 6.56589C10.1481 7.34043 8.60122 7.06114 7.24849 5.8895C6.31904 5.08441 3.39977 5.85243 2.3634 6.20807C2.3186 6.22344 2.28028 6.25372 2.25457 6.29407C2.22886 6.33441 2.21724 6.3825 2.22158 6.43062L2.38086 8.09098C2.40849 8.38189 2.56849 8.51861 2.86086 8.50116C3.56195 8.45752 4.19177 8.48297 4.75031 8.57752C4.8274 8.59061 4.88049 8.63278 4.90958 8.70405C4.99831 8.92805 5.0434 9.16661 5.04486 9.4197C5.05649 12.435 5.06086 15.3855 5.05795 18.2713C5.05795 18.3339 5.08849 18.3652 5.14958 18.3652H14.7976C14.834 18.3652 14.869 18.3507 14.8948 18.3249C14.9206 18.2991 14.935 18.2642 14.935 18.2277C14.9336 15.5586 14.9329 12.9717 14.9329 10.467C14.9343 9.90553 14.9612 9.34262 15.0136 8.77826C15.0209 8.69826 15.0638 8.64952 15.1423 8.63206ZM3.97891 19.7279C4.00619 19.7166 4.02605 19.6905 4.03411 19.6553C4.04218 19.6201 4.03779 19.5787 4.02191 19.5402C4.01405 19.5211 4.00361 19.5034 3.99117 19.4879C3.97874 19.4724 3.96456 19.4595 3.94945 19.4499C3.93434 19.4404 3.91859 19.4344 3.9031 19.4322C3.88761 19.43 3.87268 19.4318 3.85917 19.4374C3.83189 19.4486 3.81203 19.4747 3.80397 19.5099C3.7959 19.5451 3.80029 19.5865 3.81617 19.625C3.82403 19.6441 3.83447 19.6619 3.8469 19.6774C3.85934 19.6929 3.87351 19.7057 3.88863 19.7153C3.90374 19.7248 3.91949 19.7309 3.93498 19.733C3.95047 19.7352 3.9654 19.7334 3.97891 19.7279ZM16.2834 19.4975C16.1612 19.387 16.0601 19.4161 15.9801 19.5848C15.972 19.6026 15.9696 19.6224 15.9733 19.6416C15.9771 19.6608 15.9867 19.6784 16.0009 19.6918C16.015 19.7053 16.0331 19.714 16.0524 19.7167C16.0718 19.7194 16.0915 19.716 16.1089 19.707L16.2659 19.6241C16.2772 19.6181 16.287 19.6096 16.2943 19.5992C16.3017 19.5889 16.3064 19.5769 16.3081 19.5644C16.3098 19.552 16.3085 19.5394 16.3042 19.5277C16.2999 19.5161 16.2927 19.5057 16.2834 19.4975Z" fill="#2ED3B7"/>
+                                            </svg>
+                                        </div>
+
+                                        <!-- text-container -->
+                                        <div class="flex flex-column gap--4 w-100">
+                                            <!-- text-container--top -->
+                                            <div class="flex flex-column gap--8">
+                                                <p class="fs--14 lh--20 poppins black">You recieved a custom request from @xXxYy.</p>
+                                            </div>
+
+                                            <!-- text-container--bottom -->
+                                            <div class="flex justify-between items-center">
+                                                <span class="fs--12 lh--18 poppins col--pale-sky">1w</span>
+
+                                                <!-- link -->
+                                                <a class="flex items-center gap--2 pointer">
+                                                    <span class="fs--12 lh--18 fw5 poppins col--oxford-blue">Detail</span>
+
+                                                    <div class="flex justify-center items-center w--16 h--16">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                            <path d="M4.66699 11.3334L11.3337 4.66669M11.3337 4.66669H4.66699M11.3337 4.66669V11.3334" stroke="#344054" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        </svg>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- error -->
+                                    <div data-notification-container-error data-notification-container class="flex items-center gap--10 pad--x--16 o-50">
+                                        <!-- icon -->
+                                        <div data-notification-icon-container class="flex justify-center items-center pointer w--24 h--24">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="21" viewBox="0 0 24 21" fill="none">
+                                                <path d="M11.9998 8.00023V12.0002M11.9998 16.0002H12.0098M10.6151 2.89195L2.39019 17.0986C1.93398 17.8866 1.70588 18.2806 1.73959 18.6039C1.769 18.886 1.91677 19.1423 2.14613 19.309C2.40908 19.5002 2.86435 19.5002 3.77487 19.5002H20.2246C21.1352 19.5002 21.5904 19.5002 21.8534 19.309C22.0827 19.1423 22.2305 18.886 22.2599 18.6039C22.2936 18.2806 22.0655 17.8866 21.6093 17.0986L13.3844 2.89195C12.9299 2.10679 12.7026 1.71421 12.4061 1.58235C12.1474 1.46734 11.8521 1.46734 11.5935 1.58235C11.2969 1.71421 11.0696 2.10679 10.6151 2.89195Z" stroke="#FF4405" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </div>
+
+                                        <!-- text-container -->
+                                        <div class="flex flex-column gap--4 w-100">
+                                            <!-- text-container--top -->
+                                            <div class="flex flex-column gap--8">
+                                                <p class="fs--14 lh--20 poppins black">You have expiring custom request</p>
+                                            </div>
+
+                                            <!-- text-container--bottom -->
+                                            <div class="flex justify-between items-center">
+                                                <span class="fs--12 lh--18 poppins col--pale-sky">1w</span>
+
+                                                <!-- link -->
+                                                <a class="flex items-center gap--2 pointer">
+                                                    <span class="fs--12 lh--18 fw5 poppins col--oxford-blue">Detail</span>
+
+                                                    <div class="flex justify-center items-center w--16 h--16">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                            <path d="M4.66699 11.3334L11.3337 4.66669M11.3337 4.66669H4.66699M11.3337 4.66669V11.3334" stroke="#344054" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        </svg>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- success -->
+                                    <div data-notification-container-success data-notification-container class="flex items-center gap--10 pad--x--16 o-50">
+                                        <!-- icon -->
+                                        <div class="flex justify-center items-center pointer w--24 h--24">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                <g filter="url(#filter0_d_26273_49818)">
+                                                    <path d="M12 16V12M12 8H12.01M7.8 21H16.2C17.8802 21 18.7202 21 19.362 20.673C19.9265 20.3854 20.3854 19.9265 20.673 19.362C21 18.7202 21 17.8802 21 16.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21Z" stroke="#06AED4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </g>
+                                                <defs>
+                                                    <filter id="filter0_d_26273_49818" x="-6" y="-6" width="36" height="36" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                                        <feOffset/>
+                                                        <feGaussianBlur stdDeviation="4"/>
+                                                        <feColorMatrix type="matrix" values="0 0 0 0 0.133333 0 0 0 0 0.8 0 0 0 0 0.933333 0 0 0 0.5 0"/>
+                                                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_26273_49818"/>
+                                                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_26273_49818" result="shape"/>
+                                                    </filter>
+                                                </defs>
+                                            </svg>
+                                        </div>
+
+                                        <!-- text-container -->
+                                        <div class="flex flex-column gap--4 w-100">
+                                            <!-- text-container--top -->
+                                            <div class="flex flex-column gap--8">
+                                                <p class="fs--14 lh--20 poppins black">This notification is not as important, how are you?</p>
+                                            </div>
+
+                                            <!-- text-container--bottom -->
+                                            <div class="flex justify-between items-center">
+                                                <span class="fs--12 lh--18 poppins col--pale-sky">Just now</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- warning -->
+                                    <div data-notification-container-warning data-notification-container class="flex items-center gap--10 pad--x--16 o-50">
+                                        <!-- icon -->
+                                        <div data-notification-icon-container class="flex justify-center items-center pointer w--24 h--24">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="22" viewBox="0 0 20 22" fill="none">
+                                                <path d="M10 6.99984V10.9998M10 14.9998H10.01M1 6.94129V15.0584C1 15.401 1 15.5724 1.05048 15.7252C1.09515 15.8603 1.16816 15.9844 1.26463 16.0891C1.37369 16.2074 1.52345 16.2906 1.82297 16.457L9.22297 20.5682C9.50658 20.7257 9.64838 20.8045 9.79855 20.8354C9.93146 20.8627 10.0685 20.8627 10.2015 20.8354C10.3516 20.8045 10.4934 20.7257 10.777 20.5682L18.177 16.457C18.4766 16.2906 18.6263 16.2074 18.7354 16.0891C18.8318 15.9844 18.9049 15.8603 18.9495 15.7252C19 15.5724 19 15.401 19 15.0584V6.94129C19 6.59864 19 6.42732 18.9495 6.27452C18.9049 6.13935 18.8318 6.01526 18.7354 5.91057C18.6263 5.79224 18.4766 5.70904 18.177 5.54263L10.777 1.43152C10.4934 1.27396 10.3516 1.19519 10.2015 1.1643C10.0685 1.13697 9.93146 1.13697 9.79855 1.1643C9.64838 1.19519 9.50658 1.27396 9.22297 1.43152L1.82297 5.54263C1.52345 5.70904 1.37369 5.79224 1.26463 5.91057C1.16816 6.01526 1.09515 6.13935 1.05048 6.27452C1 6.42732 1 6.59864 1 6.94129Z" stroke="#F79009" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </div>
+
+                                        <!-- text-container -->
+                                        <div class="flex flex-column gap--4 w-100">
+                                            <!-- text-container--top -->
+                                            <div class="flex flex-column gap--8">
+                                                <p class="fs--14 lh--20 poppins black">Please complete your bank details.</p>
+                                            </div>
+
+                                            <!-- text-container--bottom -->
+                                            <div class="flex justify-between items-center">
+                                                <span class="fs--12 lh--18 poppins col--pale-sky">1w</span>
+
+                                                <!-- link -->
+                                                <a class="flex items-center gap--2 pointer">
+                                                    <span class="fs--12 lh--18 fw5 poppins col--oxford-blue">Detail</span>
+
+                                                    <div class="flex justify-center items-center w--16 h--16">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                            <path d="M4.66699 11.3334L11.3337 4.66669M11.3337 4.66669H4.66699M11.3337 4.66669V11.3334" stroke="#344054" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        </svg>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- warning -->
+                                    <div data-notification-container-warning data-notification-container class="flex items-center gap--10 pad--x--16 o-50">
+                                        <!-- icon -->
+                                        <div data-notification-icon-container class="flex justify-center items-center pointer w--24 h--24">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="22" viewBox="0 0 20 22" fill="none">
+                                                <path d="M10 6.99984V10.9998M10 14.9998H10.01M1 6.94129V15.0584C1 15.401 1 15.5724 1.05048 15.7252C1.09515 15.8603 1.16816 15.9844 1.26463 16.0891C1.37369 16.2074 1.52345 16.2906 1.82297 16.457L9.22297 20.5682C9.50658 20.7257 9.64838 20.8045 9.79855 20.8354C9.93146 20.8627 10.0685 20.8627 10.2015 20.8354C10.3516 20.8045 10.4934 20.7257 10.777 20.5682L18.177 16.457C18.4766 16.2906 18.6263 16.2074 18.7354 16.0891C18.8318 15.9844 18.9049 15.8603 18.9495 15.7252C19 15.5724 19 15.401 19 15.0584V6.94129C19 6.59864 19 6.42732 18.9495 6.27452C18.9049 6.13935 18.8318 6.01526 18.7354 5.91057C18.6263 5.79224 18.4766 5.70904 18.177 5.54263L10.777 1.43152C10.4934 1.27396 10.3516 1.19519 10.2015 1.1643C10.0685 1.13697 9.93146 1.13697 9.79855 1.1643C9.64838 1.19519 9.50658 1.27396 9.22297 1.43152L1.82297 5.54263C1.52345 5.70904 1.37369 5.79224 1.26463 5.91057C1.16816 6.01526 1.09515 6.13935 1.05048 6.27452C1 6.42732 1 6.59864 1 6.94129Z" stroke="#F79009" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </div>
+
+                                        <!-- text-container -->
+                                        <div class="flex flex-column gap--4 w-100">
+                                            <!-- text-container--top -->
+                                            <div class="flex flex-column gap--8">
+                                                <p class="fs--14 lh--20 poppins black">Email Validation is not finished yet. </p>
+                                            </div>
+
+                                            <!-- text-container--bottom -->
+                                            <div class="flex justify-between items-center">
+                                                <span class="fs--12 lh--18 poppins col--pale-sky">1w</span>
+
+                                                <!-- link -->
+                                                <a class="flex items-center gap--2 pointer">
+                                                    <span class="fs--12 lh--18 fw5 poppins col--oxford-blue">Detail</span>
+
+                                                    <div class="flex justify-center items-center w--16 h--16">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                            <path d="M4.66699 11.3334L11.3337 4.66669M11.3337 4.66669H4.66699M11.3337 4.66669V11.3334" stroke="#344054" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        </svg>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- success -->
+                                    <div data-notification-container-success data-notification-container class="flex items-center gap--10 pad--x--16 o-50">
+                                        <!-- icon -->
+                                        <div data-notification-icon-container class="flex justify-center items-center pointer w--24 h--24">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                <path d="M10.7809 5.31787C11.2521 5.17096 11.647 4.9186 11.9656 4.56078C12.3474 4.13315 12.8514 4.0328 13.4012 4.0328C15.3998 4.02989 17.3059 4.42044 19.1198 5.20444C19.1537 5.21871 19.184 5.24046 19.2082 5.26806C19.2324 5.29567 19.2499 5.32839 19.2594 5.3637C19.3307 5.62698 19.351 5.89752 19.3205 6.17533C19.1954 7.29533 19.0187 8.43498 18.7903 9.59425C18.7423 9.83862 18.5939 9.96297 18.3452 9.96734L16.5779 10.0001C16.4819 10.0015 16.4339 10.0502 16.4339 10.1462L16.4296 19.5084C16.4297 19.5759 16.4068 19.6415 16.3644 19.6945C16.322 19.7476 16.2627 19.785 16.1961 19.8008C15.9969 19.8473 15.783 19.8706 15.5547 19.8706C11.719 19.8662 7.85722 19.8619 3.96922 19.8575C3.80049 19.8575 3.69286 19.7761 3.64631 19.6131C3.61431 19.5011 3.59758 19.3899 3.59613 19.2793C3.58449 16.5055 3.58377 13.4735 3.59395 10.1833C3.59395 10.0684 3.53649 10.0095 3.42158 10.0066L1.34231 9.95205C1.25213 9.94914 1.20049 9.90262 1.1874 9.81244C1.02158 8.65462 0.862312 7.5666 0.709584 6.54842C0.658675 6.21096 0.651403 5.86551 0.687766 5.51205C0.722676 5.15205 0.938675 5.1586 1.20049 5.05169C2.82668 4.38842 4.61286 4.05388 6.55904 4.04806C7.13722 4.04588 7.73504 4.1528 8.12995 4.62843C8.39758 4.95134 8.72268 5.17752 9.10522 5.30698C9.12839 5.31482 9.1532 5.31653 9.17723 5.31196C9.20126 5.30738 9.22369 5.29666 9.24236 5.28085C9.26103 5.26504 9.27528 5.24467 9.28375 5.22172C9.29222 5.19877 9.2946 5.17404 9.29068 5.14989C9.09431 3.8648 9.74668 3.17316 10.3881 2.20007C10.4234 2.14726 10.4438 2.08593 10.4472 2.0225C10.4506 1.95908 10.4368 1.8959 10.4074 1.83964C10.3779 1.78337 10.3338 1.7361 10.2797 1.70277C10.2257 1.66944 10.1636 1.6513 10.1001 1.65025C10.0347 1.64879 9.96631 1.65825 9.89504 1.67861C9.79613 1.7077 9.72049 1.76587 9.66813 1.85314L9.21213 2.61678C9.16483 2.69633 9.09506 2.76013 9.01159 2.80012C8.92811 2.84011 8.83468 2.85451 8.74304 2.84151C8.01868 2.73678 7.98813 1.85969 8.21722 1.33605C8.82158 -0.0515862 10.6194 -0.285028 11.5576 0.858245C12.0769 1.48879 12.1074 2.5666 11.5379 3.21896C11.0318 3.80151 10.6652 4.42552 10.6478 5.2197C10.6477 5.2358 10.6515 5.25171 10.6587 5.26609C10.6659 5.28048 10.6765 5.29294 10.6894 5.3025C10.7024 5.31206 10.7174 5.31845 10.7333 5.32112C10.7492 5.32379 10.7655 5.32267 10.7809 5.31787ZM15.1423 8.63206C15.7736 8.49097 16.4405 8.44734 17.143 8.50116C17.3903 8.51861 17.5372 8.40588 17.5838 8.16297C17.6987 7.55206 17.751 6.9506 17.7409 6.3586C17.7404 6.32166 17.7283 6.2858 17.7064 6.25606C17.6845 6.22632 17.6538 6.20418 17.6187 6.19278C16.2558 5.74769 14.8761 5.53097 13.4798 5.5426C12.8405 5.54915 12.3954 6.30407 11.8259 6.56589C10.1481 7.34043 8.60122 7.06114 7.24849 5.8895C6.31904 5.08441 3.39977 5.85243 2.3634 6.20807C2.3186 6.22344 2.28028 6.25372 2.25457 6.29407C2.22886 6.33441 2.21724 6.3825 2.22158 6.43062L2.38086 8.09098C2.40849 8.38189 2.56849 8.51861 2.86086 8.50116C3.56195 8.45752 4.19177 8.48297 4.75031 8.57752C4.8274 8.59061 4.88049 8.63278 4.90958 8.70405C4.99831 8.92805 5.0434 9.16661 5.04486 9.4197C5.05649 12.435 5.06086 15.3855 5.05795 18.2713C5.05795 18.3339 5.08849 18.3652 5.14958 18.3652H14.7976C14.834 18.3652 14.869 18.3507 14.8948 18.3249C14.9206 18.2991 14.935 18.2642 14.935 18.2277C14.9336 15.5586 14.9329 12.9717 14.9329 10.467C14.9343 9.90553 14.9612 9.34262 15.0136 8.77826C15.0209 8.69826 15.0638 8.64952 15.1423 8.63206ZM3.97891 19.7279C4.00619 19.7166 4.02605 19.6905 4.03411 19.6553C4.04218 19.6201 4.03779 19.5787 4.02191 19.5402C4.01405 19.5211 4.00361 19.5034 3.99117 19.4879C3.97874 19.4724 3.96456 19.4595 3.94945 19.4499C3.93434 19.4404 3.91859 19.4344 3.9031 19.4322C3.88761 19.43 3.87268 19.4318 3.85917 19.4374C3.83189 19.4486 3.81203 19.4747 3.80397 19.5099C3.7959 19.5451 3.80029 19.5865 3.81617 19.625C3.82403 19.6441 3.83447 19.6619 3.8469 19.6774C3.85934 19.6929 3.87351 19.7057 3.88863 19.7153C3.90374 19.7248 3.91949 19.7309 3.93498 19.733C3.95047 19.7352 3.9654 19.7334 3.97891 19.7279ZM16.2834 19.4975C16.1612 19.387 16.0601 19.4161 15.9801 19.5848C15.972 19.6026 15.9696 19.6224 15.9733 19.6416C15.9771 19.6608 15.9867 19.6784 16.0009 19.6918C16.015 19.7053 16.0331 19.714 16.0524 19.7167C16.0718 19.7194 16.0915 19.716 16.1089 19.707L16.2659 19.6241C16.2772 19.6181 16.287 19.6096 16.2943 19.5992C16.3017 19.5889 16.3064 19.5769 16.3081 19.5644C16.3098 19.552 16.3085 19.5394 16.3042 19.5277C16.2999 19.5161 16.2927 19.5057 16.2834 19.4975Z" fill="#2ED3B7"/>
+                                            </svg>
+                                        </div>
+
+                                        <!-- text-container -->
+                                        <div class="flex flex-column gap--4 w-100">
+                                            <!-- text-container--top -->
+                                            <div class="flex flex-column gap--8">
+                                                <p class="fs--14 lh--20 poppins black">You recieved a custom request from @xXxYy.</p>
+                                            </div>
+
+                                            <!-- text-container--bottom -->
+                                            <div class="flex justify-between items-center">
+                                                <span class="fs--12 lh--18 poppins col--pale-sky">1w</span>
+
+                                                <!-- link -->
+                                                <a class="flex items-center gap--2 pointer">
+                                                    <span class="fs--12 lh--18 fw5 poppins col--oxford-blue">Detail</span>
+
+                                                    <div class="flex justify-center items-center w--16 h--16">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                            <path d="M4.66699 11.3334L11.3337 4.66669M11.3337 4.66669H4.66699M11.3337 4.66669V11.3334" stroke="#344054" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        </svg>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- error -->
+                                    <div data-notification-container-error data-notification-container class="flex items-center gap--10 pad--x--16 o-50">
+                                        <!-- icon -->
+                                        <div data-notification-icon-container class="flex justify-center items-center pointer w--24 h--24">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="21" viewBox="0 0 24 21" fill="none">
+                                                <path d="M11.9998 8.00023V12.0002M11.9998 16.0002H12.0098M10.6151 2.89195L2.39019 17.0986C1.93398 17.8866 1.70588 18.2806 1.73959 18.6039C1.769 18.886 1.91677 19.1423 2.14613 19.309C2.40908 19.5002 2.86435 19.5002 3.77487 19.5002H20.2246C21.1352 19.5002 21.5904 19.5002 21.8534 19.309C22.0827 19.1423 22.2305 18.886 22.2599 18.6039C22.2936 18.2806 22.0655 17.8866 21.6093 17.0986L13.3844 2.89195C12.9299 2.10679 12.7026 1.71421 12.4061 1.58235C12.1474 1.46734 11.8521 1.46734 11.5935 1.58235C11.2969 1.71421 11.0696 2.10679 10.6151 2.89195Z" stroke="#FF4405" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </div>
+
+                                        <!-- text-container -->
+                                        <div class="flex flex-column gap--4 w-100">
+                                            <!-- text-container--top -->
+                                            <div class="flex flex-column gap--8">
+                                                <p class="fs--14 lh--20 poppins black">You have expiring custom request</p>
+                                            </div>
+
+                                            <!-- text-container--bottom -->
+                                            <div class="flex justify-between items-center">
+                                                <span class="fs--12 lh--18 poppins col--pale-sky">1w</span>
+
+                                                <!-- link -->
+                                                <a class="flex items-center gap--2 pointer">
+                                                    <span class="fs--12 lh--18 fw5 poppins col--oxford-blue">Detail</span>
+
+                                                    <div class="flex justify-center items-center w--16 h--16">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                                            <path d="M4.66699 11.3334L11.3337 4.66669M11.3337 4.66669H4.66699M11.3337 4.66669V11.3334" stroke="#344054" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        </svg>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                   </div>
+                </div>
+             </div>
+            <!-- notification popup ends here -->
+
+            <!-- background template starts from here -->
             <div data-payout-earnings-template-main class="relative w-100 h-100 min-vh-100 flex flex-column gap--24 bg--col--athens-gray-2 gap--8--responsive-mobile gap--8--responsive-mobile-portrait">
                 <!-- header-section -->
                 <header data-payout-earnings-header class="w-100 relative">
@@ -491,46 +954,43 @@ Available balance includes pending transactions which tells you how much you can
                                 </div>
                             </div>
 
-                            <!-- progress-section -->
-                            <div data-progress-section class="flex flex-column gap--40 pad--24 gap--16--responsive-mobile w--100-responsive-mobile w--100-responsive-mobile-portrait pad--0-responsive-mobile gap--16--responsive-mobile-portrait pad--x--8-responsive-mobile-portrait pad--y-0-responsive-mobile-portrait">
-                                <div class="flex flex-column gap--24 gap--8-responsive-mobile gap--8--responsive-mobile-portrait">
-                                    <h2 data-progress-title class="fs--36 lh--44 fw5 tracked--neg--0-72 poppins col--ebony--variation-2 fs--20-responsive-mobile fs--20-responsive-mobile-portrait lh--30-responsive-mobile lh--30-responsive-mobile-portrait">Your payout is being processed.</h2>
-                                
-                                    <div class="flex flex-column gap--8">
-                                        <div class="flex items-center flex-wrap gap--8">
-                                            <span class="fs--16 lh--24 fw6 poppins col--ebony--variation-2">EUR€114.48</span>
-                                            
-                                            <div data-payout-method-type class="flex justify-center items-center gap--4 pad--y--2 pad--x--8 bg-white br--50">
+                            <div data-balance-section class="flex flex-column justify-between gap--8 pad--x--24 h--236 w--100-responsive-mobile w--100-responsive-mobile-portrait h--auto-mobile h--auto-responsive-mobile-portrait justify--center-responsive-mobile justify--center-responsive-mobile-portrait pad--x--0-responsive-mobile pad--x--8-responsive-mobile-portrait">
+                                <div class="flex flex-column gap--16">
+                                    <h2 class="fs--36 lh--44 fw5 poppins col--ebony--variation-2 tracked--neg--0-72 text--wrap--auto fs--20-responsive-mobile fs--20-responsive-mobile-portrait lh--30-responsive-mobile lh--30-responsive-mobile-portrait">Your Balance are now available for withdrawal.</h2>
+                                    <p class="fs--14 lh--20 fw4 poppins col--oxford-blue">💯You're grinding and it’s paying off. Keep hustling, stay lit, and remember—you're a boss. </p>
+                                </div>
+
+                                <div class="flex flex-column items-start gap--16">
+                                    <button data-payout-withdraw-button data-button-style="skew-right bottom" data-button-color="green" type="button" class="h--40 flex items-center gap--10 justify-center relative size-large clip-path--polygon-responsive-mobile-portrait clip-path--polygon-responsive-mobile w--130-responsive-mobile-portrait w--130-responsive-mobile pad--x--8 pad--y--4" data-button-size="large" data-button-icon-position="left" data-skip-svg-color="" data-skip-svg-width="" data-for-new-dashboard="1" data-button-adjust-padding="1">
+                                        <div data-button-text-wrap="" class="flex items-center gap--10 justify-center relative">
+                                            <img src="https://staging.fansocial.app/wp-content/plugins/fansocial/assets/icons/svg/credit-card-download.svg" alt="plus-square" class="w--24 h--24 filter--col--black ml--35-responsive-mobile-portrait ml--35-responsive-mobile">
+                                            <div class="flex items-center gap--6 pad--right--4">
+                                                <span class="poppins wb flex fs--18 fw5 lh--28 black ttu">WITHDRAW NOW</span>
+                                            </div>
+                                        </div>
+                                    </button>
+
+                                    <div class="flex items-center gap--4">
+                                        <div class="flex items-center gap--2">
+                                            <span class="fs--12 lh--16 fw4 poppins col--ebony--variation-2 nowrap">Next Payout Date</span>
+                                            <div class="w--16 h--16 flex justify-center items-center pointer relative" data-token-payout-tooltip>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                                    <g clip-path="url(#clip0_16665_15171)">
-                                                        <path d="M1.3335 8.00001H14.6668M1.3335 8.00001C1.3335 11.6819 4.31826 14.6667 8.00016 14.6667M1.3335 8.00001C1.3335 4.31811 4.31826 1.33334 8.00016 1.33334M14.6668 8.00001C14.6668 11.6819 11.6821 14.6667 8.00016 14.6667M14.6668 8.00001C14.6668 4.31811 11.6821 1.33334 8.00016 1.33334M8.00016 1.33334C9.66768 3.15891 10.6153 5.52803 10.6668 8.00001C10.6153 10.472 9.66768 12.8411 8.00016 14.6667M8.00016 1.33334C6.33264 3.15891 5.38499 5.52803 5.3335 8.00001C5.38499 10.472 6.33264 12.8411 8.00016 14.6667" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <g clip-path="url(#clip0_26044_48319)">
+                                                        <path d="M6.05967 6.00004C6.21641 5.55449 6.52578 5.17878 6.93298 4.93946C7.34018 4.70015 7.81894 4.61267 8.28446 4.69252C8.74998 4.77236 9.17222 5.01439 9.47639 5.37573C9.78057 5.73706 9.94705 6.19439 9.94634 6.66671C9.94634 8.00004 7.94634 8.66671 7.94634 8.66671M7.99967 11.3334H8.00634M14.6663 8.00004C14.6663 11.6819 11.6816 14.6667 7.99967 14.6667C4.31778 14.6667 1.33301 11.6819 1.33301 8.00004C1.33301 4.31814 4.31778 1.33337 7.99967 1.33337C11.6816 1.33337 14.6663 4.31814 14.6663 8.00004Z" stroke="#98A2B3" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
                                                     </g>
                                                     <defs>
-                                                        <clipPath id="clip0_16665_15171">
+                                                        <clipPath id="clip0_26044_48319">
                                                             <rect width="16" height="16" fill="white"/>
                                                         </clipPath>
                                                     </defs>
                                                 </svg>
-                                                <div class="flex items-center gap--4 h--20">
-                                                    <span class="fs--14 lh--16 fw5 poppins col--grey-800 nowrap">USA - </span>
-                                                    <span class="fs--14 lh--16 fw5 poppins col--grey-800 nowrap">Bank Deposit</span>
-                                                </div>
+
+                                                <span data-token-payout-tooltip-text data-next-payout-tooltip-text class="fs--12 lh--18 fw5 poppins white">Payout date happens monthly on the 28th. Earnings made in the previous month will be transferred to your available balance for withdrawal.</span>
                                             </div>
+                                            <span class="fs--12 lh--16 fw4 poppins col--ebony--variation-2">:</span>
                                         </div>
 
-                                        <span class="fs--16 lh--24 poppins col--ebony--variation-2">12/12/2024</span>
-                                    </div>
-                                </div>
-
-                                <div data-progress-bar-wrapper class="flex flex-column gap--16 w-100 max--w--500">
-                                    <!-- progress-bar -->
-                                    <div data-progress-bar class="bg--col--athens-gray-2 br3 overflow-hidden w-100">
-                                        <div data-progress-meter class="h-100 w-50 br2 bg--col--ebony--variation-2"></div>
-                                    </div>
-                                    <div class="w-100 flex justify-between">
-                                        <div class="fs--12 lh--18 poppins col--ebony--variation-2">Pending</div>
-                                        <div class="fs--12 lh--18 poppins col--ebony--variation-2">Processing</div>
-                                        <div class="fs--12 lh--18 poppins col--gull-gray">Completed</div>
+                                        <span class="fs--12 lh--18 fw4 poppins col--ebony--variation-2">28/05/25</span>
                                     </div>
                                 </div>
                             </div>
@@ -1119,7 +1579,7 @@ Available balance includes pending transactions which tells you how much you can
                     </div>
                 </div>
             </div>
-            <!-- template ends here -->
+            <!-- background template ends here -->
 
         </div>
     </body>
